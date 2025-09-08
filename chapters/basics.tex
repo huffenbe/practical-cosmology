@@ -1,0 +1,26 @@
+\chapter{Basics}
+
+Cosmology is the study of the universe on the large scales, so we need to spend some time understanding how we are going to quantify and label positions in space and time.  Already in physics, we are used to labeling points in space with coordinates like $(x,y,z)$ or $(r,\theta,\phi)$.  We are also accustomed to computing the distances between points, especially in cartesian coordinates.
+
+We learn in special relativity that we need also to label event with space and time coordinates $(t,x,y,z)$, simple enough.  We further learn that different observers will disagree on the measurements of distances and time intervals, but all observers will agree on the spacetime interval between two events.  It is called invariant.  The spacetime interval could be written as
+\begin{equation}
+  (\Delta s)^2 = -(\Delta t)^2 +  (\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2
+\end{equation}
+which is a little weird but at least the space follows the familiar rules of Euclidean geometry cand the coordinates are cartesian.
+
+Our footing gets much less steady when we turn to general relativity, our best understanding of the physics of gravity.  In general, the space does not need to be Euclidean, so rules such as ``the sum of angles in a triangle is $180^\circ$'' might not be true.  Further, the numbers that we assign as coordinates to points in space are just labels, and (within some limits) we have enormous freedom to choose how we assign the coordinates.  (Some choices are more suitable than others.)  Like in special relativity, the spacetime interval along a path in the spacetime is invariant.  The relationship between the three space coordinates, one time coordinate, and the spacetime interval is called the spacetime metric.
+
+For much of observational cosmology in practice, we will not need much general relativity, but a few results are crucial.  We observe that the universe is statistically homogeneous and isotropic, meaning that at different locations and in different directions, the universe is basically the same, composed of galaxies of the same various types, oriented in all different directions.  However, the universe is not static; it changes in time.  When we look at the most distant galaxies, where the light has taken many billions of years to reach us, the galaxies are different, forming stars more or less vigorously, and have more pristine gas with fewer heavy elements.  Moreover, the light from distant galaxies is \textit{redshifted}, or shifted to longer wavelengths, which is strong evidence that the universe is expanding in time.
+
+In general relativity, these conditions 
+
+The metric describes how to measure spacetime intervals in homogeneous and isotropic spacetimes can be written as
+\begin{equation}
+  ds^2 = -dt^2 + a^2(t)\left[ \frac{dr^2}{1 - kr^2/R^2} + r^2 d\theta^2 + r^2 \sin^2\theta d\phi^2  \right]
+\end{equation}
+where $k = \{ -1, 0, +1 \}$ means the space has negative curvature, is spatially flat, or has positive curvature.  We call this the Friedmann-Robertson-Walker (FRW) or Friedmann-Lemaitre-Robertson-Walker (FLRW) metric after the people who found and worked with it first.
+
+Cosmology is concerned with the very largest size scales in the universe.  We are essentially stuck in one spot, so we can call our position as the origin of our coordinate system. 
+
+
+\footnote{When the analogous 2d surface of a sphere, which is the curved space that we are most familiar with, is embedded in a three-dimensional space, $r$ is like the cylindrical distance from polar axis to a point on the sphere, while \begin{equation} \int_0^r \frac{dr'}{\sqrt{1-kr^2/R^2}} \end{equation} is the length from the origin along the surface of the sphere.}
