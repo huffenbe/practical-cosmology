@@ -1,0 +1,118 @@
+\chapter{Correlation functions and power spectra}
+
+Introduce concepts in 1 dimension in fourier space.
+
+Function $g(x)$ has a fourier decomposition\footnote{I agree with Numerical Recipes \citep{} that expressing the frequency as $f = \omega/2\pi$ makes the notation cleaner, but the convention in cosmology is to decompose large scale structure with modes like $\exp(i \mathbf{k} \cdot \mathbf{x})$, so the comoving wavenumber $k$ is more like the angular frequency, and we stick to that here.}
+\begin{equation}
+  g(x) = \int \frac{dk}{2\pi}\ g(k) \exp(i kx) 
+\end{equation}
+so that the coefficients are 
+\begin{equation}
+  g(k) = \int dx\ g(x) \exp(-i kx)
+\end{equation}
+These are called the harmonics or modes.  The second equation is called the Fourier transform or analysis of the function, while the first is called the inverse fourier transform or the synthesis of the function.  We build up the function out of the oscillatory modes, and the harmonic coefficients tell us how much of each mode we need.
+
+The definition of the power spectrum is the variance of the fourier modes.
+\begin{equation}
+  \langle g(k) g^*(k') \rangle = 2\pi P(k) \delta(k - k') 
+\end{equation}
+This definition is extremely important and we will use it and similar relationships again and again.
+
+\subsection{Dirac delta functions}
+The important property of the Dirac delta function are
+\begin{equation}
+  \int_{\Delta x} dx'\ \delta(x-x') = \left\{
+  \begin{array}{ll} 1, & \mbox{if $x$ is in $\Delta x$;} \\ 0, & \mbox{otherwise.} \end{array}
+  \right.
+\end{equation}
+Integrated (really convolved) against a function, the Dirac delta function selects a function value as so:
+\begin{equation}
+  \int dx'\ \delta(x-x') f(x') = f(x)
+\end{equation}
+
+The Dirac delta function is also the Fourier transform of the constant unit function.
+\begin{equation}
+   \delta(x-x') = \int \frac{dk}{2\pi} \exp(i k (x-x')) 
+\end{equation}
+On the right side, it is clear that if $x=x'$, the exponential equals one and the integral over the whole real line is infinity.  On the other hand, if $x \neq x'$, the integrand is oscillatory and will not diverge.  You can integrate over this Fourier definition of the delta function over some interval containing $x$ or not to show that it produces the expected values.  We can write a similar defition for the fourier transform of the $k$-space delta function by swapping names of the $x$ and $k$ variables.
+\begin{eqnarray}
+  \delta(k - k') &=& \frac{1}{2\pi}  \int {dx}\ \exp(i (k-k')x)    \\
+  &=& \frac{1}{2\pi}  \int {dx}\ \exp(-i (k'-k)x) 
+\end{eqnarray}
+where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.
+
+\subsection{Average correlation in a small interval}
+How do we think about the infinity in correlation caused by the delta function?  This is linked to the fact that we are integrating here a statistically homogeneous function (one that never goes to zero) over an infinite volume.  But in practice, we will always be dealing with some interval in harmonic space that we can integrate the correlation over.  For example, if we have the transform, we can compute the average of the transform in a small interval $\Delta k$ in $k$-space
+\begin{equation}
+  \bar g(k) = \frac{1}{\Delta k} \int_{\Delta k} dk' g(k')
+\end{equation}
+Then we can examine the correlation of those fourier-space average quantities, as below, and see that they relate to the average power spectrum for that interval. 
+\begin{eqnarray}
+  \langle \bar g(k)  \bar g^*(k) \rangle &=& \frac{1}{\Delta_k^2} \int_{\Delta_k} dk'_1 dk'_2 \langle g(k'_1) g^*(k'_2) \rangle \\
+  &=& \frac{1}{\Delta_k^2} \int_{\Delta_k} dk'_1 dk'_2 \ 2\pi P(k'_1) \delta(k'_1 - k'_2) \\
+  &=& \frac{2\pi}{\Delta_k}  \int_{\Delta_k} dk'_1 \  P(k'_1) \\
+  &=& 2\pi  \bar P(k)\frac{1}{\Delta_k},
+\end{eqnarray}
+where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same (or at least overlap) or otherwise the correlation would obviously be zero due to the delta function.
+
+
+\section{Incomplete data}
+
+We are limited to the area of sky or volume of survey we can access.  Additionally, if part of the signal is not available or of poor quality, we can weight it or mask it out with a function $w(x)$.  This function would typically range from zero to one, giving no weight to bad data and full weight to good data.  Then the weighted signal $\tilde g(x) = g(x) w(x)$ has fourier components
+\begin{equation}
+  \tilde g(k) = \int dx\  \exp(-i k x) g(x) w(x)
+\end{equation}
+These are call the \textit{pseudo-}harmonics.
+
+If we want to compute the correlation or pseudo-power spectrum from these weighted harmonics, we can just start expanding according to the definition of the harmonics.
+\begin{eqnarray}
+  \langle \tilde g(k) \tilde g^*(k') \rangle = &\int& dx dx' \ \exp(-i k x)\exp(i k' x') \langle g(x) g^*(x') \rangle w(x) w(x')  \nonumber \\
+  = &\int &dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
+  & & \frac{dk_1}{2\pi} \frac{dk_2}{2\pi} \exp(i k_1 x)\exp(-i k_2 x')  \nonumber \\
+  & & \langle g(k_1) g^*(k_2) \rangle w(x) w(x')  
+\end{eqnarray}
+Note the expansion of the complex conjugate of $g(x')$, which is real valued and so equals the conjugate.
+ \begin{eqnarray}
+   \langle \tilde g(k) \tilde g^*(k') \rangle  &= \int &dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
+  & &\frac{dk_1}{2\pi} \frac{dk_2}{2\pi} \exp(i k_1 x)\exp(-i k_2 x')  \nonumber \\
+  & & 2\pi \delta(k_1 - k_2) P(k_1) w(x) w(x') 
+\end{eqnarray}
+Now we integrate the delta function over $k_2$ and collect the exponential functions of $x$ and $x'$ each together.
+ \begin{eqnarray}
+   \langle \tilde g(k) \tilde g^*(k') \rangle  &= & \int\frac{dk_1}{2\pi} dx dx' \ \exp(-i (k - k_1) x)\exp(i (k'-k_1) x')  \nonumber \\
+  & &  \nonumber \\
+   & &  w(x) w(x') P(k_1) \nonumber \\
+   &=&  \int\frac{dk_1}{2\pi} \left[  w(k_1-k) w^*(k_1-k') \right] P(k_1) %\nonumber \\
+%   &=&  \int\frac{dk_1}{2\pi}  W(k_1-k) P(k_1)
+\end{eqnarray}
+This is say that, on average, the correlation of the masked signal is the convolution of the power spectrum with some kernel based on the mask or weighting function.
+
+\section{Discrete data}
+
+In practice we have sampled data $g_j = g(x_j)$ where $x_j = j\Delta x$ is sampled at intervals $\Delta x$.  Then the Fourier transform integral becomes a Riemann sum.
+
+
+$k_p = p\Delta k$
+$\Delta k = 2\pi/N\Delta x$.
+
+$N$ is the total number of samples.
+
+\begin{eqnarray}%%%
+  g_p = g(k_p) & = & \Delta x \sum_j g(t_j) \exp(- i k_p  x_j) \\
+    & = & \Delta x \sum_j g_j \exp(-2\pi i pj/N)
+\end{eqnarray}
+ This is the form of the discrete fourier transform of $g_j$.  This is very advantageous because the Fast Fourier Transform (FFT) algorithm can use divide-and-conquer techniques to compute the $N$ results in ${\cal O}(N \log N)$ operations instead of ${\cal O}(N^2)$.
+
+ Similarly, we can synthesize a discrete time series from fourier coefficients as
+ \begin{eqnarray}
+   g_j = g(x_j) = \frac{\Delta k}{2\pi}  \sum_p g_p \exp(2\pi i pj/N)
+ \end{eqnarray}
+
+ The equivalent definition of the power spectrum year is
+ \begin{equation}
+   \langle g(k_p) g^*(k_{p'}) \rangle = 2\pi \bar P(k_p) \frac{\delta_{pp'}}{\Delta k}
+  \end{equation}
+ where we can see the analogy to the earlier equation for the average power in a small cell.  The kronecker delta scaled by the cell in fourier space takes the place of the dirac delta function in the original definition.  We'll drop the bar on $P$ for the upcoming discussion.
+
+
+ 
