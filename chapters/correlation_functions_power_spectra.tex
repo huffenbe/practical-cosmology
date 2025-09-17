@@ -1,22 +1,25 @@
 \chapter{Correlation functions and power spectra}
 
-Introduce concepts in 1 dimension in fourier space.
+Although we live in a three-dimensional space, we will introduce concepts of harmonic analysis in one dimension for simplicity.  This has applications to measurements of the density along lines of sight, like absorption of Lyman-$\alpha$ in quasar spectra.  We can then generalize to harmonics in two dimensions on the sky and three dimensions filling all space.
 
-Function $g(x)$ has a fourier decomposition\footnote{I agree with Numerical Recipes \citep{} that expressing the frequency as $f = \omega/2\pi$ makes the notation cleaner, but the convention in cosmology is to decompose large scale structure with modes like $\exp(i \mathbf{k} \cdot \mathbf{x})$, so the comoving wavenumber $k$ is more like the angular frequency, and we stick to that here.}
+To be general, we will represent density, absorption, emission of whatever we are representing as a function $a(x)$ of the comoving position $x$.  It has a fourier decomposition
 \begin{equation}
-  g(x) = \int \frac{dk}{2\pi}\ g(k) \exp(i kx) 
+  a(x) = \int \frac{dk}{2\pi}\ a(k) \exp(i kx) 
 \end{equation}
-so that the coefficients are 
+so that the coefficients of the expansion are 
 \begin{equation}
-  g(k) = \int dx\ g(x) \exp(-i kx)
+  a(k) = \int dx\ a(x) \exp(-i kx)
 \end{equation}
-These are called the harmonics or modes.  The second equation is called the Fourier transform or analysis of the function, while the first is called the inverse fourier transform or the synthesis of the function.  We build up the function out of the oscillatory modes, and the harmonic coefficients tell us how much of each mode we need.
+These are called the harmonic coefficients at comoving wavenumber $k$.  They are the complex amplitudes of the (oscillatory, complex exponential) Fourier modes.%
+%
+\footnote{The convention in cosmology is to decompose large scale structure in flat space with modes like $\exp(i \mathbf{k} \cdot \mathbf{x})$.  The comoving wavenumber $k$ is like an angular frequency ($\omega$).  I agree with Numerical Recipes \citep{} that expressing the standard frequency as $f = \omega/2\pi$ makes the notation for Fourier transforms cleaner, but  we stick to the comoving wavenumber convention here.  If the space is not flat, $\exp(i \mathbf{k}\cdot \mathbf{x})$ is not correct basic to expand into, and we use other, more complicated, hypergeometric functions instead, which are the solutions to the wave equation in those spaces.}  Sometimes we will refer to $k$ as the (spatial) frequency.
+The second equation is called the Fourier transform or analysis of the function, while the first is called the inverse fourier transform or the synthesis of the function.  We build up the function out of the oscillatory modes, and the harmonic coefficients tell us how much of each mode we need.
 
-The definition of the power spectrum is the variance of the fourier modes.
+The definition of the power spectrum is the variance of the Fourier modes.
 \begin{equation}
-  \langle g(k) g^*(k') \rangle = 2\pi P(k) \delta(k - k') 
+  \langle a(k) a^*(k') \rangle = 2\pi P(k) \delta(k - k') 
 \end{equation}
-This definition is extremely important and we will use it and similar relationships again and again.
+This definition is extremely important and we will use it and similar relationships again and again.  For a homogeneous and isotropic signal, the different $k$ modes are independent, and 
 
 \subsection{Dirac delta functions}
 The important property of the Dirac delta function are
@@ -39,80 +42,183 @@ On the right side, it is clear that if $x=x'$, the exponential equals one and th
   \delta(k - k') &=& \frac{1}{2\pi}  \int {dx}\ \exp(i (k-k')x)    \\
   &=& \frac{1}{2\pi}  \int {dx}\ \exp(-i (k'-k)x) 
 \end{eqnarray}
-where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.
+where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.  The dirac delta function is even ($\delta(k-k') = \delta(k' - k)$) and real valued (equal to its complex conjugate, replacing $i$ with $-i$), so there are lots of variations of minus signs that are equivalent.  Take some care with them.
 
 \subsection{Average correlation in a small interval}
 How do we think about the infinity in correlation caused by the delta function?  This is linked to the fact that we are integrating here a statistically homogeneous function (one that never goes to zero) over an infinite volume.  But in practice, we will always be dealing with some interval in harmonic space that we can integrate the correlation over.  For example, if we have the transform, we can compute the average of the transform in a small interval $\Delta k$ in $k$-space
 \begin{equation}
-  \bar g(k) = \frac{1}{\Delta k} \int_{\Delta k} dk' g(k')
+  \bar a(k) = \frac{1}{\Delta k} \int_{\Delta k} dk' a(k')
 \end{equation}
 Then we can examine the correlation of those fourier-space average quantities, as below, and see that they relate to the average power spectrum for that interval. 
 \begin{eqnarray}
-  \langle \bar g(k)  \bar g^*(k) \rangle &=& \frac{1}{\Delta_k^2} \int_{\Delta_k} dk'_1 dk'_2 \langle g(k'_1) g^*(k'_2) \rangle \\
-  &=& \frac{1}{\Delta_k^2} \int_{\Delta_k} dk'_1 dk'_2 \ 2\pi P(k'_1) \delta(k'_1 - k'_2) \\
-  &=& \frac{2\pi}{\Delta_k}  \int_{\Delta_k} dk'_1 \  P(k'_1) \\
-  &=& 2\pi  \bar P(k)\frac{1}{\Delta_k},
+  \langle \bar a(k)  \bar a^*(k) \rangle &=& \frac{1}{(\Delta k)^2} \int_{\Delta_k} dk'_1 dk'_2 \langle a(k'_1) g^*(k'_2) \rangle \\
+  &=& \frac{1}{(\Delta k)^2} \int_{\Delta k} dk'_1 dk'_2 \ 2\pi P(k'_1) \delta(k'_1 - k'_2) \\
+  &=& \frac{2\pi}{(\Delta k)^2}  \int_{\Delta k} dk'_1 \  P(k'_1) \\
+  &=& \frac{2\pi}{\Delta k}  \bar P(k),
 \end{eqnarray}
 where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same (or at least overlap) or otherwise the correlation would obviously be zero due to the delta function.
 
 
 \section{Incomplete data}
 
-We are limited to the area of sky or volume of survey we can access.  Additionally, if part of the signal is not available or of poor quality, we can weight it or mask it out with a function $w(x)$.  This function would typically range from zero to one, giving no weight to bad data and full weight to good data.  Then the weighted signal $\tilde g(x) = g(x) w(x)$ has fourier components
+We are always limited to the area of sky or volume of the universe we can access.  Additionally, if part of the signal is not available or of poor quality, we can downweight its importance or mask it out completely with a weight function $w(x)$.  This function would typically range from zero to one, giving no weight to bad data and full weight to good data.  Then the weighted signal
+\begin{equation}\tilde a(x) = a(x) w(x)\end{equation}
+has fourier components
 \begin{equation}
-  \tilde g(k) = \int dx\  \exp(-i k x) g(x) w(x)
+  \tilde a(k) = \int dx\  \exp(-i k x) a(x) w(x).
 \end{equation}
 These are call the \textit{pseudo-}harmonics.
 
 If we want to compute the correlation or pseudo-power spectrum from these weighted harmonics, we can just start expanding according to the definition of the harmonics.
 \begin{eqnarray}
-  \langle \tilde g(k) \tilde g^*(k') \rangle = &\int& dx dx' \ \exp(-i k x)\exp(i k' x') \langle g(x) g^*(x') \rangle w(x) w(x')  \nonumber \\
+  \langle \tilde a(k) \tilde g^*(k') \rangle = &\int& dx dx' \ \exp(-i k x)\exp(i k' x') \langle a(x) a^*(x') \rangle w(x) w(x')  \nonumber \\
   = &\int &dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
   & & \frac{dk_1}{2\pi} \frac{dk_2}{2\pi} \exp(i k_1 x)\exp(-i k_2 x')  \nonumber \\
-  & & \langle g(k_1) g^*(k_2) \rangle w(x) w(x')  
+  & & \langle a(k_1) a^*(k_2) \rangle w(x) w(x')  
 \end{eqnarray}
-Note the expansion of the complex conjugate of $g(x')$, which is real valued and so equals the conjugate.
+Note the expansion of the complex conjugate of $a(x')$, which is real valued and so equals the conjugate.
  \begin{eqnarray}
-   \langle \tilde g(k) \tilde g^*(k') \rangle  &= \int &dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
+   \langle \tilde a(k) \tilde a^*(k') \rangle  &= \int &dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
   & &\frac{dk_1}{2\pi} \frac{dk_2}{2\pi} \exp(i k_1 x)\exp(-i k_2 x')  \nonumber \\
   & & 2\pi \delta(k_1 - k_2) P(k_1) w(x) w(x') 
 \end{eqnarray}
 Now we integrate the delta function over $k_2$ and collect the exponential functions of $x$ and $x'$ each together.
  \begin{eqnarray}
-   \langle \tilde g(k) \tilde g^*(k') \rangle  &= & \int\frac{dk_1}{2\pi} dx dx' \ \exp(-i (k - k_1) x)\exp(i (k'-k_1) x')  \nonumber \\
+   \langle \tilde a(k) \tilde a^*(k') \rangle  &= & \int\frac{dk_1}{2\pi} dx dx' \ \exp(-i (k - k_1) x)\exp(i (k'-k_1) x')  \nonumber \\
   & &  \nonumber \\
    & &  w(x) w(x') P(k_1) \nonumber \\
-   &=&  \int\frac{dk_1}{2\pi} \left[  w(k_1-k) w^*(k_1-k') \right] P(k_1) %\nonumber \\
+   &=&  \int\frac{dk_1}{2\pi} \left[  w(k-k_1) w^*(k'-k_1) \right] P(k_1) %\nonumber \\
 %   &=&  \int\frac{dk_1}{2\pi}  W(k_1-k) P(k_1)
 \end{eqnarray}
-This is say that, on average, the correlation of the masked signal is the convolution of the power spectrum with some kernel based on the mask or weighting function.
+using the definition of the fourier transform of the weight $w$ in the last step.  This is saying that, on average, the correlation of the masked signal is the convolution of the power spectrum with some kernel (in brackets) based on the mask or weighting function.  We will see a similar result below for more realistic and discretely sampled data.
 
 \section{Discrete data}
 
-In practice we have sampled data $g_j = g(x_j)$ where $x_j = j\Delta x$ is sampled at intervals $\Delta x$.  Then the Fourier transform integral becomes a Riemann sum.
+In practice we have sampled data $a_j = a(x_j)$ where $x_j = j\Delta x$ is sampled at intervals $\Delta x = L/N$, where the total interval runs from $x=0$ to $x=L$ and is split into $N$ samples.  We assume that the function is periodic on that interval.  Then the Fourier transform integral becomes a Riemann sum.
 
 
-$k_p = p\Delta k$
-$\Delta k = 2\pi/N\Delta x$.
-
-$N$ is the total number of samples.
-
+We can compute the transform using intervals in harmonic space $k_p = p\Delta k$ where the interval size $\Delta k = 2\pi/N\Delta x$.  Every sample gets a position index $j$ and every harmonic gets a frequency index $p$.
 \begin{eqnarray}%%%
-  g_p = g(k_p) & = & \Delta x \sum_j g(t_j) \exp(- i k_p  x_j) \\
-    & = & \Delta x \sum_j g_j \exp(-2\pi i pj/N)
+  a_p = a(k_p) & = & \Delta x \sum_j a(t_j) \exp(- i k_p  x_j) \\
+  & = & \Delta x \sum_j a_j \exp(-2\pi i pj/N). \label{eqn:dft}
 \end{eqnarray}
- This is the form of the discrete fourier transform of $g_j$.  This is very advantageous because the Fast Fourier Transform (FFT) algorithm can use divide-and-conquer techniques to compute the $N$ results in ${\cal O}(N \log N)$ operations instead of ${\cal O}(N^2)$.
+ This sum is in the form of a discrete fourier transform.  This is very advantageous because computer algorithms can compute this very fast: the Fast Fourier Transform (FFT) algorithm can use divide-and-conquer techniques to compute the $N$ results in ${\cal O}(N \log N)$ operations instead of ${\cal O}(N^2)$, which is what a naive implementation would take.  At large sizes, this is a significant computational savings.
 
- Similarly, we can synthesize a discrete time series from fourier coefficients as
+ Similarly, we can synthesize a discrete time series from Fourier coefficients as
  \begin{eqnarray}
-   g_j = g(x_j) = \frac{\Delta k}{2\pi}  \sum_p g_p \exp(2\pi i pj/N)
+   a_j = a(x_j) = \frac{\Delta k}{2\pi}  \sum_p a_p \exp(2\pi i pj/N) \label{eqn:idft}
  \end{eqnarray}
 
- The equivalent definition of the power spectrum year is
- \begin{equation}
-   \langle g(k_p) g^*(k_{p'}) \rangle = 2\pi \bar P(k_p) \frac{\delta_{pp'}}{\Delta k}
-  \end{equation}
- where we can see the analogy to the earlier equation for the average power in a small cell.  The kronecker delta scaled by the cell in fourier space takes the place of the dirac delta function in the original definition.  We'll drop the bar on $P$ for the upcoming discussion.
-
+ ***Say something about the exact result versus approximate Riemann sum, nyquist frequency up-down-up-down $k_{\rm max} = k_{\rm Ny} = \pi / \Delta x$.  Band limit and aliasing.
 
  
+ The definition of the power spectrum here is
+ \begin{equation}
+   \langle a(k_p) a^*(k_{p'}) \rangle = 2\pi \bar P(k_p) \frac{\delta_{pp'}}{\Delta k} \label{eqn:power_spectrum_definition_discrete}
+  \end{equation}
+ coming from the earlier equation for the average power in a small cell.  The kronecker delta scaled by the cell in fourier space takes the place of the dirac delta function in the original definition.  We'll drop the bar on $P$ for the upcoming discussion.
+
+\subsection{Implementation and synthetic signals}
+On a computer, the signal that we are trying to transform is often a real-valued array of numbers (and less often a complex array).  We have played a little fast and loose with the limits on the indices, which will correspond to the array in the computer, but we need to be careful to get things right.
+
+In the Riemann sums, if we include the left side of every interval, then the sum in Eq.~\ref{eqn:dft}, for example, should include position indices $j = 0 \dots N-1$.  We can compute positive and negative frequencies, so you could imagine letting the frequency index $p = -N/2 \dots N/2$.  However, it is also clear that Eq.~\ref{eqn:dft} is periodic in $p$ with period $N$, so $a_p = a_{p+N}$.  In particular, the negative frequencies can be remapped to positive frequencies: $a_{-p} = a_{N-p}$.  Thus most implementations will also let the range on frequency index be $p = 0 \dots N-1$, similar to the position index.
+
+In this convention, the zero frequency is stored at $p=0$.  Then the positive frequencies are stored in the first half of the array, at $p=1 \dots \lfloor N/2 \rfloor -1$.  The the negative frequencies start at $p =  \lfloor N/2 \rfloor$ and are placed in increasing order up to $p = N-1$, which holds frequency $-\Delta k$ in the very last array entry.  In higher-dimension FFTs, we follow this convention for all the frequency indices.
+
+Some computer libraries or packages will have a special FFT routine for real-valued signals.    Because a real function is its own complex conjugate, we have that $a(x)$ implies $a(-k) = a^*(k)$.  Thus, for a real function, the negative-frequency harmonics are the complex conjugates of the positive frequency harmonics.  To save space, these real-to-complex transform routines will use a real array of size $N$ for the signal and a complex array of size $\lfloor N/2 \rfloor - 1$ for the harmonics, saving about half on memory usage.  In higher-dimension FFTs, only one of the indices is treated this way, typically the index that changes the fastest as you step through memory.
+
+Now we have all the tools to make a synthetic, real-valued signal whose power spectrum we specify.  After choosing what $P(k)$ we want for the power spectrum, and remembering that the power spectrum provides the variance for the harmonic coeffients, $ \langle a(k_p) a^*(k_{p'}) \rangle = 2\pi P(k_p) / \Delta k$, we can set the zero mode as
+\begin{equation}
+  a(k = p =0) =  \frac{2\pi}{\Delta k } P(k = 0)\, Z_1
+\end{equation}
+where $Z_1$ is a random variable with zero mean and unit variance.  Note that the zero harmonic must be real valued.  Almost always, we want to create a Gaussian random field, and so use a routine to generate $Z_1$ as a random deviate distributed from a normal distribution like $Z_1 \sim {\cal N}(\mu = 0, \sigma^2 = 1)$.
+
+Next we loop through the positive and negative frequencies together, ensuring that the harmonics are set as complex conjugates and get the correct variance.  For each $p$, 
+\begin{equation}
+  a_p =  a^*_{N-p} = \frac{2\pi}{\Delta k } P(k = p \Delta k) \frac{Z_1 + i Z_2}{\sqrt{2}}
+\end{equation}
+where $Z_1$ and $Z_2$ are both unit-variance deviates.  We populate the real and imaginary part of the harmonic on equal footing and normalize with the $\sqrt{2}$ because the variance of the deviates is $\langle |Z_1 + i Z_2 |^2 \rangle = \langle Z_1^2\rangle + \langle Z_2^2  \rangle = 2$.
+
+\subsection{Weighting and masking}
+ Let us add a mask or weight function to the discretely sampled data, so the weighted data and harmonics are
+ \begin{eqnarray}
+   \tilde a_j &=& a_j w_j \\
+   \tilde a_p &=& \Delta x \sum_j \exp(-2\pi i pj/N) a_j w_j
+ \end{eqnarray}
+
+ As a start to computing the correlation, we can take the product of the masked harmonics, and then expand the true signal into the true harmonics:
+ \begin{eqnarray}
+   |\tilde a_p |^2 = \tilde a_p \tilde a_p^* &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i pj/N) \exp(2\pi i pj'/N) a_j  a_{j'} w_j w_{j'}  \nonumber \\
+   &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i pj/N) \exp(+2\pi i pj'/N) \nonumber \\
+   & & \times   \left(\frac{\Delta k}{2\pi}\right)^2 \sum_{p_1 p_2}  \exp(2\pi i p_1 j/N) \exp(-2\pi i p_2 j'/N) \nonumber \\
+   & & \times a_{p_1} a^*_{p_2} w_j w_{j'}
+ \end{eqnarray}
+Let's cancel the $\Delta x$ with the $\Delta k$ and take the ensemble average, using the Eq.~\ref{eqn:power_spectrum_definition_discrete} replace the product of harmonics.
+ \begin{eqnarray}
+ \langle  |\tilde a_p |^2 \rangle &=& \left(\frac{\Delta x\Delta k}{2\pi}\right)^2  \sum_{jj'p_1p_2} \exp(-2\pi i pj/N)  \exp(+2\pi i pj'/N) \nonumber \\
+ & & \exp(2\pi i p_1 j/N) \exp(-2\pi i p_2 j'/N){2\pi} P(k_{p_1}) \frac{\delta_{p_1 p_2}}{\Delta k} w_j w_{j'}
+ \end{eqnarray}
+Use the delta function to sum over $p_2$ and separately gather the exponentials with $j$ and $j'$.  
+\begin{eqnarray}
+ \langle   |\tilde a_p |^2 \rangle &= \frac{\Delta k}{2\pi}\left(\Delta x \right)^2  \sum_{jj'p_1}& \exp(-2\pi i (p-p_1)j/N)  w_j \nonumber \\
+  & &  \exp(+2\pi i (p-p_1) j'/N)  w_{j'}   P(k_{p_1})
+\end{eqnarray}
+That reveals Fourier tranforms of the weight functions
+\begin{eqnarray}
+  \langle  |\tilde a_p |^2 \rangle &=& \frac{\Delta k}{2\pi}  \sum_{p_1} w_{p-p_1} w_{p-p_1}^*  P(k_{p_1}) \\
+  &=& \left(\frac{\Delta k}{2\pi}\right)  \sum_{p_1} |w_{p-p_1}|^2  P(k_{p_1})
+\end{eqnarray}
+Multiplying both sides by $2\pi/\Delta k$ we can define the observed pseudo-spectum as
+\begin{equation}
+  \tilde P(k_p) = \frac{2\pi}{\Delta k} |\tilde a_p |^2
+\end{equation}
+to obtain a statistic that is, on average, simply related to the true power spectrum. We can package the modulus of the weight function harmonics as a matrix,
+\begin{equation}
+  W_{pp_1} =  |w_{p-p_1}|^2,
+\end{equation}
+and express the whole relationship between the ensemble average of the observed pseudo power spectrum and the true spectrum as a matrix equation
+\begin{equation}
+  \langle \tilde P(k_p) \rangle =  \sum_{p_1} W_{pp_1}  P(k_{p_1})
+\end{equation}
+
+This suggests to invert the $W$ matrix and estimate the power spectrum as something like ``$P = W^{-1} \tilde P$,'' and indeed this is our basic strategy, but there are some subtleties.  The pseudo-spectrum $\tilde P$ has only one sample of the power for the mode at $k_p$, so the sample variance is very large.  Furthermore, $W$ may be non-invertible.  In the next section, we will find that binning together several modes with similar wavenumbers can help to alleviate both problems.
+
+\section{Band powers}
+To improve statistics on the estimation of the spectrum, we want to average together several multipoles.  We will do this with a matrix ``binning operator'' $B$ that makes a weighted average of the power over some band of frequencies
+\begin{equation}
+  \tilde P_b  = \sum_p B_{bp} \tilde P_p
+\end{equation}
+where the reduced-size, binned spectrum is on the left and the band $b$ contains some set of harmonics.  We use weights $g(p)$ in the band, so that the total weight in a band is
+\begin{equation}
+  G(b) = \sum_{p\ {\rm in}\ b} g(p).
+\end{equation}
+We set up the binning operator
+\begin{equation}
+  B_{bp} = \left\{
+  \begin{array}{ll}
+   g(p)/G(b), &  \mbox{harmonic $p$ in band $b$} \\
+   0, & \mbox{otherwise}
+  \end{array} 
+  \right.
+\end{equation}
+We also need an ``unbinning'' operator $\bar B_{pb}$, or binning reciprocal operator, so that
+\begin{equation}
+  \sum_p B_{bp}\bar B_{pb'} = \delta_{bb'}
+\end{equation}
+That is saying that if you had a binned spectrum, unbinned it, and binned it back, it would be be unchanged.  The binned spectrum has less information in it than the binned spectrum, so we cannot go the other way.
+An unbinning operator with this property is... 
+
+
+\nocite{numerical_recipes,master,namaster}
+
+
+\section*{Exercises}
+
+\begin{enumerate}
+
+\item Show that homogeneity implies that the modes are independent.
+
+\item Compute the pseudo power spectrum of a signal that has a white-noise power spectrum.
+  
+\end{enumerate}
+
