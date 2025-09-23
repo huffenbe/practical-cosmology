@@ -2,7 +2,16 @@
 
 Although we live in a three-dimensional space, we will introduce concepts of harmonic analysis in one dimension for simplicity.  This has applications to measurements of the density along lines of sight, like absorption of Lyman-$\alpha$ in quasar spectra.  We can then generalize to harmonics in two dimensions on the sky and three dimensions filling all space.
 
-To be general, we will represent density, absorption, emission of whatever we are representing as a function $a(x)$ of the comoving position $x$.  It has a fourier decomposition
+To be general, we will represent density, absorption, emission of whatever we are representing as a function $a(x)$ of the comoving position $x$.
+
+\section{Correlation function}
+
+
+
+
+
+\section{Power spectra}
+It has a fourier decomposition
 \begin{equation}
   a(x) = \int \frac{dk}{2\pi}\ a(k) \exp(i kx) 
 \end{equation}
@@ -21,28 +30,12 @@ The definition of the power spectrum is the variance of the Fourier modes.
 \end{equation}
 This definition is extremely important and we will use it and similar relationships again and again.  For a homogeneous and isotropic signal, the different $k$ modes are independent, and 
 
-\subsection{Dirac delta functions}
-The important property of the Dirac delta function are
-\begin{equation}
-  \int_{\Delta x} dx'\ \delta(x-x') = \left\{
-  \begin{array}{ll} 1, & \mbox{if $x$ is in $\Delta x$;} \\ 0, & \mbox{otherwise.} \end{array}
-  \right.
-\end{equation}
-Integrated (really convolved) against a function, the Dirac delta function selects a function value as so:
-\begin{equation}
-  \int dx'\ \delta(x-x') f(x') = f(x)
-\end{equation}
+Spectra are often classified as red, white, or blue, metaphorically named after the color of light with a similar spectral energy distribution.  Red spectra have more power at large scales, white spectra have equal power at all scale, and blue spectra have more power at small scales.
 
-The Dirac delta function is also the Fourier transform of the constant unit function.
-\begin{equation}
-   \delta(x-x') = \int \frac{dk}{2\pi} \exp(i k (x-x')) 
-\end{equation}
-On the right side, it is clear that if $x=x'$, the exponential equals one and the integral over the whole real line is infinity.  On the other hand, if $x \neq x'$, the integrand is oscillatory and will not diverge.  You can integrate over this Fourier definition of the delta function over some interval containing $x$ or not to show that it produces the expected values.  We can write a similar defition for the fourier transform of the $k$-space delta function by swapping names of the $x$ and $k$ variables.
-\begin{eqnarray}
-  \delta(k - k') &=& \frac{1}{2\pi}  \int {dx}\ \exp(i (k-k')x)    \\
-  &=& \frac{1}{2\pi}  \int {dx}\ \exp(-i (k'-k)x) 
-\end{eqnarray}
-where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.  The dirac delta function is even ($\delta(k-k') = \delta(k' - k)$) and real valued (equal to its complex conjugate, replacing $i$ with $-i$), so there are lots of variations of minus signs that are equivalent.  Take some care with them.
+\subsection{Relationship between power spectrum and correlation function in 1d}
+
+
+
 
 \subsection{Average correlation in a small interval}
 How do we think about the infinity in correlation caused by the delta function?  This is linked to the fact that we are integrating here a statistically homogeneous function (one that never goes to zero) over an infinite volume.  But in practice, we will always be dealing with some interval in harmonic space that we can integrate the correlation over.  For example, if we have the transform, we can compute the average of the transform in a small interval $\Delta k$ in $k$-space
@@ -56,7 +49,7 @@ Then we can examine the correlation of those fourier-space average quantities, a
   &=& \frac{2\pi}{(\Delta k)^2}  \int_{\Delta k} dk'_1 \  P(k'_1) \\
   &=& \frac{2\pi}{\Delta k}  \bar P(k),
 \end{eqnarray}
-where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same (or at least overlap) or otherwise the correlation would obviously be zero due to the delta function.
+where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same.  Otherwise, in distinct intervals the correlation would obviously be zero due to the delta function.
 
 
 \section{Incomplete data}
@@ -71,7 +64,7 @@ These are call the \textit{pseudo-}harmonics.
 
 If we want to compute the correlation or pseudo-power spectrum from these weighted harmonics, we can just start expanding according to the definition of the harmonics.
 \begin{eqnarray}
-  \langle \tilde a(k) \tilde g^*(k') \rangle = &\int& dx dx' \ \exp(-i k x)\exp(i k' x') \langle a(x) a^*(x') \rangle w(x) w(x')  \nonumber \\
+  \langle \tilde a(k) \tilde a^*(k') \rangle = &\int& dx dx' \ \exp(-i k x)\exp(i k' x') \langle a(x) a^*(x') \rangle w(x) w(x')  \nonumber \\
   = &\int &dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
   & & \frac{dk_1}{2\pi} \frac{dk_2}{2\pi} \exp(i k_1 x)\exp(-i k_2 x')  \nonumber \\
   & & \langle a(k_1) a^*(k_2) \rangle w(x) w(x')  
@@ -180,19 +173,24 @@ and express the whole relationship between the ensemble average of the observed 
 \begin{equation}
   \langle \tilde P(k_p) \rangle =  \sum_{p_1} W_{pp_1}  P(k_{p_1})
 \end{equation}
+or written as a matrix equation
+\begin{equation}
+  \langle \tilde P \rangle =  W  P \label{eqn:ensemble_mode_coupling_matrix_times_power}
+\end{equation}
 
-This suggests to invert the $W$ matrix and estimate the power spectrum as something like ``$P = W^{-1} \tilde P$,'' and indeed this is our basic strategy, but there are some subtleties.  The pseudo-spectrum $\tilde P$ has only one sample of the power for the mode at $k_p$, so the sample variance is very large.  Furthermore, $W$ may be non-invertible.  In the next section, we will find that binning together several modes with similar wavenumbers can help to alleviate both problems.
+
+This suggests to invert the $W$ matrix to get an unbiased estimate of the observed power spectrum as something like ``${P}^{\rm obs} = W^{-1} \tilde P$,'' and indeed this is our basic strategy, but there are some subtleties.  First, $W$ may be non-invertible.  There is no guarantee of it and the more of the data the mask removes, usually the harder it is to invert $W$.  Furthermore, the pseudo-spectrum $\tilde P$ only draws one sample of the power for the mode at $k_p$, so the sample variance is very large.  In the next section, we will find that binning together several modes with similar wavenumbers can help to alleviate both problems.
 
 \section{Band powers}
-To improve statistics on the estimation of the spectrum, we want to average together several multipoles.  We will do this with a matrix ``binning operator'' $B$ that makes a weighted average of the power over some band of frequencies
+To improve statistics on the estimation of the spectrum, we want to average together the power from several harmonics.  We will do this with a matrix ``binning operator'' $B$ that makes a weighted average of the power over some band of wavenumbers
 \begin{equation}
-  \tilde P_b  = \sum_p B_{bp} \tilde P_p
+  \tilde {\cal P}_b  = \sum_p B_{bp} \tilde P_p
 \end{equation}
-where the reduced-size, binned spectrum is on the left and the band $b$ contains some set of harmonics.  We use weights $g(p)$ in the band, so that the total weight in a band is
+where the reduced-size, binned pseudo-spectrum is on the left and the band $b$ contains some set of harmonics.   We use weights $g(p)$ in the band, so that the total weight in a band is
 \begin{equation}
   G(b) = \sum_{p\ {\rm in}\ b} g(p).
 \end{equation}
-We set up the binning operator
+We set up the binning operator with the total weight as the normalization to the weighted average
 \begin{equation}
   B_{bp} = \left\{
   \begin{array}{ll}
@@ -201,13 +199,83 @@ We set up the binning operator
   \end{array} 
   \right.
 \end{equation}
-We also need an ``unbinning'' operator $\bar B_{pb}$, or binning reciprocal operator, so that
-\begin{equation}
-  \sum_p B_{bp}\bar B_{pb'} = \delta_{bb'}
-\end{equation}
-That is saying that if you had a binned spectrum, unbinned it, and binned it back, it would be be unchanged.  The binned spectrum has less information in it than the binned spectrum, so we cannot go the other way.
-An unbinning operator with this property is... 
+End band is disjoint: each harmonic contributes only to a single band.
 
+We also need an ``unbinning'' operator $\bar B_{pb}$, or reciprocal binning operator, so that
+\begin{equation}
+  \sum_p B_{bp}\bar B_{pb'} = \delta_{bb'}  \label{eqn:binning_delta_function}
+\end{equation}
+It is the right-inverse of $B$.  That is saying that if you had a binned spectrum, unbinned it, and binned it back, it would be be unchanged.  However, we cannot go the other way.  The binned spectrum has less information in it than the unbinned spectrum, and we cannot recover details of the spectrum finer than the bin width once it has been binned.    An unbinning operator with this property is
+\begin{equation}
+  \bar B_{pb} = \left\{
+  \begin{array}{ll}
+   {h(p)/H(b)}, &  \mbox{harmonic $p$ in band $b$} \\
+   0, & \mbox{otherwise}
+  \end{array} 
+  \right.
+\end{equation}
+so long as the normalization is 
+\begin{equation}
+  H(b) = \frac{1}{G(b)}\sum_{p\ {\rm in}\ b}g(p)h(p).
+\end{equation}
+In an exercise, you can show that this definition satisfies Eq. \ref{eqn:binning_delta_function}.  The function $h(p)$ is the anticipated shape of the power spectrum within the band.
+
+We have freedom to choose whatever weights and power spectrum shape are most appropriate to our particular case, but in typical usage, we might choose uniform weights ($g(p) = 1$) and flat band powers ($h(p)=1$).  That choice sets $G(b)$ to be the count of harmonics contributing to the band and $H(b) = 1$.  In this typical usage, we end up assuming that the power spectrum is flat in the bands determined by the bins.
+
+The matrix product
+\begin{equation}
+  \sum_b \bar B_{pb}B_{bp'} 
+\end{equation}
+is not the identity matrix, but, applied to a power spectrum, will average it into piecewise bands of the specified shape determined by $h(p)$.
+
+
+\section{Estimated spectra, band power window functions}
+
+Let's employ this binning, looking back at Eq.~\ref{eqn:ensemble_mode_coupling_matrix_times_power}, which says that the ensemble average of the pseudo-spectrum is the mode-coupling matrix times the true power spectrum.  Applying the binning operation to both sides using a matrix notation to make the math easier:
+\begin{equation}
+  B \langle \tilde P \rangle =  B W  P
+\end{equation}
+Then we approximate $\bar B B$ as the identity matrix and insert it between the mode-coupling matrix and the true spectrum.
+\begin{equation}
+  B \langle \tilde P \rangle \approx  B W {\bar B} B P. \label{eqn:bandpower_approximation}
+\end{equation}
+This is only exact if the power spectrum $P$ has the same functional form as anticipated in the reciprocal binning operator.  Then we can invert the binned mode-coupling matrix and bring everything inside the ensemble average to obtain
+\begin{equation}
+ \langle( B W {\bar B})^{-1} B \tilde P \rangle \approx B P
+\end{equation}
+
+Thus we define our observed power spectrum as the quantity inside the average
+\begin{equation}
+{\cal P^{\rm obs}} \equiv ( B W {\bar B})^{-1} B \tilde P 
+\end{equation}
+to get something that is approximately equal (on average) to the binned true power spectrum.  We also define the binned  mode coupling kernel
+\begin{equation}
+  K_{bb'} =  B_{bp} W_{pp'} \bar B_{p'b'}.
+\end{equation}
+This binned mode coupling matrix may be invertible even when the unbinned matrix is not.
+
+We use the matrix inverse to decouple the binned pseudo-powerspectrum to get an estimated or observed power spectrum.
+\begin{equation}
+  {\cal P}^{\rm obs}_b = \sum_{b'} \left( K^{-1} \right)_{bb'} \tilde {\cal P}_{b'} 
+\end{equation}
+
+What if we want to correct for the approximation in Eq.~\ref{eqn:bandpower_approximation}?  
+Using a matrix notation again, we can relate the ensemble average of the observed power spectrum (${\cal P}^{\rm obs}$) to the average of the binned pseudo-spectrum ($\tilde {\cal P}$), and then to true power spectrum of the signal ($P$).
+\begin{eqnarray}
+  \langle {\cal P}^{\rm obs} \rangle &=& K^{-1} \langle \tilde {\cal P} \rangle \\
+  &=&  (B W \bar B)^{-1} B W P \\
+\end{eqnarray}
+We define the \textit{band power window function} (${\cal W}_{bp}$), defined by the matrix equation
+\begin{equation}
+  {\cal W} = (B W \bar B)^{-1} B W,
+\end{equation}
+ so that
+\begin{equation}
+  \langle {\cal P}^{\rm obs} \rangle = {\cal W} P
+\end{equation}
+It relates the the contribution of a true power spectrum to the (binned and decoupled) bandpower estimate of the observed power spectrum.  This is important for comparing theory to data.  Any particular theory prediction for $P(k)$, operated on my the band power window function, is the prediction for the average value of the oberserved power spectrum ${\cal P}^{\rm obs}_b$.
+
+\section{Signal, noise, and cross-spectrum}
 
 \nocite{numerical_recipes,master,namaster}
 
@@ -219,6 +287,33 @@ An unbinning operator with this property is...
 \item Show that homogeneity implies that the modes are independent.
 
 \item Compute the pseudo power spectrum of a signal that has a white-noise power spectrum.
+
+\item Show that $B\bar B$ is the identity matrix.
+
+\item Show that $P = \bar B B P$ is only true when $P$ is (piecewise) proportional to $h(p)$.  (It is sufficient to show it for some generic bin $b$.)
   
 \end{enumerate}
 
+
+\section*{Supplemental: Dirac delta functions}
+The important property of the Dirac delta function are
+\begin{equation}
+  \int_{\Delta x} dx'\ \delta(x-x') = \left\{
+  \begin{array}{ll} 1, & \mbox{if $x$ is in $\Delta x$;} \\ 0, & \mbox{otherwise.} \end{array}
+  \right.
+\end{equation}
+Integrated (really convolved) against a function, the Dirac delta function selects a function value as so:
+\begin{equation}
+  \int dx'\ \delta(x-x') f(x') = f(x)
+\end{equation}
+
+The Dirac delta function is also the Fourier transform of the constant unit function.
+\begin{equation}
+   \delta(x-x') = \int \frac{dk}{2\pi} \exp(i k (x-x')) 
+\end{equation}
+On the right side, it is clear that if $x=x'$, the exponential equals one and the integral over the whole real line is infinity.  On the other hand, if $x \neq x'$, the integrand is oscillatory and will not diverge.  You can integrate over this Fourier definition of the delta function over some interval containing $x$ or not to show that it produces the expected values.  We can write a similar defition for the fourier transform of the $k$-space delta function by swapping names of the $x$ and $k$ variables.
+\begin{eqnarray}
+  \delta(k - k') &=& \frac{1}{2\pi}  \int {dx}\ \exp(i (k-k')x)    \\
+  &=& \frac{1}{2\pi}  \int {dx}\ \exp(-i (k'-k)x) 
+\end{eqnarray}
+where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.  The dirac delta function is even ($\delta(k-k') = \delta(k' - k)$) and real valued (equal to its complex conjugate, replacing $i$ with $-i$), so there are lots of variations of minus signs that are equivalent.  Take some care with them.
