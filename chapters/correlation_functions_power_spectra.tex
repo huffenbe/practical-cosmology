@@ -1,23 +1,51 @@
-\chapter{Correlation functions and power spectra}
+\chapter{Power spectra}
 
 Although we live in a three-dimensional space, we will introduce concepts of harmonic analysis in one dimension for simplicity.  This has applications to measurements of the density along lines of sight, like absorption of Lyman-$\alpha$ in quasar spectra.  We can then generalize to harmonics in two dimensions on the sky and three dimensions filling all space.
 
 To be general, we will represent density, absorption, emission of whatever we are representing as a function $a(x)$ of the comoving position $x$.
 
 \section{Correlation function}
-
-
-
-
-
-\section{Power spectra}
-It has a fourier decomposition
+We can examine the covariance of the field $a$ at two positions:
 \begin{equation}
-  a(x) = \int \frac{dk}{2\pi}\ a(k) \exp(i kx) 
+  {\rm Cov}(a(x),a(x')) = \left\langle (a(x) - \langle a(x) \rangle) (a(x') - \langle a(x') \rangle ) \right\rangle
+\end{equation}
+If the field is homogeneous then $\langle a(x) \rangle = \bar a$, the same value regardless of position, and furthermore, the covariance can only depend on the separation between the points and not on their particular positions.  Thus we can define the correlation function as
+\begin{equation}
+  \xi ( r = |x - x'| ) = {\rm Cov}(a(x),a(x'))
+\end{equation}
+The covariance and its analog in harmonic space, the power spectrum, are extremely important statistical properties of the distribution of materials in the cosmos.  They are our main tools to learn about the cosmological model by using fluctuations (in density, temperature, etc.) about the uniform background.  Much of cosmology is learning how to estimate the correlation, covariance, or power spectra of various quantities from data in a robust way without statistical biases, and then compare them to predictions for the same quantities from theoretical models, thus learning the allowable parameter range for those models or ruling them out.
+
+The variance of the field is $\sigma^2 = \xi(r=0)$.
+
+A gaussian random field is a random field where the values are drawn from a gaussian distribution.
+So we should think of field values at various locations, such as 
+\begin{equation}a_1 = a(x_1), a_2 = a(x_2), \dots, \end{equation}
+as (typically) non-independent random variables that are related by a covariance.  A vector of field values ($a = a_1,a_2,\dots,a_n$) is drawn from a multivariate gaussian distribution
+\begin{equation}
+  {\cal N}(\mu, \Sigma) = \frac{1}{(2\pi)^{n/2}} \exp \left( -\frac{1}{2} (a - \mu)^\dag \Sigma^{-1} (a-\mu) \right)
+\end{equation}
+with mean $\mu$ and covariance matrix given by
+\begin{equation}
+  \Sigma = \left[ \begin{array}{cccc}
+    \xi(0) & \xi(|x_1-x_2|) & \dots & \xi(|x_1-x_n|) \\
+    \xi(|x_2-x_1|) & \xi(0) & \dots & \xi(|x_2-x_n|) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \xi(|x_n-x_1|) & \xi(|x_n-x_2|) & \dots & \xi(0) \\    
+    \end{array} \right]
+\end{equation}
+The gaussian random field highlights that the mean and covariance (or correlation function) are properties of the probability distribution that the random field $a$ is drawn from.  In the cosmological context, the correlation function will depend on cosmological parameters.  We will have to look at data, which gives us a imperfect measurement of a particular realization of $a(x)$, and try to estimate the correlation function, from which we can draw inferences about our cosmological model and its parameters.
+
+The central limit theorem says that any process that is due to the sum of a large number of similarly-sized small contributions will be given by a gaussian distribution.  This is a good approximation for the density distribution at early times and for the distribution of temperatures in the CMB.
+
+\section{Power spectrum}
+We can examine the covariance of the same random field but viewed in the Fourier basis.
+The function $a(x)$ has a fourier decomposition
+\begin{equation}
+  a(x) = \int \frac{dk}{2\pi}\ a(k) \exp(i kx),
 \end{equation}
 so that the coefficients of the expansion are 
 \begin{equation}
-  a(k) = \int dx\ a(x) \exp(-i kx)
+  a(k) = \int dx\ a(x) \exp(-i kx).
 \end{equation}
 These are called the harmonic coefficients at comoving wavenumber $k$.  They are the complex amplitudes of the (oscillatory, complex exponential) Fourier modes.%
 %
@@ -28,7 +56,7 @@ The definition of the power spectrum is the variance of the Fourier modes.
 \begin{equation}
   \langle a(k) a^*(k') \rangle = 2\pi P(k) \delta(k - k') 
 \end{equation}
-This definition is extremely important and we will use it and similar relationships again and again.  For a homogeneous and isotropic signal, the different $k$ modes are independent, and 
+This definition is extremely important and we will use it and similar relationships again and again.  For a homogeneous and isotropic signal, the different $k$ modes are independent.
 
 Spectra are often classified as red, white, or blue, metaphorically named after the color of light with a similar spectral energy distribution.  Red spectra have more power at large scales, white spectra have equal power at all scale, and blue spectra have more power at small scales.
 
@@ -284,7 +312,7 @@ It relates the the contribution of a true power spectrum to the (binned and deco
 
 \begin{enumerate}
 
-\item Show that homogeneity implies that the modes are independent.
+\item Show that homogeneity implies that the harmonic modes are independent.
 
 \item Compute the pseudo power spectrum of a signal that has a white-noise power spectrum.
 
