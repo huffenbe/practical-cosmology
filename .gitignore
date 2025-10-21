@@ -3,3 +3,6 @@ practical-cosmology.pdf
 *.aux
 *.log
 *.toc
+*.idx
+*.ilg
+*.ind
