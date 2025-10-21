@@ -1,0 +1,53 @@
+\chapter{The Cosmic Microwave Background}
+
+What is the cosmic microwave background?
+
+The CMB power spectrum is pillar of modern cosmology because it is both measureable and predictable from theory.
+
+\section{Anistropies}
+To examine correlations in the CMB we again want to decompose it into a series of harmonic functions.  Because the surface of the sphere has a finite area, the spectrum of harmonics is discrete.  We can write it as
+\begin{equation}
+  T(\theta,\phi) = \sum_{lm} a_{lm} Y_{lm}(\theta,\phi)
+\end{equation}
+where the $Y_{lm}$ functions are the spherical harmonics.  Most of the time, the exact form of these functions are not important, but we sometimes use some definitions and identities that are listed in a supplemental section at the end of this chapter.
+
+
+
+
+
+\section{Signal, beam, and noise}
+
+
+\section{Measuring the power spectrum}
+
+including cross spectra
+
+
+\section{Mapmaking}
+
+
+\section{The flat-sky approximation}
+
+
+\section{Polarization anisotropies}
+
+
+
+\section*{Supplemental: spherical harmonic functions}
+
+The function is band limited if there are only zero harmonics above some $l_{\rm max}$.  The CMB is not band limited, but our observation of the CMB is in practice band limited by the finite resolution of the telescope we use to observe it.
+
+The spherical harmonics are complex functions
+\begin{equation}
+  Y_{lm}(\theta,\phi) = (-1)^m \sqrt{\frac{2 l + 1}{4\pi} \frac{l-m}{l+m}} P_l^m(\cos \theta) \exp(im\phi)
+\end{equation}
+that depend on the associated Legendre polynomials $P_l^m$.  In cosmology we use the same conventions that are common in quantum mechanics, in particular placing the factor of $(-1)^m$ (``Condon-Shortley'' phase) in the definition of the spherical harmonics and not in the definition of the associated Legendra polynomicals.
+
+These functions have several important identities.  They are orthonormal functions integrated over the on the whole sphere
+\begin{equation}
+  \int d\Omega Y_l^m (\theta,\phi) Y_{l'}^{m'}(\theta,\phi) = \delta_{ll'} \delta_{mm'}
+\end{equation}
+This in particular means that for $l=0$, $m=0$
+\begin{equation}
+  Y_{00} = \frac{1}{(4\pi)^{1/2}}
+\end{equation}
