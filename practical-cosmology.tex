@@ -2,11 +2,28 @@
 
 \usepackage{mathpazo}
 \usepackage{natbib}
+\usepackage{makeidx}
+\usepackage{showidx}
+
+\makeindex
 
 \begin{document}
 \tableofcontents
+\include{chapters/introduction.tex}
 \include{chapters/basics.tex}
 \include{chapters/standard_candles.tex}
 \include{chapters/correlation_functions_power_spectra.tex}
+\include{chapters/CMB.tex}
+\include{chapters/CMB_secondaries.tex}
+\include{chapters/galaxy_correlations.tex}
+\include{chapters/modeling_cross_correlations.tex}
+\include{chapters/nonlinearities.tex}
+\include{chapters/cosmic_shear.tex}
+\include{chapters/cosmological_parameters.tex}
+
+\chapter*{Index}
+\printindex
+
+ 
 
 \end{document}

@@ -17,10 +17,11 @@ The covariance and its analog in harmonic space, the power spectrum, are extreme
 
 The variance of the field is $\sigma^2 = \xi(r=0)$.
 
-A gaussian random field is a random field where the values are drawn from a gaussian distribution.
-So we should think of field values at various locations, such as 
+A gaussian random field is a random field where the values are drawn from a gaussian distribution.  The central limit theorem says that any process that is due to the sum of a large number of similarly-sized small contributions will be given by a gaussian distribution.  This is a good approximation for the density distribution at early times and for the distribution of temperatures in the CMB.
+
+We should think of field values at various locations, such as 
 \begin{equation}a_1 = a(x_1), a_2 = a(x_2), \dots, \end{equation}
-as (typically) non-independent random variables that are related by a covariance.  A vector of field values ($a = a_1,a_2,\dots,a_n$) is drawn from a multivariate gaussian distribution
+as (typically) non-independent random variables that are related by a covariance.  If the field $a(x)$ follows a Gaussian distribution, a vector of any finite number of field values ($a = a_1,a_2,\dots,a_n$) is drawn from a multivariate gaussian distribution
 \begin{equation}
   {\cal N}(\mu, \Sigma) = \frac{1}{(2\pi)^{n/2}} \exp \left( -\frac{1}{2} (a - \mu)^\dag \Sigma^{-1} (a-\mu) \right)
 \end{equation}
@@ -33,9 +34,11 @@ with mean $\mu$ and covariance matrix given by
     \xi(|x_n-x_1|) & \xi(|x_n-x_2|) & \dots & \xi(0) \\    
     \end{array} \right]
 \end{equation}
+The continuous field the distribution actually relates an infinite number of points, but in practice we will obvisously only be dealing with a finite number.
+
 The gaussian random field highlights that the mean and covariance (or correlation function) are properties of the probability distribution that the random field $a$ is drawn from.  In the cosmological context, the correlation function will depend on cosmological parameters.  We will have to look at data, which gives us a imperfect measurement of a particular realization of $a(x)$, and try to estimate the correlation function, from which we can draw inferences about our cosmological model and its parameters.
 
-The central limit theorem says that any process that is due to the sum of a large number of similarly-sized small contributions will be given by a gaussian distribution.  This is a good approximation for the density distribution at early times and for the distribution of temperatures in the CMB.
+For Gaussian random fields, the mean and covariance---which are the first and second moments of the distribution---capture all the information in the field.  For non-Gaussian fields, higher order moments also carry information.
 
 \section{Power spectrum}
 We can examine the covariance of the same random field but viewed in the Fourier basis.
@@ -52,6 +55,8 @@ These are called the harmonic coefficients at comoving wavenumber $k$.  They are
 \footnote{The convention in cosmology is to decompose large scale structure in flat space with modes like $\exp(i \mathbf{k} \cdot \mathbf{x})$.  The comoving wavenumber $k$ is like an angular frequency ($\omega$).  I agree with Numerical Recipes \citep{} that expressing the standard frequency as $f = \omega/2\pi$ makes the notation for Fourier transforms cleaner, but  we stick to the comoving wavenumber convention here.  If the space is not flat, $\exp(i \mathbf{k}\cdot \mathbf{x})$ is not correct basic to expand into, and we use other, more complicated, hypergeometric functions instead, which are the solutions to the wave equation in those spaces.}  Sometimes we will refer to $k$ as the (spatial) frequency.
 The second equation is called the Fourier transform or analysis of the function, while the first is called the inverse fourier transform or the synthesis of the function.  We build up the function out of the oscillatory modes, and the harmonic coefficients tell us how much of each mode we need.
 
+We only use a single symbol $a$ for the real-space function $a(x)$ and its transform $a(k)$.  This emphasises that there is only a single function that is being expressed in either a real or harmonic basis, the same way that a vector is the same vector no matter what coordinates you use to enumerate the components.
+
 The definition of the power spectrum is the variance of the Fourier modes.
 \begin{equation}
   \langle a(k) a^*(k') \rangle = 2\pi P(k) \delta(k - k') 
@@ -60,10 +65,26 @@ This definition is extremely important and we will use it and similar relationsh
 
 Spectra are often classified as red, white, or blue, metaphorically named after the color of light with a similar spectral energy distribution.  Red spectra have more power at large scales, white spectra have equal power at all scale, and blue spectra have more power at small scales.
 
-\subsection{Relationship between power spectrum and correlation function in 1d}
+\subsection{Correlation function from power spectrum}
 
-
-
+We can take the definition of the correlation function and expand the function into harmonic coefficients.  We will assume that the field has zero mean to simplify the computation.
+\begin{eqnarray}
+  \xi ( r = |x - x'| ) &=& {\rm Cov}(a(x),a(x')) \nonumber \\
+  & = & \langle a(x) a(x') \rangle = \langle a(x) a(x')^* \rangle \nonumber \\
+  & = &  \left\langle \int \frac{dk}{2\pi} \frac{dk'}{2\pi}  a(k)\exp(ikx) a(k')^* \exp(-ik'x) \right\rangle
+\end{eqnarray}
+In the second line we noted that the real function is the same as its complex conjugate.  Since the integration and the average are both linear operations, we can swap their order.  Only the harmonic coefficients $a(k), a(k')$ are random variables, and the rest of the equation can be brought outside the average.
+\begin{eqnarray}
+  \xi ( r = |x - x'| ) &=& \int \frac{dk}{2\pi} \frac{dk'}{2\pi} \exp(ikx-ik'x') \langle  a(k)a(k')^* \rangle \nonumber \\
+  &=& \int \frac{dk}{2\pi} \frac{dk'}{2\pi} \exp(ikx-ik'x') 2\pi P(k) \delta(k-k') \\
+  &=& \int \frac{dk}{2\pi}  \exp(ik(x-x')) P(k)  \\
+  &=& \int \frac{dk}{2\pi}  \exp(ikr) P(k)
+\end{eqnarray}
+So the correlation function is the transform of the power spectrum.  Similarly, it is easy to show that the power spectrum is the Fourier transform of the correlation function
+\begin{eqnarray}
+  P(k) = \int dr \exp(-ikr) \xi(r). \label{eqn:P(k)_from_xi(r)}
+\end{eqnarray}
+Note that this integral runs from $(-\infty,+\infty)$ and treats $\xi(r)$ as an even function of $r$.
 
 \subsection{Average correlation in a small interval}
 How do we think about the infinity in correlation caused by the delta function?  This is linked to the fact that we are integrating here a statistically homogeneous function (one that never goes to zero) over an infinite volume.  But in practice, we will always be dealing with some interval in harmonic space that we can integrate the correlation over.  For example, if we have the transform, we can compute the average of the transform in a small interval $\Delta k$ in $k$-space
@@ -303,7 +324,6 @@ We define the \textit{band power window function} (${\cal W}_{bp}$), defined by 
 \end{equation}
 It relates the the contribution of a true power spectrum to the (binned and decoupled) bandpower estimate of the observed power spectrum.  This is important for comparing theory to data.  Any particular theory prediction for $P(k)$, operated on my the band power window function, is the prediction for the average value of the oberserved power spectrum ${\cal P}^{\rm obs}_b$.
 
-\section{Signal, noise, and cross-spectrum}
 
 \nocite{numerical_recipes,master,namaster}
 
@@ -314,6 +334,8 @@ It relates the the contribution of a true power spectrum to the (binned and deco
 
 \item Show that homogeneity implies that the harmonic modes are independent.
 
+\item Show that the power spectrum is the fourier transform of the correlation function (Eq.~\ref{eqn:P(k)_from_xi(r)}).
+  
 \item Compute the pseudo power spectrum of a signal that has a white-noise power spectrum.
 
 \item Show that $B\bar B$ is the identity matrix.

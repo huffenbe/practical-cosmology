@@ -1,26 +1,417 @@
 \chapter{Basics}
 
+\section{Flat and curved spaces}
 Cosmology is the study of the universe on the large scales, so we need to spend some time understanding how we are going to quantify and label positions in space and time.  Already in physics, we are used to labeling points in space with coordinates like $(x,y,z)$ or $(r,\theta,\phi)$.  We are also accustomed to computing the distances between points, especially in cartesian coordinates.
 
-We learn in special relativity that we need also to label event with space and time coordinates $(t,x,y,z)$, simple enough.  We further learn that different observers will disagree on the measurements of distances and time intervals, but all observers will agree on the spacetime interval between two events.  It is called invariant.  The spacetime interval could be written as
+We know that the distance between two points can be computed from the coordinate differences via
+\begin{equation}
+  \Delta \ell = \sqrt{(\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2 }.
+\end{equation}
+For infinitesimally small changes in the coordinates, we could write $  (d\ell)^2 = (dx)^2 + (dy)^2 + (dz)^2$, and use that to figure our the length of a curved path.  That equation is called the \textit{line element}\index{line element} and expresses the \textit{metric}\index{metric} of the space: it tells us how to measure distance.  For example, if a path traces out coordinates $x(\lambda),y(\lambda),z(\lambda)$ as a function of some parameter $\lambda$, we can measure the length with the integral
+\begin{equation}
+   \ell = \int_{\lambda_{\rm start}}^{\lambda_{\rm finish}} d\lambda \sqrt{ \left(\frac{dx}{d\lambda} \right)^2 + \left(\frac{dy}{d\lambda}\right)^2 + \left(\frac{dz}{d\lambda}\right)^2}.
+\end{equation}
+We recognise that this is the right integral to use whether or not we are actually trying to evaluate it.
+
+We also could change the coordinates that we use to define the space and trace out any given path.  For example, a Euclidean space in spherical polar coordinates has a metric
+\begin{equation}
+   d\ell^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2 \theta d\phi^2.
+\end{equation}
+
+We learn in special relativity that we need also to label event with space and time coordinates $(t,x,y,z)$, which is simple enough.  The surprise is that we further learn that different observers will disagree on the measurements of distances and time intervals, but all observers will agree on the spacetime interval between two events.  It is invariant.  The spacetime interval could be written as
 \begin{equation}
   (\Delta s)^2 = -(\Delta t)^2 +  (\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2
 \end{equation}
-which is a little weird but at least the space follows the familiar rules of Euclidean geometry cand the coordinates are cartesian.  The time coordinate $t$ is the wristwatch time of an observer but will not synchronize with the wristwatch time of an observer in a different frame that moves with nonzero constant relative velocity.
+which is a little weird but at least the space follows the familiar rules of Euclidean geometry.  The time coordinate $t$ is the wristwatch time of an observer but will not synchronize with the wristwatch time of an observer in a different frame, one that moves with nonzero constant relative velocity.  We are going to measure time in units of length so that the units of the equation work out, thus taking the speed of light $c=1$.  For example, a time interval of $\Delta t = 1\,\mbox{m} = 1\,\mbox{m}/c = 3.3\times10^{-9} s$.
 
-Our footing gets much less steady when we turn to general relativity, which is needed to treat accelerations and provides our best understanding of the physics of gravity.  In general, the space does not need to be Euclidean, so our old rules, such as ``the sum of angles in a triangle is $180^\circ$,'' might not be true.  Further, the numbers that we assign as coordinates to points in space are just labels, and (within some limits) we have enormous freedom to choose how we assign the coordinates.  (Some choices are more suitable than others.)  Like in special relativity, the spacetime interval along a path in the spacetime is invariant.  The relationship between the three space coordinates, the one time coordinate, and the spacetime interval is called the spacetime metric.
+Our footing gets much less steady when we turn to general relativity, which is needed to treat accelerations and provides our best understanding of the physics of gravity.  In general, the space does not need to be Euclidean, so our common rules, such as ``the sum of angles in a triangle is $180^\circ$,'' might not be true.  Further, the numbers that we assign as coordinates to points in space are just labels, and (within some limits) we have enormous freedom to choose how we assign the coordinates.  (Some choices are more suitable than others.)  Like in special relativity, the spacetime interval along a path in the spacetime is invariant.  The relationship between the three space coordinates, the one time coordinate, and the spacetime interval is called the spacetime metric.
 
-In practice, for much of observational cosmology, we will not need much general relativity, but a few results are crucial.  We observe that the universe is statistically homogeneous and isotropic, meaning that at different locations and in different directions, the universe is basically the same: composed of galaxies of the same various types, oriented in all different directions at random.  However, the universe is not static, but dynamic; it changes in time.  When we look at the most distant galaxies, where the light has taken many billions of years to reach us, the galaxies are different, forming stars alternatively less then more then less vigorously.  Older galaxies have more pristine gas with fewer heavy elements.  Moreover, the light from distant galaxies is \textit{redshifted}, or shifted to longer wavelengths, which is strong evidence that the universe is expanding in time, as we will see.
+We don't even need to get relativity to get experience with coordinates in curved spaces.  We can describe the 2-d surface of the sphere, a surface with $x^2 + y^2 + z^2 = R^2$, in polar coordinates.  Let $R$ be the radius of the sphere, $r$ be the cylindrical distance from polar axis to a point on the sphere and $\phi$ be the azimuthal angle of that point to the $x$-axis.  It is not too much trouble to show that the length of a path along the surface from the north pole to a point is 
+\begin{equation}
+  \ell_{\rm radius} = \int_0^r \frac{dr'}{\sqrt{1-r'^2/R^2}} = R \sin^{-1}(r/R) > r. \label{eqn:2d_sphere_path_radius}
+\end{equation}
+So confined to the space (i.e.\ the surface), $r$ is the coordinate away from the origin but not the distance from the origin, which is larger.
+We can also consider a circular path with a fixed radius around the whole sphere, which has length
+\begin{equation}
+  \ell_{\rm circumference} = \int_0^{2\pi} d\phi r = 2\pi r.  \label{eqn:2d_sphere_path_circumference}
+\end{equation}
+So that circle, considered along the curved surface only, has more radius than you would expect given the circumference.  This is a manifestation of the surfaces positive curvature.  Also note that that point with $r=0$ is not a special point of the sphere.  All points are the same because, mathematically, a sphere is homogeneous and isotropic, so we could have defined that origin point anywhere. From Eqns. (\ref{eqn:2d_sphere_path_radius}) and (\ref{eqn:2d_sphere_path_circumference}) we can work out that the metric for the surface of the sphere is
+\begin{equation}
+  dl^2 = \frac{1}{1-r^2/R^2} dr^2 + r^2 d\phi^2
+\end{equation}
+A sphere with a very large radius $R$ compare to the coordinate $r$ values of interest looks pretty flat, and that is reflected in the metric.
+
+For a 2-d hyperbolic surface that satisfies $x^2 + y^2 - z^2 = R^2$ possesses a similar metric,
+\begin{equation}
+    dl^2 = \frac{1}{1+r^2/R^2} dr^2 + r^2 d\phi^2,
+\end{equation}
+and is also a homogeneous and isotropic space, but has less radius than you would expect for a given circumference, compare to a flat plane.
+
+These are both two-dimensional surfaces that we have embedded in three-dimensional Euclidean space.  We can go to one higher dimension, looking at surfaces that satisfy $x^2 + y^2 + z^2 \pm u^2 = R^2$.  These spaces work basically the same and we unsurprisingly find a metric with
+\begin{equation}
+  d\ell^2 =  \frac{1}{1-kr^2/R^2} dr^2 + r^2 d\Omega^2
+\end{equation}
+where the solid angle $d\Omega^2 = d\theta^2 + \sin^2 \theta d\phi^2$, and the parameter $k$ is $+1$ for a spherical space and $-1$ for a hyperbolic space.  We can also include the value $k=0$ to recover normal 3-d spherical polar coordinates.  Notice that all of the metric weirdness is in the radial coordinate.  The angular part of the metric looks pretty normal, so the formulas for the radius of a circle is still $2\pi r$ and the surface area of a sphere is still $4\pi r^2$, but you have to be a little careful about what you mean by $r$.
+
+\section{Cosmological FRW metric}
+For much of practical observational cosmology, we will not need much general relativity, but a few results are crucial.  As noted before, we observe that the universe is statistically homogeneous and isotropic, meaning that at different locations and in different directions, the universe is basically the same: composed of galaxies of the same various types, oriented in all different directions at random.  Also true is that the universe is not static, but dynamic; it changes in time.  When we look at the most distant galaxies, where the light has taken many billions of years to reach us, the galaxies are different, forming stars alternatively less then more then less vigorously.  Older galaxies have more pristine gas with fewer heavy elements.  Moreover, the light from distant galaxies is \textit{redshifted}\index{redshift}, or shifted to longer wavelengths, which is strong evidence that the universe is expanding in time, as we will see.
 
 In general relativity, these conditions end up being quite restrictive.  The metric that describes how to measure spacetime intervals in homogeneous, isotropic, dynamic spacetimes can be written as
 \begin{equation}
-  ds^2 = -dt^2 + a^2(t)\left[ \frac{dr^2}{1 - kr^2/R^2} + r^2 d\theta^2 + r^2 \sin^2\theta d\phi^2  \right]
+  ds^2 = -dt^2 + a^2(t)\left[ \frac{dr^2}{1 - kr^2/R_0^2} + r^2 d\Omega^2  \right]
 \end{equation}
-where $r$ is a radial coordinate (called a comoving coordinate) but is slightly different to what we are used to, and $\theta$ and $\phi$ are angular coordinates that work normally.  The parameter $k$ denotes the three different kinds of spacetimes that are allowed by our restrictive conditions.  Values $k = \{ -1, 0, +1 \}$ mean that the space has negative curvature, is spatially flat, or has positive curvature.  The parameter $R > 0$ is the radius of the curvature of the space at the present day.  The function $a(t)$ is called the \textit{scale factor} and specifies how the size of the universe changes over time.  By convention, we set $a(t_{\rm now}) = 1$.  We call this metric the Friedmann-Robertson-Walker (FRW) or Friedmann-Lemaitre-Robertson-Walker (FLRW) metric after the people who found and worked with it first.
+where $r$ is a radial coordinate (called a comoving coordinate) but again is slightly different to what we are used to, and $\theta$ and $\phi$ are angular coordinates that work normally.  This metric is extremely important.  The parameter $k$ denotes the three different kinds of spacetimes that are allowed by our restrictive conditions.  Values $k = \{ -1, 0, +1 \}$ mean that the space has negative curvature, is spatially flat, or has positive curvature.    All of this is familiar from our discussion of curved spaces above.
 
-How can we use this metric?  
+The new element is the function $a(t)$, which is called the \textit{scale factor}\index{scale factor} and specifies how the size of the universe changes over time.  By convention, we set $a(t_{\rm now}) = 1$, which means that the comoving coordinate refers to the present time. Similarly, the parameter $R_0 > 0$ is the radius of the curvature of the space at the present day, but the curvature scale at other times grows or shrinks according to $a(t)$.  The meaning of $t$ is the wristwatch time of ``co-moving'' observers.  By comoving, we mean these are observers who are carried along with the expansion of the universe, and their relative motions are determined only by the expansion.  They have no independent motion (that is, peculiar velocity\index{peculiar velocity}).
 
-Cosmology is concerned with the very largest size scales in the universe.  We are essentially stuck in one spot, so we can call our position as the origin of our coordinate system. 
+We call this metric the Friedmann-Robertson-Walker (FRW) or Friedmann-Lemaitre-Robertson-Walker (FLRW) metric after the people who found and worked with it first.  We have measured the spatial curvature and know that the radius of curvature exceeds $R_0 > ???$ (at 95\% confidence in Planck satellite data), so our universe is fairly flat.  In some cases we will restrict to that case.  Cosmology is concerned with the very largest size scales in the universe.  We are essentially stuck in one spot, in the Milky Way, so we can call our position as the origin of our coordinate system. 
+
+The expansion rate at any time is given by the time derivative of the scale factor.  This is typically rescaled by the scale factor itself to give the \textit{Hubble parameter}\index{Hubble parameter},
+\begin{equation}
+  H = \frac{1}{a} \frac{da}{dt}. 
+\end{equation}
+The present-day expansion rate is called the \textit{Hubble constant}\index{Hubble constant},
+\begin{equation}
+  H_0 = H(t_{\rm now}) = \dot a(t_{\rm now}) \approx \frac{70\,\mbox{km/s}}{\mbox{Mpc}} \approx 2.3\times 10^{-18}\,\mbox{s}^{-1}.
+\end{equation}
+All determinations of distance depend on the Hubble constant; it is an enormously important quantity.
+  
+In flat space (k=0), the physical distance (like you would measure with a ruler) from the origin to a point depends on the comoving coordinate as
+\begin{equation}   
+  \ell_{\rm phys} = a(t) r 
+\end{equation}
+while the physical velocity of an object is
+\begin{equation}
+  v_{\rm phys} = \frac{d(\ell_{\rm phys})}{dt} = \frac{da}{dt} r + a \frac{dr}{dt} = \frac{\dot a}{a} a r + a \frac{dr}{dt} = H \ell_{\rm phys} + v_{\rm pec}
+\end{equation}
+The first term in the velocity is called the \textit{Hubble flow}\index{Hubble flow} and the second term is called the \textit{peculiar velocity}\index{peculiar velocity}.  The Hubble flow is the velocity that you measure from the expansion of the Universe.  Nearby, where the Hubble parameter is close to the present-day value, we find that galaxies tend to move away from us at around 70 km/s per Mpc of distance away.  The peculiar velocity is the independent velocity of a galaxy is typically around 1000 km/s, so we need to look further than tens of Mpc for the Hubble flow to dominate the overall velocity of an object.  In practice, we measure the \textit{cosmological redshift}\index{redshift}, $z$, of the spectral lines of an object compared to the wavelength of emission.
+\begin{equation} 
+  \lambda_{\rm obs}/\lambda_{\rm em} = a(t_{\rm now}) / a(t_{\rm em}) = 1+z
+\end{equation}
+We have $z=0$ at the present day, $z \sim 10$ when the first stars and galaxies are forming, and $z =1100$ when the CMB is released.  The wavelength is expanded, but since the speed of light is constant, the frequency of light slows, as does the observed rate of any other process.  Thus energy and momentum of photons (and other objects) drops as the Universe expands.  Energy conservation is the result of the symmetry of time-invariance.  The spacetime of an expanding universe is not time invariant, so we cannot expect energy conservation.  As the momentum of objects redshifts away, they over time lose their peculiar velocity and come to join the Hubble flow.
+
+\section{Friedmann equations and model universes}
+Much of the development of the universe clearly depends on the \textit{expansion history}\index{expansion history}, the scale factor as a function of time: $a(t)$.  Treating the universe the as a uniform fluid, the Einstein equations of general relativity yield two differential equations that relate the scale factor to the energy density and pressure of the Universe: the first Friedmann equation,
+\begin{equation}
+  H^2 = \left( \frac{\dot a}{a} \right)^2 = \frac{8\pi G}{3} \rho - \frac{k}{a^2 R_0^2}, \label{eqn:friedmann1}
+\end{equation}
+and the second Friedmann equation
+\begin{equation}
+  \frac{\ddot a}{a} = -\frac{4 \pi G}{3} (\rho + 3 P) \label{eqn:friedmann2}.
+\end{equation}
+Examining the first Friedmann equation we see that the expansion rate on the left and contributions from the density and the curvature on the right side.
+
+\subsection{Components of the Universe}
+We need to describe these types of matter and radiation in the Universe that contribute to the Friedmann equations.  We also need to understand how the densities change with the scale factor, which allows us to solve for $a(t)$.  We do not have energy conservation but do have a continuity equation
+\begin{equation}
+  \dot \rho + 3 \frac{\ddot a}{a}(\rho + P) = 0
+\end{equation}
+We often consider a proportional relationship between pressure and density, the \textit{equation of state}\index{equation of state} with equation of state parameter $w$ as the constant of proportionality,
+\begin{equation}
+  P = w \rho.
+\end{equation}
+This allows us to solve the continuity equation to relate density to the scale factor of expansion.
+\begin{equation}
+  \rho \propto a^{-3(1+w)}
+\end{equation}
+
+\paragraph{Matter.}  When we talk about \textit{matter}\index{matter}, we are refering specifically to non-relativistic particles for which the kinetic energy is small compared to the rest mass, and equivalently, the pressure is small compared to the density ($P \ll \rho$ in units where $c=1$).  Thus for $w=0$, the continuity equation provides
+\begin{equation}\rho \propto a^{-3}.\end{equation}
+This result makes sense.  The total density of matter is the particle rest mass times the number density, $\rho_m = mn$, and the number density of particles is diluted by the expansion of the universe as $n \propto a^{-3}$.
+
+Our universe includes at least two categories of matter.  The normal matter\index{matter!normal} consist of the types that we are most familiar with on Earth: proton, neutrons, nuclei, atoms.  In the late universe, there are dense object like planets and stars, but even today the bulk of the normal matter is in the form of diffuse gas or plasma.  This component is also sometimes given the catchall term ``baryons.''  This component does have some pressure, which is important for driving acoustic oscillations in the CMB, but even at that time and ever since, the bulk of the baryons were non-relativistic, so the pressure was not important in determining their contribution to the expansion history.
+
+The second category of matter, \textit{dark matter}\index{matter!dark}, is a substance of unknown type that contributes about five times as much to the total density budget as normal matter.  It is unclear if this is a subatomic particle or something macroscopic.  We do not know if there is one type or multiple types that fill out an entire ``dark sector'' of particle physics.  There is so far no evidence for interactions between this component and photons or baryons.  As such this component seems to genuinely provide no pressure, and is usually modeled that way, although in actually there may be some interactions at very low level (which would be our main hope of discovering it in a particle physics detector).  Some models include weakly-interacting massive particles (WIMPs), axions (proposed particles to solve the strong CP problem in QCD), and primordial black holes.
+
+\paragraph{Radiation.}  For both photons and any gas of relativistic particle, the pressure relates to the energy density as
+\begin{equation}
+  P_r = \frac{1}{3} \rho_r
+\end{equation}
+or $w=1/3$.
+This in turn means that the energy density scales with expansion as
+\begin{equation}
+  \rho_r \propto a^{-4}.
+\end{equation}
+The expansion of the volume dilutes the photon number density while the energy per photon is redshifting away, thus $\rho \propto n E \propto a^{-3}a^{-1}$.
+
+Included in radiation are photons, light particles (including neutrinos), and gravitons.  The light is predominantly the photons that at late times becomes the CMB.  These photons follow a thermal (Planck) blackbody spectrum and the redshift effect is the same as adjusting the temperature $T \propto a^{-1}$.
+
+What we count as a light particle depends on when in the history of the universe we are talking about.  The total energy of a particle is $\gamma m$.  At early times the energy $E \sim kT$, but the scale factor is small and so the temperature is high.  Thus every particle is relativisitic if you go back early enough in the universe.  Radiation is the dominant contribution to the energy density early on.  Neutrinos are relativistic for the early history of the universe, and although we don't yet know all the neutrino masses, at least some neutrinos are massive enough to not be relativistic now.
+
+Gravitons are massless particles and so are always relativistic, but they don't have much overall energy density and contribute negligably to the expansion history.
+
+\paragraph{Dark Energy.}\index{dark energy}  In General Relativity, the Einstein equations are differential equations that relate the properties of spacetime on one side and matter-energy content on the other.  It is not uniquely determined and you can add a term proportional to the metric tensor without messing up the continuity equation for the stress-energy density.  Einstein originally introduced such a term, conventionally written as proportional to some constant number $\Lambda$, essentially asserting it as an innate property of spacetime.  He did this because it allows solutions to the equations that corresponded to the static universes he desired, ones unchanging in time.  (When the universe was found to be expanding, Einstein famously called this term his ``greatest blunder.'')
+
+Another point of view is to consider what that term would mean if you moved it to the other side of the equation, mathematically equivalent, and considered it as a time of energy density.  It acts as a fluid with the equation of state
+\begin{equation}
+  P_\Lambda = -\rho_\Lambda,
+\end{equation}
+which has a positive energy density but a negative pressure.  The equation of state parameter is $w=-1$ and so
+\begin{equation}
+  \rho_\Lambda \propto a^0
+\end{equation}
+is constant.  The density of this component does not dilute with expansion of the universe.  This is very weird and  does not fit with our intuitions of how substances work.  However, current modeling requires this component, dubbed ``dark energy,'' to account for about 70 percent of our present-day energy budget.
+
+This component is utterly mysterious to us.  It may ultimately be simply a property of spacetime, just a \textit{cosmological constant} in the equations of GR.  It may be an energy density associated with the vacuum.  This might make the density dependence on expansion more understandable.  An expanding volume produces more vacuum produces more dark energy.  In quantum mechanics, the (observed) Casamir effect depends on a sea of vitual particles and a zero-point energy associated with the vacuum.  However, a simple theory computation, accounting for the particles we know about predicts a vacuum energy value which is huge, a factor of $10^{60}$ greater than what we observe.  This is the unresolved \textit{cosmological constant problem}.
+
+There are other models where the dark energy is one or more particle physics field and could be dynamic and not a constant after all.  This is an active area of research.
+
+\subsection{Expansion histories of model universes}
+With the $\rho(a)$ dependence of the of the different components, we can solve the Friedmann equations directly in simple cases.  For example, in flat universes that are dominated by a single component, we find for different equations of state 
+\begin{equation}
+  a(t) \propto \left\{
+  \begin{array}{lll}
+    t^{2/3(1+w)}  = \left\{ \begin{array}{l} t^{2/3}\\ t^{1/2} \end{array} \right. & \begin{array}{l} w=0  \\ w = 1/3 \end{array} &  \begin{array}{l} \mbox{matter-dom.}  \\ \mbox{radiation-dom.} \end{array} \\
+    \exp(Ht) & \begin{array}{l}w = -1 \end{array}& \begin{array}{l} \Lambda\mbox{-dom.} \end{array}
+  \end{array}
+  \right. 
+\end{equation}
+There are several things to note about these solutions.  The matter and radiation solutions are increasing in size but decelerating (concave-down curves), and we understand this in terms of the attractive gravitational pull of all the matter in the universe slowing the expansion.  In a flat universe, however, it is not enough to arrest the expansion.
+
+In a flat, cosmological-constant-dominated Universe, by contrast, the expansion is exponentially accelerating.  The Hubble parameter is always constant in this case.   We think that our universe today has mostly transitioned from being matter dominated to $\Lambda$ dominated, as the expansion dilutes the matter but not the cosmological constant.  The components had equal energy density about $z=0.3$.  The matter-dominated phase lasted about 10 Gyr.  Because of the density scaling with scale factor, prior to the matter dominated phase was a radiation dominated phase (equal components about $z=3400$).  The radiation dominated phases lasted only about 50 kyr.  Looking backward in time, both matter and radiation dominated universes reach zero size a finite time in the past.  This is the origin of the idea of the ``hot Big Bang.''  We think there was another epoch of exponential expansion prior to the radiation dominated phase.  This is \textit{inflation}\index{inflation} and we understand that even less than dark energy.
+
+Because our Universe has multiple components, and curvature is always a possibility, we need to treat the solution for $a(t)$ more generally.  From the first Friedmann equation (\ref{eqn:friedmann1}), we see that for a particular expansion rate there is a particular \textit{critical density}\index{critical density} associated with flatness.  To have a flat ($k=0$) universe today ($a=1$, $H=H_0$), we must have
+%\begin{equation}
+%  H_0^2  = \frac{8\pi G}{3} \rho_{\rm crit,0} 
+%\end{equation}
+\begin{equation}
+  \rho_{\rm crit,0}   = \frac{3 H_0^2}{8\pi G},
+\end{equation}
+a density that works out to be about one Milky Way-sized galaxy per cubic Mpc.  We do not see that much luminous matter, but the other components, dark matter and dark energy, make up the difference, leaving our Universe very close to flat.
+
+We can cast the first Friedmann equation into a nice form by looking at the ratio of the density to the critical density for each component
+\begin{equation}
+  \Omega_i = \frac{\rho_{i,0}}{\rho_{\rm crit,0}}
+\end{equation}
+for $\Omega_r$, $\Omega_m$, and $\Omega_\Lambda$.
+We can define an analogous quantity for curvature, 
+\begin{equation}
+  \Omega_k = \frac{-k/R_0^2}{H_0^2}   \qquad \mbox{or} \qquad R_0 = \frac{1}{H_0\sqrt{-\Omega_k / k}},
+\end{equation}
+but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With these, the Friedmann equation \ref{eqn:friedmann1} becomes,
+\begin{equation}
+  H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ).
+\end{equation}
+Rearranging, we get a separable equation
+\begin{equation}
+\frac{da}{dt} = \dot a = H_0 (\Omega_r a^{-2} + \Omega_m a^{-1} + \Omega_k  +  \Omega_\Lambda a^2)^{1/2} = H_0 F(a),
+\end{equation}
+that can be integrated and inverted to give the functional relationship between $a$ and $t$,
+\begin{equation}
+  \int^1_a \frac{da'}{H_0 F(a')} =  \int^{t_{\rm now}}_t dt'.
+\end{equation}
+
+\textbf{Talk about the models and cosmological parameters.}
+
+open vs closed
+
+$\Lambda$CDM model
 
 
-\footnote{When the analogous 2d surface of a sphere, which is the curved space that we are most familiar with, is embedded in a three-dimensional space, $r$ is like the cylindrical distance from polar axis to a point on the sphere, while \begin{equation} \int_0^r \frac{dr'}{\sqrt{1-kr^2/R^2}} \end{equation} is the length from the origin along the surface of the sphere.}
+These ``$\Omega$'' parameters are the first of what we will call \textit{cosmological parameters}\index{cosmological parameters}.  They determine how a specific cosmological model develops over time.  Much of the science of observational cosmology is dedicated to making measurements of observable quantities and using them to determine the values of the cosmological parameters within the model.
+
+\section{Distance measures}
+
+The redshift of objects is relatively easy to measure, directly provides the amount of expansion in the universe since that time, and gives us one measurement of the distance to an object.  We need to understand the relationship between redshift and the other observables that are also related to distance, most prominently the brightness and angular size of objects.  Brightness and angular size are also relatively easy to measure on the sky.  Comparisons of these observables and their associated distance--redshift relationship over cosmic time give us ways to constrain the cosmological model.
+
+Important in the discussion of distances are the concepts of \textit{standard candles}\index{standard candle} and \textit{standard rulers}\index{standard ruler}.  A standard candle is an object of known luminosity that we can compare to its measured brightness to determine the distance.  The most well known standard candles are type Ia supernova.  These are sometimes referred to as standardizable candles since they are not all identical, and their luminosity is not known from first principals, but the luminosity can be well calibrated by a series of observations that we will describe in the next chapter.  A related concept is a standard siren\index{standard siren}, which is a gravitational wave source of known power that we can compare to the locally measured strain.  An example would be a binary black hole merger that is understood in such detail that the power is understood and localized such that the redshift of the host galaxy is measureable.
+
+A standard ruler is object of known size that we can compare to the measured angular size.  Examples of standard rulers are the baryon acoustic oscillations, or soundwaves in the primordial plasma, that are visible both as peaks in the CMB power spectrum and in the distribution of galaxies.  
+
+We want to work out the distance to a point where some radiation was emitted.
+\begin{equation}
+  d\chi = \frac{dr}{(1 + kr^2/R_0^2)^{1/2}}
+\end{equation}
+which you can integrate to get
+\begin{equation}
+  r = S_k(\chi) = \left\{
+  \begin{array}{ll}
+    R_0 \sinh(\chi/R_o) &  k=-1 \\
+    \chi & k=0 \\
+    R_0 \sin(\chi/R_o) &  k=+1
+  \end{array}
+  \right.
+\end{equation}
+You can compare Eqn~(\ref{eqn:2d_sphere_path_radius}) to see that $\chi$ is the radial distance between points in the (possibly) curved space.  We call $\chi$ the comoving distance\index{comoving distance}.
+
+Writing the FRW metric in terms of the comoving distance, we have
+\begin{equation}
+  ds^2 = -dt^2 + a^2 \left[ d\chi^2 + S_k^2(\chi) d\Omega^2 \right]
+\end{equation}
+Photons travel on null geodesics, paths with $ds^2 = 0$, so a photon on a radial path ($d\theta = d\phi = 0$) will have
+\begin{equation}
+  d\chi = \frac{dt}{a(t)} = - \frac{dz}{H(z)}
+\end{equation}
+where we have used the differential of $1+z = 1/a(t)$ in the last equality.  Integrating, we find
+\begin{equation}
+  \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')}  
+\end{equation}
+to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures expansion history via the integrated $1/a(t)$ or $1/H(z)$.  The cosmology dependence comes from the cosmology's effect on the expansion history.
+
+\begin{figure}
+
+  \caption{Diagrams for different notions of distance, including $D_M,D_A,D_H$.}
+  \label{fig:distances1}
+\end{figure}
+
+
+\paragraph{Comoving distance.}
+As mentioned, we call $\chi$ the comoving distance.  It is the physical distance today if we were to measure with a ruler to the point where the emission came from.
+
+\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute arc length as measured today, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Fig.~\ref{fig:distances1}.  We have already encountered this quantity, which has the value
+\begin{equation}
+  D_M(z) = S_k(\chi(z)) = r(z).
+\end{equation}
+finding that it is the same as the comoving coordinate.  In a flat universe only, this quantity is also the comoving distance $\chi$.
+
+Suppose an object with physical size $\delta\ell$, perpendicular to the line of sight, is emitting at redshift $1+z = 1/a$.  Today it  subtends angle $\delta\theta$.
+We just saw how to relate the comoving arc length to an angle with $D_M$, and we know that the comoving size of the arc that object covers---the size that it will expand into at the present---is $\delta\ell/a$.  Thus we have
+\begin{equation}
+ \delta\theta =  \frac{\delta\ell/a}{D_M} 
+\end{equation}
+as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation featre in the correlation function and power spectrum of galaxy samples.
+
+\begin{figure}
+  \caption{Angular diamter distance versus redshift.}
+  \label{fig:angular_diameter_distance}
+\end{figure}
+
+\paragraph{Angular diameter distance.}    Suppose that we instead want to define a distance measure so that it follows the more familiar geometrical relation for physical size and measured angle.  We call this the angular diameter distance and define it so that it satistfies
+\begin{equation}
+  \delta\theta = \frac{\delta\ell}{D_A},
+\end{equation}
+from which quickly follows
+\begin{equation}
+  D_A(z) = \frac{D_M(z)}{1+z}.
+\end{equation}
+One of the conceptually tricky things about geometrical measures in an expanding universe is that the angular diameter distance is not monotonic with redshift (Fig. \ref{fig:angular_diameter_distance}).  For that reason, I think that ``distance'' is actually a bad name for this quantity, because we want the idea of distance to comport with notions of near and far, and this does not.
+
+What is happening is clearer if you consider a series of standard rulers with length $L$ at various distances.  For nearby objects, the angle that you measure diminishes with distance in the expected fashion.  But for more distance objects, the Universe in the past had a smaller scale factor, so the standard ruler took up more space, and the angle you measure reaches a minimum size and starts to increase again with distance or redshift.  In that sense, I think that the quantity $\delta\theta/\delta\ell = D_A^{-1}$ is conceptually easier to think about, and is proportional to the angle that you actually measure.
+
+
+\paragraph{Line-of-sight comoving Hubble distance.}  If we turn our standard ruler so that it is parallel to the line of sight, we will measure a difference in the redshift $\delta z$ from the front to the back.  We know that the time elapsed for light to traverse our object is $\delta t = \delta\ell$ in units where $c=1$.  The change in redshift is due to the expansion of the universe during that time.
+So
+\begin{equation}
+  \delta z = \left| \frac{dz}{dt} \right| \delta t = \frac{H}{a} \delta\ell
+\end{equation}
+We can define a comoving distance
+\begin{equation}
+  D_H(z) = \frac{1}{H(z)}
+\end{equation}
+that can be taken in a ratio with the comoving size of our object $\delta\ell/a$  so that
+\begin{equation}
+   \delta z = \frac{\delta\ell/a}{D_H}
+\end{equation}
+This ratio of comoving distances also returns when we talk about baryon acoustic oscillations in galaxy power spectra, and their line of sight component.
+
+\paragraph{Luminosity distance.}  Finally we want to establish a notion of distance to relate the luminosity of objects to their measured brightness.  We consider an object with luminosity
+\begin{equation}
+  L = \frac{dE_{\rm em}}{dt_{\rm em}}
+\end{equation}
+emitting a certain energy per unit time.  Note that we have to count the energy emitted versus a clock ticking in its rest frame.  This energy passes through a sphere a comoving coordinate $r$ away and is collected in a small area $A$.  We have already seen that the surface area of that sphere is $4\pi r^2$ and that $r = D_M = S_k(\chi)$.
+
+In a static universe, the light energy collected is the same as that emitted accounting for the fraction of the area covered. So the received power at the observer is
+\begin{equation}
+  \frac{dE_{\rm rec}}{dt_{\rm obs}} = \frac{A}{4\pi r^2}L   \qquad \mbox{(static only)}
+\end{equation}
+and the observed brightness or flux (power per collecting area) is
+\begin{equation}
+  F = \frac{L}{4\pi r^2} =  \frac{L}{4\pi D_M^2}  \qquad \mbox{(static only)}
+\end{equation}
+This accounts for possible curvature but not expansion.
+
+In an expanding Universe, we have to account for two effects, both of which lower the energy collected by the observer.  First, the rate of photons is slowed by the redshift factor, or equivalently $dt_{\rm obs} = (1+z) dt_{\rm em}$.  Second, the energy per photon is also redshifted, $dE_{\rm rec} = dE_{\rm em}/(1+z)$.  Accounting for these effects, we find,
+\begin{equation}
+    F = \frac{L}{4\pi (1+z)^2 D_M^2}  \qquad \mbox{(correct for expansion)}
+\end{equation}
+
+Like the angular diameter distance, the luminosity distance $D_L$ is an attempt to make the expression for flux follow the familiar relation
+\begin{equation}
+    F = \frac{L}{4\pi D_L^2}.
+\end{equation}
+Although this is common, I'm once again not sure that it is such a good idea, because it seems unnecessary and confusing, as we already have the correct expression.  In any case, the expression leads to,
+\begin{equation}
+  D_L(z) = (1+z) D_M(z).
+\end{equation}
+
+\section{Data and elementary statistics}
+Now that we are armed with some understanding of how the measureable properties (like brightness and angular size) of a distant object relate to its redshift and the comoving distance, and how these quantities relate back to the cosmological parameters, we can embark on obtaining some data from cosmological measurements.  But the data we obtain will always be subject to the uncertainties inherent in our measurement.
+
+In a very generic fashion, we might write that data is a sum of some signal that we are looking for and some noise that muddies our view, something like:
+\begin{equation}
+  d = s + n.
+\end{equation}
+If we have more than on data point, we can consider these symbols to be vectors or arrays of data, signal, and noise values.  It might be more correct to write that the data is some response of our instrument to the signal, plus noise.  In that case, a more proper expression might be
+\begin{equation}
+  d = R(s) + n.
+\end{equation}
+where the response is a function of the signal, and again all of these could be vectors of values.
+
+When we make a measurement, the value we get is different ever time.  This is what we mean by measurement error or uncertainty.  That means that the noise is a random variable. (Sometimes the signal is too!)  A random variable is a variable that takes a different value each time that you make a measurement, or doing what we might call  ``making a draw'' (like in cards) or ``generating a realization'' (especially if we are simulating on a computer).
+
+A measurement that has a noise with a non-zero mean is biased.  A better measurement has a smaller bias and smaller scatter in the noise values than a worse measurement.
+
+Any random variable comes from a probability distribution which controls what values are available.  Suppose $X$ is a generic random variable.  The distribution is a function that we integrate to get the probability of certain outcomes for $X$.  For example the probability that $X$ takes a value between $a$ and $b$ would be given by
+\begin{equation}
+  P(a<X<b) = \int_a^b p(x) dx
+\end{equation}
+where the probability is on the left and the probability distribution for X is the integrand on the right.  The integral over the whole interval $(-\infty, +\infty)$ is unity.
+
+One familiar probability distribution function are Gaussian distribution function
+\begin{equation}
+  p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(x-\mu)^2}{2\sigma^2}   \right)
+\end{equation}
+which has two parameters, mean $\mu$ and variance $\sigma^2$.  It arises very often, whenever there are many independent contributions of random process.
+
+From any probability distribution you can calculate the mean as an integral
+\begin{equation}
+  \mu = \int dx\,  x  p(x) = \langle x \rangle.
+\end{equation}
+We introduce the notation $\langle \dots \rangle$ as a shorthand for the integral against the probability distribution of some quantity.
+For the Gaussian distribution this integral does indeed match the $\mu$ parameter from the distribution.  The mean is called the first moment of the distribution.  Computing the integrals $\langle x^p \rangle$ computes the $p$th moment.  More important here are the central moments $\langle (x-\mu)^p \rangle$ which are computed around the mean of the distribution.
+
+The variance\index{variance} of the distribution is the second central moment, denoted
+\begin{equation}
+  \sigma^2 = \left\langle (x - \mu)^2 \right\rangle = \left\langle (x - \langle x \rangle)^2 \right\rangle =  \int dx\,  (x-\mu)^2  p(x) 
+\end{equation}
+The standard deviation\index{standard deviation} is simply the square root of the variance.  A Gaussian distribution is totally described by the mean and variance, and the higher moments can be expressed in terms of them.  General non-Gaussian probability distributions may have information beyond what is in the mean and variance.   The third central moment measures the skewness, how asymmetric the distribution is around the mean.  The fourth central moment measures how much of a peak or plateau the distrubution has.\footnote{Formal definitions of skewness and kurtosis are normalized by the standard deviation.}  
+
+Statistics are functions of data.  Some of the most important statistics are estimators for the moments or other properties of the distribution.  For example, the average of a data set is the well-known estimator for the mean of the distribution.  For a data set composed of random variables $X_i$.
+\begin{equation}
+  \bar X = \frac{1}{N_{\rm data}} \sum_i X_i.
+\end{equation}
+This is a good estimator because it is unbiased:
+\begin{equation}
+  \langle \bar X \rangle = \left\langle \frac{1}{N_{\rm data}} \sum_i X_i \right\rangle =
+\end{equation}
+
+
+statistical ensemble, ensemble average
+
+statistic
+
+Poisson distribution
+
+
+
+covariance
+
+statistic from data vs estimate of a property of a distribution
+
+
+\section{Exercises}
+
+\begin{enumerate}
+\item Solve the Friedmann equation for a
+  \begin{enumerate}
+  \item radiation dominated universe,
+  \item matter dominated universe,
+  \item $\Lambda$-dominated universe
+  \end{enumerate}
+
+\item show that a $\Lambda$-dominated universe always has a constant Hubble parameter.
+
+\item Show that
+  $$ \frac{dt}{a(t)} = - \frac{dz}{H(z)} $$
+
+\end{enumerate}
