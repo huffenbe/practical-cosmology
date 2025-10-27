@@ -23,7 +23,7 @@ We should think of field values at various locations, such as
 \begin{equation}a_1 = a(x_1), a_2 = a(x_2), \dots, \end{equation}
 as (typically) non-independent random variables that are related by a covariance.  If the field $a(x)$ follows a Gaussian distribution, a vector of any finite number of field values ($a = a_1,a_2,\dots,a_n$) is drawn from a multivariate gaussian distribution
 \begin{equation}
-  {\cal N}(\mu, \Sigma) = \frac{1}{(2\pi)^{n/2}} \exp \left( -\frac{1}{2} (a - \mu)^\dag \Sigma^{-1} (a-\mu) \right)
+  {\cal N}(\mu, \Sigma) = \frac{1}{(2\pi|\Sigma|)^{n/2}} \exp \left( -\frac{1}{2} (a - \mu)^\dag \Sigma^{-1} (a-\mu) \right)
 \end{equation}
 with mean $\mu$ and covariance matrix given by
 \begin{equation}
@@ -34,7 +34,7 @@ with mean $\mu$ and covariance matrix given by
     \xi(|x_n-x_1|) & \xi(|x_n-x_2|) & \dots & \xi(0) \\    
     \end{array} \right]
 \end{equation}
-The continuous field the distribution actually relates an infinite number of points, but in practice we will obvisously only be dealing with a finite number.
+For a continuous field, the distribution could relates an infinite number of points, but in practice we will obviously only be dealing with a finite number.
 
 The gaussian random field highlights that the mean and covariance (or correlation function) are properties of the probability distribution that the random field $a$ is drawn from.  In the cosmological context, the correlation function will depend on cosmological parameters.  We will have to look at data, which gives us a imperfect measurement of a particular realization of $a(x)$, and try to estimate the correlation function, from which we can draw inferences about our cosmological model and its parameters.
 

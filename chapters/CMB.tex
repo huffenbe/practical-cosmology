@@ -4,26 +4,83 @@ What is the cosmic microwave background?
 
 The CMB power spectrum is pillar of modern cosmology because it is both measureable and predictable from theory.
 
-\section{Anistropies}
+T = 0.3 eV atoms form
+
+T = 0.25 eV photons decouple and stream freely
+
+z = 1100
+
+$t_{\rm CMB} = $ 380,000 years
+
+
+\section{Anisotropies}
 To examine correlations in the CMB we again want to decompose it into a series of harmonic functions.  Because the surface of the sphere has a finite area, the spectrum of harmonics is discrete.  We can write it as
 \begin{equation}
-  T(\theta,\phi) = \sum_{lm} a_{lm} Y_{lm}(\theta,\phi)
+  T(\mathbf{n} = \theta,\phi) = \sum_{lm} a_{lm} Y_{lm}(\mathbf{n})
 \end{equation}
-where the $Y_{lm}$ functions are the spherical harmonics.  Most of the time, the exact form of these functions are not important, but we sometimes use some definitions and identities that are listed in a supplemental section at the end of this chapter.
+where the $Y_{lm}$ functions are the spherical harmonic functions and the $a_{lm}$ is common name for the harmonic coefficients.  Most of the time, the exact form of these functions are not important, but we sometimes use some definitions and identities that are listed in a supplemental section at the end of this chapter.
+
+As usual, the power spectrum (typically called $C_l$) is the variance of the harmonic coeffients.  The $a_{lm}$ are statistically independent, and so the covariance matrix of them is diagonal.  We express this as
+\begin{equation}
+  \langle a_{lm} a_{l'm'}^* \rangle = C_l \delta_{ll'} \delta_{mm'}
+\end{equation}
+Using a Boltzmann solver, we can compute this theoretical power spectrum from a particular cosmological model via the parameters $C_l(\Omega_c,\Omega_b,\dots)$.  
+
+The CMB is very Gaussian.  In other words, each complex-valued $a_{lm}$ is drawn from a Gaussian distibution with mean zero and variance $C_l$.  Because the temperature is real valued,  $a_{l(-m)} = a_{lm}^*$ and the positive $m$-values determine the negative ones. Every $m$ value for the same $l$ has the same variance, so a simple estimator for the power spectrum is to average over the different $m$s,
+\begin{equation}
+  \bar C_l = \frac{1}{2l+1} \sum_m |a_{lm}|^2,
+\end{equation}
+but this type of estimator is biased if the whole sky is not available.
+
+\section{Signal, beam, pixels, and noise}
+
+The CMB signal is smoothed by the finite resolution of the telescope.  We describe the point-spread function or the beam of the telescope by a function on the sphere $b(\mathbf{n})$ which is mostly concentrated around its maximum at the north pole but can have sidelobes caused by diffraction into the aperture.  The actual temperature that the telescope sees at an instant can be expressed as a convolution
+\begin{equation}
+  T(\mathbf{n},\omega) = \int d\mathbf{n}' [D(\mathbf{n},\omega)b](\mathbf{n}') T(\mathbf{n}')
+\end{equation}
+The rotation operator $D$ takes the beam from its fiducial orientation to point in the direction $\mathbf{n}$ with an orientation rotation around the telescope boresight, then the integral collects the light from the unmodified sky in the directions that the telescope is sensitive to.  Unlike optical telescope, CMB telescopes do not take pictures.  They scan back and forth over and over, collecting low signal-to-noise data that is later averaged and re-assembled into a sky map.  We defer the mapmaking discussion to later, but one consequence is that one point on the sky may be seen from many different angles and by many different detectors, which can average to symmetrize the beam.  So although there are fast algorithms to compute the full convolution\footnote{totalconvolver}, for the main beam, it is often good enough to use a azimuthally symmetric beam approximation $b(\mathbf{n}) = b(\theta)$.  In that case the beam convolution can be written as a multiplication in harmonic space,
+\begin{equation}
+  a_{lm}^{\rm beam} = b_l a_{lm}
+\end{equation}
+
+pixel window function
 
 
+Noise
+
+red at low multipoles, white at high multipoles
+
+$l_{\rm knee}$
+
+The total data 
+\begin{equation}
+  a^{\rm data}_{lm} = b_l a_{lm} + n_{lm}
+\end{equation}
+fits the model of data equals response to signal plus noise.
 
 
-
-\section{Signal, beam, and noise}
 
 
 \section{Measuring the power spectrum}
 
+two dimensional masking
+
+
+
 including cross spectra
 
 
-\section{Mapmaking}
+errors, knox formula
+
+
+\section{Calibration and mapmaking}
+
+gain calibration
+
+detector time constants
+
+
+\section{Foreground mitigation}
 
 
 \section{The flat-sky approximation}
@@ -47,7 +104,13 @@ These functions have several important identities.  They are orthonormal functio
 \begin{equation}
   \int d\Omega Y_l^m (\theta,\phi) Y_{l'}^{m'}(\theta,\phi) = \delta_{ll'} \delta_{mm'}
 \end{equation}
-This in particular means that for $l=0$, $m=0$
+This in particular means that for $l=0$, $m=0$, we must have
 \begin{equation}
   Y_{00} = \frac{1}{(4\pi)^{1/2}}
 \end{equation}
+
+Another important identity for spherical harmonics is the addition theorem
+\begin{equation}
+  \sum_{m} Y_l^m(\mathbf{n}) Y_l^m(\mathbf{n}') = \frac{2l+1}{4\pi} P_l(\mathbf{n \cdot n}') 
+\end{equation}
+for $\mathbf{n}$ as a unit vector pointing to $(\theta,\phi)$ and similarly for $\mathbf{n}'$.

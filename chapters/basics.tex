@@ -22,13 +22,17 @@ We learn in special relativity that we need also to label event with space and t
 \begin{equation}
   (\Delta s)^2 = -(\Delta t)^2 +  (\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2
 \end{equation}
-which is a little weird but at least the space follows the familiar rules of Euclidean geometry.  The time coordinate $t$ is the wristwatch time of an observer but will not synchronize with the wristwatch time of an observer in a different frame, one that moves with nonzero constant relative velocity.  We are going to measure time in units of length so that the units of the equation work out, thus taking the speed of light $c=1$.  For example, a time interval of $\Delta t = 1\,\mbox{m} = 1\,\mbox{m}/c = 3.3\times10^{-9} s$.
+which is a little weird but at least the space follows the familiar rules of Euclidean geometry.  The relationship between the three space coordinates, the one time coordinate, and the spacetime interval is called the spacetime metric.  The time coordinate $t$ is the wristwatch time of an observer but will not synchronize with the wristwatch time of an observer in a different frame, one that moves with nonzero constant relative velocity.  We are going to measure time in units of length so that the units of the equation work out, thus taking the speed of light $c=1$.  For example, a time interval of $\Delta t = 1\,\mbox{m} = 1\,\mbox{m}/c = 3.3\times10^{-9} s$.
 
-Our footing gets much less steady when we turn to general relativity, which is needed to treat accelerations and provides our best understanding of the physics of gravity.  In general, the space does not need to be Euclidean, so our common rules, such as ``the sum of angles in a triangle is $180^\circ$,'' might not be true.  Further, the numbers that we assign as coordinates to points in space are just labels, and (within some limits) we have enormous freedom to choose how we assign the coordinates.  (Some choices are more suitable than others.)  Like in special relativity, the spacetime interval along a path in the spacetime is invariant.  The relationship between the three space coordinates, the one time coordinate, and the spacetime interval is called the spacetime metric.
+Our footing gets much less steady when we turn to general relativity, which is needed to treat accelerations and provides our best understanding of the physics of gravity.  In general, the space does not need to be Euclidean, so our common rules, such as ``the sum of angles in a triangle is $180^\circ$,'' might not be true.  Further, the numbers that we assign as coordinates to points in space are just labels, and (within some limits) we have enormous freedom to choose how we assign the coordinates.  (Some choices are more suitable than others.)  Like in special relativity, the spacetime interval along a path in the spacetime is invariant.
+
+\begin{figure}
+  \caption{Diagram of a 2-d spherical surface in cartesian coordinates.}
+\end{figure}
 
 We don't even need to get relativity to get experience with coordinates in curved spaces.  We can describe the 2-d surface of the sphere, a surface with $x^2 + y^2 + z^2 = R^2$, in polar coordinates.  Let $R$ be the radius of the sphere, $r$ be the cylindrical distance from polar axis to a point on the sphere and $\phi$ be the azimuthal angle of that point to the $x$-axis.  It is not too much trouble to show that the length of a path along the surface from the north pole to a point is 
 \begin{equation}
-  \ell_{\rm radius} = \int_0^r \frac{dr'}{\sqrt{1-r'^2/R^2}} = R \sin^{-1}(r/R) > r. \label{eqn:2d_sphere_path_radius}
+  \ell_{\rm radial} = \int_0^r \frac{dr'}{\sqrt{1-r'^2/R^2}} = R \sin^{-1}(r/R) > r. \label{eqn:2d_sphere_path_radius}
 \end{equation}
 So confined to the space (i.e.\ the surface), $r$ is the coordinate away from the origin but not the distance from the origin, which is larger.
 We can also consider a circular path with a fixed radius around the whole sphere, which has length
@@ -41,7 +45,7 @@ So that circle, considered along the curved surface only, has more radius than y
 \end{equation}
 A sphere with a very large radius $R$ compare to the coordinate $r$ values of interest looks pretty flat, and that is reflected in the metric.
 
-For a 2-d hyperbolic surface that satisfies $x^2 + y^2 - z^2 = R^2$ possesses a similar metric,
+For a 2-d hyperbolic surface that satisfies $x^2 + y^2 - z^2 = R^2$ possesses a similar metric, differing only in the sign of the addition in the denominator of the radial term,
 \begin{equation}
     dl^2 = \frac{1}{1+r^2/R^2} dr^2 + r^2 d\phi^2,
 \end{equation}
@@ -74,7 +78,7 @@ The present-day expansion rate is called the \textit{Hubble constant}\index{Hubb
 \begin{equation}
   H_0 = H(t_{\rm now}) = \dot a(t_{\rm now}) \approx \frac{70\,\mbox{km/s}}{\mbox{Mpc}} \approx 2.3\times 10^{-18}\,\mbox{s}^{-1}.
 \end{equation}
-All determinations of distance depend on the Hubble constant; it is an enormously important quantity.
+All determinations of distance depend on the Hubble constant; it is an enormously important quantity and there is still some few percent uncertainty in its value.  The inverse of the Hubble constant can be expressed as a time, about 240 Myrs, or a distance, about 4.2 Gpc.
   
 In flat space (k=0), the physical distance (like you would measure with a ruler) from the origin to a point depends on the comoving coordinate as
 \begin{equation}   
@@ -188,7 +192,7 @@ We can define an analogous quantity for curvature,
 \begin{equation}
   \Omega_k = \frac{-k/R_0^2}{H_0^2}   \qquad \mbox{or} \qquad R_0 = \frac{1}{H_0\sqrt{-\Omega_k / k}},
 \end{equation}
-but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With these, the Friedmann equation \ref{eqn:friedmann1} becomes,
+but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With current limits on $|\Omega_k| < 0.005$, we know that $R_0 > 60$ Gpc.   With these, the Friedmann equation \ref{eqn:friedmann1} becomes,
 \begin{equation}
   H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ).
 \end{equation}
@@ -216,7 +220,7 @@ The redshift of objects is relatively easy to measure, directly provides the amo
 
 Important in the discussion of distances are the concepts of \textit{standard candles}\index{standard candle} and \textit{standard rulers}\index{standard ruler}.  A standard candle is an object of known luminosity that we can compare to its measured brightness to determine the distance.  The most well known standard candles are type Ia supernova.  These are sometimes referred to as standardizable candles since they are not all identical, and their luminosity is not known from first principals, but the luminosity can be well calibrated by a series of observations that we will describe in the next chapter.  A related concept is a standard siren\index{standard siren}, which is a gravitational wave source of known power that we can compare to the locally measured strain.  An example would be a binary black hole merger that is understood in such detail that the power is understood and localized such that the redshift of the host galaxy is measureable.
 
-A standard ruler is object of known size that we can compare to the measured angular size.  Examples of standard rulers are the baryon acoustic oscillations, or soundwaves in the primordial plasma, that are visible both as peaks in the CMB power spectrum and in the distribution of galaxies.  
+A standard ruler is object or feature of known comoving or physical size that we can compare to the measured angular size.  Examples of standard rulers are the baryon acoustic oscillations, or soundwaves in the primordial plasma, that are visible both as peaks in the CMB power spectrum and in the distribution of galaxies.  
 
 We want to work out the distance to a point where some radiation was emitted.
 \begin{equation}
@@ -272,7 +276,7 @@ We just saw how to relate the comoving arc length to an angle with $D_M$, and we
 as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation featre in the correlation function and power spectrum of galaxy samples.
 
 \begin{figure}
-  \caption{Angular diamter distance versus redshift.}
+  \caption{Angular diameter distance versus redshift.}
   \label{fig:angular_diameter_distance}
 \end{figure}
 
@@ -309,6 +313,10 @@ This ratio of comoving distances also returns when we talk about baryon acoustic
   L = \frac{dE_{\rm em}}{dt_{\rm em}}
 \end{equation}
 emitting a certain energy per unit time.  Note that we have to count the energy emitted versus a clock ticking in its rest frame.  This energy passes through a sphere a comoving coordinate $r$ away and is collected in a small area $A$.  We have already seen that the surface area of that sphere is $4\pi r^2$ and that $r = D_M = S_k(\chi)$.
+
+\begin{figure}
+  \caption{Diagram for Luminosity distance}
+\end{figure}
 
 In a static universe, the light energy collected is the same as that emitted accounting for the fraction of the area covered. So the received power at the observer is
 \begin{equation}
@@ -361,13 +369,14 @@ One familiar probability distribution function are Gaussian distribution functio
 \begin{equation}
   p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(x-\mu)^2}{2\sigma^2}   \right)
 \end{equation}
-which has two parameters, mean $\mu$ and variance $\sigma^2$.  It arises very often, whenever there are many independent contributions of random process.
+which has two parameters, mean $\mu$ and variance $\sigma^2$.  It arises very often, whenever there are many independent contributions to a random process.
 
 From any probability distribution you can calculate the mean as an integral
 \begin{equation}
   \mu = \int dx\,  x  p(x) = \langle x \rangle.
 \end{equation}
-We introduce the notation $\langle \dots \rangle$ as a shorthand for the integral against the probability distribution of some quantity.
+We introduce the notation $\langle \dots \rangle$ as a shorthand for the integral against the probability distribution of some quantity.  You can also think of this as averaging the quantity over a statistical ensemble\index{ensemble}---an idealized and very large or infinite set of copies of the system that we imagine to probe every possible outcome.
+
 For the Gaussian distribution this integral does indeed match the $\mu$ parameter from the distribution.  The mean is called the first moment of the distribution.  Computing the integrals $\langle x^p \rangle$ computes the $p$th moment.  More important here are the central moments $\langle (x-\mu)^p \rangle$ which are computed around the mean of the distribution.
 
 The variance\index{variance} of the distribution is the second central moment, denoted
@@ -380,26 +389,66 @@ Statistics are functions of data.  Some of the most important statistics are est
 \begin{equation}
   \bar X = \frac{1}{N_{\rm data}} \sum_i X_i.
 \end{equation}
-This is a good estimator because it is unbiased:
+This is a good estimator because it is unbiased: the ensemble average of this estimator is the true mean,
 \begin{equation}
-  \langle \bar X \rangle = \left\langle \frac{1}{N_{\rm data}} \sum_i X_i \right\rangle =
+  \langle \bar X \rangle = \left\langle \frac{1}{N_{\rm data}} \sum_i X_i \right\rangle =  \frac{1}{N_{\rm data}} \sum_i \left\langle X_i \right\rangle = \frac{N_{\rm data}}{N_{\rm data}} \mu = \mu.
+\end{equation}
+This, however, is not the only unbiased estimator for the mean.  The weighted average is also unbiased
+\begin{equation}
+  \bar { X}_w = \frac{ \sum_i w_i X_i}{\sum_i w_i}.
+\end{equation}
+If in a data set, some of the data points have larger uncertainty than others, it will be advantageous to choose weights that de-emphasize the uncertain points, rather than take the straight average.  We can evaluate the variance of our statistics.  For example, assuming all the data points are drawn from the same distribution then the variance of the mean is
+\begin{equation}
+ {\rm Var}(\bar X) =  \langle (\bar X - \langle \bar X \rangle)^2 \rangle = \frac{\sigma^2}{N_{\rm data}}
+\end{equation}
+Thus when we refer to the ``error bar'' or ``uncertainty'' of some averaged quantity, we are referring to the standard deviation, or the square root of this variance.  In a weighted average, we try to choose the weights to minimize the variance of the average.  We call such an estimate optimal.  
+
+We can also construct estimators for the variance.  For example, if we know the mean of a random variable's distribution, then we can construct an unbiased estimate as
+\begin{equation}
+  \bar \sigma^2 = \frac{1}{N_{\rm data}} \sum_i (X_i - \mu)^2.
+\end{equation}
+On the other hand, if we don't know the mean and have to estimate it, too, we have the unbiased estimator
+\begin{equation}
+  \bar \sigma^2 = \frac{1}{N_{\rm data}-1} \sum_i (X_i - \bar X)^2.
+\end{equation}
+You can also construct weighted average version of these if need be.
+
+In statistics, it is important to understand the distinction between parameters or properties of a distribution, and statistics that are built from data to estimate those parameters.  This can be confusing because these ideas often have the same name, but understand that the mean of a probability distribution is a separate concept to the estimator for the mean of a data set.
+
+Many situations call for a multivariate probability distribution.  For example, random variable $X$ and $Y$ may be drawn from a joint probability distribution $p(x,y)$.The marginalized distribution integrates out one or more variable from the joint distribution.
+\begin{equation}
+  p_X(x) = \int dy\, p(x,y)
+\end{equation}
+If the random variable are independent\index{independent random variables}, then the distribution factors
+\begin{equation}
+  p(x,y) = p_X(x) p_Y(y)   \qquad\mbox{(independent variables)},
+\end{equation}
+but this is not true if the variables are dependent:
+\begin{equation}
+  p(x,y) \neq p_X(x) p_Y(y)   \qquad\mbox{(correlated, covariant)}.
 \end{equation}
 
+The covariance of a pair of random variables is computed similar to the variance, but generalizes it:
+\begin{equation}
+  {\rm Cov}(X,Y) = \left\langle (X - \langle X \rangle)(Y - \langle Y \rangle) \right\rangle
+\end{equation}
+Thus ${\rm Var}(X) = {\rm Cov}(X,X)$.
 
-statistical ensemble, ensemble average
+For a large set of variables, the covariances of pair make a symmetric covariance matrix\index{covariance matrix}, with entries
+\begin{equation}
+  C_{ij} = {\rm Cov}(X_i, X_j)
+\end{equation}
+The variance of each $X_i$ lies on the diagonal of the matrix.  If the parameters are independent, the covariant matrix is diagonal.
 
-statistic
-
-Poisson distribution
-
-
-
-covariance
-
-statistic from data vs estimate of a property of a distribution
-
+Multivariate Gaussian distribution for $X$ (now considered as a vector)
+\begin{equation}
+  p(x) = \frac{1}{(2\pi|C|)^{n/2}} \exp\left(-\frac{1}{2} (x-\mu)^\dag C^{-1} (x-\mu) \right)
+\end{equation}
+where $x$ is the vector of values, $\mu$ is the vector of means, and $C$ is the covariance matrix.
 
 \section{Exercises}
+
+
 
 \begin{enumerate}
 \item Solve the Friedmann equation for a
