@@ -1,6 +1,47 @@
 \chapter{Galaxy correlations}
 
+Perturbations in the matter field are small at early times and even today on large scales.  We can do perturbation theory and linearize the force of gravity.
+
+\begin{equation}
+\rho(\mathbf{x},t) = \bar \rho(t) + \delta \rho   (\mathbf{x},t)
+\end{equation}
+split the mean density from the density perturbation.
+
+Over density perturbation
+\begin{equation}
+  \delta(\mathbf{x},t) = \frac{\delta \rho}{\rho} = \frac{\rho(\mathbf{x},t) - \bar \rho(t)}{\bar \rho(t)}
+\end{equation}
+
+Fourier expansion in flat space
+\begin{equation}
+\delta(\mathbf{x},t) = \int \frac{d^3k}{2\pi} \exp(i \mathbf{k \cdot x}) \delta(\mathbf{k},t) 
+\end{equation}
+We have the comoving vector $\mathbf{x}$ and the comoving wavevector  $\mathbf{k}$.  The wavenumber $k = | \mathbf{k} | = 2\pi/\lambda $ relationship to the comoving wavelength of the sinusoidal perturbation.
+
+For non-flat spaces, $\exp(i \mathbf{k \cdot x})$ is the wrong basis function, but there are correct ones you can use if needed.
+
+Once GR is linearized, the Fourier modes evolve independently following a differential equation
+\begin{equation}
+  \ddot \delta(\mathbf{k},t) + 2 H \dot \delta(\mathbf{k},t) + \left( \frac{c_s(t)^2 k^2}{a^2} - 4\pi G \bar \rho(t) \right) \delta(\mathbf{k},t)
+\end{equation}
+Depending on the signs of the terms, this looks an equation for a damped harmonic oscillator or for an unstable exponential growth or decay.
+
+In the second term, the Hubble parameter looks like the damping term in the oscillator equation and is referred to the Hubble friction.  It corresponds to expansion damping the growth of perturbation by spreading material out.  In the first part of the third term, the pressure term retards growth as the pressure of the fluid resists collapse.  In the second part of the third term, gravity promotes growth.
+
+Early on the sound speed is for a relativistic fluid.  \textbf{At late times, I don't know if there is an effective k dependence in the sound speed.  Probably.}
+
+Growth functions on large scales
+solutions
+\begin{equation}
+   \delta(\mathbf{k},t) =  \delta_+(\mathbf{k}) D_+(t) + \delta_-(\mathbf{k}) D_-(t)
+\end{equation}
+ignore the decaying modes.
+
+Growing modes have different behavior inside and outside the horizon which gives rise to the overall shape of the matter power spectrum.
+
+\section{Baryon Acoustic Oscillations}
+
+
 \section{Correlation functions}
 \section{Power spectra}
-\section{Baryon Acoustic Oscillations}
 \section{Alcock-Paczynski test}
