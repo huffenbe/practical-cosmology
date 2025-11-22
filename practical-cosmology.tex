@@ -3,12 +3,18 @@
 \usepackage{mathpazo}
 \usepackage{natbib}
 \usepackage{makeidx}
+\usepackage{xcolor}
+\usepackage[bookmarks]{hyperref}
 \usepackage{showidx}
 
 \makeindex
+\newcommand\fakeplot{%%
+  \fbox{\rule{1in}{0pt}Plot placeholder \rule{1in}{0pt}\rule{0pt}{2in}}}
+
 
 \begin{document}
 \tableofcontents
+
 \include{chapters/introduction.tex}
 \include{chapters/basics.tex}
 \include{chapters/standard_candles.tex}
@@ -16,7 +22,7 @@
 \include{chapters/CMB.tex}
 \include{chapters/CMB_secondaries.tex}
 \include{chapters/galaxy_correlations.tex}
-\include{chapters/modeling_cross_correlations.tex}
+\include{chapters/cross_correlations.tex}
 \include{chapters/nonlinearities.tex}
 \include{chapters/cosmic_shear.tex}
 \include{chapters/cosmological_parameters.tex}
