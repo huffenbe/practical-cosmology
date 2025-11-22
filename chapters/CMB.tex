@@ -110,7 +110,7 @@ that depend on the associated Legendre polynomials $P_l^m$.  In cosmology we use
 
 These functions have several important identities.  They are orthonormal functions integrated over the on the whole sphere
 \begin{equation}
-  \int d\Omega Y_l^m (\theta,\phi) Y_{l'}^{m'}(\theta,\phi) = \delta_{ll'} \delta_{mm'}
+  \int d\Omega Y_{lm}(\theta,\phi) Y_{l'm'}(\theta,\phi) = \delta_{ll'} \delta_{mm'}
 \end{equation}
 This in particular means that for $l=0$, $m=0$, we must have
 \begin{equation}
@@ -119,6 +119,20 @@ This in particular means that for $l=0$, $m=0$, we must have
 
 Another important identity for spherical harmonics is the addition theorem
 \begin{equation}
-  \sum_{m} Y_l^m(\mathbf{n}) Y_l^m(\mathbf{n}') = \frac{2l+1}{4\pi} P_l(\mathbf{n \cdot n}') 
+  \sum_{m} Y_{lm}(\mathbf{n}) Y_{lm}(\mathbf{n}') = \frac{2l+1}{4\pi} P_l(\mathbf{n \cdot n}') 
 \end{equation}
 for $\mathbf{n}$ as a unit vector pointing to $(\theta,\phi)$ and similarly for $\mathbf{n}'$.
+
+
+
+
+Expansion of a plane wave:
+\begin{equation}
+  \exp({i \mathbf k \cdot \mathbf r}) = \sum_{l} (2 l + 1) i^l j_l(k r) P_l(\hat{\mathbf k} \cdot \hat{\mathbf r})
+\end{equation}
+where $j_l$ are the spherical bessel functions of the first kind.
+
+\begin{equation}
+  \exp({i \mathbf{k} \cdot \mathbf{r}}) = 4 \pi \sum_{lm} i^l j_l(k r) Y_{lm}{}(\hat{\mathbf k}) Y_{lm}^{*}(\hat{\mathbf r})
+\end{equation}
+This relationship is vital when we come to projecting the harmonics of signal in the bulk of space into signals on the sphere of the sky.
