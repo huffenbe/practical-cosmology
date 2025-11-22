@@ -1,9 +1,31 @@
-\chapter{Modeling cross-correlations}
+\chapter{Cross-correlations}
 
+Cross correlation are a good way to measure halo bias, the growth of structure, and the overall amplitude of fluctuations.
+
+tomographic
+
+Fluctuations amplitudes $S_8 = \sigma_8 (\Omega_m /0.5)^{0.5}$
+
+autocorrelation together with lensing breaks the bias degeneracy
+
+stacking
+cross-correlation function
+cross power spectrum
 
 \section{Synthesizing cross-correlations}
 
-Cholesky decomposition
+
+At each multipole $l$
+\begin{equation}
+  C_l = \left( \begin{array}{cccc}
+    C^{aa} & C^{ab} &  C^{ac} &  \\
+    C^{ba} & C^{bb} &  C^{bc} & \dots \\
+    C^{ca} & C^{cb} &  C^{cc} &  \\
+    & \vdots & & \ddots
+  \end{array} \right)_l
+\end{equation}
+
+Since as a covariance this is a real, positive definite, symmetry array, it has a Cholesky decomposition
 \begin{equation}
   C_l = LL^\dag
 \end{equation}
@@ -15,3 +37,12 @@ mix the alms
 
 
 \section{Limber approximation}
+
+
+
+\section{Computing cross correlations}
+
+contamination
+interlopers
+
+jackknife error bars
