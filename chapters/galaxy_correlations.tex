@@ -39,9 +39,49 @@ ignore the decaying modes.
 
 Growing modes have different behavior inside and outside the horizon which gives rise to the overall shape of the matter power spectrum.
 
+The matter power spectrum is
+\begin{equation}
+\langle  \delta(\mathbf{k}) \delta^*(\mathbf{k'}) \rangle = (2\pi)^3 P(k) \delta(\mathbf{k-k'})
+\end{equation}
+
+Galaxies are biased tracers of the matter field.  Typically this is modeled with a linear bias, e.g. for galaxies of mass $M$
+\begin{equation}
+  \delta_g(\mathbf{k}) = b(M) \delta(\mathbf{k}).
+\end{equation}
+More massive galaxies tend to form in denser areas, at the peaks of the density field, and so are are more biased.
+
+\begin{figure}
+  \begin{center}
+    \fakeplot
+  \end{center}
+  \caption{Plot showing the increase in bias as a function of mass.}
+\end{figure}
+
+The relationship between a power spectrum and a correlation function is
+\begin{equation}
+  A(\mathbf{x}) = \int \frac{d^3k}{(2\pi)^3} \exp(i \mathbf{k \cdot x}) A(\mathbf{k})
+\end{equation}
+\begin{eqnarray}
+  \langle A(\mathbf{x})A(\mathbf{x}')^*\rangle &=& \int \frac{d^3k}{(2\pi)^3}\frac{d^3q}{(2\pi)^3} \exp(i \mathbf{k \cdot x}) \exp(-i \mathbf{q \cdot x'}) \langle A(\mathbf{k}) A(\mathbf{q})^* \rangle \\
+  &=&  \int \frac{d^3k}{(2\pi)^3}\frac{d^3q}{(2\pi)^3} (2\pi)^3 P(k) \delta(\mathbf{k-q}) \exp( i \mathbf{k \cdot x} -  i \mathbf{q \cdot x'}) \\
+  &=& \int \frac{d^3k}{(2\pi)^3}  P(k) \exp(i \mathbf{k \cdot (x-x')}) \\ 
+\end{eqnarray}
+
+\begin{equation}
+ \langle  A(\mathbf{x})A(\mathbf{x+r}) \rangle = \frac{4\pi}{(2\pi)^3} \int dk\, k^2\, \frac{\sin(kr)}{kr} P(k)
+\end{equation}
+
 \section{Baryon Acoustic Oscillations}
 
 
 \section{Correlation functions}
 \section{Power spectra}
 \section{Alcock-Paczynski test}
+
+
+
+\section*{Supplemental: Fourier transform of a spherical function}
+\begin{eqnarray}
+  f(\mathbf{k}) &=& \int d^3x \exp(- i \mathbf{k \cdot x}) \\
+  &=& \int d^3x \exp(- i \mathbf{k \cdot x}) Y_{00} \sqrt{4\pi}
+\end{eqnarray} 
