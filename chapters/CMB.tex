@@ -41,10 +41,15 @@ The CMB signal is smoothed by the finite resolution of the telescope.  We descri
 \begin{equation}
   T(\mathbf{n},\omega) = \int d\mathbf{n}' [D(\mathbf{n},\omega)b](\mathbf{n}') T(\mathbf{n}')
 \end{equation}
-The rotation operator $D$ takes the beam from its fiducial orientation to point in the direction $\mathbf{n}$ with an orientation rotation around the telescope boresight, then the integral collects the light from the unmodified sky in the directions that the telescope is sensitive to.  Unlike optical telescope, CMB telescopes do not take pictures.  They scan back and forth over and over, collecting low signal-to-noise data that is later averaged and re-assembled into a sky map.  We defer the mapmaking discussion to later, but one consequence is that one point on the sky may be seen from many different angles and by many different detectors, which can average to symmetrize the beam.  So although there are fast algorithms to compute the full convolution\footnote{totalconvolver}, for the main beam, it is often good enough to use a azimuthally symmetric beam approximation $b(\mathbf{n}) = b(\theta)$.  In that case the beam convolution can be written as a multiplication in harmonic space,
+The rotation operator $D$ takes the beam from its fiducial orientation to point in the direction $\mathbf{n}$ with an orientation rotation $\omega$ around the telescope boresight, then the integral collects the light from the unmodified sky in the directions that the telescope is sensitive to.  Unlike optical telescope, CMB telescopes do not take pictures.  They scan back and forth over and over, collecting low signal-to-noise data that is later averaged and re-assembled into a sky map.  We defer the mapmaking discussion to later, but one consequence is that one point on the sky may be seen from many different angles and by many different detectors, which can average to symmetrize the beam.  So although there are fast algorithms to compute the full convolution\footnote{totalconvolver}, for the main beam, it is often good enough to use a azimuthally symmetric beam approximation $b(\mathbf{n}) = b(\theta)$.  In that case the beam convolution can be written as a multiplication in harmonic space,
 \begin{equation}
   a_{lm}^{\rm beam} = b_l a_{lm}
 \end{equation}
+
+\begin{equation}
+  b_l = \int d(\cos \theta) P_l(\cos \theta) b(\theta)
+\end{equation}
+
 
 pixel window function
 

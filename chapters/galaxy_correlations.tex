@@ -71,14 +71,196 @@ The relationship between a power spectrum and a correlation function is
  \langle  A(\mathbf{x})A(\mathbf{x+r}) \rangle = \frac{4\pi}{(2\pi)^3} \int dk\, k^2\, \frac{\sin(kr)}{kr} P(k)
 \end{equation}
 
+linear matter power spectrum
+halofit
+non-linear mass
+
+
 \section{Baryon Acoustic Oscillations}
 
 
-\section{Correlation functions}
-\section{Power spectra}
+\section{Estimating galaxy correlation functions}
+If galaxies of a particular category are at positions $\mathbf{x}_i$, then the galaxy signal is the sum over delta functions
+\begin{equation}
+  g(x) = \sum_i   \delta(\mathbf{x} - \mathbf{x}_i).
+\end{equation}
+The number of galaxies in a particular volume 
+\begin{equation}
+  N_j = \int_{V_j}  dV \, g(x)
+\end{equation}
+because the delta functions inside the volume integrate to one and the ones outside integrate to zero.
+
+If the number density of galaxies per comoving volume is $n$, which by homogeneity we expect to be the same everywhere at a particular time, then the mean number of galaxies you would expect in a comoving volume would be
+\begin{equation}
+  \langle N_j \rangle  = n V_j
+\end{equation}
+
+There are two equivalent methods of thinking about the correlations of these galaxies.  First, you can pixelize the volume into small pixels, compute galaxy densities via
+\begin{equation}
+ n_j = N_j / \Delta V_j
+\end{equation}
+and the pixelated galaxy overdensity as
+\begin{equation}
+  \delta_{g,j} = \frac{n_j - n}{n}
+\end{equation}
+which naturally has zero mean.
+For a given density, you could make the volumes $dV_j$ so small that there is a negligible probability to have more than zero or one galaxy in the volume.  The probability of one galaxy then is approximately $n dV_j$, which is a very small number.
+
+
+For two separate volumes, the correlation function $\xi(r)$ is simply the correlation function of this field, but we have to be careful at separation $r=0$ because then we are talking about the same pixel twice.
+
+
+Then, even if there is no correlation function we have a $n$ chances of having one galaxy and $(1-n)$ chance of having zero galaxies.  So the $\langle N_j N_j \rangle = n dV_j \cdot 1^2 + (1-n dV_j) \cdot 0^2 = n dV_j$ (no correlation).  Dividing out the volume, we find the total correlation is the Poisson term plus the normal correlation function.
+\begin{equation}
+ \langle n_j n_{j'} \rangle = n \frac{1}{dV_j} \delta_{jj'} + n^2 \xi(r)
+\end{equation}
+
+You can even take the pixel size to zero and directly say that
+\begin{equation}
+  \delta_g(x) = \frac{g(\mathbf x) - n }{n}
+\end{equation}
+ in which case the Kronecker delta function in pixels becomes a Dirac delta  
+\begin{equation}
+ \langle n(\mathbf{x}) n(\mathbf{x+r}) \rangle = n \delta(\mathbf r) + n^2 \xi(r)
+\end{equation}
+
+The other way to view the correlation function is as the excess probability to find a pair of galaxies at a particular distance.   If the positions of the galaxies were independent, then the chance to have one galaxy in $V_1$ \textit{and} one galaxy in another volume $V_2$ would be their product $P = n^2 V_1 V_2$.  Galaxies are not independent, they are more common in denser areas and drawn together by gravity.  The correlation function $\xi(r)$ gives the excess probability to find a pair in small volumes separated by $r$:
+\begin{equation}
+  P(r) = n \delta(\mathbf r) V_1 V_2 +   n^2 [ 1+\xi(r) ] V_1 V_2.
+\end{equation}
+
+
+
+This field has a correlation function with the usual definition:
+\begin{equation}
+\langle  \delta_g(\mathbf{x}) \delta_g(\mathbf{x + r})  \rangle = \frac{1}{n} \delta(\mathbf r) +  \xi(r)
+\end{equation}
+
+\subsection{Pair counting}
+
+Since the correlation gives the probability of pairs, we may estimate it by counting pairs of galaxies and then comparing to the number of pairs we would have expected if there was no correlation.
+
+We define $DD(r)$ to be the number of pairs in the data in a shell containing separation radius $r$.  We call this function ``data--data.''  We need to quantify the boundaries of our survey with some weight or selection function, $w(\mathbf{x})$, which is the probability that a galaxy of the category under consideration would be observed by our survey.  At the center of our survey this probability is high, and at the edge it may smoothly or abruptly fall to zero.
+
+Then the expected number of pair counts (in a radial shell containing separations near $s$) that we will find in our survey is
+\begin{eqnarray}
+  \langle DD(s) \rangle &=& \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}} \frac{dP}{dV_1 dV_2} w(\mathbf{x_1}) w(\mathbf{x_2}) {dV_1}{dV_2}  \\
+  &=& n^2 \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}} [1 + \xi(|\mathbf{x_1 - x_2}|)] w(\mathbf{x_1}) w(\mathbf{x_2}) {dV_1}{dV_2} \\
+  &\approx& n^2 [1 + \xi(s)] \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}}  w(\mathbf{x_1}) w(\mathbf{x_2}) {dV_1}{dV_2} 
+\end{eqnarray}
+In the first equation, we are tallying up the probability to find a pair over the whole survey volume.  In the second equation, we replace the probability for its expression in terms of the correlation function.  In the third equation, we take advantage of the narrowness of the shell to replace $\xi(|\mathbf{x_1 - x_2}|)]$ with the approximate value $\xi(s)$ and pull it out of the integral.
+
+  Since the value of the integral does not depend of the correlation function, we can just evaluate it:
+  \begin{equation}
+    RR(s) = n^2 \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}}  w(\mathbf{x_1}) w(\mathbf{x_2}) {dV_1}{dV_2} 
+  \end{equation}
+  This function is the expected number of pairs without correlation and is called ``random--random.''  You can evaluate it via a Monte Carlo method by generating a random catalog and counting the pairs.  To match the selection of the data, you can propose random positions inside a box that encompasses the survey volume then accept or reject that proposed position according to the catalog selection function $w(\mathbf x)$.  By increasing the source density in the random catalog, you can improve the accuracy of the integral, limited only by the amount of work you want to put in and being careful to normalize it to the actual source density squared out front.
+
+Thus we have an approximately unbiased ``pair-count'' estimator for the correlation function
+\begin{equation} \tilde \xi_{\rm PC}(s)  = \frac{DD(s)}{RR(s)} - 1
+\end{equation}
+For precision applications, the actual ensemble average of this estimator is
+\begin{equation}
+  \langle  \tilde \xi_{\rm PC}(s) \rangle = \frac{n^2 \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}}   \xi(|\mathbf{x_1 - x_2}|)   w(\mathbf{x_1}) w(\mathbf{x_2}) {dV_1}{dV_2}  }{RR(s)}
+\end{equation}
+
+Similar to the band-power window function we can compute a window function here that relates the theoretical quanitity to the ensemble average of the estimate:
+\begin{equation}
+  W_{\rm PC}(\mathbf s)  = \frac{n^2 \int   w(\mathbf{x_1}) w(\mathbf{x_1 + s}) {dV_1}  }{RR(s)}
+\end{equation}
+which accounts for the slight changes in the selection function across the shell.  Then we have
+\begin{equation}
+\langle  \tilde \xi_{\rm PC}(s) \rangle = \int d^3s\, W_{\rm PC}(\mathbf s)  \xi(|\mathbf{s}|)  
+\end{equation}
+The window-function-weighted theory correlation is what should be compared to data in any parameter-fitting exercise.
+
+
+\subsubsection{Landy-Szalay estimator}
+We are vulnerable to a systematic effect if we make a mistake with the selection function.  If we think the selection function is $w(\mathbf x)$, but the selection function is actually $w(\mathbf x) + \epsilon(\mathbf x)$, then our expression for the $RR(s)$ is unchanged, but the ensemble average for the pair count becomes
+\begin{equation}
+ \langle DD(s) \rangle =  n^2 \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}} [1 + \xi(|\mathbf{x_1 - x_2}|)] (w(\mathbf{x_1}) +\epsilon(\mathbf{x_1}) )( w(\mathbf{x_2}) + \epsilon(\mathbf{x_2}) ) {dV_1}{dV_2}
+\end{equation}
+If the selection function mistake is small compared to the selection function and the correlation function is small compared to unity, then we can neglect terms of order ${\cal O}(\epsilon^2)$ and  ${\cal O}(\epsilon\xi)$.
+
+In that case the expected value of the estimator picks up two symmetric terms of order $w(\mathbf x_1)\epsilon(\mathbf x_2)$ and $w(\mathbf x_2)\epsilon(\mathbf x_1)$.  Combining these identical terms, we have
+\begin{equation}
+  \langle  \tilde \xi_{\rm PC}(s) \rangle = \int d^3s\, W_{\rm PC}(\mathbf s)  \xi(|\mathbf{s}|)
+  + \frac{2 n^2 \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}} w(\mathbf{x_1})  \epsilon(\mathbf{x_2})  }{RR(s)}. \label{eqn:correlation_function_correction}
+\end{equation}
+
+We can construct another quantity that is linear in $\epsilon$ and use it to cancel this additional term.  Consider a ``data--random'' pair count.  The data has the true selection and the random has our assumed correction.  The data cannot be correlated to the random catalog, so the expectation value of this pair count is 
+\begin{eqnarray}
+  \langle DR(s) \rangle &=& n^2 \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}} w(\mathbf x_1) [w(\mathbf x_2) + \epsilon(\mathbf x_2) ] dV_1 dV_2  \\
+  &=& RR(s) +  n^2 \int_{|\mathbf{x_1 - x_2}| \in \mbox{\scriptsize shell}} w(\mathbf x_1) \epsilon(\mathbf x_2) dV_1 dV_2.
+\end{eqnarray}
+The second term is like half the numerator in the extra term in Equation \ref{eqn:correlation_function_correction}.  Again, by increasing the density of mock galaxies in the random catalog, we can improve the accuracy of this estimator, taking account of the changed density so that the normalization matches what is needed for $DD$.  Thus we can construct a second estimate of the correlation function, known historically as the Landy-Szalay estimator, as
+\begin{equation}
+ \xi_{\rm LS} =  \frac{DD(s) - 2 DR(s) + RR(s)}{RR(s)}  
+\end{equation}
+which has expectation 
+\begin{equation}
+ \langle \xi_{\rm LS}  \rangle =   \int d^3s\, W_{\rm PC}(\mathbf s)  \xi(|\mathbf{s}|)
+\end{equation}
+Because of this robustness to errors in the selection function, and because it has a smaller variance than the pair counting, the Landy-Szalay estimator is widely used.  Other authors have constructed other, similar estimators to minimize bias and variance when the correlation function is not small, as we assumed, but for more realistic conditions.
+
+\subsubsection{Integral constraint}
+Another systematic effect that we are vulnurable to relates to the overall density of galaxies. Fluctuations of the galaxy density on the scale of the survey or larger can raise or lower the number of galaxies compared to the mean number in the Universe overall.  (In comparison, the Poisson error in the number of galaxies is negligable for modern surveys with millions of galaxies.)
+
+Our only way to estimate the density of galaxies is to divide the actual count of galaxies by the efective volume of the survey. 
+\begin{equation}
+\tilde n = \frac{N}{\int w(\mathbf x) \, dV }
+\end{equation}
+
+Averaging over the ensemble of galaxy realizations but not over matter fluctuations we find
+\begin{equation}
+  \frac{\langle \tilde n \rangle_{\rm gal\ only}}{n} = \frac{\langle N \rangle_{\rm gal\ only}}{n \int w(\mathbf x) \, dV } =      \frac{n \int w(\mathbf x)[1+\delta_g(\mathbf x)] \, dV}{n \int w(\mathbf x) \, dV } = 1 +   \frac{ \int w(\mathbf x)\delta_g(\mathbf x) \, dV}{ \int w(\mathbf x) \, dV }
+\end{equation}
+and $\delta_g$ we naturally don't know.  Thus $\tilde n / n$ has a correction at linear order in $\delta_g$.
+The $DD$ pair count is fine---it depends only on the sky measurement---but our $DR$ and $RR$ pair counts from the random catalog used the wrong source density, using $\tilde n$ in the normalization when $n$ was needed.  If we additionally average over the galaxy overdensity we can use $\langle \delta_g \rangle = 0$ to see that $\langle \tilde n / n  \rangle = 1$. At least $\tilde n$ is an unbiased estimator for the galaxy density.
+
+For $RR$ we have computed
+\begin{equation} \tilde n^2 \int \dots  = \left( \frac{\tilde n}{n} \right)^2 n^2 \int \dots = \left[ 1 +   \frac{ \int w(\mathbf x)\delta_g(\mathbf x) \, dV}{ \int w(\mathbf x) \, dV } \right]^2 n^2 \int \dots \end{equation}
+where the rightmost quantity is what we need to cancel the similar expression in $DD$.
+
+
+
+
+  \subsubsection{Error estimates}
+Error estimates mock bootstrap, jackknife, mock catalogs, poisson errors on $DD(s)$
+  
+
+\subsection{Isotropy and the fiducial cosmology}
+
+\subsection{Redshift distortions}
+
+
+\subsection{Galaxy selection}
+
+\section{Estimating galaxy power spectra}
+
+
+
 \section{Alcock-Paczynski test}
 
 
+
+\section*{Further reading}
+
+LS paper 1993ApJ...412...64L
+
+
+\citet{2013A&A...554A.131V} makes a weighted combination of $DD$ $DR$ and $RR$ terms to minimize the variance when the correlation function takes realistic values.
+
+The discussion of the correlation function follows Christopher Hirata's lecture notes which are findable online.
+
+DESI power spectrum method paper
+
+
+\section*{Exercises}
+
+\begin{itemize}
+  \item Show that the LS estimator cancels the $\epsilon$-dependent term and has the expectation value that matches the equation.
+\end{itemize}
 
 \section*{Supplemental: Fourier transform of a spherical function}
 \begin{eqnarray}
