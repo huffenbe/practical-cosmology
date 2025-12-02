@@ -1,20 +1,192 @@
 \chapter{Standard Candles}
 
+We want to use the relationship between the apparent brightness and the known ( or calibrated) luminosity of objects to measure the cosmological model through the luminosity distance $D_L(z)$ and ultimately through the expansion history $a(t)$.
+
+
 
 \section{Point sources of radiation}
 
+We can characterize the brightness of an object by its spectral flux density, which tells you how much energy per time you would collect from that source in unit collecting area within a unit bandwidth of the radiation spectrum.  
 
-
-Distance modulus
+Looking at the definition of flux density and its units, it is clear that in order to figure out how much energy $E$ you would receive from an object during an observation, you need to integrate the flux density $F_\lambda$ over the time of observation $dt$, collecting area $dA$, and bandwidth $d\lambda$.
 \begin{equation}
-  \mu = 5 \log_{10}(D_L / 10\,\mbox{pc})
+  E = \int F_\lambda \, dt\, dA\, d\lambda
+\end{equation}
+The units for brightness are thus $\mbox{W m}^{-2}\mbox{ m}^{-1}$ where the  m$^2$ corresponds to area and the m corresponds to wavelength.
+If the detectors are not equally efficient at every frequency or over all parts of the receiver's collecting area, in practice you need to multiply the flux density by efficiency factors that are a function of position or frequency before integrating, such as
+\begin{equation}
+  E_{\rm band} = \int R_{\rm band}(\lambda) F_\lambda \, dt\, dA\, d\lambda
+\end{equation}
+where $R(\lambda$) is the efficiency of the detector/filter combination, which ranges from zero to one.
+Here we have assumed that we are describing the spectrum in terms of the wavelength  of the radiation (common in optical astronomy), but this could equivalently be done in terms of the frequency of radiation (common in radio astronomy).  If we think of
+\begin{equation}
+   F_\lambda = \frac{dE}{dt \, dA \, d\lambda}
+\end{equation}
+as we have done above, or alternatively,
+\begin{equation}
+  F_\nu = \frac{dE}{dt \, dA \, d\nu}
+\end{equation}
+then it becomes clear that
+\begin{equation}
+  F_\nu = F_\lambda \left| \frac{d\lambda}{d\nu} \right| = F_\lambda \frac{c}{\nu^2} = F_\lambda \frac{\lambda^2}{c}
+\end{equation}
+where we have used the speed of light and the relation $\lambda = c/\nu$ in the last equations.  Even though $\lambda$ decreases when $\nu$ increases, so the derivative is negative, by convention we make both spectra $F_\nu$ and  $F_\lambda$ positive, which accounts for the absolute value.
+
+We don't receive much power from astronomical objects.  In radio, microwave, and sub-millimeter band astronomy, the typical unit for brightness is called the Jansky, which in SI units is
+\begin{equation}
+  1\ \mbox{Jy} = 10^{-26}\ \mbox{W m}^{-2}\mbox{ Hz}^{-1}
 \end{equation}
 
-\section{K-corrections}
+
+We can model the contribution of a point source to the sky signal as a delta function:
+\begin{equation}
+  s_\lambda(\hat n) = F_\lambda \delta( \hat n - \hat n_0)
+\end{equation}
+where $\hat n$ is a direction on the sky and $\hat n_0$ is the vector that points to the source of radiation.  If we thus integrate any area of sky (or \textit{aperture}) that contains the source, we get the value $S$ of its brightness. Note that the delta function  on the two-dimensional sky has units of inverse angle squared, or inverse solid angle. 
+
+Of course, telescopes do not have perfectly sharp imaging, and so radiation coming from one direction is detected from other, nearby directions.   Light from a single direction spreads out onto the focal plane, falling into several pixels on the camera.  This effect of the telescope's resolution we call this the ``point-spread function'' in optical or infrared astronomy, because it describes how a point of light is spread out on the image. In radio and microwave astronomy, we call the same thing the telescope ``beam,'' because if you reverse the purpose of the radio dish, and use it as a transmitter instead of a receiver, the point-spread function describes intensity of the beam of radiation that the horn or dish puts out as a function of angle to the telescope boresight.  The original delta function of radiation gets convolved to produce the image of surface brightness captured by our camera exposure.
+
+We will continue a detailed discussion of the point spread function or beam in the section on the cosmic microwave background, where it figures into an important correction for the measurement of fluctuations.  For now we will assume that we can get good photometry, a good measurement of the brightness, by integrating up the light from the star or supernova as it is spread by the optics across several pixels.
+
+Thus the bolometric brightness of the object, which occurs in the luminosity distance, is
+\begin{equation}
+  F = \int_{{\rm all}\ \lambda} F_\lambda d\lambda 
+\end{equation}
+or
+\begin{equation}
+F_\lambda = \frac{dF}{d\lambda}
+\end{equation}
+while the flux in a band, say V band, is
+\begin{equation}
+  F_{\rm band} = \int R(\lambda) F_\lambda d\lambda = \int R(\lambda) s_\lambda d\lambda d\Omega. \label{eqn:flux_in_band}
+\end{equation}
+using the band filter function $R(\lambda)$, or a similar expression employing $F_\nu$.
+
+\begin{figure}
+  \begin{center}
+    \fakeplot
+  \end{center}
+  \caption{Filter functions of photometric systems. Nice to show UBV and ugrizy.}
+\end{figure}
+
+Every telescope has its own filters and wavelength response.  Some notable photometric systems include the Johnson UBV system, Rubin-LSST ugrizy, and SDSS u',g',r',i',z'.  Hubble Space Telescope's WFC3 and James Webb Space Telescope's NIRCam have filters named for their central wavelength and shape, for example NIRCam's F150W, a 0.4 $\mu$m ``wide'' band centered at 1.5 $\mu$m.
 
 
+\subsubsection{Magnitude system}
+I am no great fan of it, but it is common in astronomy to use the traditional 19th-century logarithmic system of \textbf{stellar magnitudes}\index{magnitude system} to describe the brightness of objects.  Magnitude systems have two properties.  First, if two fluxes are in a ratio of 100, they will differ by 5 magnitudes, with the brighter having the \textit{lower} magnitude.  This connects back to the 2000-year-old visual star catalog of Greek astronomer Hipparchus (and popularized by Ptolemy) who ranked the brightest stars as first magnitude, the next brightest as second magnitude and so on.  The second property sets the zero point for the magnitude scale and warrants more discussion below.
+
+The relationship between fluxes and magnitudes is thus
+\begin{equation}
+  \frac{F_1}{F_2} = 100^{(m_1-m_2)/5},
+\end{equation}
+or equivalently,
+\begin{equation}
+  m_1-m_2 =  -\frac{5}{2} \log_{10} \left( \frac{F_1}{F_2} \right).
+\end{equation}
+Here $m_1$ and $m_2$ are called apparent magnitudes because they are based on the brightness that is apparent to our observation.
+
+Although the magnitude carries the same information as the flux, and perhaps adds some unnecessary confusion, the magnitude system does ease the job of calibrating the photometry in the following sense.  It is straightforward to get relative calibration for a target object by comparing the ratio of its brightnesses to a calibration star in the same image with a known magnitude.  Any multiplicative calibration factors inherent to that particular image divide out, like the time of exposure or efficiency of the detector.  If no calibration star is available, the magnitude calibration can be chained back, bright star to bright star, to one of known brightness though several links.  For calibration, it's only straightforward to compare two fluxes of alike types, for example, two bolometric fluxes or two g-band fluxes.
+
+There are two common choices of normalization or zero point.  The normalization can be thought of as choosing a reference flux
+\begin{equation}
+  m_{\rm band} = -2.5 \log_{10} \left( \frac{\int R_{\rm band}(\lambda) F_\lambda d\lambda}{F_{{\rm band},\ \rm ref}} \right)  ,
+  \label{eqn:reference_flux}
+\end{equation}
+or equivalently the additive constant in
+\begin{equation}
+  m_{\rm band} = -2.5 \log_{10} \left( \frac{\int R_{\rm band}(\lambda) F_\lambda d\lambda}{[\mbox{flux unit}]} \right)  + C_{\rm band}.
+\end{equation}
+The Vega magnitude system chooses these references so that the magnitude of Vega is zero in all bands.  Vega is a spectral type A0 star with blackbody temperature about 8,900 K.  This is slightly problematic for precision work since Vega is variable by about a tenth of a magnitude.  The Johnson UVB system defines 0.0 magnitude in each band with the average of six stars with the same spectral type as Vega.
+
+The AB magnitude system, on the other hand, provides an absolute energy calibration without depending on particular stars.
+For any bandpass filter, it is defined so that
+\begin{eqnarray}
+  m_{AB} &=& -2.5 \log_{10} \left( \frac{\int R(\nu) F_\nu d\nu}{\int R(\nu) (1\mbox{ Jy})  d\nu} \right) + 8.90 \\
+  &=&  -2.5 \log_{10} \left( \frac{\int R(\nu) F_\nu d\nu}{\int R(\nu) (1\mbox{ erg s}^{-1}\mbox{ cm}^{-2}\mbox{ Hz}^{-1}) d\nu}  \right) - 48.60, \nonumber
+\end{eqnarray}
+or
+using a reference flux in equation \ref{eqn:reference_flux} of
+\begin{equation}
+  F_{{\rm band,\ ref}} = \int R(\nu) (1 \mbox{ Jy} \cdot 10^{-8.90/-2.5}) d\nu \approx \int R(\nu) (3631 \mbox{ Jy}) d\nu.
+\end{equation}
+This is a pretty good definition because it puts things on firm footing with respect to energy units.\footnote{Note that these expressions are sometimes written for a very narrow filter over which the $F_\nu$ doesn't vary, and the integral $\int R(\nu) d\nu$ is canceled on top and bottom, leaving only e.g.\ the $(F_\nu/1\mbox{ Jy})$ in the logarithm and defining a monochromatic magnitude rather than a band magnitude.  Sometimes the units are left out of the equation entirely, but mentioned in text instead, which I think is a confusing abuse of unit notation.  Be wary.}
+To actually get this you still have to go through a chain of calibration, typically using standard stars along the way.
+
+A \textbf{color index}\index{color index} difference between the magnitudes in two bands, like $m_B-m_V$ (often written a simply $B-V$), is a comparison of the received energy flux between the bands.  In a Vega-based magnitude system, it is the base-10-logarithm of that ratio divided by the similar ratio from Vega.  Thus stars with the same spectrum as Vega have color indices equal to zero for all pairs of bands.  Across the visual bands, for smaller wavelength magnitudes minus larger wavelength magnitudes, the color index is negative for stars hotter than Vega and positive for stars cooler than Vega.
+
+One disadvantage of the magnitude system is that it becomes difficult to add or accumulate.  
+Two 10.0 magnitude stars in binary system add to a total magnitude of 9.25 while two 20.0 mag stars add to a total of 19.25 because the decrease $\delta m = -0.75$ corresponds to a doubling
+of flux.
+The common practice of providing surface brightness with a unit of mag/arcsec$^2$ is really terrible.  It means that a 1 arcsec$^2$ pixel would have a flux corresponding to the particular magnitude (regardless of the actual pixel size), but these must be converted back to flux to add up the flux.
+
+
+
+\subsubsection{Distance modulus}
+While the apparent magnitude measures the brightness of an object, the \textbf{absolute magnitude}\index{absolute magnitude} measures its luminosity.  The absolute magnitude $M$ is defined as what the apparent magnitude would be if the object where 10 pc away.\footnote{Absolute magnitude was conceived for stars and is kind of inappropriate for a supernova, since a supernova at 10 pc would be exceedingly dangerous, destroying the ozone layer and causing a mass extinction on Earth.}  Considering bolometric magnitudes, 
+\begin{equation}
+  100^{(m_{\rm bolo}-M_{\rm bolo})/5} = \frac{F_{10\ \rm pc}}{F} = \frac{{L}/{4\pi(10\ \rm pc)^2}}{{L}/{4\pi D_L^2}} = \left( \frac{D_L}{10\ \rm pc} \right)^2
+\end{equation}
+
+The apparent magntitude is easiest to get.  In cosmology, we are often trying to learn the absolute magnitude or the luminosity in order to determine the luminosity distance as a function of redshift and thus the cosmology.
+
+\begin{figure}
+  \begin{center}
+    \fakeplot
+  \end{center}
+  \caption{Distance modulus vs. redshift, with or without SNIa data.}
+\end{figure}
+
+Taking the logarithm yields the \textbf{distance modulus}, the difference between the apparent and absolute magnitude.  
+
+%For the Sun, $M_V = +4.83$ while $m_V = -26.7$.  For Type Ia supernova $M_V = -19.3$
+
+\begin{equation}
+  \mu = m_{\rm bolo} - M_{\rm bolo} =  5 \log_{10}(D_L / 10\,\mbox{pc})
+\end{equation}
+
+\subsubsection{K-corrections}
+In the more realistic case that you measure the object in a filter band, you must make a further correction.  The emission that you receive is redshifted from that which was emitted and the wavelength increment in the bandwidth is also redshifted.  To compute this correction, let's recall that observed wavelength relates to the emitted wavelength as
+\begin{equation}
+  \lambda = (1+z) \lambda_{\rm em}.
+\end{equation}
+Then, for the spectral flux density we will have,
+\begin{eqnarray}
+  F_\lambda = \quad \frac{dF}{d\lambda} &=& \frac{d}{d\lambda} \frac{L}{4\pi D_L^2} \\
+  &=& \frac{d}{d ((1+z) \lambda_{\rm em})} \frac{L}{4\pi D_L^2} \\
+  &=& \frac{1}{1+z} \frac{dL/d\lambda_{\rm em} |_{\lambda_{\rm em}} }{4\pi D_L^2} \\
+  &=& \frac{1}{1+z} \frac{L_{\lambda_{\rm em}} }{4\pi D_L^2} \\
+  &=& \frac{1}{1+z} \frac{L_{\lambda/1+z}}{4\pi D_L^2}.
+\end{eqnarray}
+This important expression for the observed source spectrum deserves some commentary.  Recall that the luminosity distance is already accounting for the redshifting of energy from the bolometric luminosity in the emitting frame, $L$.  To get the spectrum, we need to take its derivative, but it doesn't make sense to take the derivative of the emitting luminosity with respect to the observed wavelength.  So we convert to a derivative with respect to the emitted wavelength, evaluated at the emitted wavelength.  Then we write the derivative of the luminosity, the spectral luminosity density, as $dL/d\lambda_{\rm em} = L_{\lambda_{\rm em}}$, and substitute in the value of the emitted wavelength.
+
+When you integrate the received flux in a band (\ref{eqn:flux_in_band}), you are effectively integrating over a different band in the emitted frame.
+\begin{eqnarray}
+  F_{\rm band} &=& \int R_{\rm band}(\lambda) \frac{1}{1+z} \frac{L_{\lambda/1+z}}{4\pi D_L^2}  d\lambda \label{eqn:flux_from_redshift} \\
+  &=& \int  R_{\rm band}\left((1+z) \lambda_{\rm em} \right)   \frac{L_{\lambda_{\rm em}}}{4\pi D_L^2} d\lambda_{\rm em}
+\end{eqnarray}
+
+Unlike the distance modulus expression above, which uses the bolometric luminosity, in a band this correction is important.  We write,
+\begin{equation}
+  \mu = m_{\rm obs\ band} - M_{\rm obs\ band} - K,
+\end{equation}
+where $K = M_{\rm obs\ band} - M_{\rm emitted\ band}$ is the correction for the absolute magnitude between the observed and emitted band.  In a very narrow band, comparing  the expression above, the K-correction is
+\begin{equation}
+  K = -2.5 \log_{10} \left( \frac{1}{1+z} \frac{L_{\lambda_{\rm em}}}{L_\lambda} \right) 
+\end{equation}
+while for a general band it is \textcolor{red}{???}
+\begin{equation}
+  K = -2.5 \log_{10} \left(  \frac{\int R((1+z)\lambda_{\rm em}) L_{\lambda_{\rm em}} d\lambda_{\rm em}}{\int R(\lambda) L_\lambda d\lambda} \right) \label{eqn:K-correction}
+\end{equation}
+These expresssions (\ref{eqn:flux_from_redshift})--(\ref{eqn:K-correction}) put you in the slightly uncomfortable position of needing to know the spectrum of the object in order to make the correction accurately.  How much of a mistake you might make if you only have partial knowledge of the spectrum is something that you need to evaluate. 
+
+\textcolor{red}{It is not totally clear to me why it would not be better simply to work with the flux in the band directly (\ref{eqn:flux_from_redshift}), once you know the redshift, modeled the spectrum and have calibrated photometry.}
 
 \section{Distance ladder}
+
+
+
+
+reddening laws
 
 
 SALT2 model
