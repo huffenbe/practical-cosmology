@@ -35,6 +35,10 @@ The CMB is very Gaussian.  In other words, each complex-valued $a_{lm}$ is drawn
 \end{equation}
 but this type of estimator is biased if the whole sky is not available.
 
+
+\section{What information is in the power spectrum?}
+
+
 \section{Signal, beam, pixels, and noise}
 
 The CMB signal is smoothed by the finite resolution of the telescope.  We describe the point-spread function or the beam of the telescope by a function on the sphere $b(\mathbf{n})$ which is mostly concentrated around its maximum at the north pole but can have sidelobes caused by diffraction into the aperture.  The actual temperature that the telescope sees at an instant can be expressed as a convolution
@@ -46,9 +50,13 @@ The rotation operator $D$ takes the beam from its fiducial orientation to point 
   a_{lm}^{\rm beam} = b_l a_{lm}
 \end{equation}
 
+
 \begin{equation}
   b_l = \int d(\cos \theta) P_l(\cos \theta) b(\theta)
 \end{equation}
+
+The signal on the sky has units like spectral flux density per solid angle, for example Jy/sr.  An extended source of radiation, like a dust cloud in the Milky Way, nearby galaxy large enough to see detail, or the Cosmic Microwave Background (CMB) also has a \textit{surface brightness} given in the same units, and by integrating over an aperture, you can measure how much total brightness (flux density) an object has.
+
 
 
 pixel window function
@@ -78,24 +86,40 @@ two dimensional masking
 including cross spectra
 
 
+construction of the covariance matrix via cross spectra
+
 errors, knox formula
 
 
 \section{Time-ordered data, calibration, and mapmaking}
 
+Planck satellite calibration on dipole and orbital changes to the dipole.
+
 gain calibration
 
-detector time constants
-
-time constant deconvolution
+detector time constants; time constant deconvolution
 
 deglitching
 
 data cuts
 
+filter and bin map making
+
+maximum likelihood mapmaking
+
+gain fluctuations model error
+
+
 \section{Foreground mitigation}
 
 
+\section{Likelihood construction}
+
+full pixel-based likelihood
+
+cross-spectra likelihood
+
+early 2000s polarization likelihood whose name I'm blanking on...
 
 
 \section{Polarization anisotropies}
