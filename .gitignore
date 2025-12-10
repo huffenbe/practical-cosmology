@@ -7,3 +7,5 @@ practical-cosmology.pdf
 *.ilg
 *.ind
 *.out
+*.bbl
+*.blg
