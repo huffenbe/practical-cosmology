@@ -205,14 +205,26 @@ that can be integrated and inverted to give the functional relationship between 
   \int^1_a \frac{da'}{H_0 F(a')} =  \int^{t_{\rm now}}_t dt'.
 \end{equation}
 
-\textbf{Talk about the models and cosmological parameters.}
+\textcolor{red}{Talk about the models and cosmological parameters.}
 
-open vs closed
+\begin{figure}
+  \begin{center}
+    \fakeplot
+  \end{center}
+  \caption{For the $\Lambda$CDM model, an annotated plot of $a(t)$ and $H(t)$, with $z$ on the other axis.  Maybe a time zoom to see matter radiation equality.}
+\end{figure}
+
+\textcolor{red}{include open vs closed models?}
 
 $\Lambda$CDM model
 
 
 These ``$\Omega$'' parameters are the first of what we will call \textit{cosmological parameters}\index{cosmological parameters}.  They determine how a specific cosmological model develops over time.  Much of the science of observational cosmology is dedicated to making measurements of observable quantities and using them to determine the values of the cosmological parameters within the model.
+
+
+
+
+
 
 \section{Distance measures}
 
@@ -260,20 +272,20 @@ to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift 
 
 
 \paragraph{Comoving distance.}
-As mentioned, we call $\chi$ the comoving distance.  It is the physical distance today if we were to measure with a ruler to the point where the emission came from.
+As mentioned, we call $\chi$ the comoving distance.  It is the physical distance today if we were to measure with a ruler to the point where the emission previously came from.
 
-\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute arc length as measured today, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Fig.~\ref{fig:distances1}.  We have already encountered this quantity, which has the value
+\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Fig.~\ref{fig:distances1}.  We have already encountered this quantity, which has the value
 \begin{equation}
   D_M(z) = S_k(\chi(z)) = r(z).
 \end{equation}
 finding that it is the same as the comoving coordinate.  In a flat universe only, this quantity is also the comoving distance $\chi$.
 
-Suppose an object with physical size $\delta\ell$, perpendicular to the line of sight, is emitting at redshift $1+z = 1/a$.  Today it  subtends angle $\delta\theta$.
+Suppose an object with physical size $\delta\ell$, our proverbial standard ruler perpendicular to the line of sight, is emitting at redshift $1+z = 1/a$.  Today it  subtends angle $\delta\theta$.
 We just saw how to relate the comoving arc length to an angle with $D_M$, and we know that the comoving size of the arc that object covers---the size that it will expand into at the present---is $\delta\ell/a$.  Thus we have
 \begin{equation}
  \delta\theta =  \frac{\delta\ell/a}{D_M} 
 \end{equation}
-as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation featre in the correlation function and power spectrum of galaxy samples.
+as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation feature in the correlation function and power spectrum of galaxy samples.
 
 \begin{figure}
   \caption{Angular diameter distance versus redshift.}
@@ -306,7 +318,7 @@ that can be taken in a ratio with the comoving size of our object $\delta\ell/a$
 \begin{equation}
    \delta z = \frac{\delta\ell/a}{D_H}
 \end{equation}
-This ratio of comoving distances also returns when we talk about baryon acoustic oscillations in galaxy power spectra, and their line of sight component.
+This ratio of comoving distances also returns when we talk about baryon acoustic oscillations in galaxy power spectra, and their line of sight component.  Note that here to there is no requirement that $D_H$ stay monotonic (or even positive in a universe that is contracting), {and it is not monotonic in $\lambda$CDM}. So although this is a useful quantity, perhaps again ``distance'' is a bad name.
 
 \paragraph{Luminosity distance.}  Finally we want to establish a notion of distance to relate the luminosity of objects to their measured brightness.  We consider an object with luminosity
 \begin{equation}
@@ -320,7 +332,7 @@ emitting a certain energy per unit time.  Note that we have to count the energy 
 
 In a static universe, the light energy collected is the same as that emitted accounting for the fraction of the area covered. So the received power at the observer is
 \begin{equation}
-  \frac{dE_{\rm rec}}{dt_{\rm obs}} = \frac{A}{4\pi r^2}L   \qquad \mbox{(static only)}
+  \frac{dE_{\rm obs}}{dt_{\rm obs}} = \frac{A}{4\pi r^2}L   \qquad \mbox{(static only)}
 \end{equation}
 and the observed brightness or flux (power per collecting area) is
 \begin{equation}
@@ -328,16 +340,16 @@ and the observed brightness or flux (power per collecting area) is
 \end{equation}
 This accounts for possible curvature but not expansion.
 
-In an expanding Universe, we have to account for two effects, both of which lower the energy collected by the observer.  First, the rate of photons is slowed by the redshift factor, or equivalently $dt_{\rm obs} = (1+z) dt_{\rm em}$.  Second, the energy per photon is also redshifted, $dE_{\rm rec} = dE_{\rm em}/(1+z)$.  Accounting for these effects, we find,
+In an expanding Universe, we have to account for two effects, both of which lower the energy collected by the observer.  First, the rate of photons is slowed by the redshift factor, or equivalently $dt_{\rm obs} = (1+z) dt_{\rm em}$.  Second, the energy per photon is also redshifted, $dE_{\rm obs} = dE_{\rm em}/(1+z)$.  Accounting for these effects, we find,
 \begin{equation}
     F = \frac{L}{4\pi (1+z)^2 D_M^2}  \qquad \mbox{(correct for expansion)}
 \end{equation}
 
-Like the angular diameter distance, the luminosity distance $D_L$ is an attempt to make the expression for flux follow the familiar relation
+Like the angular diameter distance, the luminosity distance $D_L$ is an attempt to make the expression for flux resemble the familiar relation from static, euclidean geometry:
 \begin{equation}
-    F = \frac{L}{4\pi D_L^2}.
+    F = \frac{L}{4\pi D_L^2},
 \end{equation}
-Although this is common, I'm once again not sure that it is such a good idea, because it seems unnecessary and confusing, as we already have the correct expression.  In any case, the expression leads to,
+which defines $D_L$.  Although this is common, I'm once again not sure that it is such a good idea, because it seems unnecessary and confusing, as we already have the correct expression above.  In any case, the expression leads to,
 \begin{equation}
   D_L(z) = (1+z) D_M(z).
 \end{equation}
@@ -349,15 +361,17 @@ In a very generic fashion, we might write that data is a sum of some signal that
 \begin{equation}
   d = s + n.
 \end{equation}
-If we have more than on data point, we can consider these symbols to be vectors or arrays of data, signal, and noise values.  It might be more correct to write that the data is some response of our instrument to the signal, plus noise.  In that case, a more proper expression might be
+As we can often have more than on data point, we can consider these symbols to be vectors or arrays of data, signal, and noise values: they mean $d_i = s_i + n_i$ for each data point indexed with $i$.  It might be more correct to write that the data is some response of our instrument to the signal, plus noise.  In that case, a more proper expression might be
 \begin{equation}
   d = R(s) + n.
 \end{equation}
 where the response is a function of the signal, and again all of these could be vectors of values.
 
-When we make a measurement, the value we get is different ever time.  This is what we mean by measurement error or uncertainty.  That means that the noise is a random variable. (Sometimes the signal is too!)  A random variable is a variable that takes a different value each time that you make a measurement, or doing what we might call  ``making a draw'' (like in cards) or ``generating a realization'' (especially if we are simulating on a computer).
+When we make a measurement, the value we get is different every time.  This is what we mean by measurement error or uncertainty.  That means that the noise is a random variable. (Sometimes the signal is too!)  A random variable is a variable that takes a different value each time that you make a measurement, or doing what we might call  ``making a draw'' (like in cards) or ``generating a realization'' (especially if we are simulating the process on a computer).
 
-A measurement that has a noise with a non-zero mean is biased.  A better measurement has a smaller bias and smaller scatter in the noise values than a worse measurement.
+A measurement that has a noise with a non-zero mean is biased.  A better measurement has a smaller bias and smaller scatter in the noise values (smaller noise variance) than a worse measurement.
+
+\subsection{Probability Distributions}
 
 Any random variable comes from a probability distribution which controls what values are available.  Suppose $X$ is a generic random variable.  The distribution is a function that we integrate to get the probability of certain outcomes for $X$.  For example the probability that $X$ takes a value between $a$ and $b$ would be given by
 \begin{equation}
@@ -369,22 +383,29 @@ One familiar probability distribution function are Gaussian distribution functio
 \begin{equation}
   p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(x-\mu)^2}{2\sigma^2}   \right)
 \end{equation}
-which has two parameters, mean $\mu$ and variance $\sigma^2$.  It arises very often, whenever there are many independent contributions to a random process.
+which has two parameters, mean $\mu$ and variance $\sigma^2$ (the square of the standard deviation $\sigma$).  It arises very often, whenever there are many independent contributions to a random process.
+
+Another common probability distribution is the Poisson distribution, which is the probability for the counting $k$ discrete events or discrete objects if the mean expected number is $\mu$:
+\begin{equation}
+  P(k) = \frac{\mu^k}{k!}\exp(-\mu).
+\end{equation}
+
 
 From any probability distribution you can calculate the mean as an integral
 \begin{equation}
   \mu = \int dx\,  x  p(x) = \langle x \rangle.
 \end{equation}
-We introduce the notation $\langle \dots \rangle$ as a shorthand for the integral against the probability distribution of some quantity.  You can also think of this as averaging the quantity over a statistical ensemble\index{ensemble}---an idealized and very large or infinite set of copies of the system that we imagine to probe every possible outcome.
+We introduce the notation $\langle \dots \rangle$ as a shorthand for the integral against the probability distribution of some quantity.  You can also think of this as averaging the quantity over a statistical ensemble\index{ensemble}---an idealized and very large or infinite set of copies of the system that we imagine to probe every possible outcome in the proper proportions.
 
-For the Gaussian distribution this integral does indeed match the $\mu$ parameter from the distribution.  The mean is called the first moment of the distribution.  Computing the integrals $\langle x^p \rangle$ computes the $p$th moment.  More important here are the central moments $\langle (x-\mu)^p \rangle$ which are computed around the mean of the distribution.
+For the Gaussian distribution this integral does indeed match the $\mu$ parameter from the distribution, as does the corresponding discrete sum over the Poisson distribution.  The mean is called the first moment of the distribution.  Computing the integrals $\langle x^p \rangle$ computes the $p$th moment.  More important here are the central moments $\langle (x-\mu)^p \rangle$ which are computed around the mean of the distribution.
 
 The variance\index{variance} of the distribution is the second central moment, denoted
 \begin{equation}
   \sigma^2 = \left\langle (x - \mu)^2 \right\rangle = \left\langle (x - \langle x \rangle)^2 \right\rangle =  \int dx\,  (x-\mu)^2  p(x) 
 \end{equation}
-The standard deviation\index{standard deviation} is simply the square root of the variance.  A Gaussian distribution is totally described by the mean and variance, and the higher moments can be expressed in terms of them.  General non-Gaussian probability distributions may have information beyond what is in the mean and variance.   The third central moment measures the skewness, how asymmetric the distribution is around the mean.  The fourth central moment measures how much of a peak or plateau the distrubution has.\footnote{Formal definitions of skewness and kurtosis are normalized by the standard deviation.}  
+The standard deviation\index{standard deviation} is simply the square root of the variance.  A Gaussian distribution is totally described by the mean and variance, and the higher moments can be expressed in terms of them.  The variance for the Poisson distribution is also $\mu$.  General non-Gaussian probability distributions may have information beyond what is in the mean and variance.   The third central moment measures the skewness, how asymmetric the distribution is around the mean.  The fourth central moment, kurtosis, measures how much of a peak or plateau the distrubution has.\footnote{Formal definitions of skewness and kurtosis are normalized by the standard deviation.}  
 
+\subsection{Statistics}
 Statistics are functions of data.  Some of the most important statistics are estimators for the moments or other properties of the distribution.  For example, the average of a data set is the well-known estimator for the mean of the distribution.  For a data set composed of random variables $X_i$.
 \begin{equation}
   \bar X = \frac{1}{N_{\rm data}} \sum_i X_i.
@@ -415,7 +436,9 @@ You can also construct weighted average version of these if need be.
 
 In statistics, it is important to understand the distinction between parameters or properties of a distribution, and statistics that are built from data to estimate those parameters.  This can be confusing because these ideas often have the same name, but understand that the mean of a probability distribution is a separate concept to the estimator for the mean of a data set.
 
-Many situations call for a multivariate probability distribution.  For example, random variable $X$ and $Y$ may be drawn from a joint probability distribution $p(x,y)$.The marginalized distribution integrates out one or more variable from the joint distribution.
+\subsection{Multivariate distributions}
+
+Many situations, whenever there is more than one random variable, call for a multivariate probability distribution.  For example, random variable $X$ and $Y$ may be drawn from a joint probability distribution $p(x,y)$. The marginalized distribution integrates out one or more variable from the joint distribution.
 \begin{equation}
   p_X(x) = \int dy\, p(x,y)
 \end{equation}
@@ -434,17 +457,66 @@ The covariance of a pair of random variables is computed similar to the variance
 \end{equation}
 Thus ${\rm Var}(X) = {\rm Cov}(X,X)$.
 
-For a large set of variables, the covariances of pair make a symmetric covariance matrix\index{covariance matrix}, with entries
+For a set of variables, the covariance of pair make a symmetric covariance matrix\index{covariance matrix}, with entries
 \begin{equation}
   C_{ij} = {\rm Cov}(X_i, X_j)
 \end{equation}
-The variance of each $X_i$ lies on the diagonal of the matrix.  If the parameters are independent, the covariant matrix is diagonal.
+The variance of each $X_i$ lies on the diagonal of the matrix.  If the parameters are independent, the covariance matrix is diagonal.
 
-Multivariate Gaussian distribution for $X$ (now considered as a vector)
+The multivariate Gaussian distribution for $X$ (now considered as a vector with $k$ entries) is
 \begin{equation}
-  p(x) = \frac{1}{(2\pi|C|)^{n/2}} \exp\left(-\frac{1}{2} (x-\mu)^\dag C^{-1} (x-\mu) \right)
+  p(x) = \frac{1}{(2\pi|C|)^{k/2}} \exp\left(-\frac{1}{2} (x-\mu)^\dag C^{-1} (x-\mu) \right) \label{eqn:gaussian}
 \end{equation}
 where $x$ is the vector of values, $\mu$ is the vector of means, and $C$ is the covariance matrix.
+
+\subsection{Model fitting}
+We'll talk a lot more about methods to fit models to data, but it is helpful to introduce the basic picture.  We again have the basic picture of data as the sum of signal and noise, $d_i = s_i+n_i$, where the noise is a random variable.  Now we introduce a family models for our signal $m_i(\Theta)$, which depends on some vector of parameters $\Theta$.  A good model is one that can represent the signal for some true set of values for its parameters:
+\begin{equation}
+  s_i=m_i(\Theta = \Theta_0)
+\end{equation}
+We can construct statistics (functions of data) that evaluate how well any particular model fits to the data.  For $k$ data points, chi-squared is one such statistic, defined for a diagonal noise covariance as:
+\begin{equation}
+  \chi^2(\Theta) \equiv \sum_{0<i<k} \frac{(d_i - m_i(\Theta))^2}{\sigma_i^2}.
+\end{equation}
+This statistic accumulates the deviation between the model and the data at each point, squaring to keep the deviation positive, while comparing each point to the expected noise deviation, as recorded by the noise variance.
+
+If we hit upon the correct parameters, we will, on average, yield the smallest possible contribution from each point in the numerator:
+\begin{equation}
+  \langle (d_i - s_i)^2 \rangle = \langle n_i^2 \rangle = \sigma^2
+\end{equation}
+so often a good strategy is to minimize the $\chi^2(\Theta)$ statistic function as a function of $\Theta$, yielding best-fit parameters $\bar \Theta_0$ which are an estimate for the true parameters $\Theta_0$.
+\begin{equation}
+   \chi^2(\Theta) \geq \chi^2_{\rm min} =  \chi^2(\bar \Theta_0)
+\end{equation}
+Note that, because of the fluctuations due to noise, the true parameters will be a worse fit than the best fit.  That cannot be helped; you only have the data and it includes noise.  Whether the  best-fit parameters $\bar \Theta_0$ are an unbiased estimator for the true parameters must be evaluated on a case-by-case basis.
+
+If we have covariances between the noise values at different data points, then the definition is 
+\begin{eqnarray}
+  \chi^2(\Theta) \equiv \sum_{0<i,j<k} (d_i - m_i(\Theta))C^{-1}_{ij} (d_i - m_i(\Theta)),
+\end{eqnarray}
+or,
+\begin{eqnarray}
+\chi^2  \equiv (d-m)^\dag C^{-1} (d-m),
+\end{eqnarray}
+in a vector notation.  Otherwise, minimizing $\chi^2$ acts the same.
+
+Minimizing $\chi^2$ is equivalent to maximizing the probability function that data are drawn from a particular model under the assumption that the probability is Gaussian (compare \ref{eqn:gaussian}):
+\begin{equation}
+  P( d | m(\Theta) ) \propto \exp(-\chi^2/2)
+\end{equation}
+Because the Gaussian distribution is ubiquitous, this assumption is often justified.  This is the first example of a \textit{maximum likelihood} method.  We will talk much more about likelihoods when we discuss Bayesian statistics in the context of supernova cosmology.
+
+Suppose that we have fortunately reproduced the true signal with our model and our probability is Gaussian.  Then the $\chi^2$ statistic is simply the sum of $n_i^2/\sigma_i^2$, or the sum of a $k$ number of unit variance Gaussian random variables.  In that case, $\chi^2$ as a random variable is drawn from the $\chi^2$-distribution with $k$ degrees of freedom.  The probability distribution function is 
+\begin{equation}
+  p(x = \chi^2, k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{(k/2)-1}\exp(-x/2).
+\end{equation}
+The more parameters we fit the fewer degrees of freedom there are.  If we fit one parameter, $\chi^2$ will be drawn with $k-1$ degrees of freedom.  If we fit two parameters,  $\chi^2$ will be drawn with $k-2$ degrees of freedom, and so on.
+This lets us compute the probability that we measured some range parameter of values by pure chance.  This distribution and its integrals for probability are tabulated in common scientific programming libraries and easy to find.  Sensibly, we cannot fit for more parameters than the number of data point we have.\footnote{Notice that you could perfectly fit a data set with a model that exactly reproduces the data, $m_i = d_i$, yielding $\chi^2 = 0$, but that this model is useless.}
+
+
+
+If we have a bad model, such that the model cannot reproduce the signal for any values of the parameters, all bets are off.  That is why you need to check that the model with the best fit is also a good fit.
+
 
 \section{Exercises}
 
@@ -455,12 +527,23 @@ where $x$ is the vector of values, $\mu$ is the vector of means, and $C$ is the 
   \begin{enumerate}
   \item radiation dominated universe,
   \item matter dominated universe,
-  \item $\Lambda$-dominated universe
+  \item $\Lambda$-dominated universe.
   \end{enumerate}
 
-\item show that a $\Lambda$-dominated universe always has a constant Hubble parameter.
+\item Show that a $\Lambda$-dominated universe always has a constant Hubble parameter.
 
 \item Show that
   $$ \frac{dt}{a(t)} = - \frac{dz}{H(z)} $$
+
+
+\item Show that for a data set $d_i = s + n_i$ with noise that has standard deviation $\sigma_i$, that the weighted-average estimate
+  $$
+\bar s = \frac{\sum_i w_i d_i}{w_i}
+  $$
+with inverse-variance weights $w_i = 1/\sigma^2_i$ yields the smallest variance for any weights.  Hint: compute the variance of $\bar s$ for generic weights and then minimize that variance with respect to the weights.
+
+\item $chi^2$ fit for the amplitude of a quadratic given a data set.  Note that the actual value is different than the fitted value.
+
+\item $chi^2$ upper limit for a zero-mean data set.
 
 \end{enumerate}
