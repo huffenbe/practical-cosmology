@@ -194,7 +194,7 @@ We can define an analogous quantity for curvature,
 \end{equation}
 but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With current limits on $|\Omega_k| < 0.005$, we know that $R_0 > 60$ Gpc.   With these, the Friedmann equation \ref{eqn:friedmann1} becomes,
 \begin{equation}
-  H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ).
+  H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ). \label{eqn:H_in_terms_of_Omega}
 \end{equation}
 Rearranging, we get a separable equation
 \begin{equation}
@@ -260,9 +260,11 @@ Photons travel on null geodesics, paths with $ds^2 = 0$, so a photon on a radial
 \end{equation}
 where we have used the differential of $1+z = 1/a(t)$ in the last equality.  Integrating, we find
 \begin{equation}
-  \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')}  
+  \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')} 
 \end{equation}
-to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures expansion history via the integrated $1/a(t)$ or $1/H(z)$.  The cosmology dependence comes from the cosmology's effect on the expansion history.
+to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures expansion history via the integrated $1/a(t)$ or $1/H(z)$.  Comparing Equation~(\ref{eqn:H_in_terms_of_Omega}), you can see that $\chi(z)$ has an amplitude determined by $H_0^{-1}$ and a shape determined by the the $\Omega$ parameters (the composition of the Universe).
+
+The cosmology dependence comes from the cosmology's effect on the expansion history.
 
 \begin{figure}
 
