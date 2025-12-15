@@ -1,23 +1,85 @@
-\chapter{Supernovae for cosmology}
+\chapter{Supernova cosmology}
 
-We want to use the relationship between the apparent brightness and the known ( or calibrated) luminosity of objects to measure the cosmological model through the luminosity distance $D_L(z)$ and ultimately through the expansion history $a(t)$.
+We want to use the relationship between the apparent brightness and the known (or calibrated) luminosity of objects to measure the cosmological model through the luminosity distance $D_L(z)$, ultimately depending on the expansion history $a(t)$.  Type Ia supernovae are luminous and fairly consistent explosions of white dwarf stars and have been the workhorse for cosmological measurements of this type.  They are complicated objects, not understood from first priciples, but are well-characterized and standardized.  In the following, we will describe the supernovae and the Cepheid variable-type stars used to calibrate their luminosities.  We will examine in detail measurements of photometry and spectra made in an expanding universe.  These are the necessary data.  Then we will see how researchers build a statistical model of the Type Ia spectral energy distribution and finally how this used to make a calibrated distance estimate for each object.  The statistical methods to fit for the cosmomology have to wait for the next chapter.
+
 
 \section{Distance ladder}
+Many Type Ia supernova have been studied in detail with photometric time series of their brightness, so-called ``light curves,'' in multiple spectral bands.  A smaller subset have had more costly spectroscopic measurements to characterize their full spectral energy distribution.  Despite this effort, that information cannot on its own tell us how luminous the explosions are.  None are close enough for a direct geometric measurement of their distance.  We need to calibrate them with another type of object, usually Cepheid variable stars.  Some Cepheids are near enough to us to know their luminosities by comparing their measured brightness to their distance measured geometrically and precisely via parallax, using the Earth's orbit around the Sun.  By extrapolating those results to Cepheids bright enough to see in intermediate-distance galaxies that also hosted a Type Ia supernova, we can determine the distances to those galaxies and calibrate the luminosity of the Type Ia class of objects.
 
-Type II Cepheid stars are luminous (absolute magnitude $M \sim -1$ to $M \sim -5$ versus $M = +4.83$ for the Sun) and common enough in the Milky Way that we can calibrate the period--luminosity relation via geometric parallax in the Gaia data.  Type Ia supernova are extremely bright ($M_v \sim -18$ to $M_v \sim 19.5$) and are much rarer but there are a few close enough that we can see Cepheids in the same galaxy. Calibrating the Cepheids allows us to calibrate the stretch--luminosity relationship for the Type Ia supernovae.
-% Using nomeclature of 2025arXiv251023823H 
-Thus we are using parallax measurements of the Milky Way Cepheids to anchor the calibration for the Cepheids and allow us to use extragalactic cepheids as a primary distance indicator in our distance ladder.  This allows us to determine distances to the galactic hosts of supernovae and calibrate the supernovae as secondary distance indicators.  The numbers of anchor objects is not large fewer than \textcolor{red}{100} by parallax in the Milky way.  The number of calibrated supernova is also not large, perhaps under \textcolor{red}{70}.
-
-
-\subsubsection{Cepheid variables}
-
-\subsubsection{Type Ia supernova}
-
-A light curve is a sequence of photometric measurements as a function of time.
-
-spectroscopy is far more expensive than photometry
+% Using nomeclature of 2025arXiv251023823H
+Thus to build a ``ladder'' to the distant Universe, we are using parallax measurements of the Milky Way Cepheids to anchor the calibration for the Cepheids and allow us to use extragalactic cepheids as a primary distance indicator in our distance ladder.  This allows us to determine distances to the galactic hosts of supernovae and calibrate the supernovae as secondary distance indicators \citep{2025arXiv251023823H}.
 
 
+\textcolor{red}{There are other primary distance indicators and other possible geometric anchors.  TRGB, surface brightness fluctuations, maser, etc.}
+
+detached eclipsing binaries (DEB),
+
+A handful of galaxies have been discovered that contain masers in the accretion disk at the central black hole.  An astrophysical maser is like a natural microwave laser, a two-level system where an inverted population generates intense stimulated  monochromatic line emission, but without a resonant cavity.  A 
+
+
+the Tip of the Red Giant Branch (TRGB),
+Miras,
+carbon-rich AGB stars (JAGB),
+
+Other secondary distance indicators include
+Surface Brightness Fluctuations (SBF),
+Type II supernovae (SNe II),
+the Fundamental Plane, and
+Tully-Fisher relations
+
+
+
+\subsection{Type Ia supernova} % What is a SNIa?
+
+\begin{figure}
+  \begin{center}
+        \includegraphics[height=4.3cm]{figs/standard_candles/SN_2006X,_before_and_after_the_Type_Ia_Supernova_explosion_(artist's_impression).jpg}
+\hfill
+    \includegraphics[height=4.3cm]{figs/standard_candles/SN_1006.jpg} % https://commons.wikimedia.org/wiki/File:SN_1006.jpg
+  \end{center}
+\caption{Left and center:  before a Type Ia explosion, in an artist impression of the single-degenerate scenario, an evolved giant star donates material to the small white dwarf, eventually triggering an explosion.  After $\sim 20--30 days$, the photosphere of the reaches its maximum luminosity.  Right: the nearly-spherical remnant of historical SN 1006, 1000 years after the explosion, seen by Chandra telescope in three bands of x-rays and thought to be a Type Ia supernova in the Milky Way galaxy.  The diameter is about 19 pc or 4.0 million AU.  There is no clear candidate for the companion, so this supernova may have formed in a double-degenerate (two-white-dwarf) collision that was completely disrupted.}
+\end{figure}
+
+A Type Ia supernova is the catastrophic nuclear explosion of a white dwarf star.  White dwarfs are the evolutionary endpoint for the cores of low-to-medium mass stars, under about 8 solar masses.  Most of these stars are composed of carbon and oxygen, having burnt hydrogen to helium during their main sequence lifetimes.  They proceeded to swell transiently up as red giants, and then burnt the core helium to carbon and oxygen as a horizontal branch star.  After swelling again to form asymptotic giant branch stars, the stars shed the outer layers to leave the bare cores.  A typical white dwarf is similar in size to the Earth (radius $\sim 6000$ km) but contains $\sim 1$~$M_\odot$ of material, yielding a density $\sim 10^9$ kg/m$^3$.  Counterintuitively, more massive white dwarfs are smaller, compacted by their strong gravity to higher density.  The core of a white dwarf is not fusing, and rather than being supported by the gas pressure from its temperature, it is supported by the degeneracy pressure of the dense electrons which, following the Pauli exclusion principle, pile up to fill all the lowest energy states up to the Fermi level.
+
+White dwarf stars have a maximum mass, about 1.4 $M_\odot$ for a non-rotating star, the Chandrasekhar limit\index{Chandrasekhar limit}.  Above that, electrons even in the lowest available energy states become relativistic, provide a softened equation of state, and are unable to support the core against collapse.  Before the core reaches that point, however, the increasing density triggers a thermonuclear detonation of the carbon fuel, powering the explosion.  This is the difference between the carbon-oxygen white dwarf's thermonuclear supernova and the core-collapse supernova of a higher-mass star, where the core has already burned to iron and there are no more exothermic fusion reactions once the electron pressure gives out.  The thermonuclear explosion disrupts the white dwarf, typically leaving no compact remnant,\footnote{An exception is the rare subtype Iax, where the supernova leaves behind a fragment of the white dwarf, known as a zombie star.} while a core-collapse supernova will leave behind a neutron star or black hole.
+
+Where does the white dwarf get the extra mass to explode?  There are two main pathways.  In the single-degenerate-progentior model, the star starts in a binary system of two main sequence stars.  The more massive, primary star evolves quicker and forms a giant star first, temporarily enveloping the secondary star in a process that ejects mass and angular momentum and reduces the orbital radius, then proceed to form the white dwarf star.  Later, the second star evolves and swells to a giant, allowing the white dwarf to capture and accrete the tenuously-held outer layers.  A white dwarf that explodes with this mechanism will always be smaller than the Chandrasekhar mass.  These account for perhaps fewer than 20\% of Type Ia supernovae.
+
+In the double-degenerate-progenitor model, the explosion comes from two white dwarfs colliding.  This could happen in a dense star cluster, or in a binary system disrupted by the close passage of a third star or another binary system; the collision of isolated stars is possible but too rare to account for the Type Ia rate.  A close binary of white dwarf stars will have its orbit decay via gravitational radiation.  Once the stars merge, the mass before the imminent explosion may exceed the Chandrasekhar limit.  The double degenerate scenario is favored for most Type Ia supernova because of the lack of suitable companion stars in Type Ia supernova remnants, and because of the lack of observed X-ray emission in active supernovae, which would result from the interaction of the explosion and a companion's outer layers.  The numbers of observed binary white dwarfs are also in line with the observed rate of Type Ia supernova, about  $0.55^{+0.50}_{-0.29}$ (stat.) $\pm 0.20$ (sys.) Mpc$^{-3}$ year$^{-1}$ \citep[][]{2015A&A...584A..62C}, or about 1 supernova per century in a Milky Way-sized galaxy. 
+
+The exact explosion mechanism inside the white dwarf is an area of active research. As the nuclear burning front moves through the star, it could be subsonic (a deflagration) or supersonic (a detonation).  A pure deflagration model is disfavored because the slower burning allows the star to expand and adjust to the changing temperature and pressure, resulting in a less luminous explosion and paucity of burned products. A pure, supersonic detonation is also disfavored because it traverses the star before the star can react hydrodynamical, and yields a near totally complete burning of the carbon-oxygen fuel to iron group elements (iron, nickel, and cobalt).  The currently favored model starts with a deflagration that expands and mixes the star slightly followed by a detonation, which yields the appropriate amount of intermediate mass elements (like silicon, sulfur, and calcium) and iron group elements.  Another model experiences a detonation in an exterior shell of helium that sends a shock wave into the interior, triggering the main detonation deep inside.  Different mechanisms may be at play in different explosions.  The energy released within a few seconds by the nuclear fusion is sufficient to unbind the star.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{figs/standard_candles/SNIacurva.png} % https://commons.wikimedia.org/wiki/File:SNIacurva.png
+    \includegraphics[width=0.5\textwidth]{figs/standard_candles/stretch_correction.jpg} % Figure 1 from 2003PhT....56d..53P
+  \end{center}
+\caption{Left: Light curve of a type Ia supernova, the initial peak powered by radioactive nickel, followed by a long tail of emission from radioactive cobalt which has a longer half-life.  Right: stretch-correcting the light curve and peak luminosity \citep[from][]{2003PhT....56d..53P}.} \label{fig:Ia_light_curve}
+\end{figure}
+
+Matter is ejected in an expanding shockwave at 5,000--20,000 km/s.  As the density of the outer layer falls, the photosphere become optically thin, successively revealing interior layers with different compositions and yielding a complex spectral behavior.  The explosion creates radioactive $^{56}$Ni in abundance.  With a 6.1 day halflife, this beta decays to $^{56}$Co. The peak luminosity and susequent fading from the peak is powered by this radioactive nickel (Figure~\ref{fig:Ia_light_curve}).  The resulting $^{56}$Co beta decays to stable $^{56}$Fe with a 77.2 day halflife.
+
+The more $^{56}$Ni produced, the more luminous the supernova.  Empirically, the more luminous light curves\index{light curve}---time-series of photometric brightnesses---are broader; they take more time to peak and decline (also Figure \ref{fig:Ia_light_curve}).  Supernova with greater nickel abundance have higher temperature and more highly ionized gas, which leads to higher opacity and a longer photon-diffusion timescale, so they glow for more time.  As iron group ions recombine, they produce overlapping absorption lines, particularly in the UV and blue end of the spectrum.  The hotter, more luminous supernova (with more $^{56}$Ni), where this recombination is delayed, tend to be bluer, and decline slower in the blue B band where the analysis is typically normalized.
+
+Spectroscopy is far more time intensive than photometry, and ``Type Ia'' was originally an observational, spectral classification.  Because the progenitor is a carbon-oxygen-rich object, having shed the outer layers, the supernova shows no hydrogen lines, making it a Type I instead of a Type II that shows hydrogen lines.  Type Ia spectra show an absorption feature from silicon, one of the intermediate mass fusion products, while the other Type I supernovae, Ib and Ic, lack this line.   (These are core collapse supernova of more massive stars that have shed their hydrogen or hydrogen and helium layers before exploding.  Accordingly, Type Ib include helium lines and Type Ic lack them.)  Type Ia can also be distinguished by photometry alone, from their unique nickel-to-cobalt light curve.
+
+
+At the date of this writing, the most distant Type Ia supernova is at redshift 2.9, seen in the first two years of JWST \citep[SN 2023adsy,][]{2025A&A...701A..70V}, although this will likely be surpassed soon.  The total number of well-measured Type Ia supernovae that are included in cosmological analysis is somewhat less that \textcolor{red}{2000}.  These require multiband light curves to characterize the maximum brightness and estimate the main corrections to the luminosity, the light curve timescale and the supernova color.  The number of supernovae with Cepheid-calibrated distances, and thus some notion of their intrinsic luminosity, is also not large, perhaps under \textcolor{red}{70}.
+
+\subsection{Cepheid variables}
+
+
+Type II Cepheid stars are luminous (absolute magnitude $M \sim -1$ to $M \sim -5$ versus $M = +4.83$ for the Sun) and common enough in the Milky Way that we can calibrate the period--luminosity relation via geometric parallax in the Gaia data.
+
+NGC 4258 helped with the calibration of cepheids because it has a broader range of metallicities than overlaps both with the milky way and other galaxies.
+
+
+  The numbers of anchor objects is not large fewer than \textcolor{red}{100} by parallax in the Milky way. 
+
+Maximum distance that we can see a cepheid?
+
+  
 \section{Point sources of radiation}
 
 We can characterize the brightness of an object by its spectral flux density, which tells you how much energy per time you would collect from that source in unit collecting area within a unit bandwidth of the radiation spectrum.  
@@ -96,7 +158,7 @@ which is like the mean wavelength or a first moment of the spectral/band distrib
 Every telescope has its own filters and wavelength response that define its bands.  Some notable photometric systems include the Johnson UBV system, Rubin-LSST ugrizy, and SDSS u',g',r',i',z'.  Hubble Space Telescope's WFC3 and James Webb Space Telescope's NIRCam have filters named for their central wavelength and shape, for example NIRCam's F150W, a  band centered at 1.5 $\mu$m that is 0.4 $\mu$m ``wide,'' wider than the other bands at the same wavelength.
 
 
-\subsubsection{Magnitude system}
+\subsection{Magnitude system}
 I am no great fan of it, but it is common in astronomy to use the traditional 19th-century logarithmic system of \textbf{stellar magnitudes}\index{magnitude system} to describe the brightness of objects.  Magnitude systems have two properties.  First, if two fluxes are in a ratio of 100, they will differ by 5 magnitudes, with the brighter having the \textit{lower} magnitude.  This connects back to the 2000-year-old visual star catalog of Greek astronomer Hipparchus (and popularized by Ptolemy) who ranked the brightest stars as first magnitude, the next brightest as second magnitude and so on.  The second property sets the zero point for the magnitude scale and warrants more discussion below.
 
 The relationship between fluxes and magnitudes is thus
@@ -116,7 +178,7 @@ There are two common choices of normalization or zero point, stellar-based or ab
   m_{\rm band} = -2.5 \log_{10} \left( \frac{ F_{\rm band}}{F_{{\rm ref},\ \rm band}} \right) = -2.5 \log_{10} \left( \frac{ f_{\rm band}}{f_{{\rm ref},\ \rm band}} \right) ,
   \label{eqn:reference_flux}
 \end{equation}
-(equal because the $f$s have denominators that cancel) or equivalently an additive constant in
+(equal because the band-averaged $f$s have denominators that cancel) or equivalently an additive constant in
 \begin{equation}
   m_{\rm band} = -2.5 \log_{10} \left( \frac{ F_{\rm band}}{[\mbox{flux unit}]} \right)  + C_{\rm band}.
 \end{equation}
@@ -133,7 +195,7 @@ using a reference flux in equation \ref{eqn:reference_flux} of
 \begin{equation}
   F_{{\rm ref,\ band}} = \int R(\nu) (1 \mbox{ Jy} \cdot 10^{-8.90/-2.5}) d\nu \approx \int R(\nu) (3631 \mbox{ Jy}) d\nu.
 \end{equation}
-Note that $f_\nu = 3631$ Jy is close to the flux density of Vega in V band (but not other bands) and is the reason that value was chosen.  AB magnitudes make a pretty good definition because it puts the scale on firm footing with respect to energy units.\footnote{Note that these expressions are sometimes written for a very narrow filter over which the $F_\nu$ doesn't vary, and the integral $\int R(\nu) d\nu$ is canceled on top and bottom, leaving only e.g.\ the $(F_\nu/1\mbox{ Jy})$ in the logarithm and defining a monochromatic magnitude rather than a band magnitude.  Sometimes the units are left out of the equation entirely, but mentioned in text instead, which I think is a confusing abuse of unit notation.  Other times the filter function is written as $R(\nu) =  p(\nu) (h\nu)^{-1}$ where $p(\nu)$ is the ``capture cross section'' that quantifies the probability of counting an incident photon as an $e^-$ in the detector.  The $h\nu$ is the energy of that photon to convert between the fraction of photons getting through and the fraction of energy getting through.  It helps to pay careful attention to these definitions.}
+Note that $f_\nu = 3631$ Jy is close to the flux density of Vega in V band (but not other bands) and is the reason that value was chosen.  AB magnitudes make a pretty good definition because it puts the scale on firm footing with respect to energy units.\footnote{Note that these expressions are sometimes written for a very narrow filter over which the $f_\nu$ doesn't vary, and the integral $\int R(\nu) d\nu$ is canceled on top and bottom, leaving only e.g.\ the $(f_\nu/1\mbox{ Jy})$ in the logarithm and defining a monochromatic magnitude rather than a band magnitude.  Sometimes the units are left out of the equation entirely, but mentioned in text instead, which I think is a confusing abuse of unit notation.  Other times, the filter function is written as $R(\nu) =  p(\nu) (h\nu)^{-1}$ where $p(\nu)$ is the ``capture cross section'' that quantifies the probability of counting an incident photon as an $e^-$ in the detector.  The $h\nu$ is the energy of that photon to convert between the fraction of photons getting through and the fraction of energy getting through.  It helps to pay careful attention to these definitions when you encounter a bandpass function.}
 To actually get this you still have to go through a chain of calibration, typically using standard stars along the way.
 
 A \textbf{color index}\index{color index} difference between the magnitudes in two bands, like $m_B-m_V$ (often written a simply $B-V$), is a comparison of the received energy flux between the bands.  In a Vega-based magnitude system, it is the base-10-logarithm of that ratio divided by the similar ratio from Vega.  Thus stars with the same spectrum as Vega have color indices equal to zero for all pairs of bands.  Across the visual bands, for smaller wavelength magnitudes minus larger wavelength magnitudes, the color index is negative for stars hotter than Vega and positive for stars cooler than Vega.
@@ -145,7 +207,7 @@ The common practice of providing surface brightness with a unit of mag/arcsec$^2
 
 For supernova cosmology analysis, it is important to bring all the varied photometry of various supernova over the year to a common photometric system, which entails a multitude of telescopes and filters with secondary and tertiary stars common between various surveys to be compare and modeled \citep{2022ApJ...938..111B}.  Reliable photometry is vitally important and a lot of work.
 
-\subsubsection{Distance modulus}
+\subsection{Distance modulus}
 While the apparent magnitude measures the brightness of an object, the \textbf{absolute magnitude}\index{absolute magnitude} measures its luminosity.  The absolute magnitude $M$ is defined as what the apparent magnitude would be if we imagine the object were 10 pc away.\footnote{Absolute magnitude was conceived for stars and is kind of inappropriate for a supernova, since a supernova at 10 pc would be exceedingly dangerous, destroying the ozone layer and causing a mass extinction on Earth.}  Considering bolometric magnitudes, 
 \begin{equation}
   100^{(m_{\rm bolo}-M_{\rm bolo})/5} = \frac{F_{10\ \rm pc}}{F} = \frac{{L}/{4\pi(10\ \rm pc)^2}}{{L}/{4\pi D_L^2}} = \left( \frac{D_L}{10\ \rm pc} \right)^2
@@ -181,7 +243,7 @@ Milky Way reddening
 
 reddening in the host galaxy.
 
-\subsubsection{K-corrections}
+\subsection{K-corrections}
 When you measure an object at high reshift in a filter band, relevant here for cosmology, you must make a further correction.  The emission that you receive is redshifted from that which was emitted and the wavelength increment in the bandwidth is also redshifted.  To compute this correction, let's recall that observed wavelength relates to the emitted wavelength as
 \begin{equation}
   \lambda = (1+z) \lambda_{\rm em}.
@@ -234,7 +296,7 @@ where we have canceled the $4\pi(10\ {\rm pc})^2$ in the fraction.
 
 Note any of these expresssions (\ref{eqn:flux_from_redshift})--(\ref{eqn:K-correction}) put you in the slightly uncomfortable position of needing to know the spectrum of the object in order to make the correction accurately.  How much of a mistake you might make when you model that spectrum is something that you need to evaluate. 
 
-Although mathematically correct, I find the $K$-correction an awkward way to deal with this correction, because it corrects the data with a theory model and uses the absolute magnitude of a wavelength range other than what we actually probe in the rest frame.  An alternative approach would have been to re-express Equation (\ref{eqn:m_minus_mu_simple}) as
+Although mathematically correct, I find the $K$-correction an awkward way to deal with this correction, because it corrects the data with a model of the unknown source and uses the absolute magnitude of a wavelength range other than what we actually probe in the rest frame.  An alternative approach would have been to re-express Equation (\ref{eqn:m_minus_mu_simple}) as
 \begin{eqnarray}
   m_{\rm band} - \mu &=& -2.5 \log_{10} \left(\frac{F_{z\rm band,\ 10\ pc}}{F_{{\rm ref},\ z{\rm band}}}\cdot \frac{F_{{\rm ref},\ z{\rm band}}}{F_{\rm ref,\  band}} \right) \\
    &=& M_{z \rm band} - 2.5 \log_{10} \left( \frac{\int R((1+z)\lambda) f_{\lambda,\ \rm ref}\ d\lambda}{\int R(\lambda) f_{\lambda,\ \rm ref}\ d\lambda} \right) \label{eqn:alternative_to_K_correction}
@@ -246,7 +308,7 @@ In this formulation, we have the apparent magnitude we actually observe ($m_{\rm
 \section{Measuring distance}
 Let's review where we are.  From Eq.~\ref{eqn:flux_from_redshift}, if we know the intrinsic luminosity of an object in a band (or equivalently its absolute magnitude) then we can compare to the observed flux (or apparent magnitude) to get the luminosity distance for that redshift.  The problem is that we usually don't know the the intrinsic luminosity.
 
-\subsubsection{Temporal SNIa spectrum models}
+\subsection{Temporal SNIa spectrum models}
 We have seen how vital it is to have an understanding of the spectral information of the supernova for dealing with redshift corrections to the photometry.  The spectra of Type Ia supernova change in nontrivial ways as the explosion develops.  Therefore, one of the ingredients in a modern SNIa cosmology analysis is a model of the supernova spectrum as a function of time.  As an example, the widely-used SALT2 model \citep{2007A&A...466...11G} uses a variety of photometric and spectral data to build an empirical spectrum.  %This is a model of the spectral shape only; the fitting for absolute magnitude and distance comes later.
 The modeling is kind of complicated but we include it for completeness.
 
@@ -274,7 +336,7 @@ The fitting follows a Gauss-Newton algorithm that uses the Jacobian of $chi^2$ w
 
 \textcolor{red}{Is the $x_0$ fit here what is actually used for the $m$ in the distance model?  When is the K correction actually done?  Is the $K$ correction self-consistent with the spectrum per SN?}
 
-\subsubsection{Measuring distance}
+\subsection{Distance estimates}
 The Pantheon+ catalog for instance uses the following estimator for the distance modulus \citep{1998A&A...331..815T}:
 \begin{equation}
   \mu_i = m_{B,i} - M_B + \alpha x_{1,i} - \beta c_i 
