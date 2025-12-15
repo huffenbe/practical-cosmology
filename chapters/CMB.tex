@@ -79,7 +79,8 @@ fits the model of data equals response to signal plus noise.
 
 \section{Measuring the power spectrum}
 
-two dimensional masking
+two dimensional masking,
+apodization, growing or shrinking the mask
 
 
 
@@ -112,6 +113,7 @@ gain fluctuations model error
 
 \section{Foreground mitigation}
 
+\section{Polarization anisotropies}
 
 \section{Likelihood construction}
 
@@ -119,12 +121,13 @@ full pixel-based likelihood
 
 cross-spectra likelihood
 
+
+multifrequency likelihood to include foreground contributions
+
 early 2000s polarization likelihood whose name I'm blanking on...
+Hamimeche and Lewis
 
 
-\section{Polarization anisotropies}
-
-\section{The flat-sky approximation}
 
 
 \section*{Supplemental: spherical harmonic functions}
@@ -165,3 +168,6 @@ where $j_l$ are the spherical bessel functions of the first kind.
   \exp({i \mathbf{k} \cdot \mathbf{r}}) = 4 \pi \sum_{lm} i^l j_l(k r) Y_{lm}{}(\hat{\mathbf k}) Y_{lm}^{*}(\hat{\mathbf r})
 \end{equation}
 This relationship is vital when we come to projecting the harmonics of signal in the bulk of space into signals on the sphere of the sky.
+
+
+\section*{Supplemental: the flat-sky approximation}
