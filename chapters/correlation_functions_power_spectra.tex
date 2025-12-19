@@ -87,7 +87,7 @@ So the correlation function is the transform of the power spectrum.  Similarly, 
 Note that this integral runs from $(-\infty,+\infty)$ and treats $\xi(r)$ as an even function of $r$.
 
 \subsection{Average correlation in a small interval}
-How do we think about the infinity in correlation caused by the delta function?  This is linked to the fact that we are integrating here a statistically homogeneous function (one that never goes to zero) over an infinite volume.  But in practice, we will always be dealing with some interval in harmonic space that we can integrate the correlation over.  For example, if we have the transform, we can compute the average of the transform in a small interval $\Delta k$ in $k$-space
+How do we think about the infinity in correlation caused by the delta function?  This is linked to the fact that we are integrating here a statistically homogeneous function (one that never goes to zero) over an infinite volume.  But in practice, this is not a problem because we will always be dealing with some interval in harmonic space that we can integrate the correlation over.  For example, if we have the transform, we can compute the average of the transform in a small interval $\Delta k$ in $k$-space
 \begin{equation}
   \bar a(k) = \frac{1}{\Delta k} \int_{\Delta k} dk' a(k')
 \end{equation}
@@ -98,7 +98,7 @@ Then we can examine the correlation of those fourier-space average quantities, a
   &=& \frac{2\pi}{(\Delta k)^2}  \int_{\Delta k} dk'_1 \  P(k'_1) \\
   &=& \frac{2\pi}{\Delta k}  \bar P(k),
 \end{eqnarray}
-where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same.  Otherwise, in distinct intervals the correlation would obviously be zero due to the delta function.
+where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same.  Otherwise, in distinct intervals the correlation would obviously be zero due to the delta function.  The limit taking the interval size to zero, $\Delta k \rightarrow 0$, reproduces the behavior of the delta function in the power spectrum definition.
 
 
 \section{Incomplete data}
@@ -151,7 +151,7 @@ We can compute the transform using intervals in harmonic space $k_p = p\Delta k$
    a_j = a(x_j) = \frac{\Delta k}{2\pi}  \sum_p a_p \exp(2\pi i pj/N) \label{eqn:idft}
  \end{eqnarray}
 
- ***Say something about the exact result versus approximate Riemann sum, nyquist frequency up-down-up-down $k_{\rm max} = k_{\rm Ny} = \pi / \Delta x$.  Band limit and aliasing.
+\textcolor{red}{***Say something about the exact result versus approximate Riemann sum, nyquist frequency up-down-up-down $k_{\rm max} = k_{\rm Ny} = \pi / \Delta x$.  Band limit and aliasing.}
 
  
  The definition of the power spectrum here is
