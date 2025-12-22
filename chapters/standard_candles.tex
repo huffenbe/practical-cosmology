@@ -1,31 +1,14 @@
-\chapter{Supernova cosmology}
+\chapter{Supernova cosmology, et cetera}
 
-We want to use the relationship between the apparent brightness and the known (or calibrated) luminosity of objects to measure the cosmological model through the luminosity distance $D_L(z)$, ultimately depending on the expansion history $a(t)$.  Type Ia supernovae are luminous and fairly consistent explosions of white dwarf stars and have been the workhorse for cosmological measurements of this type.  They are complicated objects, not understood from first priciples, but are well-characterized and standardized.  In the following, we will describe the supernovae and the Cepheid variable-type stars used to calibrate their luminosities.  We will examine in detail measurements of photometry and spectra made in an expanding universe.  These are the necessary data.  Then we will see how researchers build a statistical model of the Type Ia spectral energy distribution and finally how this used to make a calibrated distance estimate for each object.  The statistical methods to fit for the cosmomology have to wait for the next chapter.
+We want to use the relationship between the apparent brightness and the known (or calibrated) luminosity of objects to measure the cosmological model through the luminosity distance $D_L(z)$, ultimately depending on the expansion history $a(t)$.  Type Ia supernovae are luminous and fairly consistent explosions of white dwarf stars and have been the workhorse for cosmological measurements of this type.  They are complicated objects, not understood from first priciples, but are well-characterized and standardized.  They are luminous enough and common enough to be seen in large numbers well into the Hubble flow.  In the following, we will describe the supernovae and the Cepheid variable-type stars used to calibrate those luminosities.  We will examine in detail how measurements of photometry and spectra are made in an expanding universe.  These are the necessary data.  Then we will see how researchers build a statistical model of the Type Ia spectral energy distribution and finally how this used to make a calibrated distance estimate for each object.  The statistical methods to fit for the cosmomology are discussed in chapter \ref{ch:likelihoods_cosmology}.
 
 
 \section{Distance ladder}
 Many Type Ia supernova have been studied in detail with photometric time series of their brightness, so-called ``light curves,'' in multiple spectral bands.  A smaller subset have had more costly spectroscopic measurements to characterize their full spectral energy distribution.  Despite this effort, that information cannot on its own tell us how luminous the explosions are.  None are close enough for a direct geometric measurement of their distance.  We need to calibrate them with another type of object, usually Cepheid variable stars.  Some Cepheids are near enough to us to know their luminosities by comparing their measured brightness to their distance measured geometrically and precisely via parallax, using the Earth's orbit around the Sun.  By extrapolating those results to Cepheids bright enough to see in intermediate-distance galaxies that also hosted a Type Ia supernova, we can determine the distances to those galaxies and calibrate the luminosity of the Type Ia class of objects.
 
 % Using nomeclature of 2025arXiv251023823H
-Thus to build a ``ladder'' to the distant Universe, we are using parallax measurements of the Milky Way Cepheids to anchor the calibration for the Cepheids and allow us to use extragalactic cepheids as a primary distance indicator in our distance ladder.  This allows us to determine distances to the galactic hosts of supernovae and calibrate the supernovae as secondary distance indicators \citep{2025arXiv251023823H}.
+Thus to build a ``ladder'' to the distant Universe, we are using parallax measurements (rung 1) of the Milky Way Cepheids to anchor the calibration for the Cepheids and allow us to use extragalactic Cepheid brightnesses (rung 2) as a primary distance indicator in our distance ladder.  This allows us to determine distances to the galactic hosts of supernovae and calibrate the supernovae as secondary distance indicators \citep[rung 3][]{2025arXiv251023823H}.  We revisit some alternate rungs at the end of the chapter.
 
-
-\textcolor{red}{There are other primary distance indicators and other possible geometric anchors.  TRGB, surface brightness fluctuations, maser, etc.}
-
-detached eclipsing binaries (DEB),
-
-A handful of galaxies have been discovered that contain masers in the accretion disk at the central black hole.  An astrophysical maser is like a natural microwave laser, a two-level system where an inverted population generates intense stimulated  monochromatic line emission, but without a resonant cavity.  A 
-
-
-the Tip of the Red Giant Branch (TRGB),
-Miras,
-carbon-rich AGB stars (JAGB),
-
-Other secondary distance indicators include
-Surface Brightness Fluctuations (SBF),
-Type II supernovae (SNe II),
-the Fundamental Plane, and
-Tully-Fisher relations
 
 
 
@@ -46,17 +29,18 @@ White dwarf stars have a maximum mass, about 1.4 $M_\odot$ for a non-rotating st
 
 Where does the white dwarf get the extra mass to explode?  There are two main pathways.  In the single-degenerate-progentior model, the star starts in a binary system of two main sequence stars.  The more massive, primary star evolves quicker and forms a giant star first, temporarily enveloping the secondary star in a process that ejects mass and angular momentum and reduces the orbital radius, then proceed to form the white dwarf star.  Later, the second star evolves and swells to a giant, allowing the white dwarf to capture and accrete the tenuously-held outer layers.  A white dwarf that explodes with this mechanism will always be smaller than the Chandrasekhar mass.  These account for perhaps fewer than 20\% of Type Ia supernovae.
 
-In the double-degenerate-progenitor model, the explosion comes from two white dwarfs colliding.  This could happen in a dense star cluster, or in a binary system disrupted by the close passage of a third star or another binary system; the collision of isolated stars is possible but too rare to account for the Type Ia rate.  A close binary of white dwarf stars will have its orbit decay via gravitational radiation.  Once the stars merge, the mass before the imminent explosion may exceed the Chandrasekhar limit.  The double degenerate scenario is favored for most Type Ia supernova because of the lack of suitable companion stars in Type Ia supernova remnants, and because of the lack of observed X-ray emission in active supernovae, which would result from the interaction of the explosion and a companion's outer layers.  The numbers of observed binary white dwarfs are also in line with the observed rate of Type Ia supernova, about  $0.55^{+0.50}_{-0.29}$ (stat.) $\pm 0.20$ (sys.) Mpc$^{-3}$ year$^{-1}$ \citep[][]{2015A&A...584A..62C}, or about 1 supernova per century in a Milky Way-sized galaxy. 
+In the double-degenerate-progenitor model, the explosion comes from two white dwarfs colliding.  This could happen in a dense star cluster, or in a binary system disrupted by the close passage of a third star or another binary system; the collision of isolated stars is possible but too rare to account for the Type Ia rate.  A close binary of white dwarf stars will have its orbit decay via gravitational radiation.  Once the stars merge, the mass before the imminent explosion may exceed the Chandrasekhar limit.  The double degenerate scenario is favored for most Type Ia supernova because of the lack of suitable companion stars in Type Ia supernova remnants, and because of the lack of observed X-ray emission in active supernovae, which would result from the interaction of the explosion and a companion's outer layers.  The numbers of observed binary white dwarfs are also in line with the observed rate of Type Ia supernova, about  $0.55^{+0.50}_{-0.29}$ (stat.) $\pm 0.20$ (sys.) Mpc$^{-3}$ year$^{-1}$ \citep[][]{2015A&A...584A..62C}, or about 1 supernova per century in a Milky Way-sized galaxy. This is not too hard to find regularly in a survey that covers sufficient volume: look repeatedly at 100 such galaxies and you'll find one each year.
 
-The exact explosion mechanism inside the white dwarf is an area of active research. As the nuclear burning front moves through the star, it could be subsonic (a deflagration) or supersonic (a detonation).  A pure deflagration model is disfavored because the slower burning allows the star to expand and adjust to the changing temperature and pressure, resulting in a less luminous explosion and paucity of burned products. A pure, supersonic detonation is also disfavored because it traverses the star before the star can react hydrodynamical, and yields a near totally complete burning of the carbon-oxygen fuel to iron group elements (iron, nickel, and cobalt).  The currently favored model starts with a deflagration that expands and mixes the star slightly followed by a detonation, which yields the appropriate amount of intermediate mass elements (like silicon, sulfur, and calcium) and iron group elements.  Another model experiences a detonation in an exterior shell of helium that sends a shock wave into the interior, triggering the main detonation deep inside.  Different mechanisms may be at play in different explosions.  The energy released within a few seconds by the nuclear fusion is sufficient to unbind the star.
-
-\begin{figure}
+\begin{figure}[!t]
   \begin{center}
     \includegraphics[width=0.49\textwidth]{figs/standard_candles/SNIacurva.png} % https://commons.wikimedia.org/wiki/File:SNIacurva.png
     \includegraphics[width=0.5\textwidth]{figs/standard_candles/stretch_correction.jpg} % Figure 1 from 2003PhT....56d..53P
   \end{center}
 \caption{Left: Light curve of a type Ia supernova, the initial peak powered by radioactive nickel, followed by a long tail of emission from radioactive cobalt which has a longer half-life.  Right: stretch-correcting the light curve and peak luminosity \citep[from][]{2003PhT....56d..53P}.} \label{fig:Ia_light_curve}
 \end{figure}
+
+The exact explosion mechanism inside the white dwarf is an area of active research. As the nuclear burning front moves through the star, it could be subsonic (a deflagration) or supersonic (a detonation).  A pure deflagration model is disfavored because the slower burning allows the star to expand and adjust to the changing temperature and pressure, resulting in a less luminous explosion and paucity of burned products. A pure, supersonic detonation is also disfavored because it traverses the star before the star can react hydrodynamical, and yields a near totally complete burning of the carbon-oxygen fuel to iron group elements (iron, nickel, and cobalt).  The currently favored model starts with a deflagration that expands and mixes the star slightly followed by a detonation, which yields the appropriate amount of intermediate mass elements (like silicon, sulfur, and calcium) and iron group elements.  Another model experiences a detonation in an exterior shell of helium that sends a shock wave into the interior, triggering the main detonation deep inside.  Different mechanisms may be at play in different explosions.  The energy released within a few seconds by the nuclear fusion is sufficient to unbind the star.
+
 
 Matter is ejected in an expanding shockwave at 5,000--20,000 km/s.  As the density of the outer layer falls, the photosphere become optically thin, successively revealing interior layers with different compositions and yielding a complex spectral behavior.  The explosion creates radioactive $^{56}$Ni in abundance.  With a 6.1 day halflife, this beta decays to $^{56}$Co. The peak luminosity and susequent fading from the peak is powered by this radioactive nickel (Figure~\ref{fig:Ia_light_curve}).  The resulting $^{56}$Co beta decays to stable $^{56}$Fe with a 77.2 day halflife.
 
@@ -67,17 +51,68 @@ Spectroscopy is far more time intensive than photometry, and ``Type Ia'' was ori
 
 At the date of this writing, the most distant Type Ia supernova is at redshift 2.9, seen in the first two years of JWST \citep[SN 2023adsy,][]{2025A&A...701A..70V}, although this will likely be surpassed soon.  The total number of well-measured Type Ia supernovae that are included in cosmological analysis is somewhat less that \textcolor{red}{2000}.  These require multiband light curves to characterize the maximum brightness and estimate the main corrections to the luminosity, the light curve timescale and the supernova color.  The number of supernovae with Cepheid-calibrated distances, and thus some notion of their intrinsic luminosity, is also not large, perhaps under \textcolor{red}{70}.
 
-\subsection{Cepheid variables}
+\subsection{Cepheid variable stars}
+Cepheid stars have a periodic variability where the period is strongly correlated to the overall luminosity.\footnote{Famously noted by Henrietta Leavitt in 1912.}  They are common enough in the Milky Way that we can calibrate the period--luminosity relation via geometric parallax with HST, Hipparcos, and Gaia data.  That makes them useful distance indicators.  They are a heterogeneous grouping of a few different types of objects.
+
+% This OGLE webpage is great: https://ogle.astrouw.edu.pl/atlas/classical_Cepheids.html
+
+Classical Cepheid stars (also called Population I Cepheids, Type I Cepheids, and Delta Cepheid variables) are young, metal-rich, population I stars between roughly 4--20 $M_\odot$, with the range skewing higher for low  metallicity.  They are mostly former spectral type B stars that have evolved off the main sequence and have luminosities about $10^3$--$5\times 10^4$ $L_\odot$, thus they can be seen to great distance.  As they burn shell hydrogen, or burn shell or core helium, they cross into or repeatedly loop through the instability strip of the Hertzspring-Russell luminosity--surface temperature diagram, where stars are subject to variability and pulsations.  Classical Cepheids execute radial pulsations that are a few days to a few weeks in duration.  The class is named for Delta Cephei, fourth brightest star in the Constellation Cephus, an early star of this class to be characterized and one for which the parallax distance is the best known. 
 
 
-Type II Cepheid stars are luminous (absolute magnitude $M \sim -1$ to $M \sim -5$ versus $M = +4.83$ for the Sun) and common enough in the Milky Way that we can calibrate the period--luminosity relation via geometric parallax in the Gaia data.
+\begin{figure}[!t]
+    \begin{minipage}[t]{0.5\textwidth}
+      \begin{center}
+        Classical Cepheids \\
+        \includegraphics[width=\textwidth]{figs/standard_candles/OGLE_Cepheid-classical-lightcurves-crop.pdf}
+        \includegraphics[width=\textwidth]{figs/standard_candles/OGLE-LMC-CEP-0832.png}
+      \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{0.5\textwidth}
+      \begin{center}
+        Type II Cepheids \\
+      \includegraphics[width=\textwidth]{figs/standard_candles/OGLE_Cepheid-type2-lightcurves-crop.pdf}
+      \end{center}
+      \end{minipage}
+  \caption{Cepheid light curves, folded in phase to match the oscillation period.  All stars are at the same distance in the LMC.  Classical Cepheids are to the left \citep[][]{2008AcA....58..163S}, and among them, top left-to-right, are those pulsing at the fundamental mode, the first overtone, and the second overtone.  The left vertical axis shows the I band magnitude.  Each right axis is labeled by the period of the star in days.  Bottom left, a classical Cepheid star that is excited in both the fundamental mode and the first overtone.  Type II Cepheids are to the right  \citep{2008AcA....58..293S}, divided at 4-day and 20-day periods into three subclasses.  Long-period RV Tau stars have been phased with double the formal periods to illustrate alternating bright and dim minima.}  \label{fig:cepheid_light_curves}
+\end{figure}
 
-NGC 4258 helped with the calibration of cepheids because it has a broader range of metallicities than overlaps both with the milky way and other galaxies.
+Type II Cepheid stars (also called Population II Cepheids) are old, metal-poor, low-mass population II stars from a previous generation of star formation.  These stars may be $0.5$--$1$ $M_\odot$ or less.  They themselves are a heterogenous group, with short-, medium-, and long- period subclasses at different stages of evolution off the main sequence between red giant and post-AGB phase.  Some show alternating shallow and deep minima.  For a given period, Type II are fainter than classical cepheids by a factor of 4--5, but still much more luminous than the Sun.  Early cosmological studies mistook Type II Cepheids in other galaxies for Types Is, and making roughly a factor of two error in the distance and the Hubble constant.  Type II Cepheids have a period luminosity relationship that is less metallicity dependent than for classical Cepheids.
+
+\begin{figure}[!t]
+  \begin{minipage}[t]{0.5\textwidth}
+    \begin{center}
+      Classical Cepheids \\
+      \includegraphics[width=\textwidth]{figs/standard_candles/OGLE_Cepheid-classical-period-luminosity-crop.pdf}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{0.5\textwidth}
+    \begin{center}
+      Type II Cepheids \\
+      \includegraphics[width=\textwidth]{figs/standard_candles/OGLE_Cepheid-Type2_period_luminosity-crop.pdf}
+    \end{center}
+  \end{minipage}
+  \caption{Period--luminosity relationships for Cepheid variable stars, all in the LMC with roughly the same distance  from \citep[][]{2008AcA....58..163S,2008AcA....58..293S}.  The horizontal axis shows the log-base-10 of the pulsation period in days.   Periods range from less than a day to about 90 days.  Vertical axes show V band magnitude, I band magnitude, and their combination in the Wesenheit index, which shows less scatter.  Left, classical Cepheids show the separate relationship for stars oscillating is the fundametal or overtone modes.  Solid dots are single-mode oscillators and empty dots are two-mode oscillators, with two points plotted per star.  Right, type II Cepheids of several varieties (colored symbols) are lower in brightness than classical cepheids (gray dots)} \label{fig:cepheid_period_luminosity}
+\end{figure}
+
+The pulsation mechanism relates to opacity.  In a normal star, as temperature and pressure increase, the opacity decreases, allowing more light energy to escape and maintaining an equilibrium. In a star where here the opacity increases with temperature, an increase in density raises the temperature, which traps more light, raising the temperature further.  The pressure builds up causing the star to grow.  The falling density eventually lowers the opacity so that the light can begin to escape, this lowers the temperature with lowers the opacity more.  The loss of pressure causes the star to shrink and the process is renewed.  In both classes of Cepheid stars, \textcolor{red}{singly-ionized helium} is responsible.  Some other types of pulsating stars have the same basic mechanism,  RR Lyrae stars for instance, which are similar to Type II Cepheids but are horizontal branch stars on an earlier transit of the instability strip.
+
+The star acts like a damped, driven oscillator, and when the frequency of the opacity on-off cycle matches a resonant frequency of the Cepheid, it can drive large-amplitude pulsations.  The fractional change in radius $\Delta R/R$ can be 5--15 percent in classical Cepheids and up to 30 percent for some types of Type II Cepheids.  Longer periods correlate with larger amplitudes.  The increase in radius causes an increase in luminosity that we observed.  The damping is caused by loss of energy due to heat transport (``heat leak'') or turbulent viscous dissipation, depending on the type of Cepheid and the location within the star.
+
+In classical Cepheids, when the star's fundamental frequency is excited, typically the light curves are asymmetric, with a faster rise than fall.  See Figure~\ref{fig:cepheid_light_curves}.  Between about six and twenty-five day periods there is a bump in the light curve caused by a 1:2 resonance betweeen the fundamental and second overtone.  The phase location of the bump changes a regular way.\footnote{The Hertzsprung progression}  The bulk of the expansion is in the outer layers, but the whole star expands and contracts together.  When the first overtone is the dominant one excited, the outer layer expands while the inner layers contract, and vice versa, and there is a single stationary node radius.  When the second overtone is excited, there are three alternating layers expanding and contracting and two stationary node radii.  The overtone pulsations are more sinusoidal and smaller in amplitude.  Rarely, two or three modes are excited by similar amounts.  With long-duration photometric data on the star, detailed Fourier analysis of the light curves can reveal which modes are excited.  Light curves can also be modified in binary systems where the star may be eclipsed or tidally distorted into an ellipsoid.  These will imprint the binary period into the light curve.
+
+Light curves of Type II Cephieds are more complicated, varying by subtype and can be glitchy from flashes of Helium fusion.  Long-period Type II Cepheids show alternating deep and dim minima.
+
+The physical processes of pulsation occur with a longer period in a physically larger star, which are also more luminous.  Unfortunately, there is not a physical model of the period-luminosity relationship that provides the precision necessary for fitting distances, so the period--luminosity relationship must be calibrated emprically.  Figure \ref{fig:cepheid_period_luminosity} shows the luminosity versus period for a large number of Cepheid stars in the LMC, thus all at a similar distance ($49.59 \pm 0.09$ (statistical) $\pm 0.54$ (systematic) kpc \citep{2019Natur.567..200P} by the detached ecliping binaries method).
+% $49.97 \pm 0.19$ (statistical) $\pm 1.11$ (systematic) kpc \citep{2013Natur.495...76P}).
+Each different sub-category of Cepheid has its own relationship.  These relationships show color dependence, and the scatter is minimized using the Wesenheit index between the infrared- and visible-band magnitudes, $W_I$ = $m_I - 1.55(m_V - m_I)$.
+
+%are luminous (absolute magnitude $M \sim -1$ to $M \sim -5$ versus $M = +4.83$ for the Sun) and
+For Cepheids near enough to get a parallax measurement, we can establish this relationships for Fig. \ref{fig:cepheid_period_luminosity} for the absolute magnitude or luminosity.  The numbers of  objects that anchor our cosmological distance measurements is not large.  As of 2025, fewer than \textcolor{red}{100} Cepheids have parallax measurements in the Milky way or magellanic clouds.  The megamaser galaxy NGC 4258, which allows a (rare) geometric measurement of the angular diameter distance ($7.60 \pm 0.17 \pm 0.15$ Mpc) of the central keplerian disk, helps with the calibration of Cepheids because it has a broader range of metallicities that overlaps both with the milky way and other galaxies.  The Milky Way has a higher than average metalicity and a strong radial metalicity gradient compared to other galaxies.
 
 
-  The numbers of anchor objects is not large fewer than \textcolor{red}{100} by parallax in the Milky way. 
 
-Maximum distance that we can see a cepheid?
+
+% Maximum distance that we can see a cepheid?
 
   
 \section{Point sources of radiation}
@@ -325,7 +360,7 @@ This model is fit to some \textcolor{red}{hundred?} supernova with photometry an
 \begin{equation}
   \chi^2_{\rm SALT2} = \chi^2_{\rm data} + \chi^2_{\rm reg}
 \end{equation}
-\textcolor{red}{The data term looks like...  What is actually being compared?  It looks like it is just computing photometry at an effective wavelength or is it actally integrating the spectral model across the bandpass.  Peter says that the ``$K$ corrections'' is made here, using the redshift to compute the model magnitudes to compare to the data magnitudes, but obviously without the $D_L$.  Also talk about the unnormalized spectra.}
+\textcolor{red}{The data term looks like...  What is actually being compared?  It looks like it is just computing photometry at an effective wavelength or is it actally integrating the spectral model across the bandpass.  Peter B says that the ``$K$ correction'' is made here, using the redshift to compute the model magnitudes to compare to the data magnitudes, but obviously without the $D_L$.  Also talk about the unnormalized spectra.}
 The regularization term quadratic in the templates
 \begin{equation}
   \chi^2_{\rm reg} = A \sum_k M_k^\dag D^\dag D M_k 
@@ -339,7 +374,7 @@ The fitting follows a Gauss-Newton algorithm that uses the Jacobian of $chi^2$ w
 \subsection{Distance estimates}
 The Pantheon+ catalog for instance uses the following estimator for the distance modulus \citep{1998A&A...331..815T}:
 \begin{equation}
-  \mu_i = m_{B,i} - M_B + \alpha x_{1,i} - \beta c_i 
+  \mu_i = m_{B,i} - M_B + \alpha x_{1,i} - \beta c_i  \label{eqn:SNIa_tripp_distance_estimator}
 \end{equation}
 For each supernova, the magnitude
 \begin{equation}
@@ -347,14 +382,97 @@ m_{B,i} = -2.5 \log_{10} (x_{0,i} \times M_0(t=0,x_1=0,c=0)) = -2.5 \log_{10} (x
 \end{equation}
 is the modeled and already-$K$-corrected B-band apparent magnitude at maximum light.  The B-band absolute magnitude $M_B$ records the prototypical maximum luminosity.  The final two terms record the adjustment of the maximum light with parameters $\alpha$ and $\beta$ as the coeffiecients of the light curve shape and color corrections. \textcolor{red}{Do $\alpha,\beta$ come from the SALT2 fit or are fit with the cosmological parameters and marginalized?}  
 
-Sometime an additional mass step term is added.
+Sometime an additional mass-step-function term is added as it was noted that SN in more massive galaxies appeared \textcolor{red}{more/less} luminous than in small galaxies.  \textcolor{red}{Typical values for the step height and position are...}  These are also fitted parameters at some step.
 
-The overall normalization of the 
+In  Equation (\ref{eqn:SNIa_tripp_distance_estimator}), the overall normalization of the luminosity is set by the single parameter, $M_B$.  For a each supernova with a \textit{known} distance, determined by the Cepheid period-luminosity relation (or other means), $M_B$ becomes the only unknown.  A weighted average \textcolor{red}{(how exactly?)} over these supernova yields the value $M_B$, which determines the distance of everything else.
 
-The difference of distance moduli, $\mu_i - \mu_j$, which corresponds to a ratio of distances, causes $M_B$ to cancel while preserving the stretch- and color-based luminosity corrections.  So even without knowing the intrisic luminosity of Type Ia, you can get a measurement of the relative distance between redshifts.  This contains information on cosmological parameters except for $H_0$, which sets the overall normalization of the distance scale.
+Even without knowing the intrisic luminosity of Type Ia, you can get a measurement of the relative distance between redshifts. The difference of distance moduli, $\mu_i - \mu_j$, which corresponds to a ratio of distances, causes $M_B$ to cancel while preserving the stretch- and color-based luminosity corrections.  This contains information on cosmological parameters except for $H_0$, which exactly sets the overall normalization of the distance scale in a flat universe.  Thus supernova data sets can be used in conjunction with CMB or BAO data to yield tighter cosmological constraints, whether or not the Cepheid normalization is employed.  Using the normalized distance tightens the constraints significantly.
 
-Cepheid normalization
 
+\section{Alternative rungs for the distance ladder}
+There are dozens of measurements that use the properties of some class of objects as distance indicators.  This is hust a sampling of alternatives to the current cepheid-to-Type Ia supernova standard.  In the following chapters we will also see how correlations in the density field can serve as a standard ruler, providing another avenue to measure distances.
+
+
+\begin{figure}[!t]
+  \includegraphics[width=\textwidth]{figs/standard_candles/M5_colour_magnitude_diagram.png}
+  % https://commons.wikimedia.org/wiki/File:M5_colour_magnitude_diagram.png
+  \caption{Color--magnitude diagram for stars in the globular cluster Messier 5, showing a snapshot of the stages of stellar evolution for stars of differing mass.  At the bottom of the diagram, the main sequence (dark red) comes up from the bottom and turns sharply right where the more massive stars have evolve off the main sequence into the subgiant branch (also dark red) and into the red giant branch (RGB, dark red to red).  Even more massive stars have finished the red giant phase and are horizontal branch stars (yellow), including RR Lyrae stars (green) in the instability strip.  Cepheids, which are brighter, would appear above the RR Lyrae stars if present.  Even more massive stars have further evolved into asymptotic giant branch stars.}
+\end{figure}
+
+\subsection{Geometric distance anchors}
+
+There are other direct distance anchors, rather than parallax, to base the first rung of the distance ladder on, but they don't yet match Cepheid parallaxes in statistical precision.  
+
+\paragraph{Detached eclipsing binaries.}  For eclipsing binary stars, where the plane of the orbit is edge-on to the line of sight, photometry of the light curve can reveal if the eclipse is partial or total and whether the binaries are detached or in contact.  Doppler shifts of the spectral lines reveal the velocity of the orbit, so the duration of the eclipse can reveal the radii of the stars.  With star's surface aread and the spectral energy distribution (largely determined by the blackbody emission of the effective temperature) we can compute the luminosity (roughly $L = 4\pi R^2 \sigma T_{\rm eff}^4$), compare it to the brightness in several bands, and determine the luminosity distance.  As mentioned before the LMC distance has been anchored with eclipsing binaries, which can be used to calibrate the Cepheids therein.
+
+\paragraph{Masers.} A handful of galaxies have been discovered that contain masers in the accretion disk at the central black hole.  An astrophysical maser is like a natural microwave laser, a two-level system with an inverted population that generates intense stimulated  monochromatic line emission, but without a resonant cavity.  The prototypical disk megamaser galaxy is NGC 4258, but there are a half dozen more.
+
+A particular accretion disk may contain some hundreds of maser spots, distributed in several clumps within a couple of parsecs, or a couple of mas, of the black hole.  Very-long baseline interferometry, correlating a global network of radio telescopes, can measure the spot positions to several $\mu$as accuracy.   Single dish and interferometric observations can measure line velocities and over the course of a few years, the line-of-sight spot accelerations to fractions of a km/s/yr.  The centripetal acceleration in the plane of the Keplerian disk, $a_c = G M_{\rm BH}/r^2 $, can be translated to line-of-sight acceleration with the disk's inclination angle, and the physical radius can be translated to the sky position via the angular diameter distance, the quantity we would like to determine.
+
+The actual modeling is somewhat more complex, with fitting parameters for the galaxy distance, the black hole mass and center, disk inclination and position angle, warping of the disks to second order in the radius in the inclination- and position-angle-directions, and the ellipticity and orientation of the major axis with direction.  In addition, each maser spot gets two parameters for its position in the disk.  
+As few of these systems are distance enough to be in the Hubble flow, and their precisions make them really excellent distance indicator, but they are rare and the measurements difficult.
+
+
+\paragraph{Type II-P supernovae (SNe II-P).}  Type II supernovae (with hydrogen lines) are an alternative to type Ia supernova.  The II-P subclass has plateau in the light curve where the luminosity is roughly constant.  The supernova explosion ionizes the stars large and intact hydrogen envelope, which cools and recombines from the outside in at a roughly steady temperature.  The recombination front defines the photosphere.  The large envelope also makes the supernova more symmetric.
+
+The distance estimate methods, going by names like the Expanding Photosphere Method,  Standardized Candle Method, or Photospheric Magnitude Method, are variation on a single concept.  Spectroscopy can provide the velocity of the photosphere.  The expansion at this phase is homologous: the gas is freely coasting under negligable gravitational and pressure forces.  Each gas shell has constant radial velocity: faster on the outside, slower on the inside, and proportional to radius at any given time.  The particular shell that we measure the velocity of in the photosphere changes as the outward-moving gas shells successively recombine.  Shell constant velocities can be compared to give the time of explosion and integrated to yield a physical size.  The surface area is proportional to the luminosity.  This is compared to the measured brightness via the luminosity distance.
+
+The complication from this method is that the there is significant scattering of the light in the supernova's atmosphere.  It is not a simple black body, but requires non-equilibrium radiation transport modeling to compute the ``dilution'' efficiency factor of the emission, which depends on the density profile, metallicity, and velocity broadening of spectral lines.  While the expanding photosphere method is purely physical and geometric, some of the methods employ empirical correlations between expansion velocity and plateau luminosity at different epochs.  This partially alleviates the need atmospheric modeling, but requires a distance calibration; in that case the II-P supernova serve as secondary distance indicators rather than anchors.
+
+
+%The typical distance precision is now about 15 percent per object.
+
+
+
+\paragraph{Gravitational wave standard sirens.} In addition to the electromagnetic sources we have been considering, gravitational waves also show great promise to measure cosmological distances, although there are significant challenges.  In a compact binary with a quasi-circular inspiral, the gravitational wave strain (fractional stretching of length $\Delta \ell/\ell$) in the two polarizations depends on the luminosity distance as \citep{2005ApJ...629...15H},
+\begin{eqnarray}
+  h_+(t) &=& \frac{2[(1+z) {\cal M}_c ]^{5/3} [\pi f(t)]^{2/3}}{D_L(z)} \left[ 1 + \cos^2(i) \right] \cos(\Phi(t)) \\
+  h_\times(t) &=& \frac{4[(1+z) {\cal M}_c ]^{5/3} [\pi f(t)]^{2/3}}{D_L(z)} \cos(i) \sin(\Phi(t)), \label{eqn:GW_distance_measure}
+\end{eqnarray}
+where the ``chirp mass'' combination of the two masses in the binary is
+\begin{equation}
+  \frac{(m_1 m_2)^{3/5}}{(m_1 + m_2)^{1/5}},
+\end{equation}
+the observed frequency is $f$, the inclination angle of the plane of the system is $i$, and the phase of the binary is $\Phi$.\footnote{The combination $ {\cal M}_z = (1+z) {\cal M}_c$ is the observed, detector-frame, redshifted chirp mass.}
+The evolution of the binary phase depends on the masses and spins of the members and the chirp mass.  The chirp mass also determines the derivative of the frequency and the inspiral rate and is well determined by the measuring the waveform.
+
+A single gravitational wave interferometer is sensitive to a projection of the two polarizations, providing a noisy measurement of 
+\begin{equation}
+  h = F_+(\theta,\phi,\psi) h_+(t) + F_\times(\theta,\phi,\psi) h_\times(t),
+\end{equation}
+where $F$ is the angular instrumental response (or beam) to sky angle $(\theta,\phi)$ and polarization reference angle ($\psi$).  Gravitational distance measurements suffer from significant inclination degeneracy, unable to distinguish a nearby, edge-on binary from a distant, face-on one.  Additional interferometers in different orientations improve the solution for inclination.   Localization is also a significant problem.  The graviational waveform does not tell us the redshift.  There is a degeneracy between a low-redshift, high-mass binary and high-redshift, low-mass binary.  We therefore need to identify the host galaxy of the binary so that we can measure its redshift.  For current interferometers, the localization is only a few square degrees at best, so we need to find some visual transient counterpart of an inspiral and merger to localize the host.  Additional interferometers also help with localization.  Neutron star (''kilonova'') mergers then make especially good targets because of the afterglow, while black hole--black hole mergers may not have much of a visible counterpart.
+
+Even for black holes, if the sky localization is sufficiently narrow, the statistical combination of a large number of mergers can self-calibrate the method.  A single such merger with the inclination resolved yields a precise $D_L$; this will allow several discrete distance--redshift pairs, one per candidate host galaxy.  Considering a large number, we are limited to a cosmological model that provides a distance--redshift relation compatible with each merger. We can account for the possibility of out-of-catalog galaxies with a completeness correction, adding a smooth probability distribution in redshift to account for galaxies we may have missed.  In such statistical analyses, we must also account for the selection bias that we sample GW mergers down to some loudness limit, and more massive systems can be detected to greater distance (an example of ``Malmquist'' bias).
+
+Eccentric orbits add harmonics to the waveform that can help to break degeneracies, but the late stages of the inspiral serve to circularize the orbit.  The non-linear memory effect, the slight, but permanent, adjustment to our local spacetime (an accumulated overall $\Delta \ell/\ell$) caused by the passing of a gravitational wave pulse has a distinct dependence on inclination angle.  The LIGO, Virgo, and KAGRA observatories are not sensitive enough to see the memory effect, but LISA and the Einstein telescope would be able to use it to break the inclination degeneracy.
+
+Importantly, gravitational wave detectors are sensitive to the strain directly, so the signal declines as the inverse first power of the luminosity distance in Equation (\ref{eqn:GW_distance_measure}), rather than the inverse square law of telescopes that measure the electromagnetic power.  Thus improvements to the sensitivity have a large improvement on the volume of space and number of sources that become visible.
+
+Statistical studies of a large number of mergers can use the evolution of features in the gravitational wave mass distribution to constrain cosmological models.  For example, the ``mass gap'' at the upper end of the stellar mass distribution is caused by pair instabiliy supernova.  In lower-metallicity stars with initial mass roughly $130 \ M_\odot < M < 250 \ M_\odot$, rising heat at the center creates positron--electron pairs from the photon bath that previously provided pressure.  This triggering the collapse of a core with plenty of nuclear fuel remaining; explosive oxygen and silicon burning provide enough energy to unbind the star, leaving no remnant.  The distribution of black hole  remnant masses piles up just below $M_{\rm BH} \sim 50\ M_\odot$ because, at the low-mass end, abortive pair-instability pulsations and winds cause the star to shed significant mass.  Above the higher end of the mass range, endothermic photodisintigration dominates, and a star cannot resist direct collapse to a black hole.  This pile-up and gap depends on the physical mass of the system, and helps to break the chirp mass--redshift degeneracy for a statistical sample.
+
+We can also constrain cosmology in a similar way with cross-correlations of tracers of large-scale structure (like galaxy samples) with  stochastic gravitational wave signals (where we can't identify the lower-signal individual binaries, but treat the population as a whole).
+
+
+\subsection{Primary distance indicators}
+
+Rather than Cepheid brightnesses, there are other primary distance indicators, alternative objects for the second rung of the distance ladder.  All of these need to be calibrated by some direct distance anchor on the first rung.
+
+\paragraph{Other pulsating stars.} RR Lyrae stars, mentioned before, have the same pulsation mechanism as Cepheids and are especially similar to Type II Cepheids, but as horizontal branch stars, are at a different phase of evolution and have lower luminosities.  They have potential to be high precision distance indicators because their period luminosity relationship has less intrinsic scatter than Cepheids, but the technique  needs additional research and calibration, because they are more metallicity dependent that for Cepheids.
+
+Mira variable stars are  common AGB stars with long periods ($\sim$100--3000 days).  They have the largest amplitudes of variable stars ($\Delta m_v > 2.5$, $\Delta m_I > 0.8$, $\Delta m_K > 0.4$), as radial pulsations change the area and temperature pulsations shift the emission between visible and infrared wavelengths. The opacity $\kappa$ mechanism from hydrogen ionization is the likely driving mechanism.  Most stars in the mass range $0.8M_\odot < M < 8M_\odot$ will pass through a Mira phase.  Miras are $10^4$ $L_\odot$, comparable or brighter than Cepheids, but the longer periods means it takes more time to sample the light curve.  In the infrared, oxygen-rich Miras have a low-scatter period-luminosity-color relation, which allows them to be used, like Cepheids, as distance indicators \citep{2024arXiv240109581H}.
+
+\paragraph{Tip of the Red Giant Branch (TRGB).}  The reddest and most luminous stars in the red giant branch of the HR diagram all have similar luminosities, especially in the infrared.  In red giants, core hydrogen burning has shut down, and shell hydrogen burning gradually builds up the helium core.  The star's luminosity depends very closely on the accumulated core helium mass.  The threshold in core mass to initiate helium burning is very consistent from star to star ($\Delta M \sim 0.001$ $M_\odot$), particularly for older, population II stars.  Core helium burning rapidly establishes a new  equilibrium at higher temperature (bluer color), lower radius, and lower luminosity, leaving a discontinuity at the extreme tip or top edge of the red giant branch in the HR diagram.  Because this tip is standardizable candle from star cluster to star cluster, this point makes a good distance indicator.  The absolute magnitude of the TRGB has corrections due to dust extinction, the star cluster overall color, and the contrast ratio of the discontinuity,  the ratio of densities of stars just above to just below.   A high contrast ratio indicates a well-defined break. 
+
+\paragraph{Carbon-rich AGB stars (JAGB).}  AGB stars in the J-region (infrared band colors $1.5 < m_J - m_K < 2.0$) have little scatter in their near-infrared J-band luminosities and are thus promising standard candles.    Theoretically, this is attributed to thermal pulsations dredging up carbon from the helium burning shell in a third dredge-up event. This dredge up only provides significant carbon enrichment for a narrow luminosity and mass range of stars, $2$--$5$ $M_\odot$, where less massive stars don't have a vigorous mixing and more massive stars burn the carbon to nitrogen.\footnote{So-called ``hot bottom burning'' at the helium shell}  The carbon-rich atmosphere's absorption features make the carbon stars identifibly redder than typical oxygen-rich AGB stars.  In the outer parts of galaxies, where dust reddening is less of a concern, the mode of the luminosity distribution for these stars is a very regular luminosity value, insentive to metallicity, and can be a good distance indicator \citep{2023ApJ...956...15L}.  This is an efficient method because it only need two-band IR photometry at a single epoch, compared to the multiple epochs needed to characterize the light curves of pulsating stars.
+%  https://iopscience.iop.org/article/10.3847/1538-4357/acee69
+
+\subsection{Secondary distance indicators.}
+
+Several other classes of object are luminous enough to be seen into the Hubble flow and substitute for Type Ia supernova as secondary distance indicators.
+
+\paragraph{Surface Brightness Fluctuations (SBF).}  The physical scale of brightness fluctuations inside the disks?
+
+\paragraph{Galaxy scaling relations.}  Galaxy physical and dynamical properties are correlated to their luminosity and physical size, which permits estimates of the luminosity distance or angular diameter distance.  The Fundamental Plane relation for elliptical galaxies is a correlation between the effective radius, average surface brightness, and central velocity dispersion.  The Tully-Fisher relation is a correlation between the luminosity of a spiral galaxy and its rotation velocity.  In both cases, the dynamical measure of rotation or random motions, which is measured by spectroscopy, depends essentially on the mass of the system.  More massive systems tend toward larger physical size and luminosity.  One challenge is that the mass-to-light ratio of galaxies change over time as their stellar populations age.  One mitigation is to observe in the rest-frame infrared, where the stars that contribute much of the light are long lived, so the mass-to-light ration is more steady.  Another is to make theoretical or emprically-based models of the evolving mass-to-light ratio rather than using a $z=0$ constant model.  A variation, the baryonic Tully-Fisher relation relates the rotation velocity to the total baryonic mass (stars plus gas) without the dark matter.  It has a tighter correlation, but since it yields only a baryonic mass, more work is needed to model a luminosity that is compatible with the galaxies age and colors.  This requires stellar population synthesis modeling.  
 
 \section*{Exercises}
 
