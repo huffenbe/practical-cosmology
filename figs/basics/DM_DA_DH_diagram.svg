@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="158.89355mm"
+   height="151.83423mm"
+   viewBox="0 0 158.89355 151.83423"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="DM_DA_DH_diagram.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="1.5231338"
+     inkscape:cx="299.71103"
+     inkscape:cy="336.8056"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="3.1082232,88.858922"
+       orientation="1,0"
+       id="guide23"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle"
+       refX="4"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Concave triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-26.754948,-7.0453596)">
+    <rect
+       style="fill:#f9f9f9;stroke:none;stroke-width:0.282223"
+       id="rect5"
+       width="158.89355"
+       height="47.059296"
+       x="26.754948"
+       y="59.432827" />
+    <rect
+       style="fill:#f9f9f9;stroke:none;stroke-width:0.282223"
+       id="rect4"
+       width="158.89355"
+       height="47.059296"
+       x="26.754948"
+       y="7.0453596" />
+    <rect
+       style="fill:#f9f9f9;stroke:none;stroke-width:0.282223"
+       id="rect3"
+       width="158.89355"
+       height="47.059296"
+       x="26.754948"
+       y="111.8203" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 146.03088,39.153205 41.622326,42.680522 143.30416,17.466851"
+       id="path1"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 143.30416,17.466851 2.72672,21.686354"
+       id="path2"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="45.956924"
+       y="32.152802"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-size:4.93889px;stroke-width:0.264583"
+         x="45.956924"
+         y="32.152802">δθ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="147.08104"
+       y="27.945059"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="font-size:4.93889px;stroke-width:0.264583"
+         x="147.08104"
+         y="27.945059">D<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan12">M</tspan><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif'"
+   id="tspan10">(</tspan>χ<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif'"
+   id="tspan11">)</tspan> δθ</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282222;stroke-dasharray:none;marker-end:url(#ConcaveTriangle)"
+       id="path8"
+       sodipodi:type="arc"
+       sodipodi:cx="41.622326"
+       sodipodi:cy="42.680523"
+       sodipodi:rx="14.76103"
+       sodipodi:ry="14.76103"
+       sodipodi:start="5.5038434"
+       sodipodi:end="5.9891726"
+       sodipodi:arc-type="arc"
+       d="m 52.122972,32.306302 a 14.76103,14.76103 0 0 1 3.626969,6.096547"
+       sodipodi:open="true" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282222;stroke-dasharray:none;marker-end:url(#ConcaveTriangle)"
+       id="path9"
+       sodipodi:type="arc"
+       sodipodi:cx="41.622326"
+       sodipodi:cy="-42.681484"
+       sodipodi:rx="14.76103"
+       sodipodi:ry="14.76103"
+       sodipodi:start="5.8009605"
+       sodipodi:end="6.2618432"
+       sodipodi:arc-type="arc"
+       d="m 54.700087,-49.526933 a 14.76103,14.76103 0 0 1 1.679908,6.530441"
+       sodipodi:open="true"
+       transform="scale(1,-1)" />
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="94.470856"
+       y="26.515593"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="font-size:4.93889px;stroke-width:0.264583"
+         x="94.470856"
+         y="26.515593">χ</tspan></text>
+    <path
+       id="path12"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 76.189148,87.025696 -34.566882,8.57157 35.296036,-1.192692"
+       sodipodi:nodetypes="ccc" />
+    <g
+       id="g1"
+       transform="matrix(0.45700648,0,0,0.46193021,77.983169,43.825244)"
+       style="stroke-width:2.17647">
+      <path
+         d="m 133.5129,92.492677 12.5181,-0.422714 -2.72697,-21.686531 -11.68817,2.898532"
+         style="fill:none;stroke:#000000;stroke-width:0.575854px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path1-7" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2.30341;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         d="m 143.30416,70.383521 2.72672,21.686354"
+         id="path13"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2.30341;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         d="m 155.62752,194.43338 -21.92,2.69765"
+         id="path3"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="45.956924"
+       y="85.069466"
+       id="text13"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="font-size:4.93889px;stroke-width:0.264583"
+         x="45.956924"
+         y="85.069466">δθ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="147.08104"
+       y="84.565895"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="font-size:4.93889px;stroke-width:0.264583"
+         x="147.08104"
+         y="84.565895">δ</tspan></text>
+    <g
+       id="layer1-5"
+       transform="translate(52.710331,25.364036)">
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+         x="112.65077"
+         y="59.043816"
+         id="text26"
+         transform="skewX(-15)"><tspan
+           sodipodi:role="line"
+           id="tspan26"
+           style="font-size:4.93889px;stroke-width:0.264583"
+           x="112.65077"
+           y="59.043816">ℓ</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282222;stroke-dasharray:none;marker-end:url(#ConcaveTriangle)"
+       id="path17"
+       sodipodi:type="arc"
+       sodipodi:cx="41.622326"
+       sodipodi:cy="95.597183"
+       sodipodi:rx="14.76103"
+       sodipodi:ry="14.76103"
+       sodipodi:start="5.5038434"
+       sodipodi:end="5.9891726"
+       sodipodi:arc-type="arc"
+       d="m 52.122972,85.222963 a 14.76103,14.76103 0 0 1 3.626969,6.096547"
+       sodipodi:open="true" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282222;stroke-dasharray:none;marker-end:url(#ConcaveTriangle)"
+       id="path18"
+       sodipodi:type="arc"
+       sodipodi:cx="41.622326"
+       sodipodi:cy="-95.598145"
+       sodipodi:rx="14.76103"
+       sodipodi:ry="14.76103"
+       sodipodi:start="5.8009605"
+       sodipodi:end="6.2618432"
+       sodipodi:arc-type="arc"
+       d="m 54.700087,-102.44359 a 14.76103,14.76103 0 0 1 1.679908,6.530438"
+       sodipodi:open="true"
+       transform="scale(1,-1)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';text-align:center;letter-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       x="88.921089"
+       y="105.88798"
+       id="text18"
+       transform="rotate(-8.3195289)"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="88.921089"
+         y="105.88798"
+         id="tspan19" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="86.391449"
+       y="92.625282"
+       id="text20"
+       transform="rotate(-7.7695562)"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="86.391449"
+         y="92.625282" /><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="86.391449"
+         y="100.56278"
+         id="tspan21">. . . .</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="80.913895"
+       y="100.63419"
+       id="text22"><tspan
+         sodipodi:role="line"
+         id="tspan22"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';stroke-width:0.264583"
+         x="80.913895"
+         y="100.63419">universe expanded</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="38.143791"
+       y="79.742081"
+       id="text23"><tspan
+         sodipodi:role="line"
+         id="tspan23"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="38.143791"
+         y="79.742081">observed</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="147.33588"
+       y="77.881226"
+       id="text23-9"><tspan
+         sodipodi:role="line"
+         id="tspan23-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="147.33588"
+         y="77.881226">physical length</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="29.863173"
+       y="12.964972"
+       id="text24"><tspan
+         sodipodi:role="line"
+         id="tspan24"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold Italic';stroke-width:0.264583"
+         x="29.863173"
+         y="12.964972">Transverse comoving distance</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="29.863173"
+       y="65.881645"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan25"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold Italic';stroke-width:0.264583"
+         x="29.863173"
+         y="65.881645">Angular diameter distance</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;fill:#999999;stroke-width:0.264583"
+       x="140.71712"
+       y="100.63419"
+       id="text27"><tspan
+         sodipodi:role="line"
+         id="tspan27"
+         style="fill:#999999;stroke-width:0.264583"
+         x="140.71712"
+         y="100.63419">past</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;fill:#999999;stroke-width:0.264583"
+       x="34.837341"
+       y="100.63419"
+       id="text28"><tspan
+         sodipodi:role="line"
+         id="tspan28"
+         style="fill:#999999;stroke-width:0.264583"
+         x="34.837341"
+         y="100.63419">present</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;fill:#999999;stroke-width:0.264583"
+       x="81.274948"
+       y="47.62463"
+       id="text28-3"><tspan
+         sodipodi:role="line"
+         id="tspan28-6"
+         style="fill:#999999;stroke-width:0.264583"
+         x="81.274948"
+         y="47.62463">all at present</tspan></text>
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.282223;stroke-dasharray:none"
+       id="path28"
+       cx="41.707684"
+       cy="42.655693"
+       r="0.64959943" />
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.282223;stroke-dasharray:none"
+       id="circle28"
+       cx="41.707684"
+       cy="95.57235"
+       r="0.64959943" />
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="141.78944"
+       y="131.6618"
+       id="text31"><tspan
+         sodipodi:role="line"
+         id="tspan31"
+         style="font-size:4.93889px;stroke-width:0.264583"
+         x="141.78944"
+         y="131.6618">δ</tspan></text>
+    <g
+       id="g32"
+       transform="translate(47.418661,72.459869)">
+      <text
+         xml:space="preserve"
+         style="font-style:italic;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+         x="112.65077"
+         y="59.043816"
+         id="text32"
+         transform="skewX(-15)"><tspan
+           sodipodi:role="line"
+           id="tspan32"
+           style="font-size:4.93889px;stroke-width:0.264583"
+           x="112.65077"
+           y="59.043816">ℓ</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="79.237671"
+       y="145.05617"
+       id="text34"
+       transform="rotate(-7.7695562)"><tspan
+         sodipodi:role="line"
+         id="tspan33"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="79.237671"
+         y="145.05617" /><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="79.237671"
+         y="152.99367"
+         id="tspan34">. . . .</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="80.913895"
+       y="153.55087"
+       id="text35"><tspan
+         sodipodi:role="line"
+         id="tspan35"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';stroke-width:0.264583"
+         x="80.913895"
+         y="153.55087">universe expanded</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="126.95351"
+       y="126.03541"
+       id="text37"><tspan
+         sodipodi:role="line"
+         id="tspan37"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';stroke-width:0.264583"
+         x="126.95351"
+         y="126.03541">physical length</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="29.863173"
+       y="117.73995"
+       id="text38"><tspan
+         sodipodi:role="line"
+         id="tspan38"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold Italic';stroke-width:0.264583"
+         x="29.863173"
+         y="117.73995">Line-of-sight Hubble distance</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;fill:#999999;stroke-width:0.264583"
+       x="140.71712"
+       y="153.55087"
+       id="text39"><tspan
+         sodipodi:role="line"
+         id="tspan39"
+         style="fill:#999999;stroke-width:0.264583"
+         x="140.71712"
+         y="153.55087">past</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;fill:#999999;stroke-width:0.264583"
+       x="34.837341"
+       y="153.55087"
+       id="text40"><tspan
+         sodipodi:role="line"
+         id="tspan40"
+         style="fill:#999999;stroke-width:0.264583"
+         x="34.837341"
+         y="153.55087">present</tspan></text>
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.282223;stroke-dasharray:none"
+       id="circle40"
+       cx="41.707684"
+       cy="148.48903"
+       r="0.64959943" />
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="137.46243"
+       y="139.5802"
+       id="text41"><tspan
+         sodipodi:role="line"
+         id="tspan41"
+         style="stroke-width:0.264583"
+         x="137.46243"
+         y="139.5802">z</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Italic';text-align:justify;letter-spacing:0px;stroke-width:0.264583"
+       x="146.86626"
+       y="139.5802"
+       id="text42"><tspan
+         sodipodi:role="line"
+         id="tspan42"
+         style="stroke-width:0.264583"
+         x="146.86626"
+         y="139.5802">z + δz</tspan></text>
+  </g>
+</svg>

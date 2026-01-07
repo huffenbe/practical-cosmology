@@ -198,7 +198,7 @@ We can define an analogous quantity for curvature,
 \end{equation}
 but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With current limits on $|\Omega_k| < 0.005$, we know that $R_0 > 60$ Gpc.   With these, the Friedmann equation \ref{eqn:friedmann1} becomes,
 \begin{equation}
-  H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ). \label{eqn:H_in_terms_of_Omega}
+  H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ) = [ H_0 E(a) ]^2. \label{eqn:H_in_terms_of_Omega}
 \end{equation}
 Note that for $a=1$, this form shows that the sum of the $\Omega$ parameters is unity, and while $\Omega_k$ (and potentially $\Omega_\Lambda$ but not in actuality) could be negative, the others can only be positive.  Rearranging, we get a separable equation
 \begin{equation}
@@ -246,11 +246,11 @@ Important in the discussion of distances are the concepts of \textit{standard ca
 
 A standard ruler is an object or feature of known comoving or physical size that we can compare to the measured angular size.  Examples of standard rulers are the baryon acoustic oscillations---soundwaves in the primordial plasma---that are visible both as peaks in the CMB power spectrum and in the distribution of galaxies.  
 
-If we want to work out the distance to a point where some radiation was emitted, we can integrate,
+If we want to work out the distance to a point where some radiation was emitted, we can integrate
 \begin{equation}
-  d\chi = \frac{dr}{(1 + kr^2/R_0^2)^{1/2}},
+  d\chi = \frac{dr}{(1 + kr^2/R_0^2)^{1/2}}
 \end{equation}
-along the path to the point, similar to when we integrated $d\ell$ on the surface of the sphere.  In a similar way, we get, 
+along the radial path to the point, similar to when we integrated $d\ell$ on the surface of the sphere.  In a similar way, we get, 
 \begin{equation}
   r = S_k(\chi) \equiv \left\{
   \begin{array}{ll}
@@ -260,7 +260,7 @@ along the path to the point, similar to when we integrated $d\ell$ on the surfac
   \end{array}
   \right.
 \end{equation}
-You can compare Eqn~(\ref{eqn:2d_sphere_path_radius}) to see that $\chi$ is the radial distance in the (possibly) curved space.  We do this all at the present day, when $a=1$.  We call $\chi$ the comoving distance\index{comoving distance}.
+You can compare Equation~(\ref{eqn:2d_sphere_path_radius}) to see that $\chi$ is the radial distance in the (possibly) curved space.  We do this all at the present day, when $a=1$.  We call $\chi$ the comoving distance\index{comoving distance}.
 
 Writing the FRW metric in terms of the comoving distance, we have
 \begin{equation}
@@ -274,15 +274,16 @@ where we have used the differential of $1+z = 1/a(t)$ in the last equality.  Int
 \begin{equation}
   \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')} 
 \end{equation}
-to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures expansion history via the integrated $1/a(t)$ or $1/H(z)$.  Comparing Equation~(\ref{eqn:H_in_terms_of_Omega}), you can see that $\chi(z)$ has an amplitude determined by $H_0^{-1}$ and a shape determined by the the $\Omega$ parameters (the composition of the Universe).
+to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures expansion history via the integrated $1/a(t)$ or $1/H(z)$.  Comparing Equation~(\ref{eqn:H_in_terms_of_Omega}), you can see that $\chi(z)$ has an amplitude determined by $H_0^{-1}$ and a shape determined by the the $\Omega$ parameters (i.e.\ the composition of the Universe).
 
-The cosmology dependence comes from the cosmology's effect on the expansion history.  This discussion has readied us to examine several distinct notions of cosmological distance.
+This discussion has readied us to examine several additional, distinct notions of cosmological distance.
 
-\begin{figure}
+\begin{figure}[!t]
   \begin{center}
-    \fakeplot
+    {\includegraphics[width=\textwidth]{figs/basics/DM_DA_DH_diagram.pdf}}
   \end{center}
-  \caption{Diagrams for different notions of distance, including $D_M,D_A,D_H$.}
+  \caption{Diagrams that help explain cosmological distance measures.  The transverse comoving distance is based of an arc drawn at the present day, so the expansion of the universe doesn't affect it. In a flat geometry, $D_M = \chi$ and this is exactly the familiar relation.   The angular diameter distance helps us account for the size that physical length will expand into.  The Line-of-sight comoving Hubble distance accounts for the expansion of the universe as light travels from the far side to the near side of an object.
+}
   \label{fig:distances1}
 \end{figure}
 
@@ -290,28 +291,29 @@ The cosmology dependence comes from the cosmology's effect on the expansion hist
 \paragraph{Comoving distance.}
 As mentioned, we call $\chi$ the comoving distance.  It is the physical distance today if we were to measure with a ruler to the point where the emission (previously) came from.
 
-\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Fig.~\ref{fig:distances1}.  We have already encountered this quantity, which has the value
+\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Figure~\ref{fig:distances1}.  We have already encountered this quantity, which has the value
 \begin{equation}
   D_M(z) = S_k(\chi(z)) = r(z).
 \end{equation}
 finding that it is the same value as the comoving coordinate.  In a flat universe only, this quantity is also the comoving distance $\chi$.
 
-Suppose an object with physical size $\delta\ell$, our proverbial standard ruler perpendicular to the line of sight, is emitting at redshift $1+z = 1/a$.  Today it  subtends angle $\delta\theta$.
-We just saw how to relate the comoving arc length to an angle with $D_M$, and we know that the comoving size of the arc that object covers---the size that it will expand into at the present---is $\delta\ell/a$.  Thus we have
+\paragraph{Angular diameter distance.}  Suppose an object with physical size $\delta\ell$, a standard ruler perpendicular to the line of sight, emitted radiation in the past at redshift $1+z = 1/a$.  Today it  subtends angle $\delta\theta$.
+We just saw how to relate the comoving (present-day) arc length to an angle with $D_M$, and we know that the comoving size of the arc that object covers---the size that the arc will expand into at the present---is $\delta\ell/a$.\footnote{Even if the object itself is gravitationally bound and doesn't expand, the light is quickly on its way and away from the object, and, carried by the expansion of the universe, it points back to where the light came from if the object had expanded.}  Thus we have
 \begin{equation}
  \delta\theta =  \frac{\delta\ell/a}{D_M} 
 \end{equation}
-as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation feature in the correlation function and power spectrum of galaxy samples.
+as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation feature in the correlation functions and power spectra of galaxy samples.  This feature has a fixed comoving size as it expands with the universe.
 
-\begin{figure}
+\begin{figure}[!t]
   \begin{center}
-    \fakeplot
+    \includegraphics[width=\textwidth]{figs/basics/DA_of_z.pdf}
   \end{center}
-  \caption{Angular diameter distance versus redshift.}
+  \caption{In a flat $\Lambda$CDM universe, the angular size of fixed objects diminish at first with redshift (as they are farther away), but then increase again when the universe is small at high redshifts.  That makes the angular diameter distance $D_A$ non-monotonic.  This is in contrast to the comoving distance $\chi$ and the transverse comoving distance $D_M$ which both monotonically increase.  (These are the same in this flat model.)  They flatten at high redshift because the distance traversed by a redshift interval gets tiny when the universe is small.  The luminosity distance $D_L$ increases quickly due to the extra dimming effects with redshift.  At low redshift, all these distance measures agree with each other and our usual euclidean sense of distance.
+}
   \label{fig:angular_diameter_distance}
 \end{figure}
 
-\paragraph{Angular diameter distance.}    Suppose that we instead want to define a distance measure so that it follows the more familiar geometrical relation for physical size and measured angle.  We call this the angular diameter distance and define it so that it satistfies
+   Suppose that we instead want to define a distance measure so that it follows the more familiar geometrical relation for physical size and measured angle.  We call this the angular diameter distance and define it so that it satistfies
 \begin{equation}
   \delta\theta = \frac{\delta\ell}{D_A},
 \end{equation}
@@ -331,13 +333,16 @@ So
 \end{equation}
 We can define a comoving distance
 \begin{equation}
-  D_H(z) = \frac{1}{H(z)}
+  D_H(z) = \frac{1}{H(z)} = \frac{1}{H_0 E(z)}
 \end{equation}
 that can be taken in a ratio with the comoving size of our object $\delta\ell/a$  so that
 \begin{equation}
    \delta z = \frac{\delta\ell/a}{D_H}
 \end{equation}
-This ratio of comoving distances also returns when we talk about baryon acoustic oscillations in galaxy power spectra, and their line of sight component.  Note that here to there is no requirement that $D_H$ stay monotonic (or even positive in a universe that is contracting), {and it is not monotonic in $\Lambda$CDM}. So although this is a useful quantity, perhaps again ``distance'' is a bad name.
+This ratio of comoving lengths also returns when we talk about fixed-comoving-sized baryon acoustic oscillations in galaxy power spectra, and their line of sight component.  Although this is a very useful quantity, perhaps again ``distance'' is a bad name.  The quantity that matches up to the other distance measures at low redshift is $z D_H(z)$.  Note that there is no requirement that $z D_H$ stay monotonic (or even stay positive in a universe that contracts), {and it is not monotonic in $\Lambda$CDM}. 
+
+Here we're using the symbol $D_H(z)$ as in the BAO literature \citep[e.g.][]{2025JCAP...02..021A}, but be wary of a variety of usages out there.\footnote{\citet{1999astro.ph..5116H} uses a constant $D_H = c/H_0$ which agrees with us only at redshift $z=0$ in units where $c=1$.  The documentation for the Core Cosmology Library \citep{2019ApJS..242....2C} uses a different definition $D_H = cz/H_0$ in their function \texttt{pyccl.background.hubble\_distance()}.}  
+
 
 \paragraph{Luminosity distance.}  Finally we want to establish a notion of distance to relate the luminosity of objects to their measured brightness.  We consider an object with luminosity
 \begin{equation}
@@ -346,7 +351,10 @@ This ratio of comoving distances also returns when we talk about baryon acoustic
 emitting a certain energy per unit time.  Note that we have to count the energy emitted versus a clock ticking in its rest frame.  This energy passes through a sphere a comoving coordinate $r$ away and is collected in a small area $A$.  We have already seen that the surface area of that sphere is $4\pi r^2$ and that $r = D_M = S_k(\chi)$.
 
 \begin{figure}
-  \caption{Diagram for Luminosity distance}
+  \begin{center}
+  \includegraphics[width=0.5\textwidth]{figs/basics/DL_diagram.pdf}
+  \end{center}
+  \caption{Diagram for luminosity distance}
 \end{figure}
 
 In a static universe, the light energy collected is the same as that emitted accounting for the fraction of the area covered. So the received power at the observer is
@@ -359,16 +367,16 @@ and the observed brightness or flux (power per collecting area) is
 \end{equation}
 This accounts for possible curvature but not expansion.
 
-In an expanding Universe, we have to account for two effects, both of which reduce the energy collected by the observer.  First, the rate of photons is slowed by the redshift factor, or equivalently $dt_{\rm obs} = (1+z) dt_{\rm em}$.  Second, the energy per photon is also redshifted, $dE_{\rm obs} = dE_{\rm em}/(1+z)$.  Accounting for these effects, we find,
+In an expanding universe, we have to account for two effects, both of which reduce the energy collected by the observer.  First, the rate of photons, like all rates, is slowed by the redshift factor, or equivalently $dt_{\rm obs} = (1+z) dt_{\rm em}$; it takes longer to collect the same number.  Second, the energy per photon is also redshifted, $dE_{\rm obs} = dE_{\rm em}/(1+z)$.  Accounting for these effects, we find,
 \begin{equation}
-    F = \frac{L}{4\pi (1+z)^2 D_M^2}  \qquad \mbox{(correct for expansion)}
+    F = \frac{L}{4\pi (1+z)^2 D_M^2}.  \qquad \mbox{(correct for expansion)}
 \end{equation}
 
 Like the angular diameter distance, the luminosity distance $D_L$ is an attempt to make the expression for flux resemble the familiar relation from static, euclidean geometry:
 \begin{equation}
     F = \frac{L}{4\pi D_L^2},
 \end{equation}
-which defines $D_L$.  Although this is common, I'm once again not sure that it is such a good idea, because it seems unnecessary and confusing, as we already have the correct expression above.  In any case, the expression leads to,
+which defines $D_L$.  Although this is common, I'm once again not sure that it is such a good idea, because it seems unnecessary and confusing, as we already have the correct expression above.  On the other hand, when we are making computation about standard candles, as in Chapter \ref{ch:standard_candles}, it does make it more convenient to not have factors of (1+z) to keep track of.  In any case, the expression leads to
 \begin{equation}
   D_L(z) = (1+z) D_M(z).
 \end{equation}
@@ -382,7 +390,7 @@ which defines $D_L$.  Although this is common, I'm once again not sure that it i
 \begin{enumerate}
 
 
-\item Derive expression for radial length in a spherical space, Equation (\ref{eqn:2d_sphere_path_radius}).
+\item Derive the expression for radial length in a spherical space, Equation (\ref{eqn:2d_sphere_path_radius}).
 
 \item Find the analogous expression to Equation (\ref{eqn:2d_sphere_path_radius}) for  radial length in a hyperbolic space.
   
@@ -396,7 +404,7 @@ which defines $D_L$.  Although this is common, I'm once again not sure that it i
 \item Show that a $\Lambda$-dominated universe always has a constant Hubble parameter.
 
 \item Show that
-  $$ \frac{dt}{a(t)} = - \frac{dz}{H(z)} $$
+  \begin{equation} \frac{dt}{a(t)} = - \frac{dz}{H(z)}. \end{equation}
 
 
 \end{enumerate}
