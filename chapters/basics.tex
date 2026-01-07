@@ -272,7 +272,7 @@ Photons travel on null geodesics, paths with $ds^2 = 0$, so a photon on a radial
 \end{equation}
 where we have used the differential of $1+z = 1/a(t)$ in the last equality.  Integrating, we find
 \begin{equation}
-  \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')} 
+  \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')} \label{eqn:chi_of_z}
 \end{equation}
 to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures expansion history via the integrated $1/a(t)$ or $1/H(z)$.  Comparing Equation~(\ref{eqn:H_in_terms_of_Omega}), you can see that $\chi(z)$ has an amplitude determined by $H_0^{-1}$ and a shape determined by the the $\Omega$ parameters (i.e.\ the composition of the Universe).
 
@@ -407,4 +407,7 @@ which defines $D_L$.  Although this is common, I'm once again not sure that it i
   \begin{equation} \frac{dt}{a(t)} = - \frac{dz}{H(z)}. \end{equation}
 
 
+\item Write a compute program or make a spreadsheet that computes the comoving distance $\chi$ to redshift $z=2$ for a flat $\Lambda$CDM model with $H_0 = 70$ km/s/Mpc, $\Omega_m = 0.3$, and $\Omega_\Lambda = 0.7$.  Compute the needed integral (Equation \ref{eqn:chi_of_z}) as a Riemann sum.
+
+  
 \end{enumerate}
