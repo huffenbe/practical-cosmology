@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showguides="true"
-     inkscape:zoom="1.1948198"
-     inkscape:cx="329.33836"
-     inkscape:cy="82.857681"
+     inkscape:zoom="3.3053054"
+     inkscape:cx="320.84781"
+     inkscape:cy="46.591761"
      inkscape:window-width="1920"
      inkscape:window-height="1022"
      inkscape:window-x="1920"
@@ -42,6 +42,11 @@
        position="20.884739,244.82491"
        orientation="0,-1"
        id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="79.807931,114.75622"
+       orientation="1,0"
+       id="guide15"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
@@ -110,5 +115,39 @@
          style="stroke-width:0.264583"
          x="111.38535"
          y="101.08829">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+       x="103.89902"
+       y="62.20895"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="stroke-width:0.264583"
+         x="103.89902"
+         y="62.20895">surface area = 4π<tspan
+   style="font-style:italic"
+   id="tspan9">r</tspan><tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan8">2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+       x="134.38176"
+       y="68.005669"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="stroke-width:0.264583"
+         x="134.38176"
+         y="68.005669">= 4π<tspan
+   style="font-style:italic"
+   id="tspan13">D<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan14">M</tspan></tspan>(<tspan
+   style="font-style:italic"
+   id="tspan12">z</tspan>)<tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan11">2</tspan></tspan></text>
   </g>
 </svg>
