@@ -65,11 +65,13 @@ In general relativity, these conditions end up being very restrictive.  The metr
 \begin{equation}
   ds^2 = -dt^2 + a^2(t)\left[ \frac{dr^2}{1 - kr^2/R_0^2} + r^2 d\Omega^2  \right]
 \end{equation}
-where $r$ is a radial coordinate (called a comoving coordinate) but again is slightly different to what we are used to, and $\theta$ and $\phi$ are angular coordinates that work normally.  This metric is extremely important.  The parameter $k$ denotes the three different kinds of spacetimes that are allowed by our restrictive conditions.  Values $k = \{ -1, 0, +1 \}$ mean that the space has negative curvature, is spatially flat, or has positive curvature.    All of this is familiar from our discussion of curved spaces above.
+where $r$ is a radial coordinate (called a comoving coordinate) but again is slightly different to what we are used to, and $\theta$ and $\phi$ are angular coordinates that work normally.  This metric is extremely important.  The parameter $k$ denotes the three different kinds of spacetimes that are allowed by our restrictive conditions.  Values $k = \{ -1, 0, +1 \}$ mean that the space has negative curvature, is spatially flat, or has positive curvature.    All of this is familiar from our discussion of curved spaces above. We can call our position the origin of our coordinate system, $r=0$. 
+Cosmology is concerned with the very largest size scales in the universe and we are essentially stuck in one spot, in the Milky Way. 
 
 The new element is the function $a(t)$, which is called the \textit{scale factor}\index{scale factor} and specifies how the size of the universe changes over time.  By convention, we set $a(t_{\rm now}) = 1$, which means that the comoving coordinate refers to the present time. Similarly, the parameter $R_0 > 0$ is the radius of the curvature of the space at the present day, but the curvature scale at other times grows or shrinks according to $a(t)$.  The meaning of $t$ is the wristwatch time of ``co-moving'' observers.  By comoving, we mean these are observers who are carried along with the expansion of the universe.  Their coordinates $(r,\theta,\phi)$ are fixed and their relative motions are determined only by the expansion.  They have no independent motion (that is, peculiar velocity\index{peculiar velocity}).
 
-We call this metric the Friedmann-Robertson-Walker (FRW) or Friedmann-Lemaitre-Robertson-Walker (FLRW) metric after the people who found and worked with it first.  We have measured the spatial curvature and know that the radius of curvature exceeds $R_0 > 60$\ Gpc (at 95\% confidence in Planck satellite data), so our universe is fairly flat.  In some instances, we will restrict to that flat case.  Cosmology is concerned with the very largest size scales in the universe.  We are essentially stuck in one spot, in the Milky Way, so we can call our position as the origin of our coordinate system, $r=0$. 
+We call this metric the Friedmann-Robertson-Walker (FRW) or Friedmann-Lemaitre-Robertson-Walker (FLRW) metric after the people who found and worked with it first.  We have measured the spatial curvature and know that the radius of curvature exceeds $R_0 > 60$\ Gpc (at 95\% confidence in Planck satellite data), so our universe is fairly flat.  It might be much flatter than that.  In some instances, we will restrict to that the case.
+
 
 The expansion rate at any time is given by the time derivative of the scale factor.  This is typically rescaled by the scale factor itself to give the \textit{Hubble parameter}\index{Hubble parameter},
 \begin{equation}
@@ -83,11 +85,11 @@ All determinations of distance depend on the Hubble constant; it is an enormousl
   
 In flat space ($k=0$), the physical distance (like you would measure with a ruler) from the origin to a point depends on the comoving coordinate as
 \begin{equation}   
-  \ell_{\rm radial} = a(t) r 
+  \ell_{\rm radial} = a(t) r  \qquad\mbox{(flat case)}
 \end{equation}
 while the physical velocity of an object is
 \begin{equation}
-  v_{\rm phys} = \frac{d(\ell_{\rm phys})}{dt} = \frac{da}{dt} r + a \frac{dr}{dt} = \frac{\dot a}{a} a r + a \frac{dr}{dt} = H \ell_{\rm phys} + v_{\rm pec}
+  v_{\rm phys} = \frac{d(\ell_{\rm phys})}{dt} = \frac{da}{dt} r + a \frac{dr}{dt} = \frac{\dot a}{a} a r + a \frac{dr}{dt} = H \ell_{\rm phys} + v_{\rm pec}   \quad\mbox{(flat case)}
 \end{equation}
 The first term in the velocity is called the \textit{Hubble flow}\index{Hubble flow} and the second term is called the \textit{peculiar velocity}\index{peculiar velocity}.  The Hubble flow is the velocity that you measure from the expansion of the Universe.  Nearby, where the Hubble parameter is close to the present-day value, we find that galaxies tend to move away from us at around 70 km/s per Mpc of distance away.  The peculiar velocity is the independent velocity of a galaxy and is typically around 1000 km/s, so we need to look further than tens of Mpc away for the Hubble flow to dominate the overall velocity of an object.  In practice, we measure the \textit{cosmological redshift}\index{redshift}, $z$, of the spectral lines of an object compared to the wavelength of emission.
 \begin{equation} 
@@ -98,7 +100,7 @@ We have $z=0$ at the present day, $z \sim 10$ when the first stars and galaxies 
 Does this violate conservation of energy?  Well, no, energy conservation is the result of the symmetry of time-invariance.  The spacetime of an expanding universe is not time invariant, so we cannot expect energy conservation.  As the momentum of objects redshifts away, they over time lose their peculiar velocities and come to join the Hubble flow.
 
 \section{Friedmann equations and model universes}
-Much of the development of the universe clearly depends on the \textit{expansion history}\index{expansion history}, the scale factor as a function of time: $a(t)$.  Treating the contents of the universe the as a uniform fluid, the Einstein differential equations of general relativity---which relate the curvature expressed by the metric to the matter-energy content---yield two differential equations that relate the scale factor to the energy density $\rho$ and pressure $P$ of the fluid. These equations are the first Friedmann equation,
+Much of the development of the universe clearly depends on the \textit{expansion history}\index{expansion history}, the scale factor as a function of time: $a(t)$.  Treating the contents of the universe the as a uniform fluid, the Einstein equations of general relativity---which relate the spacetime expressed by the metric (and its derivatives) to the matter-energy content---yield two differential equations that relate the scale factor to the energy density $\rho$ and pressure $P$ of the fluid. These equations are the first Friedmann equation,
 \begin{equation}
   H^2 = \left( \frac{\dot a}{a} \right)^2 = \frac{8\pi G}{3} \rho - \frac{k}{a^2 R_0^2}, \label{eqn:friedmann1}
 \end{equation}
@@ -158,7 +160,7 @@ which has a positive energy density but a negative pressure.  The equation of st
 \begin{equation}
   \rho_\Lambda \propto a^0
 \end{equation}
-is constant.  The density of this component does not dilute with expansion of the universe.  This is very weird and  does not fit with our intuitions of how substances work.  However, current modeling requires this component, dubbed ``dark energy,'' to account for about 70 percent of our present-day energy budget.
+is constant.  The density of this component does not dilute with expansion of the universe.  This is very weird and  does not fit with our intuition of how substances work.  As we will see, this negative pressure causes it to have gravity that pushes rather than pulls.  Also very weird.  However, current modeling requires this component, dubbed ``dark energy,'' to account for about 70 percent of our present-day energy budget.
 
 This component is utterly mysterious to us.  It may ultimately be simply a property of spacetime as originally envisioned, just a \textit{cosmological constant} in the equations of GR.  It may be an energy density associated with the vacuum.  This might make the density dependence on expansion more understandable.  An expanding volume produces more vacuum and so produces more dark energy.  In quantum mechanics, the (observed) Casamir effect depends on a sea of vitual particles and a zero-point energy associated with the vacuum.  However, a simple theory computation, accounting for the particles we know about, predicts a vacuum energy value which is huge, a factor of $10^{60}$ greater than what we observe.  This is the unresolved \textit{cosmological constant problem}.
 
@@ -174,11 +176,11 @@ With the $\rho(a)$ dependence of the of the different components, we can solve t
   \end{array}
   \right. 
 \end{equation}
-There are several things to note about these solutions.  The matter and radiation solutions are increasing in size but decelerating (concave-down curves), and we understand this in terms of the attractive gravitational pull of all the matter in the universe slowing the expansion.  In a flat universe, however, it is not enough to arrest the expansion.
+There are several things to note about these solutions.  The matter and radiation solutions are increasing in size but decelerating (concave-down curves), and we understand this in terms of the attractive gravitational pull of all the matter in the universe slowing the expansion.  In a flat universe, however, it is not enough to arrest the expansion in finite time.
 
-In a flat, cosmological-constant-dominated Universe, by contrast, the expansion is exponentially accelerating.  The Hubble parameter is always constant in this case.   We think that our universe today has mostly transitioned from being matter dominated to dark-energy dominated, as the expansion dilutes the matter but not a cosmological constant.  The components had equal energy density about $z=0.3$.  The matter-dominated phase lasted about 10 Gyr.  Because of the density scaling with scale factor, prior to the matter dominated phase was a radiation dominated phase (equal densities about $z=3400$).  The radiation dominated phases lasted only about 50 kyr.  Looking backward in time, both matter- and radiation-dominated universes reach zero size a finite time in the past.  This is the origin of the idea of the ``hot Big Bang.''  We additionally think there was another, earlier epoch of exponential expansion prior to the radiation dominated phase.  This is \textit{inflation}\index{inflation} and we understand that even less than dark energy.  We'll talk about it more when we discuss the cosmic microwave background.
+In a flat, cosmological-constant-dominated Universe, by contrast, the expansion is exponentially accelerating.  The Hubble parameter is always constant in this case.   We think that our universe today is in the process of transitioning from being matter dominated to dark-energy dominated, as the expansion dilutes the matter but not a cosmological constant.  The components had equal energy density about $z=0.3$.  The matter-dominated phase lasted about 10 Gyr.  Because of the density scaling with scale factor, prior to the matter dominated phase was a radiation dominated phase (equal densities about $z=3400$).  The radiation dominated phase lasted only about 50 kyr.  Looking backward in time, both matter- and radiation-dominated universes reach zero size a finite time in the past.  This is the origin of the idea of the ``hot Big Bang.''  We additionally think there was another, earlier epoch of exponential expansion prior to the radiation dominated phase.  This is \textit{inflation}\index{inflation} and we understand that even less than dark energy.  We'll talk about it more when we discuss the cosmic microwave background.
 
-Because our Universe has multiple components, and curvature is always a possibility, we need to treat the solution for $a(t)$ more generally.  From the first Friedmann equation (\ref{eqn:friedmann1}), we see that for a particular expansion rate there is a particular \textit{critical density}\index{critical density} associated with flatness.  To have a flat ($k=0$) universe today ($a=1$, $H=H_0$), we must have
+Because our Universe has multiple components, and curvature is always a possibility, we need to treat the solution for $a(t)$ more generally.  From the first Friedmann equation (\ref{eqn:friedmann1}), we see that for a particular expansion rate ($H_0$) there is a particular \textit{critical density}\index{critical density} associated with flatness.  To have a flat ($k=0$) universe today ($a=1$, $H=H_0$), we must have
 %\begin{equation}
 %  H_0^2  = \frac{8\pi G}{3} \rho_{\rm crit,0} 
 %\end{equation}
@@ -196,11 +198,15 @@ We can define an analogous quantity for curvature,
 \begin{equation}
   \Omega_k = \frac{-k/R_0^2}{H_0^2}   \qquad \mbox{or} \qquad R_0 = \frac{1}{H_0\sqrt{-\Omega_k / k}},
 \end{equation}
-but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With current limits on $|\Omega_k| < 0.005$, we know that $R_0 > 60$ Gpc.   With these, the Friedmann equation \ref{eqn:friedmann1} becomes,
+but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With current limits on $|\Omega_k| < 0.005$, we know that $R_0 > 60$ Gpc.   With these, the Friedmann equation (\ref{eqn:friedmann1}) becomes,
 \begin{equation}
   H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ) = [ H_0 E(a) ]^2. \label{eqn:H_in_terms_of_Omega}
 \end{equation}
-Note that for $a=1$, this form shows that the sum of the $\Omega$ parameters is unity, and while $\Omega_k$ (and potentially $\Omega_\Lambda$ but not in actuality) could be negative, the others can only be positive.  Rearranging, we get a separable equation
+Note that for $a=1$, this form shows that the sum of the $\Omega$ parameters is unity,
+\begin{equation}
+  \Omega_r + \Omega_m  + \Omega_k  +  \Omega_\Lambda  = 1, 
+\end{equation}
+and while $\Omega_k$ (and potentially $\Omega_\Lambda$ but not in actuality) could be negative, the others can only be positive.  Rearranging, we get a separable equation
 \begin{equation}
 \frac{da}{dt} = \dot a = H_0 (\Omega_r a^{-2} + \Omega_m a^{-1} + \Omega_k  +  \Omega_\Lambda a^2)^{1/2} = H_0 F(a), \label{eqn:friedmann_adot}
 \end{equation}
@@ -208,7 +214,7 @@ that can be integrated and inverted to give the functional relationship between 
 \begin{equation}
   \int^1_a \frac{da'}{H_0 F(a')} =  \int^{t_{\rm now}}_t dt'.
 \end{equation}
-Many of the two-component universes have analytic solutions, but our $\Lambda$CDM universe needs to be numerically integrated and it is trivial to do so to whatever accuracy we require.
+Many of the two-component universes have analytic solutions, but our $\Lambda$CDM universe needs to be numerically integrated and it is trivial to do so to whatever accuracy we require.  Note that $1/H_0$ is the normalization for any timescale.
 
 
 \begin{figure}[t]
@@ -216,12 +222,12 @@ Many of the two-component universes have analytic solutions, but our $\Lambda$CD
     \includegraphics[width=\textwidth]{figs/basics/a_of_t.pdf}
   \end{center}
   \caption{For the $\Lambda$CDM model and several others, the scale factor $a(t)$. and $H(t)$, with $z$ on the other axis.  All models have the same scale factor and slope (Hubble constant) at the present day, $t-t_{\rm now} = 0$.
-    The $\Lambda$CDM  model that fits well our own universe takes a longer time to develop compared to the others, a consequence of the low matter density and late-time, cosmological-constant-driven accelerated expansion.  For the other model universes are younger.  The stronger gravity of a higher matter density causes more rapid deceleration to the present day values of the slope of the expansion. The flat, matter-dominated universe grows as $a \propto t^{2/3}$, as we saw before.
+    The $\Lambda$CDM  model that fits well our own universe takes a longer time to develop compared to the others, a consequence of the low matter density and late-time, cosmological-constant-driven accelerated expansion.  The other model universes are younger.  The stronger gravity of a higher matter density causes more rapid deceleration to the present day values of the slope of the expansion. The flat, matter-dominated universe grows as $a \propto t^{2/3}$, as we saw before.
   }\label{fig:a_of_t}
 \end{figure}
-In broad terms, the expansion of the spacetime of our universe fits a model with roughly $\Omega_m=0.3$, $\Omega_\Lambda=0.7$, and no spatial curvature $\Omega_k=0.0$ that is currently expanding with $H_0 \sim 70$ km/s/Mpc.  This is illustrated in Figure~\ref{fig:a_of_t} with a few other models.  The scale factor in these models goes to zero in the finite past, which gives the age of the universe and the epoch of the Big Bang\index{Big Bang}.
+In broad terms, the expansion of the spacetime of our universe fits a model with roughly $\Omega_m=0.3$, $\Omega_\Lambda=0.7$, and no spatial curvature $\Omega_k=0.0$.  It is currently expanding with $H_0 \sim 70$ km/s/Mpc.  This is illustrated in Figure~\ref{fig:a_of_t} with a few other models, open, flat, and closed.  The scale factor in these models goes to zero in the finite past, which gives the age of the universe and the epoch of the Big Bang\index{Big Bang}.
 
-Looking at Equation \ref{eqn:friedmann_adot}, as $a$ increases, we can work out that these particular open and flat models will expand forever.  The flat $\Lambda$CDM model reaches exponential expansion in the far future.  The open, low-matter and flat, matter-dominated are constantly decelerating (Figure \ref{fig:expansion_rate}), with the open model achieving constant positive $\dot a = H_0\Omega_k^{1/2}$ after infinite time and the flat, matter-dominated universe approaching $\dot a \rightarrow 0$ after infinite time.  The high matter universe with positive curvature is different in that the gravitational pull of the matter is sufficient to stop the expansion and recollapse the universe to zero scale factor in finite time, a so-called ``Big Crunch.''\index{Big Crunch}  Such a symmetric fate for the Universe, particularly paired with the notion of a recurring cycle of Big Bangs and Big Crunches is philosophically appealing, but the data appear to have ruled it out.
+Looking at Equation \ref{eqn:friedmann_adot}, as $a$ increases, we can work out that these particular open and flat models will expand forever.  The flat $\Lambda$CDM model reaches exponential expansion in the far future.  The open, low-matter and flat, matter-dominated models are constantly decelerating (Figure \ref{fig:expansion_rate}), with the open model achieving constant positive $\dot a = H_0\Omega_k^{1/2}$ after infinite time and the flat, matter-dominated universe approaching $\dot a \rightarrow 0$ after infinite time.  The high matter universe with positive curvature is different in that the gravitational pull of the matter is sufficient to stop the expansion and recollapse the universe to zero scale factor in finite time, a so-called ``Big Crunch.''\index{Big Crunch}  Such a symmetric fate for the Universe, particularly paired with the notion of a recurring cycle of Big Bangs and Big Crunches is philosophically appealing, but the data appear to have ruled it out.
 
 \begin{figure}[t]
   \begin{center}
@@ -231,7 +237,7 @@ Looking at Equation \ref{eqn:friedmann_adot}, as $a$ increases, we can work out 
   \end{figure}
 
 
-These ``$\Omega$'' parameters are the first of what we will call \textit{cosmological parameters}\index{cosmological parameters}.  They determine how a specific cosmological model develops over time.  Much of the science of observational cosmology is dedicated to making measurements of observable quantities and using them to determine the values of the cosmological parameters within a particular model.
+These ``$\Omega$'' parameters are the first of what we will call \textit{cosmological parameters}\index{cosmological parameters}.  They determine how a specific cosmological model develops over time.  Much of the science of observational cosmology is dedicated to making measurements of observable quantities and using them to determine the values of the cosmological parameters within a particular model.  This is what we call ``measuring'' or ``fitting'' the cosmology.
 
 
 
@@ -240,9 +246,9 @@ These ``$\Omega$'' parameters are the first of what we will call \textit{cosmolo
 
 \section{Distance measures}
 
-The redshift of objects is an observable that is relatively easy to measure, directly provides the amount of expansion in the universe since that time, and gives us one notion of the distance to an object.  We need to understand the relationship between redshift and the other observables that are also related to distance, most prominently the brightness and angular size of objects.  Brightness and angular size are also relatively easy to measure on the sky.  Comparisons of these observables and their associated distance--redshift relationships over cosmic time give us useful ways to constrain the cosmological model.
-
-Important in the discussion of distances are the concepts of \textit{standard candles}\index{standard candle} and \textit{standard rulers}\index{standard ruler}.  A standard candle is an object of known luminosity that we can compare to its measured brightness to determine the distance.  The most well-known standard candles are type Ia supernova, exploding white dwarf stars.  These are sometimes referred to as ``standardizable candles'' since they are not all identical, and their luminosity is not known from first principles, but the luminosity can be well calibrated by a series of observations that we will describe in chapter \ref{ch:standard_candles}.  A related concept is a standard siren\index{standard siren}, which is a gravitational wave source of known power that we can compare to the locally measured strain.  An example would be a binary black hole merger that is (1) understood in such detail that the power is understood and is (2) localized such that the redshift of the host galaxy is measureable.
+The redshift of objects is an observable that is relatively easy to measure from spectral lines, directly provides the amount of expansion in the universe since that time, and gives us one notion of the distance to an object.  We need to understand the relationship between redshift and the other observables that are also related to distance, most prominently the brightness and angular size of objects.  Brightness and angular size are also relatively easy to measure on the sky.  Comparisons of these observables and their associated distance--redshift relationships over cosmic time give us useful ways to constrain the cosmological model. 
+ 
+Important in the discussion of distances are the concepts of \textit{standard candles}\index{standard candle} and \textit{standard rulers}\index{standard ruler}.  A standard candle is an object of known luminosity that we can compare to its measured brightness to determine the distance.  The most well-known standard candles are type Ia supernovae (SNe Ia), exploding white dwarf stars.  These are sometimes referred to as ``standardizable candles'' since they are not all identical, and their luminosity is not known from first principles, but the luminosity can be well calibrated by a series of observations that we will describe in Chapters \ref{ch:standard_candles} and \ref{ch:distance_ladder}.  A related concept is a standard siren\index{standard siren}, which is a gravitational wave source of known power that we can compare to the locally measured strain.  An example would be a binary black hole merger that is (1) understood in such detail that the power is known and is (2) localized such that the redshift of the host galaxy is measureable.
 
 A standard ruler is an object or feature of known comoving or physical size that we can compare to the measured angular size.  Examples of standard rulers are the baryon acoustic oscillations---soundwaves in the primordial plasma---that are visible both as peaks in the CMB power spectrum and in the distribution of galaxies.  
 
@@ -260,9 +266,9 @@ along the radial path to the point, similar to when we integrated $d\ell$ on the
   \end{array}
   \right.
 \end{equation}
-You can compare Equation~(\ref{eqn:2d_sphere_path_radius}) to see that $\chi$ is the radial distance in the (possibly) curved space.  We do this all at the present day, when $a=1$.  We call $\chi$ the comoving distance\index{comoving distance}.
+You can compare Equation~(\ref{eqn:2d_sphere_path_radius}) to see that $\chi$ is the radial distance in the (possibly) curved space.  We do this all at the present day, when $a=1$.  We call $\chi$ the comoving distance\index{comoving distance}: the physical distance today to the comoving coordinate $r$.
 
-Writing the FRW metric in terms of the comoving distance, we have
+Writing the FRW metric using the comoving distance $\chi$, rather than $r$, as the radial coordinate, we have an alternate form
 \begin{equation}
   ds^2 = -dt^2 + a^2 \left[ d\chi^2 + S_k^2(\chi) d\Omega^2 \right].
 \end{equation}
@@ -282,7 +288,7 @@ This discussion has readied us to examine several additional, distinct notions o
   \begin{center}
     {\includegraphics[width=\textwidth]{figs/basics/DM_DA_DH_diagram.pdf}}
   \end{center}
-  \caption{Diagrams that help explain cosmological distance measures.  The transverse comoving distance is based of an arc drawn at the present day, so the expansion of the universe doesn't affect it. In a flat geometry, $D_M = \chi$ and this is exactly the familiar relation.   The angular diameter distance helps us account for the size that physical length will expand into.  The Line-of-sight comoving Hubble distance accounts for the expansion of the universe as light travels from the far side to the near side of an object.
+  \caption{Diagrams that help explain cosmological distance measures.  The transverse comoving distance is based on an arc drawn at the present day, so the expansion of the universe doesn't affect it. In a flat geometry, $D_M = \chi$ and this is exactly the familiar relation.   The angular diameter distance helps us account for the size that a physical length (in the past at redshift $z$) will expand into.  The line-of-sight comoving Hubble distance accounts for the expansion of the universe as light travels from the far side to the near side of an object.
 }
   \label{fig:distances1}
 \end{figure}
@@ -291,18 +297,18 @@ This discussion has readied us to examine several additional, distinct notions o
 \paragraph{Comoving distance.}
 As mentioned, we call $\chi$ the comoving distance.  It is the physical distance today if we were to measure with a ruler to the point where the emission (previously) came from.
 
-\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Figure~\ref{fig:distances1}.  We have already encountered this quantity, which has the value
+\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Figure~\ref{fig:distances1}.  We have already encountered this quantity, which is
 \begin{equation}
-  D_M(z) = S_k(\chi(z)) = r(z).
+  D_M(z) = S_k(\chi(z)) = r(z),
 \end{equation}
-finding that it is the same value as the comoving coordinate.  In a flat universe only, this quantity is also the comoving distance $\chi$.
+finding that it is the same value as the comoving coordinate because the angular part of the metric looks the same as in standard spherical-polar coordinates.  In a flat universe only, this quantity is also the comoving distance $\chi$.
 
 \paragraph{Angular diameter distance.}  Suppose an object with physical size $\delta\ell$, a standard ruler perpendicular to the line of sight, emitted radiation in the past at redshift $1+z = 1/a$.  Today it  subtends angle $\delta\theta$.
 We just saw how to relate the comoving (present-day) arc length to an angle with $D_M$, and we know that the comoving size of the arc that object covers---the size that the arc will expand into at the present---is $\delta\ell/a$.\footnote{Even if the object itself is gravitationally bound and doesn't expand, the light from it is quickly on its way.  Distant from the object and carried by the expansion of the universe, the light will point back to where it would have come from if the object had expanded.}  Thus we have
 \begin{equation}
  \delta\theta =  \frac{\delta\ell/a}{D_M} 
 \end{equation}
-as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation feature in the correlation functions and power spectra of galaxy samples.  This feature has a fixed comoving size as it expands with the universe.
+as the angle expressed as a comoving size in the numerator compared to the transverse comoving distance in the denominator.  This relationship is very important when we measure the baryon acoustic oscillation feature in the correlation functions and power spectra of galaxy samples.  The BAO feature has a fixed comoving size as it expands with the universe.
 
 \begin{figure}[!t]
   \begin{center}
@@ -313,17 +319,17 @@ as the angle expressed as a comoving size in the numerator compared to the trans
   \label{fig:angular_diameter_distance}
 \end{figure}
 
-   Suppose that we instead want to define a distance measure so that it follows the more familiar geometrical relation for physical size and measured angle.  We call this the angular diameter distance and define it so that it satistfies
+   Suppose that we instead want to define a distance measure so that it follows the more familiar geometrical relation for physical size and measured angle.  We call this the angular diameter distance and define it so that it satisfies
 \begin{equation}
   \delta\theta = \frac{\delta\ell}{D_A},
 \end{equation}
-from which quickly follows
+from which quickly follows,
 \begin{equation}
   D_A(z) = \frac{D_M(z)}{1+z}.
 \end{equation}
 One of the conceptually tricky things about geometrical measures in an expanding universe is that the angular diameter distance is not monotonic with redshift (Fig. \ref{fig:angular_diameter_distance}).  For that reason, I think that ``distance'' is actually a bad name for this quantity, because we want the idea of distance to comport with notions of near and far, and this does not.
 
-What is happening is clearer if you consider a series of standard rulers with physical length $\delta\ell$ at various distances.  For nearby objects, the angle that you measure diminishes with distance in the expected fashion.  But for more distance objects, the Universe in the past had a smaller scale factor, so the standard ruler took up more space, and the angle you measure reaches a minimum size and starts to increase again with distance or redshift.  In that sense, I think that the quantity $\delta\theta/\delta\ell = D_A^{-1}$ is conceptually easier to think about, and is proportional to the angle that you actually measure.
+What is happening is clearer if you consider a series of standard rulers with physical length $\delta\ell$ at various distances.  For nearby objects, the angle that you measure diminishes with distance in the expected fashion.  But for more distance objects, the Universe in the past had a smaller scale factor, so the standard ruler took up more space, and the angle you measure reaches a minimum size and starts to increase again with distance or redshift.  Something small that is very far away can appear quite large.  In that sense, I think that the quantity $\delta\theta/\delta\ell = D_A^{-1}$ is conceptually easier to think about, and is proportional to the angle that you actually measure.
 
 
 \paragraph{Line-of-sight comoving Hubble distance.}  If we turn our standard ruler so that it is parallel to the line of sight, we will measure a difference in the redshift $\delta z$ from the front to the back.  We know that the time elapsed for light to traverse our object is $\delta t = \delta\ell$ in units where $c=1$.  The change in redshift is due to the expansion of the universe during that time.
@@ -337,12 +343,12 @@ We can define a comoving distance
 \end{equation}
 that can be taken in a ratio with the comoving size of our object $\delta\ell/a$  so that
 \begin{equation}
-   \delta z = \frac{\delta\ell/a}{D_H}
+   \delta z = \frac{\delta\ell/a}{D_H}.
 \end{equation}
-This ratio of comoving lengths also returns when we talk about fixed-comoving-sized baryon acoustic oscillations in galaxy power spectra, and their line of sight component.  Although this is a very useful quantity, perhaps again ``distance'' is a bad name.  The quantity that matches up to the other distance measures at low redshift is $z D_H(z)$.  Note that there is no requirement that $z D_H$ stay monotonic (or even stay positive in a universe that contracts), {and it is not monotonic in $\Lambda$CDM}. 
+This ratio of comoving lengths also returns when we talk about fixed-comoving-sized baryon acoustic oscillations in galaxy power spectra, and their line of sight component.
+Here we're using the symbol $D_H(z)$ as in the BAO literature \citep[e.g.][]{2025JCAP...02..021A}, but be wary of a variety of usages out there.\footnote{Different from us, \citet{1999astro.ph..5116H} uses a constant $D_H = c/H_0$ which agrees with us only at redshift $z=0$ in units where $c=1$.  The documentation for the Core Cosmology Library \citep{2019ApJS..242....2C} uses a different definition $D_H = cz/H_0$ in their function \texttt{pyccl.background.hubble\_distance()}.  Be sure you know what your symbols mean!}
 
-Here we're using the symbol $D_H(z)$ as in the BAO literature \citep[e.g.][]{2025JCAP...02..021A}, but be wary of a variety of usages out there.\footnote{Different from us, \citet{1999astro.ph..5116H} uses a constant $D_H = c/H_0$ which agrees with us only at redshift $z=0$ in units where $c=1$.  The documentation for the Core Cosmology Library \citep{2019ApJS..242....2C} uses a different definition $D_H = cz/H_0$ in their function \texttt{pyccl.background.hubble\_distance()}.  Be sure you know what your symbols mean!}  
-
+  Although this is a very useful quantity, perhaps again ``distance'' is a bad name.  The quantity that matches up to the other distance measures at low redshift is $z D_H(z)$ (although this is not an otherwise useful quantity).  Note that there is no requirement that $z D_H$ stay monotonic (or even stay positive in a universe that contracts), {and it is not monotonic in $\Lambda$CDM}. 
 
 \paragraph{Luminosity distance.}  Finally we want to establish a notion of distance to relate the luminosity of objects to their measured brightness.  We consider an object with luminosity
 \begin{equation}
@@ -376,7 +382,7 @@ Like the angular diameter distance, the luminosity distance $D_L$ is an attempt 
 \begin{equation}
     F = \frac{L}{4\pi D_L^2}, \label{eqn:DL}
 \end{equation}
-which defines $D_L$.  Although this is common, I'm once again not sure that it is such a good idea, because it seems unnecessary and confusing, as we already have the correct expression above.  On the other hand, when we are making computation about standard candles, as in Chapter \ref{ch:standard_candles}, it does make it more convenient to not have factors of (1+z) to keep track of.  In any case, the expression leads to
+which defines $D_L$.  Although this is common, I'm once again not sure that it is such a good idea, because it seems unnecessary and confusing, as we already have the correct expression above.  On the other hand, when we are making computation about standard candles, as in Chapter \ref{ch:standard_candles}, it is more convenient to not have factors of (1+z) to keep track of.  In any case, the expression leads to
 \begin{equation}
   D_L(z) = (1+z) D_M(z).
 \end{equation}
