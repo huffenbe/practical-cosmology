@@ -1,22 +1,18 @@
-\chapter{Supernova cosmology, et cetera} \label{ch:standard_candles}
+\chapter{Supernova cosmology} \label{ch:standard_candles}
 
-We want to use the relationship between the apparent brightness and the known (or calibrated) luminosity of objects to measure the cosmological model through the luminosity distance $D_L(z)$, ultimately depending on the expansion history $a(t)$.  Type Ia supernovae are luminous and fairly consistent explosions of white dwarf stars and have been the workhorses for cosmological measurements of this type.  They are complicated objects, not understood from first priciples, but are well-characterized and standardized.  They are luminous enough and common enough to be seen in large numbers well into the Hubble flow.
+We want to use the relationship between the apparent brightness and the known (or calibrated) luminosity of objects to measure the cosmological model through the luminosity distance $D_L(z)$, ultimately depending on comoving distance $\chi$ and the expansion history $a(t)$.  There is a decoupling between the parameters: the amplitude of $\chi(z)$ depends only on $H_0^{-1}$ while the shape depends only on the the $\Omega$ parameters.
 
-In the following, we will describe the supernovae and the Cepheid variable-type stars used to calibrate their luminosities.  We will examine in detail how to properly measure  photometry and spectra in an expanding universe.  These are the necessary data.  Then we will see how researchers build a statistical model of the Type Ia spectral energy distribution and, finally, how this used to make a calibrated distance estimate for each object.
+Type Ia supernovae are luminous and fairly consistent explosions of white dwarf stars and have been the workhorses for cosmological measurements of this type.  They are complicated objects, not understood from first priciples, but are well-characterized and standardized.  They are luminous enough and common enough to be seen in large numbers well into the Hubble flow.  
 
-At the end, we'll also discuss some alternative objects and methods for measuring distance, including other types of supernovae and stars, and even gravitational waves.  The statistical methods to fit a cosmological model to these distance measurements are discussed in chapter \ref{ch:likelihoods_cosmology}.
+In the following, we will describe the white dwarfs and the supernovae.
+We will examine in detail how to properly measure  photometry and spectra in an expanding universe.  These are the necessary data.  Then we will see how researchers build a statistical model of the Type Ia spectral energy distribution and, finally, how this used to make a calibrated distance estimate for each object.  Even without an absolute estimate of the luminosity of the supernovae, we can estimate the parameters that determine the shape of the distance--redshift relation $\Omega_m$ and $\Omega_\Lambda$.  To determine the amplitude of the distance relation as well, we need to use Cepheid variable stars or another method to calibrate the supernovae's luminosity.  We'll discuss that distance ladder in Chapter \ref{ch:distance_ladder}.
 
-
-\section{Distance ladder}
-Although many Type Ia supernova have been studied in detail with photometric time series of their brightness---so-called ``light curves''---in multiple spectral bands---and a smaller subset have had more-costly spectroscopic measurements to characterize their full spectral energy distributions, that information cannot on its own tell us how luminous the explosions are.  None are close enough for a direct geometric measurement of their distance.  We need to calibrate them with another type of object, usually Cepheid variable stars.  Some Cepheids are near enough to us to measure their distance geometrically via parallax, using the Earth's orbit around the Sun, the size of which is precisely known from radar ranging to the planets.  We know those Cepheids' luminosities by comparing their measured brightness to that distance.  By extrapolating those results to Cepheids that are too far for parallax but bright enough to see in intermediate-distance galaxies that also hosted Type Ia supernovae, we can determine the distances to those galaxies and calibrate the luminosities of the Type Ia supernovae as a class.
-
-% Using nomeclature of 2025arXiv251023823H
-Thus to build a ``ladder'' to the distant Universe, we use parallax measurements (rung 1) of the Milky Way Cepheids to anchor the luminosity calibration for the Cepheids.  Then we use extragalactic Cepheid brightnesses (rung 2) as a primary distance indicator to determine distances to the galactic hosts of supernovae and calibrate their luminosities.  We then use the supernovae as secondary distance indicators \citep[rung 3,][]{2025arXiv251023823H}.  We explore some alternative rungs at the end of the chapter.
-
-The next two subsections explain what Type Ia supernova and Cepheid variable stars actually are.  Skip those sections if you just want to know how to use them for cosmology.
+The statistical methods to fit a cosmological model to these distance measurements are discussed in Chapter \ref{ch:likelihoods_cosmology}.
 
 
-\subsection{Type Ia supernova} % What is a SNIa?
+
+
+\section{Type Ia supernovae} % What is a SNIa?
 
 \begin{figure}
   \begin{center}
@@ -192,7 +188,7 @@ For supernova cosmology analysis, it is important to bring all the varied photom
 The dust in the Milky Way alters the spectrum of any extragalactic object we see, attenuating the blue light and reddening the color.  This is typically written as $E(B-V)$, which actually means $(m_B - m_V)(\hat \mathbf{n})$, the magnitude difference due to dust reddining as a function of position on the sky.  This has been tabulated by measurements  of the dust column density either through long-wavelength observations of the dust emission or via spectral features of the dust.
 
 \subsection{Distance modulus}
-While the apparent magnitude measures the brightness of an object, the \textbf{absolute magnitude}\index{absolute magnitude} measures its luminosity.  The absolute magnitude $M$ is defined as what the apparent magnitude would be if we imagine the object were 10 pc away.\footnote{Absolute magnitude was conceived for stars and is kind of inappropriate for a supernova, since a supernova at 10 pc would be exceedingly dangerous, destroying the ozone layer and causing a mass extinction on Earth.}  Considering bolometric magnitudes, 
+While the apparent magnitude measures the brightness of an object, the \textbf{absolute magnitude}\index{absolute magnitude} measures its luminosity.  The absolute magnitude $M$ is defined as what the apparent magnitude would be if we imagine the object were 10 pc away.\footnote{Absolute magnitude was conceived for stars and is kind of inappropriate for a supernova, since a supernova at 10 pc would be exceedingly dangerous, destroying the ozone layer and causing a mass extinction on Earth.  Sometimes supernova brightness is standardized at a more reasonable distance of 1 Mpc, which yields a difference of $5 \log_{10}(10^6\mbox{ pc}/10\mbox{ pc}) = +25$ magnitudes fainter.}  Considering bolometric magnitudes, 
 \begin{equation}
   100^{(m_{\rm bolo}-M_{\rm bolo})/5} = \frac{F_{10\ \rm pc}}{F} = \frac{{L}/{4\pi(10\ \rm pc)^2}}{{L}/{4\pi D_L^2}} = \left( \frac{D_L}{10\ \rm pc} \right)^2
 \end{equation}
@@ -288,11 +284,19 @@ Although mathematically correct, I find the $K$-correction an awkward way to dea
    &=& M_{z \rm band} - 2.5 \log_{10} \left( \frac{\int R((1+z)\lambda) f_{\lambda,\ \rm ref}\ d\lambda}{\int R(\lambda) f_{\lambda,\ \rm ref}\ d\lambda} \right) \label{eqn:alternative_to_K_correction}
 \end{eqnarray}
 In this formulation, we have the apparent magnitude we actually observe ($m_{\rm band}$), the distance measure ($\mu$), the absolute magnitude we actually probe ($M_{z\rm band}$ in its native, emitted frame), and a correction that does not depend on the unknown spectrum of the source, only the known reference.  However, for supernova cosmology, we need to compare and calibrate many supernova at different redshifts, so even in this formulation we would still need a model for the rest frame spectrum of the objects to model the absolute magnitudes in the redshifts bands.
+ 
+\textcolor{black}{In the end, it seems to me that it would be better simply to work with the flux directly (\ref{eqn:flux_from_redshift}) or the equivalent band-averaged flux density $f_{\rm band}$. With the redshift, spectral model, and calibrated photometry, you can seek the luminosity distance directly, bypassing the magnitude system and distance modulus altogether.  However, these are the standards in the field right now (and it's not my subfield) so we will continue to use them.}
+\newpage
+\section{Measuring distance} \label{sec:measuring_distance}
+Let's review where we are.  From Equation~(\ref{eqn:flux_from_redshift}), if we know the intrinsic luminosity of an object in a band (or equivalently its absolute magnitude) then we can compare to the observed flux (or apparent magnitude) to get the luminosity distance for that redshift.  The problem is that we usually don't know the the intrinsic luminosity.
 
-\textcolor{blue}{In the end, it seems to me that it would be better simply to work with the flux directly (\ref{eqn:flux_from_redshift}) or the equivalent band-averaged flux density $f_{\rm band}$. With the redshift, spectral model, and calibrated photometry, you can seek the luminosity distance directly, bypassing the magnitude system and distance modulus altogether.  However, these are the standards in the field right now (and it's not my subfield) so we will continue to use them.}
+In SNIa cosmology,  the supernova luminosities are characterized using a parameter for the B-band maximum luminosity of an idealized, fiducial supernova.  From the supernova data, researchers build a model of that fiducial supernova and of the natural variations around it.  Then on a per supernova basis, detailed modeling estimates the apparent brightness at maximum light (even if the observations missed it). The modeling also estimates the ``time-stretch'' of the light curve and the color variation away from the fiducial model.  These seem to be the dominant corrections that relate the maximum-light luminosity for each supernova to the fiducial one, and under that hypothesis, the slopes for these corrections are fit as global nuisance parameters along with the cosmology.  We'll get into the details of this process.
 
-\section{Measuring distance}
-Let's review where we are.  From Eq.~\ref{eqn:flux_from_redshift}, if we know the intrinsic luminosity of an object in a band (or equivalently its absolute magnitude) then we can compare to the observed flux (or apparent magnitude) to get the luminosity distance for that redshift.  The problem is that we usually don't know the the intrinsic luminosity.
+The comoving distance $\chi(z)$ is proportional to $H_0^{-1}$ and, in a flat model, so are $D_M(z)$ and $D_L(z)$, while the shapes of these functions are determined by the $\Omega$ parameters.  For the distance modulus $\mu(z)$ in the flat model, which is a logarithm of $D_L$, changing the amplitude $H_0^{-1}$ amounts to an constant offset with $z$, and again the shape is determined by the $\Omega$ parameters.
+
+At a measured flux (\ref{eqn:flux_from_redshift}), the distance we infer  is also proportional to the amplitude of the luminosity.  Thus in the flat case, there is a perfect degeneracy between the $H_0$ parameter and the fiducial luminosity parameter.   Again, our universe flat or nearly so, and this degeneracy is exact or very strong.  With the supernovae alone, we are therefore unable to measuring either the Hubble constant or the absolute luminosity of the fiducial supernova, but are notheless able to measure the $\Omega$ parameters because they determine the shape of the distance--redshift relation.  The shape uses only the information on the relative distances of the supernovae with redshift.
+ 
+If we want to break the degeneracy and additionally measure $H_0$ and the SN luminosity separately, we need to establish the absolute distance scale using a distance ladder (Chapter \ref{ch:distance_ladder}).
 
 \subsection{Temporal SNIa spectrum models}
 We have seen how vital it is to have an understanding of the spectral information of the supernova for dealing with redshift corrections to the photometry.  The spectra of Type Ia supernova change in nontrivial ways as the explosion develops.  Therefore, one of the ingredients in a modern SNIa cosmology analysis is a model of the supernova spectrum as a function of time.  As an example, the widely-used SALT2/SALT3 models \citep[Spectral Adaptive Lightcurve Template,][]{2007A&A...466...11G,2021ApJ...923..265K,2023ApJ...951...22J} use a variety of photometric and spectral data to build an empirical spectrum.  
@@ -302,75 +306,98 @@ To build the SALT2 model, each supernova $i$ in the training set is compared aga
 \begin{equation}
   f_{\lambda,i}(t) = x_{0,i} \times [ M_0(t,\lambda) + x_{1,i} M_1(t,\lambda) + ... ] \times \exp( c_i C^{\rm color}(\lambda))
 \end{equation}
-There are several ingredients here.  The $M_k(t,\lambda)$ are a series of spectral shape templates that are common to all supernova in the model (not absolute magnitudes).  The $x_{k,i}$ parameters record the contribution of these components to each supernova.  The template $M_0$ is a dimensionless average spectral sequence as a function of time,  normalized for a supernova at 1 Mpc, {which gives close zero B-band apparent magnitude at maximum light}, $t=0$; {the corresponding $x_0$ is the overall amplitude for a particular supernova's spectrum, recording the overall brightness}.
+There are several ingredients here.  The $M_k(t,\lambda)$ are a series of spectral shape templates that are common to all supernovae. (Despite the symbol, they are not absolute magnitudes.)  The $x_{k,i}$ parameters record the contribution of these components to each supernova.
 
-The template $M_1$ is the dominant correction to the spectral shape among supernova (approximating the effect of a time stretch);  the $x_{1,i}$ parameter is its contribution (relative to $x_{0,i}$) of that correction.  The $M_1$ and higher corrections change the spectral shape, and thus the $K$ correction, but do not change the B-band magnitude.
+The template $M_0(t,\lambda)$ is a spectral sequence as a function of time for the fiducial supernova.  The amplitude is normalized for a supernova at 1 Mpc, {which gives close to zero B-band apparent magnitude at maximum light} ($t=0$). {The corresponding $x_0$ is the overall amplitude for a particular supernova's spectrum, recording the overall brightness}.
+
+The template $M_1(t,\lambda)$ is the dominant correction among supernovae to the time evolution and spectral shape (approximating the effect of a time stretch);  the $x_{1,i}$ parameter is the fractional contribution (relative to $x_{0,i}$) of that correction.  The $M_1$ and higher corrections change the spectral shape, and thus the $K$ correction, but are constructed not to change the B-band magnitude at maximum light.
 %\textcolor{red}{Are $M_k(t=0) = 0$ for $k>0$?}
-Further corrections $k$ improve the fit, but are not strongly correlated with the peak luminosity and thus have little cosmological impact.\footnote{The next generation SALT model will include a $k=2$ term.}  The $C^{\rm color}(\lambda)$ is the average color correction law and the $c_i$ is the strength of the correction per supernova.  The fiducial SNIa has $x_1 = 0$ and $c = 0$.
+Further corrections $k$ improve the fit, but are not strongly correlated with the peak luminosity and thus have little cosmological impact.\footnote{The next generation SALT model will include a $k=2$ term.}
 
-None of the functions $M_k(t,\lambda)$ or $C^{\rm color}(\lambda)$ are known at the outset.  The model fits for them.
-The $M_k(t,\lambda)$ are continuous functions parameterized as 3rd-order B-splines (piecewise polynomials with continuous second derivatives).  For $M_k$ templates, the model uses 10 parameters along the time axis, covering $-20$ days to $+50$ days around B-band maximum light and doubling the time resolution between maximum light and $+20$ days.  Although spectral resolution required for modeling photometry is modest, $\lambda/\Delta\lambda \sim 100$, spectral comparisons require $\lambda/\Delta\lambda \sim 1000$--$2000$, requiring some few thousand parameters along the wavelength axis (from 2000 to 9200 \AA).
+The function $C^{\rm color}(\lambda)$ is a color correction law; $c_i$ is the strength of that correction per supernova.  The fiducial SNIa has $x_1 = 0$ (and higher) and $c = 0$.
+
+None of the functions $M_k(t,\lambda)$ or $C^{\rm color}(\lambda)$ are known at the outset: the model fits for them.
+The $M_k(t,\lambda)$ are continuous functions parameterized as 3rd-order B-splines (piecewise polynomials with continuous second derivatives).  For the $M_k$ templates, the model uses 10 parameters along the time axis, covering $-20$ days to $+50$ days around B-band maximum light and doubling the time resolution between maximum light and $+20$ days.  Although spectral resolution required for modeling photometry is modest, $\lambda/\Delta\lambda \sim 100$, spectral comparisons require $\lambda/\Delta\lambda \sim 1000$--$2000$, requiring some few thousand parameters along the wavelength axis (from 2000 to 9200 \AA).
 %For $M_1$ the model uses the same time resolution but only 60 parameters along the wavelength axis.  \textcolor{red}{It is not clear what resolution for higher $k$.}
 The color correction $C^{\rm color}(\lambda)$ is a 3rd-order polynomial with two of the four parameters free for the global fit and two fixed: it ensures that $C^{\rm color}(\lambda_B) = 0$, so there is little color effect in B band, and that $C^{\rm color}(\lambda_V) = 0.4$, fixing the amount of reddening between B and V bands for $c_i = 1$.  
 
-In recent incarnations, and depending on quality cuts, this model is fit to about 2000 supernova or more, using photometry and spectra as a function of time. Some groups separate the training set of SNe (for fitting the model) from the cosmological set, which helps to avoid overfitting bias, but other groups use the same SNe for both. Together with the global spline parameters in the $M_k$ and $C^{\rm color}$, there are $x_{0,i}, x_{1,i}, c_i$ parameters for each supernova, totaling several thousand parameters in the model.  Observed spectra typically come with significant broadband systematic fluctuation in the spectrum without an overall normalization, so supernova with spectra include additional parameters to recalibrate the spectra as a function of wavelength, $a_{\rm recal}(\lambda)$.  These parameters are also fit with the others.  
+In recent incarnations, and depending on quality cuts, this model is fit to about 2000 supernova or more, using photometry and spectra as a function of time. Some groups separate the training set of SNe (for fitting the model) from the cosmological set, which helps to avoid overfitting bias, but other groups use the same SNe for both. Together with the global spline parameters in the $M_k$ and $C^{\rm color}$ templates, there are $x_{0,i}, x_{1,i}, c_i$ parameters for each training supernova, totaling several thousand parameters in the model.  Observed spectra typically come with significant broadband systematic fluctuation in the spectrum without an overall normalization, so supernova with spectra include additional parameters to recalibrate the spectra as a function of wavelength, $a_{\rm recal}(\lambda)$, so the spectral can be made compatible with the measured photometry.  These parameters are also fit with the others.  
 
-The model initializes the $M_0$ and $M_1$ to the mean and first derviative of a previous model, then computes any subsequent components to be orthogonal to the the previous components ({like a Gram-Schmidt procedure}).  The fitting seeks parameters that minimize a total $\chi^2$ that is the sum of a data term and regularization term:
+The model initializes the $M_0$ and $M_1$ to the mean and first correction of a previous model, then computes any subsequent components to be initially orthogonal to the the previous components ({like a Gram-Schmidt procedure}).
+Different groups use somewhat different statistical models to fit the parameters.  One technique minimizes a total $\chi^2$ that is the sum of a data term and a regularization term:
 \begin{equation}
   \chi^2_{\rm SALT2} = \chi^2_{\rm data} + \chi^2_{\rm reg}
 \end{equation}
-
-Different groups use somewhat different models statistical models.  A simple data $\chi^2$ looks like a sum for each supernova over observational photometric and spectroscopic data points (index $q$), each of which has it's own position on the sky $\hat n_q$, time epoch ($t_q$), and band (band $q$) or wavelength ($\lambda_q$)
+A simple data $\chi^2$ looks like a sum for each supernova over observational photometric and spectroscopic data points (index $q$), each of which has it's own position on the celestial sphere $\hat n_i$, time epoch relative to maximum light ($t_q$), and band (band $q$) or vector of wavelengths ($\lambda_q$)
 \textcolor{black} {
 \begin{eqnarray}
-  \chi^2_{\rm data} = \sum_{{\rm SN}\ i} && \left[ \sum_{{\rm photo\ pt.}\ q} {\left(m_{iq} - m_{{\rm band}\ q}[f_{\lambda,i} (t_q,x_i,c_i)|\hat n_q,z_i]\right)^2}/{\sigma_{iq}^2} + \right.
+  \chi^2_{\rm data} = \sum_{{\rm SN}\ i} && \left[ \sum_{{\rm photo\ pt.}\ q} {\left(m_{iq} - m_{{\rm band}\ q}[f_{\lambda,i} (t_q,x_i,c_i)|\hat n_i,z_i]\right)^2}/{\sigma_{iq}^2} + \right.
     \\ \nonumber
-    &&  \ \left. \sum_{{\rm spec.\ pt.}\ q} (f^{\rm obs}_{\lambda_q}(t_q) - a_{\rm recal}(\lambda_q) f_{\lambda_q}(t_q,x_i,c_i|\hat n_q,z_i) )^2/\sigma_{{\rm spec},i}^2    \right].
+    &&  \ \left. \sum_{{\rm spec.\ pt.}\ q} (f^{\rm obs}_{\lambda_q}(t_q) - a_{\rm recal}(\lambda_q) f_{\lambda_q}(t_q,x_i,c_i|\hat n_i,z_i) )^2/\sigma_{{\rm spec},i}^2    \right].
 \end{eqnarray}
-This is simply a giant comparison of all the data from all the supernova to the spectral model, tuned by $x_i,c_i$ for each supernova $i$.}  Note that in this expression, the computed magnitudes are $K$-corrected and the spectra are similarly corrected for the observed redshift $z_i$.  The model spectrum is used to compute the corrections.  At this step, the model spectra are also corrected for Milky Way reddening.   
+This is simply a giant comparison of all the data from all the supernova to the spectral model, tuned by $x_i,c_i$ for each supernova $i$.}  Note that in this expression, the computed magnitudes are $K$-corrected and the spectra are similarly corrected for the observed redshift $z_i$.  The model spectrum is used to compute the corrections.  At this step, the model spectra are also corrected for Milky Way reddening based on position $\hat n_i$.   
 
 
-To compute the magnitudes, the spectral models is integrated against each instrument and band's filter transmission curve.  In some cases the filter function depends on the position in the focal plane.  Such fastidious details are essential for precision photometric comparisons.  Modern spectra typically come with proper error bars.  Some older archival spectra did not, so the spectral errors were adjusted by hand so that the photometry and spectra got equal weight in the fit.
+To compute the magnitudes, the spectral model is integrated against each instrument and band's filter transmission curve.  In some cases the filter function depends on the position in the focal plane.  Such fastidious attention to detail is essential for precision photometric comparisons.  Modern spectra typically come with proper error bars.  Some older archival spectra did not, so the spectral errors are adjusted by hand so that the photometry and spectra get equal weight in the fit.
 
-The regularization term is quadratic in the templates
+The regularization term penalizes jagged spectral templates; it is quadratic in the second derivatives of the templates with respect to time and wavelength
 \begin{equation}
-  \chi^2_{\rm reg} = A \sum_k M_k^\dag D^\dag D M_k, 
+  \chi^2_{\rm reg} = A \sum_k M_k^\dag D_2^\dag D_2 M_k, 
 \end{equation}
-where the \textcolor{red}{derivative matrix $D$ means what???}, and $A$ is a tunable parameter to control its strength.  The regularization term suppresses the degeneracy where two templates run away in opposite directions. 
-The regularization term allows convergence but introduces a bias.  Its amplitude was chosen to keep the bias smaller than 0.005 mag in a simulated dataset for all wavelengths, significantly below statistical uncertainties.
+where the matrix $D_2$ takes the derivatives, and $A$ is a tunable parameter to control its strength.
+The regularization term penalizes jagged spectral templates.
+%The regularization term suppresses the degeneracy where two templates run away in opposite directions. 
+The regularization term allows convergence but introduces a bias.  Its amplitude was chosen to keep the K-correction bias smaller than 0.005 mag in a simulated dataset for all wavelengths, significantly below statistical uncertainties.
 
-The fitting minimizes $\chi^2$ following a Gauss-Newton algorithm that uses the Jacobian of $\chi^2$ with respect to the fitting parameters.  In an iterative sequence, each step requires solving an $N_{\rm par} \times N_{\rm par}$ linear system (the size of the Jacobian) which provides an update to the parameters.  The fitting iterates until the total $\chi^2_{\rm SALT2}$ stops improving.
+The fitting minimizes $\chi^2$ following a Gauss-Newton algorithm that uses the derivatives of $\chi^2$ with respect to the fitting parameters.  In an iterative sequence, each step requires solving an $N_{\rm par} \times N_{\rm par}$ linear system which provides an update to the parameters.  The fitting iterates until the total $\chi^2_{\rm SALT2}$ stops improving.
 
 \subsection{Distance estimates}
-The Pantheon+ catalog for instance uses the following estimator for the distance modulus \citep{1998A&A...331..815T}:
+The  standard estimator for the distance modulus \citep{1998A&A...331..815T} is below, although I have separated what is usually combined into Equations (\ref{eqn:SNIa_tripp_distance_estimator1}) and (\ref{eqn:SNIa_tripp_distance_estimator}).  For each supernova $i$, the distance modulus is written
+\begin{eqnarray}
+  \mu_i &=& m_{B,i} - M_{B,i}, \label{eqn:SNIa_tripp_distance_estimator1}  \\
+  &=&  m_{B,i} -  {\cal M}_B + \alpha x_{1,i} - \beta c_i.\label{eqn:SNIa_tripp_distance_estimator}
+\end{eqnarray}
+The apparent magnitude,
 \begin{equation}
-  \mu_i = m_{B,i} - M_{B,i}, 
+m_{B,i} = -2.5 \log_{10} \left(x_{0,i} \times \frac{\int d\lambda\, R_{\rm B}(\lambda)\, M_0(t=0,\lambda)}{F_{{\rm ref},B}} \right) \approx -2.5 \log_{10} (x_{0,i}),
 \end{equation}
-For each supernova, the apparent magnitude
+comes from that supernova's fit to the SALT model and represents the already-$K$-corrected B-band apparent magnitude at maximum light. (Recall that $M_0(t=0)$ is normalized such that it gives nearly zero magnitude in B band.)
+The absolute magnitude for each supernova is measured as an overall normalization for the luminosity of the fiducial supernova ($x_1 = 0$, $c = 0$), and empirical corrections for shape and color,
 \begin{equation}
-m_{B,i} = -2.5 \log_{10} \left(x_{0,i} \times \frac{\int d\lambda R_{\rm B}(\lambda)\, M_0(t=0,\lambda)}{F_{{\rm ref},B}} \right) \approx -2.5 \log_{10} (x_{0,i})
+  M_{B,i} =  {\cal M}_B - \alpha x_{1,i} + \beta c_i  \label{eqn:SNIa_tripp_distance_estimator2}
 \end{equation}
-comes from that supernova's fit to the SALT model and is the already-$K$-corrected B-band apparent magnitude at maximum light.
-The absolute magnitude for each supernova is measured as an overall normalization for the luminocity of an average supernova ($x_1 = 0$, $c = 0$), and empirical corrections for shape and color,
-\begin{equation}
-  M_{B,i} =  {\cal M}_B - \alpha x_{1,i} + \beta c_i \label{eqn:SNIa_tripp_distance_estimator}
-\end{equation}
-where ${\cal M}_B$ is a pseudo-absolute magnitude that makes an degeneracy explicit between the zero-point for the SN calibration and the Hubble constant:
-\begin{equation} {\cal M}_B= M_B - 5 \log_{10}\left(\frac{H_0}{1 \mbox{ km/s/Mpc}} \right)+25. \end{equation} 
+where ${\cal M}_B$ is a pseudo-absolute magnitude that makes the degeneracy explicit between the zero-point for the SN calibration and the Hubble constant\footnote{This equation sometimes appears with a constant offset of 25 magnitudes, accounting for the difference between 10 pc and 1 Mpc distance normalization.}:
+\begin{equation} {\cal M}_B= M_B - 5 \log_{10}\left(\frac{H_0}{100 \mbox{ km/s/Mpc}} \right) \end{equation}  
+The B-band absolute magnitude $M_B$ parameterizes the fiducial luminosity at maximum light we would measure if the Hubble constant were $H_0 = 100$ km/s/Mpc.  The final two terms in Equations (\ref{eqn:SNIa_tripp_distance_estimator}) and (\ref{eqn:SNIa_tripp_distance_estimator2}) record the adjustment of the maximum luminosity.  The parameters $\alpha$ and $\beta$ are the coefficients of the light curve shape and color corrections common across the whole population of supernovae.  These parameters are fit to minimize the residuals in the distance modulus versus redshift diagram.  They can be fit at the same time as the cosmology.
 
-The B-band absolute magnitude $M_B$ records the prototypical luminosity at maximum light.  The final two terms record the adjustment of the maximum light with parameters $\alpha$ and $\beta$ as the coefficients of the light curve shape and color corrections.  These parameters are fit to minimize the residuals in the distance modulus versus redshift diagram.  They can be fit at the same time as the cosmology.
+Sometimes an additional term, a step-function of mass, is added to the distance estimator as a third correction.  It was noted that supernovae in more massive galaxies appeared less luminous than in low-mass galaxy hosts.  The step parameters are also fitted to minimize residuals in the Hubble diagram.
 
-Sometimes an additional mass-step-function term is added as it was noted that SN in more massive galaxies appeared less luminous than in low-mass galaxy hosts.  These are also fitted parameters to minimize residuals in the Hubble diagram.
+As mentioned at the beginning of this section (\ref{sec:measuring_distance}), even without knowing the intrisic luminosity of Type Ia, you can get a measurement of the relative distance between redshifts. The difference of distance moduli, $\mu_i - \mu_i'$, which corresponds to a ratio of distances, causes ${\cal M}_B$ to cancel while preserving the stretch- and color-based luminosity corrections.  This contains information on cosmological parameters except for $H_0$, which exactly sets the overall normalization of the distance scale in a flat universe.  Thus supernova data sets can be used in conjunction with CMB or BAO data to yield tighter cosmological constraints, whether or not an absolute luminosity normalization is employed.  %However, using the normalized distance enhances the supernova constraints significantly.
 
-Even without knowing the intrisic luminosity of Type Ia, you can get a measurement of the relative distance between redshifts. The difference of distance moduli, $\mu_i - \mu_i'$, which corresponds to a ratio of distances, causes $M_B$ to cancel while preserving the stretch- and color-based luminosity corrections.  This contains information on cosmological parameters except for $H_0$, which exactly sets the overall normalization of the distance scale in a flat universe.  Thus supernova data sets can be used in conjunction with CMB or BAO data to yield tighter cosmological constraints, whether or not the Cepheid normalization is employed.  However, using the normalized distance enhances the supernova constraints significantly.
+To measure $H_0$ as well, in the framework of Equation (\ref{eqn:SNIa_tripp_distance_estimator}), the overall normalization of the luminosity is set by the single parameter, $M_B$.  For each SALT2-fitted supernova with a \textit{known} distance, determined by the Cepheid variable star period-luminosity relation (or other means), $M_B$ becomes the only unknown.  A weighted average over these supernova yields the value $M_B$, which determines the absolute distance of everything else.  We explore the distance ladder in the next chapter, which makes measurement of $H_0$ possible.
 
-To measure $H_0$ as well, in the framework of Equation (\ref{eqn:SNIa_tripp_distance_estimator}), the overall normalization of the luminosity is set by the single parameter, $M_B$.  For each SALT2-fitted supernova with a \textit{known} distance, determined by the Cepheid period-luminosity relation (or other means), $M_B$ becomes the only unknown.  A weighted average \textcolor{red}{(how exactly?)} over these supernova yields the value $M_B$, which determines the absolute distance of everything else.
+\section*{Exercises}
 
 
-\chapter{Distance ladder, Hubble constant, et cetera} \label{ch:distance ladder}
+\begin{enumerate}
+  \item Show that \ref{eqn:alternative_to_K_correction} simplifies further in the AB magnitude system.  Be careful with $f_\nu d\nu$ versus $f_\lambda d\lambda$.
 
-\subsection{Cepheid variable stars}
-Cepheid stars have a periodic variability where the period is strongly correlated to the overall luminosity.\footnote{Famously noted by Henrietta Leavitt in 1912.}  They are common enough in the Milky Way that we can calibrate the period--luminosity relation via geometric parallax with HST, Hipparcos, and Gaia data.  That makes them useful distance indicators.  They are a heterogeneous grouping of a few different types of objects.
+\end{enumerate}
+
+
+\chapter{Distance ladder, Hubble constant, et cetera} \label{ch:distance_ladder}
+
+%\section{Distance ladder}
+Although many Type Ia supernova have been studied in detail, with photometric time series and more-costly spectra, that information cannot on its own tell us how luminous the explosions are.  Furthermore, they are rare enough and none are close enough for direct geometric measurements of their distances.  We need to calibrate them with another type of object, usually Cepheid-type variable stars.  Some Cepheids are near enough to us to measure their distance geometrically via parallax, using the Earth's orbit around the Sun, the size of which is precisely known from radar ranging to the planets.  We know those Cepheids' luminosities by comparing their measured brightness to that distance.  By extrapolating those results to Cepheids that are too far for parallax but bright enough to see in intermediate-distance galaxies that also hosted Type Ia supernovae, we can determine the distances to those galaxies and calibrate the luminosities of the Type Ia supernovae as a class.  That allows us to measure the normalization of distance--redshift relation, $1/H_0$, not just the shape.
+
+% Using nomeclature of 2025arXiv251023823H
+Thus to build a ``ladder'' to the distant Universe, we use parallax measurements (rung 1) of the Milky Way Cepheids to anchor the luminosity calibration for the Cepheids.  Then we use extragalactic Cepheid brightnesses (rung 2) as a primary distance indicator to determine distances to the galactic hosts of supernovae and calibrate their luminosities.  We then use the supernovae as secondary distance indicators (rung 3), reaching well out into the Hubble flow \citep[][]{2025arXiv251023823H}.  
+
+At the end of the chapter, we'll also discuss some alternative objects and methods for measuring distance, including other types of supernovae and stars and even gravitational waves.
+ 
+
+\section{Cepheid variable stars}
+Cepheid stars have a periodic variability and the period is strongly correlated to the overall luminosity.\footnote{Famously noted by Henrietta Leavitt in 1912.}  They are common enough in the Milky Way that we can calibrate the period--luminosity relation via geometric parallax with HST, Hipparcos, and Gaia data.  That makes them useful distance indicators.  They are a heterogeneous grouping of a few different types of objects.
 
 % This OGLE webpage is great: https://ogle.astrouw.edu.pl/atlas/classical_Cepheids.html
 
@@ -396,7 +423,7 @@ Classical Cepheid stars (also called Population I Cepheids, Type I Cepheids, and
 
 Type II Cepheid stars (also called Population II Cepheids)  are such a different class of objects that they perhaps ought to have a different name.  They are old, metal-poor, low-mass population II stars from a previous generation of star formation.  These stars may be $0.5$--$1$ $M_\odot$ or less.   Type II Cepheids themselves are a heterogenous group, with short-, medium-, and long- period subclasses at different stages of evolution off the main sequence between red giant and post-AGB phase.
 %Some show alternating shallow and deep minima.
-For a given period, Type II are fainter than classical cepheids by a factor of 4--5, but still much more luminous than the Sun.  Early cosmological studies mistook Type II Cepheids in other galaxies for classical Cepheids, making roughly a factor of two error in the distance and the Hubble constant.  Type II Cepheids have a period luminosity relationship that is less metallicity dependent than for classical Cepheids.
+For a given period, Type II are fainter than classical cepheids by a factor of 4--5, but still much more luminous than the Sun.  Early cosmological studies mistook Type II Cepheids in other galaxies for classical Cepheids, making roughly a factor of two error in the distance and the Hubble constant.  Type II Cepheids have a period--luminosity relationship that is less metallicity dependent than for classical Cepheids.
 
 \begin{figure}[!t]
   \begin{minipage}[t]{0.5\textwidth}
@@ -532,8 +559,3 @@ smooth component modeling and subtraction.
 
 
 \section*{Exercises}
-
-\begin{enumerate}
-  \item Show that \ref{eqn:alternative_to_K_correction} simplifies further in the AB magnitude system.  Be careful with $f_\nu d\nu$ versus $f_\lambda d\lambda$.
-
-\end{enumerate}
