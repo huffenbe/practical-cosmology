@@ -113,15 +113,15 @@ Examining the first Friedmann equation we see that the expansion rate on the lef
 \subsection{Components of the Universe}
 We need to describe the types of matter and radiation in the Universe that contribute to the Friedmann equations.  We also need to understand how the densities change with the scale factor, which allows us to solve these differential equations for $a(t)$.  In relativity, we do not have energy conservation but we do have a continuity equation\index{continuity equation} that describes how matter and energy are transported through spacetime.   We don't develop the background here to derive it, but the result for a perfect fluid is,
 \begin{equation}
-  \dot \rho + 3 \frac{\ddot a}{a}(\rho + P) = 0.
+  \dot \rho + 3 \frac{\dot a}{a}(\rho + P) = 0.
 \end{equation}
 We often consider a proportional relationship between pressure and density, the \textit{equation of state}\index{equation of state} with equation of state parameter $w$ as the constant of proportionality,
 \begin{equation}
   P = w \rho.
 \end{equation}
-This allows us to solve the continuity equation to relate density to the scale factor of expansion.
+This allows us to solve the continuity equation to relate density to the scale factor of expansion,
 \begin{equation}
-  \rho \propto a^{-3(1+w)}
+  \rho \propto a^{-3(1+w)}.
 \end{equation}
 Let's see how that relates to various types of substances.
 
@@ -280,7 +280,7 @@ where we have used the differential of $1+z = 1/a(t)$ in the last equality.  Int
 \begin{equation}
   \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')}  = \frac{1}{H_0} \int_0^z \frac{dz'}{E(z')} \label{eqn:chi_of_z}
 \end{equation}
-to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures expansion history via the integrated $1/a(t)$ or $1/H(z)$.  Comparing Equation~(\ref{eqn:H_in_terms_of_Omega}), you can see that $\chi(z)$ has an amplitude determined by $H_0^{-1}$ and a shape determined by the the $\Omega$ parameters (i.e.\ the composition of the Universe).
+to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures the expansion history via the integrated $1/a(t)$ or $1/H(z)$.  Comparing Equation~(\ref{eqn:H_in_terms_of_Omega}), you can see that $\chi(z)$ has an amplitude determined by $H_0^{-1}$ and a shape determined by the the $\Omega$ parameters (i.e.\ the composition of the Universe).
 
 This discussion has readied us to examine several additional, distinct notions of cosmological distance.
 
@@ -400,23 +400,23 @@ which defines $D_L$.  Although this is common, I'm once again not sure that it i
 
 \item Find the analogous expression to Equation (\ref{eqn:2d_sphere_path_radius}) for  radial length in a hyperbolic space.
 
-\item Solve the continuity equation for an equation of state $P = w\rho$ to show that $\rho \propto a^{3(1+w)}$. 
+\item Solve the continuity equation for an equation of state $P = w\rho$ to show that $\rho \propto a^{-3(1+w)}$. 
 
   
-\item Solve the Friedmann equation to get $a(t)$ for a
+\item Solve the Friedmann equation to get $a(t)$ for flat universes that are
   \begin{enumerate}
-  \item radiation dominated universe;
-  \item matter dominated universe;
-  \item $\Lambda$-dominated universe.
+  \item radiation dominated;
+  \item matter dominated;
+  \item $\Lambda$-dominated.
   \end{enumerate}
 
-\item Show that a $\Lambda$-dominated universe always has a constant Hubble parameter.
+\item Show that a flat, $\Lambda$-dominated universe always has a constant Hubble parameter.
 
 \item Show that
   \begin{equation} \frac{dt}{a(t)} = - \frac{dz}{H(z)}. \end{equation}
 
 
-\item Write a compute program or make a spreadsheet that computes the comoving distance $\chi$ to redshift $z=2$ for a flat $\Lambda$CDM model with $H_0 = 70$ km/s/Mpc, $\Omega_m = 0.3$, and $\Omega_\Lambda = 0.7$.  Compute the needed integral (Equation \ref{eqn:chi_of_z}) as a Riemann sum.
+\item Write a computer program or make a spreadsheet that computes the comoving distance $\chi$ to redshift $z=2$ for a flat $\Lambda$CDM model with $H_0 = 70$ km/s/Mpc, $\Omega_m = 0.3$, and $\Omega_\Lambda = 0.7$.  Compute the needed integral (Equation \ref{eqn:chi_of_z}) as a Riemann sum.
 
   
 \end{enumerate}
