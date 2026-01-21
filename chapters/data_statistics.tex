@@ -1,5 +1,5 @@
 \chapter{Data and elementary statistics}
-Now that we are armed with some understanding of how the measureable properties (like brightness and angular size) of a distant object relate to its redshift and the comoving distance, and how these quantities relate back to the cosmological parameters, we can embark on obtaining some data from cosmological measurements.  The data we obtain will always be subject to the uncertainties inherent in our measurement.
+Now that we are armed with some understanding of how the measureable properties (like brightness and angular size) of a distant object relate to its redshift and the comoving distance, and how these quantities relate back to the cosmological parameters, we can embark on obtaining some data from cosmological measurements.  The data we obtain will always be subject to the uncertainties inherent in our measurement.  In this chapter, we assemble the first of our tools to deal with that uncertainty.
 
 In a very generic fashion, we might write that data is a sum of some signal that we are looking for and some noise that muddies our view, something like:
 \begin{equation}
@@ -11,31 +11,31 @@ As we can often have more than on data point, we can consider these symbols to b
 \end{equation}
 where the response is a function of the signal, and again all of these could be vectors of values.
 
-When we make a measurement, the value we get is different every time.  This is what we mean by measurement error or uncertainty.  That means that the noise is a random variable. (Sometimes the signal is too!)  A random variable is a variable that takes a different value each time that you make a measurement, or doing what we might call  ``making a draw'' (like in cards) or ``generating a realization'' (especially if we are simulating the process on a computer).
+When we make a measurement, the value we get is different every time.  This is what we mean by measurement error or uncertainty.  That means that the noise is a random variable\index{random variable}. (Sometimes the signal is too!)  A random variable is a variable that takes a different value each time that you make a measurement, or doing what we might call  ``making a draw'' (like in a card game) or ``generating a realization'' (especially if we are simulating a process on a computer).
 
-A measurement that has a noise with a non-zero mean is biased.  A better measurement has a smaller bias and smaller scatter in the noise values (smaller noise variance) than a worse measurement.
+A measurement that has a noise with a non-zero mean is biased.  A good measurement has a smaller bias and a smaller scatter in the noise values (smaller noise variance) than a bad measurement. 
 
 \section{Probability distributions}
 
-Any random variable comes from a probability distribution which controls what values are available.  Suppose $X$ is a generic random variable.  The distribution is a function that we integrate to get the probability of certain outcomes for $X$.  For example the probability that $X$ takes a value between $a$ and $b$ would be given by
+Any random variable is drawn from a probability distribution which controls what values are available and how often they occur.  Suppose $X$ is a generic random variable.  The distribution is a function that we integrate to get the probability of certain outcomes for $X$.  For example, the probability that $X$ takes a value between $a$ and $b$ would be given by
 \begin{equation}
-  P(a<X<b) = \int_a^b p(x) dx
+  P(a<X<b) = \int_a^b p(x) dx.
 \end{equation}
-where the probability of the outcome is on the left and the probability distribution for X is the integrand on the right, where little $x$ represents the possible values.  The integral over the whole interval $(-\infty, +\infty)$ is unity: making a draw is going to give us \textit{some} value.
+The probability of the outcome (or event) is on the left and the probability distribution for X is the integrand on the right, where little $x$ represents the possible values.  The integral over the whole interval $(-\infty, +\infty)$ is unity: making a draw is going to give us \textit{some} value.
 
-One familiar probability distribution function is the Gaussian distribution,
+One familiar probability distribution function is the Gaussian-normal distribution,
 \begin{equation}
   p(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(x-\mu)^2}{2\sigma^2}   \right),
 \end{equation}
-which has two parameters, mean $\mu$ and variance $\sigma^2$ (the square of the standard deviation $\sigma$).  It arises very often, whenever there are many independent contributions to a random process, for example, the large number of random Fourier modes contributing to the cosmological density field.
+which has two parameters, mean $\mu$ and variance $\sigma^2$ (the square of the standard deviation $\sigma$).  It arises very often, whenever there are many independent additive contributions to a random process, for example, the large number of random Fourier modes contributing to the cosmological density field.  Numerical libraries include routines to generate pseudorandom gaussian deviates.  We can denote drawing such a number as $X \leftarrow {\cal N}(\mu,\sigma^2)$.
 
 Another common probability distribution is the Poisson distribution, which is the probability for the counting $k$ discrete events or discrete objects if the mean expected number is $\mu$:
 \begin{equation}
   P(k) = \frac{\mu^k}{k!}\exp(-\mu).
 \end{equation}
-It will come up when we are counting photons or stars or galaxies.  Note that the domain here is non-negative integers, so we sum up the probability rather than integrate.
+It will come up when we are counting photons or stars or galaxies.  The Poisson distribution has only one parameter.  Note that the domain here is non-negative integers, so we sum up the finite probabilities rather than integrating infinitesimal ones.
 
-From any probability distribution you can calculate the mean as an integral
+From any probability distribution, you can calculate the mean as an integral
 \begin{equation}
   \mu = \int dx\,  x  p(x) = \langle x \rangle.
 \end{equation}
@@ -47,10 +47,37 @@ The variance\index{variance} of the distribution is the second central moment, d
 \begin{equation}
   \sigma^2 = \left\langle (x - \mu)^2 \right\rangle = \left\langle (x - \langle x \rangle)^2 \right\rangle =  \int dx\,  (x-\mu)^2  p(x) 
 \end{equation}
-The standard deviation\index{standard deviation} is simply the square root of the variance.  A Gaussian distribution is totally described by the mean and variance, and the higher moments can be expressed in terms of them.  The variance for the Poisson distribution is also $\mu$.  General non-Gaussian probability distributions may have information beyond what is in the mean and variance.   The third central moment measures the skewness, how asymmetric the distribution is around the mean.  The fourth central moment, kurtosis, measures how much of a peak or plateau the distrubution has.\footnote{Formal definitions of skewness and kurtosis are normalized by the standard deviation.}  
+The standard deviation\index{standard deviation} is simply the square root of the variance.  A Gaussian distribution is totally described by the mean and variance, and the higher moments can be expressed in terms of them.  The variance for the Poisson distribution has the same value as its mean $\mu$.  General non-Gaussian probability distributions may have information beyond what is in the mean and variance.   The third central moment measures the skewness, how asymmetric the distribution is around the mean.  The fourth central moment, kurtosis, measures how much of a peak or plateau the distrubution has.\footnote{Formal definitions of skewness and kurtosis are normalized by the standard deviation.}  
+
+Functions of random variables are also random variables. For example, if $Y=f(X)$ is a one-to-one function in the interval, then a certain event $ X \in [a, b]$ is the same as $Y \in [f(a),f(b)]$. Thus
+\begin{equation}
+  \int_{f(a)}^{f(b)} dy \ p_Y(y) = \int_{a}^{b} dx \ p_X(x)
+\end{equation}
+is true for any such interval, so the integrands match and
+\begin{equation}
+  dy \ p_Y(y) =  dx \ p_X(x).
+\end{equation}
+So we find the transformed probability distribution is  
+\begin{equation}
+  p_Y(y = f(x)) =  \frac{dx}{dy} \ p_X(x) = \frac{1}{[df/dx]_x}  \ p_X(x).
+\end{equation}
+
+If two independent random variables are added, $Z = X+Y$, the new random variable has a distribution which is the convolution of the original random variables:
+\begin{equation}
+  p_Z(z) = (p_Y \star p_X)(z) = (p_X \star p_Y)(z)  = \int dx\, p_X(x) p_Y(z - x),
+\end{equation}
+which essentially says, to get a value $z$, we have to evaluate both the probability of $x$ taking its value \textit{and} the simultaneous probability of $y$ taking the value $y = x-z$, which is why $p_X$ and $p_Y$ are multiplied.  We integrate to add up all those possibilities.
+
+With similar reasoning, the probability distribtion of a product of independent random variables $Z=XY$ is given by a somewhat similar integral expression,
+\begin{equation}
+   p_Z(z) =  \int dx\, p_X(x)  p_Y(z/x) \frac{1}{|x|}.
+\end{equation}
+The tools for adding, multiplying, and applying functions of random variables make the distrubutions of most combinations of random variables computable.
 
 \section{Statistics}
-Statistics are functions of data.  Some of the most important statistics are estimators for the moments or other properties of the distribution.  For example, the average of a data set is the well-known estimator for the mean of the distribution.  For a data set composed of random variables $X_i$.
+Statistics are functions of data, so they are functions of random variables.  Some of the most important statistics are estimators for the moments or other properties of the distribution.  For example, correlation functions and power spectra are estimators of variance.
+
+The simplest example is the average of a data set, a well-known estimator for the mean of the distribution.  For a data set composed of random variables $X_i$, the average is
 \begin{equation}
   \bar X = \frac{1}{N_{\rm data}} \sum_i X_i.
 \end{equation}
@@ -76,9 +103,9 @@ On the other hand, if we don't know the mean and have to estimate it, too, we ha
 \begin{equation}
   \bar \sigma^2 = \frac{1}{N_{\rm data}-1} \sum_i (X_i - \bar X)^2.
 \end{equation}
-You can also construct weighted average versions of these if need be.
+You can also construct weighted-average versions of these if need be.
 
-In statistics, it is important to understand the distinction between parameters or properties of a distribution, and statistics that are built from data to estimate those parameters.  This can be confusing because these ideas often have the same name, but please understand that the mean of a probability distribution is a separate concept to the mean of a data set drawn from that distribution.  This first is a parameter; the second is an estimator for that parameter.
+In statistics, it is important to understand the distinction between parameters or properties of a distribution and statistics that are built from data to estimate those parameters.  This can be confusing because these ideas often have the same name, but please understand that the mean of a probability distribution is a separate concept to the mean (or average) of a data set drawn from that distribution.  This first is a parameter; the second is an estimator for that parameter.
 
 \section{Covariances}
 
@@ -111,12 +138,12 @@ The multivariate Gaussian distribution for $X$ (now considered as a vector with 
 \begin{equation}
   p(x) = \frac{1}{(2\pi|C|)^{k/2}} \exp\left(-\frac{1}{2} (x-\mu)^\dag C^{-1} (x-\mu) \right) \label{eqn:gaussian}
 \end{equation}
-where $x$ is the vector of values, $\mu$ is the vector of means, and $C$ is the covariance matrix and $|C|$ is its determinant.
+where $x$ is the vector of values, $\mu$ is the vector of means, and $C$ is the covariance matrix and $|C|$ is its determinant.  This is the subject of a multidimensional integrals to measure the moments.
 
 \section{Model fitting}
-We'll talk a lot more about methods to fit models to data, but it is helpful to introduce the basic picture.  We again have the simple approximation data as the sum of signal and noise, $d_i = s_i+n_i$, where the noise is a random variable.  Now we introduce a family models for our signal $m_i(\Theta)$, which depends on some vector of parameters $\Theta$.  A good model is one that can represent the signal for some true set of values for its parameters:
+We'll talk a lot more about methods to fit models to data, but it is helpful to introduce the basic picture.  We again have the simple approximation of data as the sum of signal and noise, $d_i = s_i+n_i$, where the noise is a random variable.  Now we introduce a family of models for our signal, $m_i(\Theta)$, which depends on some vector of parameters, $\Theta$.  A good model is one that can represent the signal for some true set of values for its parameters:
 \begin{equation}
-  s_i=m_i(\Theta = \Theta_0)
+  s_i=m_i(\Theta = \Theta_{\rm true})
 \end{equation}
 We can construct statistics (functions of data) that evaluate how well any particular model fits to the data.  For $k$ data points, chi-squared is one such statistic, defined for a diagonal noise covariance as:
 \begin{equation}
@@ -128,11 +155,11 @@ If we hit upon the correct parameters, we will, on average, yield the smallest p
 \begin{equation}
   \langle (d_i - s_i)^2 \rangle = \langle n_i^2 \rangle = \sigma^2
 \end{equation}
-so often a good strategy is to minimize the $\chi^2(\Theta)$ statistic function as a function of $\Theta$, yielding best-fit parameters $\bar \Theta_0$ which are an estimate for the true parameters $\Theta_0$.
+so often a good strategy is to minimize the $\chi^2(\Theta)$ statistic function as a function of $\Theta$, yielding best-fit parameters $\bar \Theta$ which are an estimate for the true parameters $\Theta_{\rm true}$.
 \begin{equation}
-   \chi^2(\Theta) \geq \chi^2_{\rm min} =  \chi^2(\bar \Theta_0)
+   \chi^2(\Theta) \geq \chi^2_{\rm min} =  \chi^2(\bar \Theta)
 \end{equation}
-Note that, because of the fluctuations due to noise, the true parameters will be a worse fit than the best fit.  That cannot be helped; you only have the data and it includes noise.  Whether the  best-fit parameters $\bar \Theta_0$ are an unbiased estimator for the true parameters must be evaluated on a case-by-case basis.
+Note that, because of the fluctuations due to noise, the true parameters will be a worse fit than the best fit.  That cannot be helped; you only have the data and it includes noise.  Whether the  best-fit parameters $\bar \Theta$ are an unbiased estimator for the true parameters, or if any bias is insignificant compared to the uncertainties, must be evaluated on a case-by-case basis.
 
 If we have covariances between the noise values at different data points, then the definition is 
 \begin{eqnarray}
@@ -155,26 +182,53 @@ Suppose that we have fortunately reproduced the true signal with our model and o
   p(x = \chi^2, k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{(k/2)-1}\exp(-x/2).
 \end{equation}
 The more parameters we fit, the fewer degrees of freedom there are.  If we fit one parameter, $\chi^2$ will be drawn with $k-1$ degrees of freedom.  If we fit two parameters,  $\chi^2$ will be drawn with $k-2$ degrees of freedom, and so on.
-This lets us compute the probability that we measured some range parameter of values by pure chance.  This distribution and its integrals for probability are tabulated in common scientific programming libraries and easy to find.  Sensibly, we cannot fit for more parameters than the number of data point we have.\footnote{Notice that you could perfectly fit a data set with a model that exactly reproduces the data, $m_i = d_i$, yielding $\chi^2 = 0$, but that this model makes no prediction and is useless.}
+This lets us compute the probability that we measured some range of parameter of values by pure chance.  This distribution and its integrals for probability are tabulated in common scientific programming libraries and easy to find.  Sensibly, we cannot fit for more parameters than the number of data point we have.\footnote{Notice that you could perfectly fit a data set with a model that exactly reproduces the data, $m_i = d_i$, yielding $\chi^2 = 0$, but that this model makes no prediction and is useless.}
 
+The chi-squared distribution has a cumulative distribution function
+\begin{equation}
+  F(x = \chi^2,k) = \int_0^x dx'\ p(x',k) = \frac{\gamma(k/2, x/2)}{\Gamma(k/2)}
+\end{equation}
+where $\gamma$ is the lower incomplete gamma function.  The survival function is
+\begin{equation}
+  S(x=\chi^2) = 1 - F(x,k),
+\end{equation}
+and is again easy to find in numerical libraries, so you should never need to compute it yourself.
+If we have a bad model, such that the model cannot reproduce the signal for any values of the parameters, all bets are off.  That is why you need to check that the model with the best fit is also a good fit: that the value of $\chi^2$ you end up with or lower could have reasonably been achieved by chance.  That chance is the probability measured by the survial function.
 
-
-If we have a bad model, such that the model cannot reproduce the signal for any values of the parameters, all bets are off.  That is why you need to check that the model with the best fit is also a good fit: that the value of $\chi^2$ you end up with or lower could have reasonably been achieved by chance.
-
-If this probability is very close to zero, then that model is probably not a good fit, given the assumption of error bars.  That can be useful to disprove a null hypothesis and discover something: if, for example, if there is low probability that a certain amount of flux was measured by chance from no source, then there must be a source of emission there.  On the other had, if the probability to acheive some value of $\chi$ or lower is unreasonable close to one, this can mean the assumed error bars are over-estimated.
+If the survival function probability is very close to zero, then that model is probably not a good fit, given the assumption of error bars.  That can be useful to disprove a null hypothesis and discover something: if, for example, if there is low probability that a certain amount of flux was measured by chance from no source, then there must be a source of emission there.  On the other hand, if the probability to achieve some value of $\chi^2$ or lower is unreasonably close to one, this can mean the assumed error bars are over-estimated.
 
 
 
 \section*{Exercises}
 
 \begin{enumerate}
+
+\item Suppose $X$ is a random variable with probability distribution $p_X(x)$, mean $\mu_x$, and variance $\sigma_x^2$.  We make a linear transformation so that $Y = a X + b$.  What are the mean and variance of $Y$?
+  
 \item Show that for a data set $d_i = s + n_i$ with noise that has standard deviation $\sigma_i$, that the weighted-average estimate
   $$
 \bar s = \frac{\sum_i w_i d_i}{w_i}
   $$
 with inverse-variance weights $w_i = 1/\sigma^2_i$ yields the smallest variance for any weights.  Hint: compute the variance of $\bar s$ for generic weights and then minimize that variance with respect to the weights.
 
-\item $\chi^2$ fit for the amplitude of a quadratic given a data set.  Note that the actual value is different than the fitted value.
+\item \label{ex:chi2_data} For values of
+  $$t = [-3,-2,-1,0,1,2,3],$$
+  a data set has values
+  $$
+  d(t) = [25.1, 13.5,  0.9, -0.7, -0.5, 10.,  25.5]
+  $$
+  with uncertainties
+  $$
+  \sigma(t) = [4, 2, 4 ,1, 2, 2, 6]
+  $$
+  The model for the signal in the data is $m = A t^2$.
+  \begin{enumerate}
+  \item Find what value of parameter $A$ minimizes $\chi^2$ for this data set.  You can use any method. 
+  \item Why is this $A$ different from $A_{\rm true} = 3.2$?
+  \item At which $t$ do you expect the most constraining data for parameter $A$?  (Hint: it isn't necessarily the one with the smallest error bars, but the one with the largest signal-to-noise-standard-deviation ratio.)
+  \item Under the Gaussian assumption for noise and using the probability survival function $P(\chi^2 > \chi^2_{\rm min}| k)$, what is the probability that such a large $\chi^2$ is found by chance. (Pay attention to the number of degrees of freedom.)
+  \end{enumerate}
 
-\item $\chi^2$ upper limit for a zero-mean data set.
+\item For the data set in Exercise \ref{ex:chi2_data}, what is the upper limit on $A$?  Use the probability survival function for $\chi^2$ to determine the value of $A$ that we are confident with 95 percent probability that A is below, $P(\chi^2 > \chi^2(A)| k) = 0.95$.
+
 \end{enumerate}
