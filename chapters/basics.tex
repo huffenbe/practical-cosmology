@@ -196,13 +196,13 @@ We can cast the first Friedmann equation into a nice form by looking at the rati
 for $\Omega_r$, $\Omega_m$, and $\Omega_\Lambda$.
 We can define an analogous quantity for curvature, 
 \begin{equation}
-  \Omega_k = \frac{-k/R_0^2}{H_0^2}   \qquad \mbox{or} \qquad R_0 = \frac{1}{H_0\sqrt{-\Omega_k / k}},
+  \Omega_k = \frac{-k/R_0^2}{H_0^2}   \qquad \mbox{or} \qquad R_0 = \frac{1}{H_0\sqrt{-\Omega_k / k}}  = \frac{1}{H_0\sqrt{|\Omega_k|}},
 \end{equation}
 but note the change in sign, so that $\Omega_k<0$ for positive curvature $k>0$.  With current limits on $|\Omega_k| < 0.005$, we know that $R_0 > 60$ Gpc.   With these, the Friedmann equation (\ref{eqn:friedmann1}) becomes,
 \begin{equation}
-  H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ) = [ H_0 E(a) ]^2. \label{eqn:H_in_terms_of_Omega}
+  H(a)^2 = H_0^2 ( \Omega_r a^{-4} + \Omega_m a^{-3} + \Omega_k  a^{-2}+  \Omega_\Lambda ) = [ H_0 E(a) ]^2, \label{eqn:H_in_terms_of_Omega}
 \end{equation}
-Note that for $a=1$, this form shows that the sum of the $\Omega$ parameters is unity,
+where we have defined a function $E(a)$ to separate the Hubble constant dependence from the density dependence. Note that for $a=1$, this form shows that the sum of the $\Omega$ parameters is unity,
 \begin{equation}
   \Omega_r + \Omega_m  + \Omega_k  +  \Omega_\Lambda  = 1, 
 \end{equation}
@@ -280,7 +280,9 @@ where we have used the differential of $1+z = 1/a(t)$ in the last equality.  Int
 \begin{equation}
   \chi = \int_{t_{\rm em}}^{t_{\rm now}} \frac{dt}{a(t)} = \int_0^z \frac{dz'}{H(z')}  = \frac{1}{H_0} \int_0^z \frac{dz'}{E(z')} \label{eqn:chi_of_z}
 \end{equation}
-to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures the expansion history via the integrated $1/a(t)$ or $1/H(z)$.  Comparing Equation~(\ref{eqn:H_in_terms_of_Omega}), you can see that $\chi(z)$ has an amplitude determined by $H_0^{-1}$ and a shape determined by the the $\Omega$ parameters (i.e.\ the composition of the Universe).
+to get $\chi(t)$ or more usefully $\chi(z)$. As we see, this distance--redshift relation measures the expansion history via the integrated $1/a(t)$ or $1/H(z)$.
+
+A word about $H_0$ dependence is relevant here.  We see that $\chi(z)$ is $H_0^{-1}$ times a function of $z$ and $\Omega$ parameters.  In not-flat universes, the curvature scale $R_0 = H_0^{-1}|\Omega_k|^{-1/2}$ is also  $H_0^{-1}$ times a function of $\Omega$ parameters.  Thus the $H_0$ cancels in the $\chi/R_0$ argument of the $\sinh$ and $\sin$ functions in $S_k(\chi)$; the argument depends on $\Omega$ parameters alone.  Therefore we see that in all three cases, $r = S_k(\chi)$ is a function of $H_0^{-1}$ times a function of $\Omega$ parameters.  This decoupling allows, for example, supernova measurements to determine $\Omega$ parameters (i.e.\ the composition of the Universe) even if they do not determine $H_0$.
 
 This discussion has readied us to examine several additional, distinct notions of cosmological distance.
 
@@ -297,7 +299,7 @@ This discussion has readied us to examine several additional, distinct notions o
 \paragraph{Comoving distance.}
 As mentioned, we call $\chi$ the comoving distance.  It is the physical distance today if we were to measure with a ruler to the point where the emission (previously) came from.
 
-\paragraph{Transverse comoving distance.}  This also sometimes called the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Figure~\ref{fig:distances1}.  We have already encountered this quantity, which is
+\paragraph{Transverse comoving distance.}  This also sometimes called the comoving angular distance or the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Figure~\ref{fig:distances1}.  We have already encountered this quantity, which is
 \begin{equation}
   D_M(z) = S_k(\chi(z)) = r(z),
 \end{equation}
