@@ -207,7 +207,7 @@ If the survival function probability is very close to zero, then that model is p
   
 \item Show that for a data set $d_i = s + n_i$ with noise that has standard deviation $\sigma_i$, that the weighted-average estimate
   $$
-\bar s = \frac{\sum_i w_i d_i}{w_i}
+\bar s = \frac{\sum_i w_i d_i}{\sum_i w_i}
   $$
 with inverse-variance weights $w_i = 1/\sigma^2_i$ yields the smallest variance for any weights.  Hint: compute the variance of $\bar s$ for generic weights and then minimize that variance with respect to the weights.
 
