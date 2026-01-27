@@ -1,20 +1,41 @@
-
-
+\DocumentMetadata{testphase={phase-II,document},pdfstandard=ua-1} % Aim for PDF/UA-1
 \documentclass{book}
 
-\usepackage{mathpazo}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}   
+% 1. Set the text font to Pagella (Palatino clone)
+\setmainfont{TeX Gyre Pagella}
+% 2. Set the math font to Pagella Math
+\setmathfont{TeX Gyre Pagella Math}
+\setmathfont{TeX Gyre Pagella Math}[range={cal,bfcal},StylisticSet=1]
+% Set the sans serif font
+\setsansfont{Cantarell}[Scale=MatchUppercase]
+% Set the monospace font
+\setmonofont{Inconsolata}[Scale=MatchLowercase]
+
+%\usepackage{mathpazo}
+
 \usepackage{natbib}
 \usepackage{makeidx}
 \usepackage{xcolor}
-\usepackage[bookmarks]{hyperref}
 \usepackage{showidx}
 \usepackage{aas_macros}
 \usepackage{graphicx}
+\usepackage[bookmarks]{hyperref}
 
 \setlength{\parskip}{1 ex}
 %\setlength{\parindent}{0 ex}
 
+
+
 \hypersetup{
+    pdftitle={Practical Cosmology},
+    pdfauthor={Kevin M. Huffenberger},
+    pdfsubject={A text on the practical aspects of modern, data-rich observational cosmology},
+    pdfkeywords={astronomy, astrophysics, cosmology, observations},
+    pdflang={en-US}, % Important for screen readers to know the pronunciation
+    unicode=true,
     colorlinks=true,
     linkcolor=blue,
     citecolor=violet 
@@ -27,6 +48,8 @@
 
 
 \begin{document}
+
+
 
 \begin{titlepage}
 \begin{center}
