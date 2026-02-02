@@ -139,7 +139,7 @@ I am no great fan of it, but it is common in astronomy to use the traditional 19
 
 The relationship between fluxes and magnitudes is thus
 \begin{equation}
-  \frac{F_1}{F_2} = 100^{(m_1-m_2)/5},
+  \frac{F_1}{F_2} = 100^{(m_2-m_1)/5},
 \end{equation}
 or equivalently,
 \begin{equation}
@@ -301,7 +301,7 @@ In this formulation, slightly different in spirit, we have the apparent magnitud
 \section{Measuring distance} \label{sec:measuring_distance}
 Let's review where we are.  From Equation~(\ref{eqn:flux_from_redshift}), if we know the intrinsic luminosity of an object in a band (or equivalently its absolute magnitude) then we can compare to the observed flux (or apparent magnitude) to get the luminosity distance for that redshift.  The problem is that we usually don't know the the intrinsic luminosity.
 
-In SNIa cosmology,  the supernova luminosities are tradiationally characterized using a parameter for the B-band maximum light of an idealized, fiducial supernova.  In the end, the particular band doesn't matter so much: the distance modulus is the thing that we seek.
+In SNIa cosmology,  the supernova luminosities are traditionally characterized using a parameter for the B-band maximum light of an idealized, fiducial supernova.  In the end, the particular band doesn't matter so much: the distance modulus is the thing that we seek.
 
 From the supernova data, researchers build a model of that fiducial supernova and of the natural variations around it.  Then on a per supernova basis, detailed modeling estimates the apparent brightness at maximum light (even if the observations missed it in time). The modeling also estimates the ``time-stretch'' of the light curve and the color variation away from the fiducial model.  These seem to be the dominant corrections that relate the maximum-light luminosity of each supernova to the fiducial one.  Under that hypothesis, the coefficients for these corrections are fit as global nuisance parameters along with the cosmology.  We'll get into the details of this process.
 
@@ -445,7 +445,7 @@ We explore the distance ladder in the next chapter, which makes this measurement
 
 
 \begin{enumerate}
-\item For a top-hat band function $R(\lambda)$ between 500--700 nm, what is $K$-correction at redshift $z=0.5$ for a source with (a) a constant spectrum with wavelength; and (b) a red spectrum $l_\lambda \propto \lambda^{0.5}$.
+\item For a top-hat band function $R(\lambda)$ between 500--700 nm, what is $K$-correction at redshift $z=0.5$ for a source with (a) a constant spectrum with wavelength; and (b) a red spectrum $l_{\lambda_\mathrm{em}} \propto \lambda_\mathrm{em}^{0.5}$.
    
   \item Show that \ref{eqn:alternative_to_K_correction} simplifies further in the AB magnitude system.  Be careful with $f_\nu d\nu$ versus $f_\lambda d\lambda$.
 
