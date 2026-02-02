@@ -1,0 +1,26 @@
+\DocumentMetadata{
+  lang = en-US,
+  pdfversion = 1.7,
+  testphase = {phase-II,tagpdf}
+}
+\documentclass{article}
+
+% We need the package AND the activation command 
+% but without the 'role/map' keys that caused errors.
+\usepackage{tagpdf}
+\tagpdfsetup{activate} 
+
+\begin{document}
+
+\section{Introduction}
+This is a test of a tagged PDF on Fedora.
+
+\section{Research Report}
+
+
+\begin{itemize}
+    \item Item one
+    \item Item two
+\end{itemize}
+
+\end{document}
