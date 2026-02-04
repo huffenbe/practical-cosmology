@@ -25,7 +25,9 @@ DL = pyccl.background.luminosity_distance(cosmo, a)
 DH = 1/pyccl.background.h_over_h0(cosmo,a) # not normalized
 DH = DH * DA[-1]/DH[-1]/z[-1]
 
-figure(1,figsize=[8,4])
+DV = (z*DH*DM**2)**(1/3)
+
+figure(1,figsize=[8,6])
 #
 #xlim(0,6)
 xlim(1e-2,1e3)
@@ -50,6 +52,10 @@ plot(z,DA, c='orange', ls="--", label="Angular diameter distance $D_A$")
 plot(z,DM, label=r"Tranverse comoving distance $D_M$ ($=\chi$ since flat)")
 plot(z,DL, c='green', ls="-.", label=r"Luminosity distance $D_L$")
 plot(z,z*DH, c='purple', ls=":", label=r"Line-of-sight Hubble distance $z \times D_H$")
+
+plot(z,DV, c='red', ls=(0, (3, 1, 1, 1)), label=r"Angle-averaged comoving distance $D_V$")
+
+
 legend(loc='upper left')
 
 show()

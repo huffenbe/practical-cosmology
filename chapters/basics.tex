@@ -320,7 +320,7 @@ as the angle expressed as a comoving size in the numerator compared to the trans
   \begin{center}
     \includegraphics[width=\textwidth]{figs/basics/DA_of_z.pdf}
   \end{center}
-  \caption{In a flat $\Lambda$CDM universe, the angular size of fixed objects diminish at first with redshift (as they are farther away), but then increase again when the universe is small at high redshifts.  That makes the angular diameter distance $D_A$ non-monotonic.  This is in contrast to the comoving distance $\chi$ and the transverse comoving distance $D_M$ which both monotonically increase.  (These are the same in this flat model.)  They flatten at high redshift because the distance traversed by a redshift interval gets tiny when the universe is small.  The luminosity distance $D_L$ increases quickly due to the extra dimming effects with redshift.  At low redshift, all these distance measures agree with each other and our usual euclidean sense of distance.
+  \caption{In a flat $\Lambda$CDM universe, the angular size of fixed objects diminish at first with redshift (as they are farther away), but then increase again when the universe is small at high redshifts.  That makes the angular diameter distance $D_A$ non-monotonic.  This is in contrast to the comoving distance $\chi$ and the transverse comoving distance $D_M$ which both monotonically increase.  (These are the same in this flat model.)  They flatten at high redshift because the distance traversed by a redshift interval gets tiny when the universe is small.  The luminosity distance $D_L$ increases quickly due to the extra dimming effects with redshift.  Like the angular diamter distance, the line-of-sight comoving Hubble distance $D_H$ and the angle-averaged comoving volume distance $D_V$ are non-monotonic.  At low redshift, all these distance measures agree with each other and our usual euclidean sense of distance (noting the extra factor of reshift needed in $zD_H$).
 }
   \label{fig:angular_diameter_distance}
 \end{figure}
@@ -335,7 +335,7 @@ from which quickly follows,
 \end{equation}
 One of the conceptually tricky things about geometrical measures in an expanding universe is that the angular diameter distance is not monotonic with redshift (Fig. \ref{fig:angular_diameter_distance}).  For that reason, I think that ``distance'' is actually a bad name for this quantity, because we want the idea of distance to comport with notions of near and far, and this does not.
 
-What is happening is clearer if you consider a series of standard rulers with physical length $\delta\ell$ at various distances.  For nearby objects, the angle that you measure diminishes with distance in the expected fashion.  But for more distance objects, the Universe in the past had a smaller scale factor, so the standard ruler took up more space, and the angle you measure reaches a minimum size and starts to increase again with distance or redshift.  Something small that is very far away can appear quite large.  In that sense, I think that the quantity $\delta\theta/\delta\ell = D_A^{-1}$ is conceptually easier to think about, and is proportional to the angle that you actually measure.
+What is happening is clearer if you consider a series of standard rulers with physical length $\delta\ell$ at various distances.  For nearby objects, the angle that you measure diminishes with distance in the expected fashion.  But for more distance objects, the Universe in the past had a smaller scale factor, so the standard ruler took up more space, and the angle you measure reaches a minimum size and starts to increase again with distance or redshift.  Something small that is very far away can appear quite large, magnified by the expansion.  In that sense, I think that the quantity $\delta\theta/\delta\ell = D_A^{-1}$ is conceptually easier to think about, and is proportional to the angle that you actually measure.
 
 
 \paragraph{Line-of-sight comoving Hubble distance.}  If we turn our standard ruler so that it is parallel to the line of sight, we will measure a difference in the redshift $\delta z$ from the front to the back.  We know that the time elapsed for light to traverse our object is $\delta t = \delta\ell$ in units where $c=1$.  The change in redshift is due to the expansion of the universe during that time.
@@ -349,13 +349,25 @@ We can define a comoving distance
 \end{equation}
 that can be taken in a ratio with the comoving size of our object $\delta\ell/a$  so that
 \begin{equation}
-   \delta z = \frac{\delta\ell/a}{D_H}.
+   \delta z = \frac{\delta\ell/a}{D_H} = \frac{\delta\chi}{D_H}.
 \end{equation}
 This ratio of comoving lengths also returns when we talk about fixed-comoving-sized baryon acoustic oscillations in galaxy power spectra, and their line of sight component.
 Here we're using the symbol $D_H(z)$ as in the BAO literature \citep[e.g.][]{2025JCAP...02..021A}, but be wary of a variety of usages out there.\footnote{Different from us, \citet{1999astro.ph..5116H} uses a constant $D_H = c/H_0$ which agrees with us only at redshift $z=0$ in units where $c=1$.  The documentation for the Core Cosmology Library \citep{2019ApJS..242....2C} uses a different definition $D_H = cz/H_0$ in their function \texttt{pyccl.background.hubble\_distance()}.  Be sure you know what your symbols mean!}
 
-  Although this is a very useful quantity, perhaps again ``distance'' is a bad name.  The quantity that matches up to the other distance measures at low redshift is $z D_H(z)$ (although this is not an otherwise useful quantity).  Note that there is no requirement that $z D_H$ stay monotonic (or even stay positive in a universe that contracts), {and it is not monotonic in $\Lambda$CDM}. 
+  Although this is a very useful quantity, perhaps again ``distance'' is a bad name.  The quantity that matches up to the other distance measures at low redshift is $z D_H(z)$.  Note that there is no requirement that $z D_H$ stay monotonic (or even stay positive in a universe that contracts), {and it is not monotonic in $\Lambda$CDM}. 
 
+  \paragraph{Angle-averaged comoving volume distance}  The comoving volume of a element that subtends a solid angle $\delta\Omega$ and radial depth $\delta z$ is just the comoving radial distance interval times the comoving surface area:
+\begin{equation}
+  \delta V = \delta\chi \, D_M^2 \delta\Omega = D_H \delta z \, D_M^2 \delta\Omega.
+\end{equation}
+The resultant comoving volume element\index{comoving volume element} $dV = D_H D_M^2 dz d\Omega$ is crucial when making theory computations about the universe.
+
+The BAO community makes a related distance measure, the angle-averaged comoving volume distance\index{angle-averaged comoving volume distance},
+\begin{equation}
+  D_V = (z D_H D_M^2)^{1/3}, 
+\end{equation}
+where the $z$ factor is inserted to ensure that it matches the other distance measures at low redshift.
+  
 \paragraph{Luminosity distance.}  Finally we want to establish a notion of distance to relate the luminosity of objects to their measured brightness.  We consider an object with luminosity
 \begin{equation}
   L = \frac{dE_{\rm em}}{dt_{\rm em}}
