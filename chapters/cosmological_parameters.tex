@@ -1,22 +1,20 @@
-\chapter{Likelihoods and cosmological parameters}\label{ch:likelihoods_cosmology}
+\chapter{Cosmological parameters}\label{ch:likelihoods_cosmology}\label{ch:cosmological_parameters} 
  
-Bayes theorem\index{Bayes theorem}
+What we are interested in is an understanding of the probability for a particular model to represent the universe, given the data that we have measured.  We can schematically write this as $P(\mbox{model}|\mbox{data})$.  This chapter is about measuring parameters and characterizing their uncertainty, more than the specific parameter values found by recent experiments, which are always-improving moving targets.
 
-What we are interested in is an understanding of the probability for a particular model to represent the universe, given the data that we have measured.  We can schematically write this as $P(\mbox{model}|\mbox{data})$.
-
-In the context of supernova cosmology measuring the background expansion of a $\Lambda$CDM universe model, what we are really constraining is some set of parameters $\Theta$, where in this case we might have the particular cosmological parameters
+In the context of supernova cosmology measuring the background expansion of a $\Lambda$CDM universe model, what we are really constraining is some set of parameters $\Theta$, where we might have the particular cosmological parameters
 \begin{equation}
-  \Theta = (\Omega_m,\Omega_\Lambda,\Omega_k, H_0),
+  \Theta = (\Omega_m,\Omega_\Lambda,\Omega_k, H_0).
 \end{equation}
-while later we will add additional cosmological parameters about the baryon density, initial fluctuations, reionization, neutrinos, and more once  we include further data that can constrain them.
+Later we will add additional cosmological parameters about the baryon density, initial fluctuations, reionization, neutrinos, and more once  we include further data that can constrain them.  For supernova, we also have parameters that do not inform us about the cosmology.  These are $M_B$ (or $\mathcal{M}_B$), $\alpha$, $\beta$, and any other parameters that describe the supernova population.  They must be appended to $\Theta$.  For cosmology, these are \textit{nuisance parameters}\index{nuisance parameters}, because there specific values don't really matter, but it is necessary to fit them and take into account their uncertainty. 
 
-The specific data vector is measurements of the distance modulus--redshift relationship for a set of supernovae
+The specific data vector is measurements of the brightness--redshift relationship for a set of supernovae
 \begin{equation}
-  d = \{  (\mu_i,z_i) \mbox{ for SN }i \},
+  d = \{  (m_{B,i},x_{1,i},c_i,z_i) \mbox{ for SN }i \},
 \end{equation}
-but we could have swapped luminosity distances for distance moduli.  Later we will include or swap in other types of data in one gigantic vector.  
-We also have to have a notion of our uncertainty about this data.  If we consider $d = s+ n$, we need to know the covariance $C_{\rm SN}$ of the noise part.  For supernova, 
-we have the contribution from the measurement uncertainty of the photometry of each individual, independent supernova, but we also have the modeling uncertainty from the spectral model (SALT2), which is correlated across all supernovae.  The redshifts are usually measured with such precision through spectroscopy that their uncertainties are negligable, but in other circumstances (SN with only photometric redshift estimates) you would need to include those as well.
+Later we will include or swap in other types of data in one gigantic vector.  
+We also have to have a notion of our uncertainty about this data.  If we consider data as $d = s + n$, we need to know at least the covariance of the noise part.  For supernova, 
+we have the contribution from the measurement uncertainty of the photometry of each individual supernova, which are independent, but we also have the modeling uncertainty from the spectral model (SALT2), which correlates the fit parameters across all supernovae.  The redshifts are usually measured with such precision through spectroscopy that their uncertainties are negligible, but in other circumstances (SN with only photometric redshift estimates) you would need to include those as well.
 
 Thus we are looking for the probability density
 \begin{equation}
@@ -26,16 +24,16 @@ which we can integrate up to learn what the probability is for the cosmological 
 \begin{equation}
   P( \Theta \in \Delta \Theta | d ) = \int_{\Delta\Theta} d\Theta\  p(\Theta| d)
 \end{equation}
-Although this probability of model given data is hard to compute, there is a key result in probability, called Bayes theorem, that allows us to cast it as something that is easy for us to compute.
+Although this probability of a model given data is hard to compute at the outset, there is a key result in probability, called Bayes' theorem, that allows us to cast it as something that is easy for us to compute.
 
-\section{Bayes theorem}
-Both the data and the parameters they lead to are random variables, so we need to understand how to deal with the probability that one event is true (the model) given another event is true (the data we measured).
+\section{Bayes' theorem}
+Both the data and the parameters they lead to are random variables, so we need to understand how to deal with the probability that one event is true (the model) given that another event is true (the data we measured).
 
 \begin{figure}
   \begin{center}
     \includegraphics[width=0.7\textwidth]{figs/cosmological_parameters/bayes_theorem.pdf}
   \end{center}
-  \caption{Diagram for Bayes theorem.  The probability for event A is in red and the probability for event B is in blue.  These overlap to form purple in the region of the probability of both events occurring jointly.} \label{fig:bayes_theorem}
+  \caption{Diagram for Bayes' theorem.  The probability for event A is in red and the probability for event B is in blue.  These overlap to form purple in the region of the probability of both events occurring jointly.} \label{fig:bayes_theorem}
 \end{figure}
 
 Let's step away for a moment and examine a truth table for two generic events, $A$ and $B$, as in Figure \ref{fig:bayes_theorem}.  We have probability $P(A)$ that $A$ has occurred, and $1-P(A)$ is the probability that not-$A$ has occurred.  Between $A$, not-$A$, $B$, and not-$B$, we have covered all the possibilities.  The probability that both $A$ and $B$ occurred jointly is $P(A \cap B)$, which is only a fraction of the total probability for $P(B)$.
@@ -49,51 +47,111 @@ On the other if we knew $A$ occurred, then the fractional probability of $B$ is 
 \begin{equation}
   P(B|A) = \frac{P(A\cap B)}{P(A)}.
 \end{equation}
-
 Multiplying through by the denominators we find the relation between the conditional probabilities      
 \begin{equation}
   P(A|B) P(B) = P(A \cap B) =   P(B|A) P(A).
 \end{equation}
-This results is called Bayes theorem\index{Bayes theorem}.
-What about probability densities?  Well, the probabilities are the integrals of the density and joint density
+This results is called Bayes' theorem\index{Bayes' theorem}.
+
+What about probability densities?  Well, we can apply the Bayes' theorem derivation to events that are fractions of a very narrow slices of the probability space.  We define
 \begin{equation}
-  P(A)  = \int_{\Delta A} da\  p(a)\qquad \mbox{and} \qquad  P(A \cap B)  = \int_{\Delta A}\int_{\Delta B} da\  p(a,b)
+  p(a|b) da  \equiv \frac{p(a,b)\, da \,db}{ p(b)\, db}
 \end{equation}
-and so
+and vice versa for $p(b|a)$, so
 \begin{equation}
- \int_{\Delta B} \int_{\Delta A} p(a|b) p(b) =  \int_{\Delta A} \int_{\Delta B} p(b|a) p(a)
+  p(a|b) p(b)\, da\, db = p(a,b)\, da\, db = p(b|a) p(a) \, da\, db
 \end{equation}
-This is true regardless of the integration interval, so that means the integrands themselves must be equal:
+implies
 \begin{equation}
   p(a|b) p(b) =  p(b|a) p(a)
 \end{equation}
 
-Now let's step back to the context of science.  Substituting in the model and data, and rearranging, the quantity that we are targeting---the \textit{posterior probability}\index{posterior probability} $p(\Theta | d )$---has the following expression:
+Now let's step back to the context of science.  Substituting in the model parameters and data, and rearranging, the quantity that we are targeting---the \textit{posterior probability}\index{posterior probability} density $p(\Theta | d )$---has the following expression:
 \begin{equation}
   p(\Theta | d ) = \frac{1}{p(d)} p(d | \Theta) p(\Theta) \label{eqn:bayes_density}
 \end{equation}
-It is called the posterior probability because it is the probability that we find after taking our data.  The other pieces have names. The \textit{prior probability}\index{prior probability} $p(\Theta)$ are the chances that we assigned to some parameter values before we got our data.  The prior probability can come through a theoretical understanding (e.g. we don't expect matter density to be negative) or from previous measurements that we are taking as well-established.  In the simplest case we can use a flat prior\index{flat prior} with a uniform probability distribution.
+It is called the posterior probability because it is the probability that we find after taking our data.  The other pieces also have names. The \textit{prior probability}\index{prior probability} $p(\Theta)$ represents the chances that we assigned to some parameter values before we got our data.  The prior probability can come through a theoretical understanding (e.g. we don't expect matter density to be negative) or from previous measurements that we are taking as well-established.  In the simplest case, we can use a flat prior\index{flat prior} with a uniform probability distribution.
 
-The \textit{likelihood}\index{likelihood} $p(d | \Theta)$ is the probability that our dataset came from a particular cosmological model parameterized by $\Theta$, even if it's not the right one.  If we understand the predictions of our model and the uncertainties of our measurement, that is something we can usually compute.  Because it is so important, the likelihood is sometimes given its own symbol ${\cal L}(d|\Theta)$.
+The \textit{likelihood}\index{likelihood} $p(d | \Theta)$ is the probability that our dataset came from a particular (cosmological) model parameterized by $\Theta$, even if it's not the right one.  If we understand the predictions of our model and the uncertainties of our measurement, the likelihood is usually something that we can compute.  Because it is so important, the likelihood is sometimes given its own symbol, $\mathcal{ L}(d|\Theta)$.
 
-Perhaps surprisingly, the normalization factor, $1/p(d)$, the probability of our data, is not very important.  This is because the methods we use to evaluate the posterior only require a function that is proportional to the posterior.  Besides that, the posterior (Equation \ref{eqn:bayes_density}) is a probability distribution, and should integrate to unity over all parameters, so we can normalize it after the fact.
+Perhaps surprisingly, the normalization factor, $1/p(d)$, the probability of our data, is not very important.  This is because the methods we use to evaluate the posterior only require a function of the parameters that is proportional to the posterior.  Since $p(d)$ does not depend on the parameters, it doesn't play a role.  Besides that, the posterior (Equation \ref{eqn:bayes_density}) is a probability distribution, and should integrate to unity over all parameters, so we can normalize it after the fact.
 
 %\section{Gaussian likelihood in the case of supernovae}
 
 We can easily build a Gaussian likelihood for the supernova data given the ingredients on hand:
 \begin{equation}
-  {\cal L}(\Theta|d) =  \frac{1}{(2\pi |C_{\rm SN}|)^{n/2}} \exp( - \chi_{\rm SN}^2/2 )
+  \mathcal{L}(d|\Theta) =  \frac{1}{(2\pi |C_{\rm SN}|)^{n/2}} \exp( - \chi_{\rm SN}^2/2 ).
 \end{equation}
-where
+%where
+%\begin{equation}
+%\chi^2_{\rm SN} = [(d - m^\textrm{th})( \Theta  )]^\dag C_{\rm SN}^{-1}(\Theta) [(d - m^\textrm{th})( \Theta  )]  ).
+%\end{equation}
+This is easy to compute.  The atypical thing about this case are that the comparison of data and theory model (which comes from Equation \ref{eqn:tripp_single_offset} used to build the $\chi^2$) mixes data and parameters.  In this case, once again, the normalization of the likelihood is not important, but notice that the covariance in the $\chi^2$ and the likelihood does depend on the parameters values of $\alpha$ and $\beta$, which serve to reduce or magnify the contribution to the covariance of the data $x_1$ and $c$.
+
+\section{Features of posterior distributions}
+
+\begin{figure}[t]
+  \includegraphics[width=0.50\textwidth]{figs/cosmological_parameters/posterior_gaussian.pdf}
+%  \includegraphics[width=0.33\textwidth]{figs/cosmological_parameters/posterior_triangle.pdf}
+    \includegraphics[width=0.50\textwidth]{figs/cosmological_parameters/posterior_curved.pdf}
+  \caption{\textit{Left}: contours of an example two-dimensional gaussian posterior probability distribution.  For a gaussian posterior the mean, peak, and the peaks of the marginal distributions (top and side) all coincide, and the marginal distributions are also gaussians. 
+  \textit{Right}: non-symmetric posterior distribution.  Note that the maximum or peak of the posterior, which indicates the best-fit parameters, is distinct from both the mean of the distribution and the joint combination of peaks of the marginal distributions.  Either of those other would provide a poor fit for the multidimensional posterior.  The marginal distribution show significant skewness.}  \label{fig:posterior_gaussian_nongaussian}
+\end{figure}
+
+Perhaps the simplest common type of posterior is a gaussian posterior.  Note that this is different from having a gaussian likelihood, because the likelihood is a function of the data and the posterior is a function of the parameters.  If there is a nonlinear relationship between the parameters and the model, then the posterior will be non-gaussian even if the likelihood is gaussian and the prior is flat.  Only if the model has the form,
 \begin{equation}
-\chi^2_{\rm SN} = (\mu - \mu^{th}(z| \Theta  ))^\dag C_{\rm SN}^{-1} (\mu - \mu^{th}(z| \Theta  ))  ).
+  m(\Theta) = A \Theta + B,
 \end{equation}
-This is easy to compute.
-Once again, in this case, the normalization of the likelihood is not important.
-  
+a matrix--vector multiplication plus a constant vector, will the posterior also be gaussian.  We will see such a case for CMB map-making.
+
+Figure \ref{fig:posterior_gaussian_nongaussian} shows a toy gaussian posterior for two parameters, with the probability illustrated like a topographic map.  A multidimensional gaussian posterior is highly symmetric.  The maximum of the posterior is also the mean.  The isocontours or isosurfaces are ellipses or ellipsoids.  If the parameters are correlated, the plot of the posterior is tilted.  Parameters that are extremely correlated are call degenerate, which means that it is hard to see a change in the model for certain simultaneous changes.  Uncorrelated parameters may have squat or tall contours, but no tilt. (Rotating the basis, or making a shear transformation, constructing new parameters out of linear combinations of old ones, can uncorrelate parameters.)  The marginal distributions are also gaussians, and their individual peaks and means also coincide with the peak of the multidimensional likelihood.  This is easy to deal with.
+
+Figure \ref{fig:posterior_gaussian_nongaussian} also shows a highly non-symmetrical posterior.  Posteriors can be any shape, curved, multi-modal (multiple local maxima), you name it.   The peak of the posterior indicates the parameters that provide the best-fitting model.  A marginal distribution, for example,
+\begin{equation}p(\Theta_1) = \int d\Theta_2  \,p(\Theta_1,\Theta_2)\end{equation}
+gives the probability of one parameter regardless of the value of the other parameters.  The peak of that marginal distribution gives the most probably value for that single parameter.  You need to take caution, however, because a model built from the combination of single parameter peaks may be a much worse fit to the data than the best fit model.  The same is true for the means of the marginal distribution.  The joint combination of means is the mean of the overall posterior, but it also may be a poor fit to the data.  In the case here, the marginal peaks are on opposite sides of the 
+
+We need caution because our real-world examples are much higher dimension than this, which makes the problem much worse.  The basic flat $\Lambda CDM$ model for the CMB has six parameters.  Researchers often make only 1-d and 2-d (occasionally 3-d) plots of the posterior's marginal distributions.  The preferred probability region may be a thin region, almost a surface in the high-dimensional space, and the curvature can be subtle.  All the marginal distributions may look fairly gaussian, but you can't trust them that the overall distribution is gaussian.  What's more, cosmology papers often print lists of their parameter constraints, listing the peaks or means of the marginal distributions and some error bar.  That is the correct thing for examining the parameters one at a time, but \textit{taking the combination of these parameters to build a cosmological model is wrong!} You \textit{must} look for something labeled ``best-fit parameters'' to make a model that represents the data to full fidelity.
+
+
+\begin{figure}[t]
+      \includegraphics[width=0.5\textwidth]{figs/cosmological_parameters/overlapping_posteriors_1.pdf}
+      \includegraphics[width=0.5\textwidth]{figs/cosmological_parameters/overlapping_posteriors_2.pdf}
+      \caption{Overlapping posterior probabilities from two datasets.  \textit{Left}: the posteriors of the red data set and the blue data set are compatible, and may be combined to give tighter constraints because the degeneracy directions differ.  \textit{Right}: Improper combination of the incompatible red and blue posteriors, which here fundamentally differ in their opinion for the values of the parameters, also leads to a misleadingly tight constraints in a region of parameter space that for both the red experiment and blue experiment would be a bad fit to the data.
+      } \label{fig:combining_posteriors}
+\end{figure}
+
+Each different type of measurement of the cosmos will have some degeneracy between the parameters it constrains.  As we have seen, supernova by themselves are not sensitive to $H_0$.  Their posteriors are degenerate in the $H_0$ direction, but the combination with the Cepheid distance ladder does constrain it.  The combination of different probes in this way is very powerful.
+
+Figure \ref{fig:combining_posteriors} illustrates this power.  Here two toy experiments, red and blue, are measuring two parameters.  In the one case, the results of the two experiments are compatible.  That means that the best fit model from one experiment is still a reasonable fit for the other experiment.  Even if you were doing the same experiment twice you would get a different posterior because the noise, a random variable, would be different each time.  Because these experiments are compatible, their results can be combined.  For both parameters, the marginal distributions largely overlap, but their degeneracy directions differ in the full parameter space, so their combination constrains the parameter space much more than you might expect from the marginal distributions. 
+
+Combining datasets is improper and misleading if the datasets are not compatible, as in the other example in Figure  \ref{fig:combining_posteriors}.  Here the best fit parameter values for the red experiment would be a bad fit for the blue experiment, and vice versa.  In this example this incompatibility is clear in the red and blue marginal distributions for parameter $\Theta_1$, but not so clear in the marginals for $\Theta_2$ and it might not be clear if we were looking at marginal distributions in a higher dimensional case: we should check the posterior versus the best fit to be sure.  What does this incompatibility mean?  Well, something has gone wrong.  Either there is a problem with the measurement of the data or parameters for red, or there is a problem for blue, or they both have a problem, or one or both could be right and the model that we are using to tie parameters to the data is wrong, or all three could be wrong.  At this point, we should not combine them, but stop and assess what has gone wrong.
+
+If the datasets are combined, the joint posterior (in purple) ends up in the most compatible location between the experiments.  It may end up being a tight constraint, but disagrees with the results of both experiments.
+
+\section{Supernova data and the Hubble tension}
+
+\begin{figure}[t]
+  \begin{center}
+  \includegraphics[width=0.49\textwidth]{figs/cosmological_parameters/plot_H0omw_SH0ES_v2.png}
+  \includegraphics[width=0.49\textwidth]{figs/cosmological_parameters/plot_omw0wa_SH0ES_v2.png}
+  \end{center}
+  \caption{From \citet{2022ApJ...938..110B}, corner plots with supernova (Pantheon+) and Cepheid (SH0ES) parameters compared to Cosmic Microwave Background (Planck).  To the left we constrain static dark energy parameterized by an equation of state $w$.  To the right we constrain dynamical dark energy models where $w = w_0 + w_a (1-a)$ changes.} \label{fig:supernova_vs_cmb}
+\end{figure}
+
+Let's examine some cosmological parameter data, in Figure \ref{fig:supernova_vs_cmb}.  These are ``corner plots'' for organizing two- and one-dimensional marginalized distributions for sets of parameters.  The posterior distributions have been measured by sampling with the Markov Chain Monte Carlo sampling that we will discuss in the next section.  The data sets are supernova, Cepheid distance ladder, and CMB.  The parameters are the matter density, Hubble constant, and the equation of state parameter of dark energy, $w$, for which a standard cosmological constant would have $w=-1$.
+
+In the case of the supernova, we should remember that we are looking at two-dimensional marginalized projections of a three dimensional distribution for $(\Omega_m, H_0, w)$ which itself is the marginalized projection of the higher dimensional space that includes the supernova nuisance parameters.
+
+The supernova themselves do not strongly constrain $H_0$, but the combination of supernova and Cepheid distances does.  The supernova are somewhat constraining of $\Omega_m$ by itself and $w$ by itself.  The Cepheid data help the supernova with $H_0$ but not with the other parameters.  This Planck CMB dataset is strongly degenerate in the $\Omega_m$--$H_0$ plane and so it alone does not strongly constrain $H_0$, but the combination with the supernova does. The part of the Planck posterior that agrees with the supernova data is the part that favors lower $H_0$ values and $w=-1$, which is what the supernova requires.
+
+The difficulty is that these two measurements for $H_0$ do not agree.  Cepheids prefer a higher value and the CMB prefers a lower value.  This is called the ``Hubble tension.''  Newer CMB data that we will see later on is more constraining of the Hubble constant and, even without the supernova, also confirms a preference for a lower value.  On the other hand, the Cepheids are measuring the distance to objects in the present-day universe more directly.  There is no need to extrapolate them over space and time the way that the CMB analysis does, and Cepheids have been consistently giving a higher value for years.  On the downside, we are strongly influenced by the properties of a fairly small number of local Cepheids.  If local Cepheids have different period--luminosity than the remote Cepheids, that could cause real trouble.  Researchers are of course looking for such a problem without finding any unaccounted for difference.
+
+What does this mean?  Well, of these three things---the supernova-Cepheid result, the CMB result, and the $\Lambda$CDM cosmological model---at least one of them is not correct.  Maybe the data sets are correct and the model is wrong, or one of the data sets is wrong, or all three are wrong.  Understanding this is one of the big challenges and opportunities in cosmology in the coming years.
+
+
 \section{Markov Chain Monte Carlo}
 
-We can now evaluate the posterior probability for any model that we want, in principle, by drawing a grid in our parameter space and evaluating the likelihood times any prior at each grid point.  Unfortunately, this method suffers from the ``curse of dimensionality'' when we have a large number of parameters.  If it takes a hundred points to draw a nice smooth curve for the posterior, we have to evaluate $100^{N_{\rm par}}$ points to complete the grid.  Furthermore, we are not always sure where the peak of the posterior is, and its contours could be thin and not well-aligned with our parameter grid.  We could miss the details.
+Assuming we can now evaluate the posterior probability as the likelihood times a prior for any model that we want, we can, in principle, draw a grid in our parameter space and evaluate it at each grid point.  Unfortunately, this method suffers from the ``curse of dimensionality'' when we have a large number of parameters.  If it takes a hundred points to draw a nice smooth curve for the posterior, we have to evaluate it at $100^{N_{\rm par}}$ points to complete the grid.  This quickly becomes intractable for large numbers.  Furthermore, we are not always sure where the peak of the posterior is, and its contours could be thin and not well-aligned with our parameter grid.  We could miss the details and spend most of our time computing the probability in regions where it is unimportantly tiny.
 
 \begin{figure}
   \begin{center}
@@ -102,116 +160,447 @@ We can now evaluate the posterior probability for any model that we want, in pri
   \caption{The Markov Chain Monte Carlo procedure for estimating a posterior probability distribution. In this schematic example, about ninety percent of the samples are accepted, which would be unacceptably high in a real application. {Figure adapted from \citet{en8065538}.}} \label{fig:MCMC}
   \end{figure}
 
-The Markov Chain Monte Carlo (MCMC)\index{Markov Chain Monte Carlo} method helps us to sample the parameter space in a more efficient way.  A Markov chain or Markov process is stochastic chain of points in parameter space where the next step depends only on the current step.  In an MCMC chain, we set up a process so that the points $\Theta_i$ contained in the chain have the same distribution as the posteriors probability.  That is, the points are samples of the posterior distribution.  Figure \ref{fig:MCMC} illustrates how a histogram built from the samples of the chain can approximate the posterior probability.
-For a multidimensional parameter space, the marginal distributions of the individual parameters are simply the one-dimensional histograms of that parameter's value in the points of the chain.
+The Markov Chain Monte Carlo (MCMC)\index{Markov Chain Monte Carlo} method helps us to sample the parameter space in a more efficient way.  A Markov chain or Markov process is stochastic chain of points in parameter space where the next step depends only on the current step.  In an MCMC chain, we set up a process so that the points $\Theta_i$ contained in the chain have the same distribution as the posterior's probability.  That is, the points are samples of the posterior distribution.  Figure \ref{fig:MCMC} illustrates how a histogram built from the samples of the chain can approximate the posterior probability.
+For a multidimensional parameter space, the marginal distributions of the individual parameters are simply the one-dimensional histograms of that parameter's value in steps or links of the chain.
 
-Furthermore, we can use the sample of the chain to evaluate any integral over the posterior.  For example, to compute the mean of parameter $\Theta_a$ we can approximate the integral as a sum over the points in the chain:
+Furthermore, we can use the samples of the chain to evaluate any integral over the posterior.  For example, to compute the mean of parameter $\Theta_a$ we can approximate the integral as a sum over the points in the chain:
 \begin{equation}
   \langle \Theta_a \rangle = \int d\Theta\  \Theta_a\  p(\Theta | d) \approx \frac{1}{N_{\rm chain}}\sum_i \Theta_{a,i} 
 \end{equation}
+This also works for any function of the parameters: the integral is replaced by the average over the points in the chain.
 
-So next we will look at the condition needed to set up such a Markov process and two algorithms for carrying it out.
+Next we will look at the condition needed to set up such a Markov process and algorithms for carrying it out.
 
-\subsubsection{Detailed Balance}
-We can imagine that the point in our chain are like the quantum mechanical hops of a particle in a potential well.  The principle of detailed balance in thermodynamics states that at equilibrium the every process is in equilibrium with the reverse process.  We want the distribution of points to be achieve an equilibrium, stationary distribution that matches our desired distribution.  We will have a transition probability to hop from state $\Theta$ to state $\Theta'$.  Detailed balance tells us that the probability of being in state $\Theta$ times the probability of jumping from there to $\Theta'$ is the same as the reverse, being in state $\Theta'$ times the probability of jumping to $\Theta$.  In equations, that condition is:
+\subsection{Detailed Balance}
+We can imagine that the points in our chain are like the quantum mechanical hops of a particle in a potential well.  The principle of detailed balance in thermodynamics states that, at equilibrium, the every process is in equilibrium with the reverse process.  We want the distribution of points to be achieve an equilibrium, stationary distribution that matches our desired posterior.  We will have a transition probability to hop from state $\Theta$ to state $\Theta'$.  Detailed balance tells us that the probability of \textit{being in state} $\Theta$ times the probability of \textit{jumping from there to} $\Theta'$ is the same as the reverse,  the probability of being in state $\Theta'$ times that of jumping to $\Theta$.  In equations, that condition is:
 \begin{equation}
-  p(\Theta'|\Theta) p(\Theta|d) =   p(\Theta|\Theta') p(\Theta'|d) 
+  p(\Theta'|\Theta) p(\Theta|d) =   p(\Theta|\Theta') p(\Theta'|d),
 \end{equation}
-which gives us the condition on the transition probability
+which gives us the condition on the transition probability,
 \begin{equation}
-  \frac{p(\Theta'|\Theta)}{  p(\Theta|\Theta')}  =  \frac{p(\Theta'|d) }{p(\Theta|d)}.
+  \frac{p(\Theta'|\Theta)}{  p(\Theta|\Theta')}  =  \frac{p(\Theta'|d) }{p(\Theta|d)},
 \end{equation}
+necessary for equilibrium.  Notice that we can have some non-zero transition probability to stay in the same place $p(\Theta|\Theta)$, which automatically satisfies detailed balance.  However, if the probability to stay in the same place is too high, the algorithm does not usefully explore the parameter space of the posterior.
 
-\subsubsection{Metropolis-Hastings algorithm}
-The Metropolis-Hastings algorithm breaks the hop into two steps.  First, there is a proposed next state.  Second, this proposal with some probability is accepted (make the jump)  or rejected (stay at the location for one more turn), in which case the next state is set to be the same as the current state.  Let's explore how this can satisfy the detailed balance condition.
 
-We write the transition probability as 
+\subsection{Metropolis-Hastings algorithm}
+The Metropolis-Hastings algorithm is the prototype MCMC method and breaks the hop into two steps.  First, there is a proposed next state.  Second, this proposal with some probability is accepted (make the jump)  or rejected (stay at the location for one more turn), in which case the next state is set to be the same as the current state.  Let's explore how this can satisfy the detailed balance condition.
+
+We write the transition probability ($\Theta' \neq \Theta$) as,
 \begin{equation}
-  p(\Theta'|\Theta) = g(\Theta'|\Theta) A(\Theta'|\Theta)
+  p(\Theta'|\Theta) = g(\Theta'|\Theta) a(\Theta'|\Theta)
 \end{equation}
-where $g(\Theta'|\Theta)$ is the proposal probability and $A(\Theta'|\Theta)$ is the acceptance probability.
-
-Thus detailed balance is satified when
+where $g(\Theta'|\Theta)$ is the proposal probability and $a(\Theta'|\Theta)$ is the acceptance probability.  It is a multiplication of these distributions because to get to $\Theta'$, you have to propose that position \textit{and} accept it.
+Thus detailed balance is satisfied when
 \begin{equation}
-  \frac{A(\Theta'|\Theta)} { A(\Theta|\Theta')} =  \frac{p(\Theta'|d) }{p(\Theta|d)} \frac{g(\Theta|\Theta')}{g(\Theta'|\Theta)} \label{eqn:acceptance_detailed_balance_condition}
+  \frac{a(\Theta'|\Theta)} { a(\Theta|\Theta')} =  \frac{p(\Theta'|d) }{p(\Theta|d)} \frac{g(\Theta|\Theta')}{g(\Theta'|\Theta)} \label{eqn:acceptance_detailed_balance_condition}
 \end{equation}
-
 A choice that does this is
 \begin{equation}
-  A(\Theta'|\Theta) = {\rm  min} \left( 1,   \frac{p(\Theta'|d) }{p(\Theta|d)} \frac{g(\Theta|\Theta')}{g(\Theta'|\Theta)}  \right). \label{eqn:MH_acceptance}
+  a(\Theta'|\Theta) = {\rm  min} \left( 1,   \frac{p(\Theta'|d) }{p(\Theta|d)} \frac{g(\Theta|\Theta')}{g(\Theta'|\Theta)}  \right). \label{eqn:MH_acceptance}
 \end{equation}
-The value of the minimum function depends on whether the numerator or the denominator of the fraction is larger.  In either case, we satisfy the condition of detailed balance \ref{eqn:acceptance_detailed_balance_condition}.  Often we will use a symmetric proposal distribution, for example, a gaussian-normal distribution
+The value of the minimum function depends on whether the numerator or the denominator of the fraction is larger.  In either case, we satisfy the condition of detailed balance (Equation \ref{eqn:acceptance_detailed_balance_condition}).  Often we will use a symmetric proposal distribution, for example, a gaussian-normal distribution,
 \begin{equation}
-  g(\Theta'|\Theta) = \frac{1}{(2\pi |C_{\rm prop}|)} \exp (-(\Theta'- \Theta)^\dag C^{-1}_{\rm prop}(\Theta'- \Theta)/2). \end{equation}
-A symmetric proposal cancels in Equations \ref{eqn:acceptance_detailed_balance_condition} and \ref{eqn:MH_acceptance}, simplifying the detailed balance condition.  For a symmetric distribution, jumps into higher probability regions of parameter space are always accepted.
+  g(\Theta'|\Theta) =g(\Theta|\Theta') = \frac{1}{(2\pi |C_{\rm prop}|)} \exp (-(\Theta'- \Theta)^\dag C^{-1}_{\rm prop}(\Theta'- \Theta)/2), \end{equation}
+where we have freedom to choose the covariance matrix.
+A symmetric proposal cancels in Equations \ref{eqn:acceptance_detailed_balance_condition} and \ref{eqn:MH_acceptance}, simplifying the detailed balance condition.  For a symmetric distribution, jumps into higher probability regions of parameter space are always accepted, and jumps into lower probability regions are only sometimes accepted.
 
-\paragraph{MCMC Metropolis Hastings recipe.}   Here a illustrate a typical parameter pipeline, which looks like this:
+\paragraph{MCMC Metropolis Hastings recipe.}   A typical parameter pipeline then looks like this:
 \begin{enumerate}
 \item Initialize parameters with values $\Theta_0$ and compute the posterior probability of that point $p(\Theta_0|d)$.
   
 \item Loop over the samples in the chain $\Theta_i$:
   \begin{enumerate}
-  \item Propose a new sample $\Theta' ~ {\cal N}(\Theta_i,C_{\rm prop})$ (for a symmetric gaussian-normal, or use some other distribution $g$).
+  \item Propose a new sample $\Theta' \leftarrow g(\Theta'|\Theta)$. % (It could be ${\cal N}(\Theta_i,C_{\rm prop})$ for a symmetric gaussian-normal, or use some other distribution.)
     \item Compute the posterior probability $p(\Theta'|d)$
-  \item Compute the acceptance probability $$ A = {\rm  min} \left( 1,   \frac{p(\Theta'|d) }{p(\Theta|d)} \frac{g(\Theta|\Theta')}{g(\Theta'|\Theta)}  \right).$$
-  \item Generate a uniform random deviate $u \sim U(0,1)$.
+  \item Compute the acceptance probability $$ a = {\rm  min} \left( 1,   \frac{p(\Theta'|d) }{p(\Theta|d)} \frac{g(\Theta|\Theta')}{g(\Theta'|\Theta)}  \right).$$
+  \item Generate a uniform random deviate $u \leftarrow U(0,1)$.
     \begin{enumerate}
-    \item If $u \leq A$, accept the sample and set $\Theta_{i+1} = \Theta'$.
-    \item If $u > A$, reject the sample and set $\Theta_{i+1} = \Theta_i$, repeating the previous sample.
+    \item If $u \leq a$, accept the sample and set $\Theta_{i+1} = \Theta'$.
+    \item If $u > a$, reject the sample and set $\Theta_{i+1} = \Theta_i$, repeating the current sample.
     \end{enumerate}
+    This is an example of rejection sampling.
   \end{enumerate}
 \item Discard the initial samples, taking only those after the chain has time to ``burn in.''
 \item Examine the autocorrelation length, convergence, and acceptance probabilities of the chain.  Several chains can be run in parallel and compared.
 \item Use the samples to approximate the posterior: compute means/medians, confidence intervals, and statistics of the parameters.
 \end{enumerate}
 
-You want to tune your proposal distribution so that it explores the probability distribution.  If the acceptance probability is too high (averaging above 0.5), it can indicated that the typical step size is too small, and your chain is not departing the high-probability region and will explore the distribution very slowly.  We will talk about correlations in the next chapter, but small steps leads to a long autocorrelation length, meaning that the effective number of independent samples is much smaller than the total number of samples.
+\begin{figure}[t]
+  \includegraphics[width=\textwidth]{figs/cosmological_parameters/MH_example_just_right.pdf}
+  \includegraphics[width=\textwidth]{figs/cosmological_parameters/MH_example_too_loose.pdf}
+  \includegraphics[width=\textwidth]{figs/cosmological_parameters/MH_example_too_tight.pdf}
+  \caption{Examples of MCMC chains exploring a bimodal probability (orange at right) via the Metropolis-Hastings algorithm.  Chain points are accumulated into the blue histograms.  At the top, chains with an appropriately sized proposal distribution explore the distribution with a good acceptance rate for a low-dimensional problem.  Each chain spends an appropriate amount of time in each high-probability region.  In the middle, the proposal density is very wide, so single jumps are large.  Many proposals are outside the high probability region, and the acceptance rate is low, with the chains often staying at the same position.  At the bottom, the proposal distribution is very narrow, and the chains meander with high acceptance rates, taking a long time to burn in and not really exploring the full probability space.} \label{fig:chains_acceptance}
+\end{figure}
+
+\begin{figure}[t]
+  \includegraphics[width=\textwidth]{figs/cosmological_parameters/MH_example_2d.pdf}
+  \caption{A degenerate distribution is more challenging to sample if the proposal distribution is uncorrelated.  Proposal tend to step either too near along the degeneracy direction or too far along the perpendicular direction.  Using a smaller proposal to keep the acceptance probability up, the chain will tend to wander from one end of the degenerate direction to the other.  While we haven't done too badly here, a correlated proposal distribution, proposing bigger moves in the degeneracy direction would sample more efficiently.} \label{fig:fuzzy_caterpillar}
+\end{figure}
+
+You want to tune your proposal distribution so that it explores the probability distribution.    The MCMC chains work best if the size and shape of the proposal distribution mimics the target distribution.  If the acceptance probability is too high (averaging above 0.5), it can indicated that the typical step size is too small, and your chain is not departing the high-probability region and will explore the distribution very slowly.  We will talk about correlations in the next chapter, but small steps leads to a long autocorrelation length, meaning that the effective number of independent samples is much smaller than the total number of samples.
 
 Similarly, if the acceptance probability is too low (averaging below 0.1), the proposed jumps are likely too large and are landing is regions of such low probability the jump is rarely made.  The samples stay put for long periods of time, leading to slow exploration.
 
-For high-dimensional ($N_{\rm par} > 5$) problems, the optimal acceptance rate is about $\langle A \rangle = 0.2$--$0.25$.  For low-dimensional problems, optimal acceptance is higher $\langle A \rangle = 0.4$--$0.5$.
+For high-dimensional ($N_{\rm par} > 5$) problems, the optimal acceptance rate is about $ 0.2$--$0.25$.  For low-dimensional problems, optimal acceptance is higher, $ 0.4$--$0.5$.
 
 The initial point of the chain may not be close to the high-probability portion of the parameter space.  It is necessary to allow the chain to ``burn in'' before it can be usefully employed: to explore, find the high probability region, and get settled there.  The initial part of the chain should thus be discarded.
 
-multimoded distributions are particularly difficult.
+Multimoded distributions can be particularly difficult, so let's examine one as an example (Figure \ref{fig:chains_acceptance}).  You always want more that one chain probing your probability space, as it makes you less sensitive to the initial conditions, even considering the samples that are discarded to let the chain burn in, or follow the gradient of probability to find the nearby maximum.
 
-Fuzzy caterpillar versus wiggly snake.
+In a multidimensional posterior, particularly if there are some narrow degeneracy directions, a particular chain will wander around, exploring the space.  In the end, we want it to look like a good, ``fuzzy caterpillar,'' mixing well around the parameter space as in Figure \ref{fig:fuzzy_caterpillar} versus a bad, wiggly snake, as in the bottom plot in Figure \ref{fig:chains_acceptance}.
 
-Gelman-Rubin statistic
+\subsection{Gelman-Rubin statistic}
+The Gelman-Rubin statistic is a comparison of the variance between chains (``$B$'') of the variance within chains (``$W$'').
+We build it up by computing the mean value of parameter $a$ in chain $j$ (of total $J$ chains, each with $N_\textrm{chain}$ steps), and then the mean of means over all chains,
+\begin{eqnarray}
+  \overline{\Theta}^{(j)}_{a}&=&\frac{1}{N_\textrm{chain}}\sum_{i=1}^{N_\textrm{chain}} \Theta_{ia}^{(j)} \\
+  \overline{\Theta}_{a}&=&\frac{1}{J}\sum_{j=1}^J \overline{\Theta}^{(j)}_{a}
+\end{eqnarray} 
+For the variance of the means of the chains we use the standard estimator when we precompute the mean.  Since the variance of the mean is smaller than the variance of a sample by a factor of the number of sample, we multiply this by the length of the chains to get $B$, an estimate of the variance of the distribution $\sigma^2_a$.
+  \begin{equation}B=\frac{N_\textrm{chain}}{J-1}\sum_{j=1}^J \left(\overline{\Theta}^{(j)}_{a}-\overline{\Theta}_{a} \right)^2\end{equation}
+
+We can also compute the variance of the samples within each chain,
+\begin{equation} \overline\sigma^{2(j)}_a = \frac{1}{N_\textrm{chain}-1} \sum_{i=1}^L \left( \Theta_{ia}^{(j)}-\overline{\Theta}^{(j)}_{a} \right)^2\end{equation}
+and then average that variance across chains,
+\begin{equation}
+  W=\frac{1}{J} \sum_{j=1}^J \overline\sigma^{2(j)}_a.
+\end{equation}
+The statistics $B$ and $W$ already tell you what you need to know.  If the chains are really different from each other, $B$ will be large compared to $\sigma^2_a$.  If the points within each chain don't move around much, then $W$ will be small by the same measure.  These are usually gathered together into the so-called Gelman-Rubin statistic\index{Gelman-Rubin statistic for MCMC convergence}
+\begin{equation}
+  R= {\frac{N_\textrm{chain}-1}{N_\textrm{chain}}+\frac{1}{N_\textrm{chain}}\frac{B}{W}}.
+\end{equation}
+As the length of the chain $N_\textrm{chain}$ goes to infinity, both $B$ and $W$ become better estimates for $\sigma^2_a$ and $B/W$ tends to one, thus $R$ goes to unity.  A rule of thumb is that $R-1 > 0.1$ or even $R-1 > 0.01$ can indicate problems with convergence, and the scale of the proposal density should be checked or the length of the chain should be extended.
+
+\subsection{Tuning the proposal}
+We can make the sampling process work better by tuning the proposal distribution or making other modifications to the procedure.  Guided by your intuition and what you know about the distribution, you will need to experiment and find what works best.  You may not need these strategies, but they can save a lot of time and computational effort if that is worth the trouble of implementing them.
+
+When the proposal distribution is spherical but the target distribution has a strong ellipticity, the sampling can't be as efficient (Figure \ref{fig:fuzzy_caterpillar}).  Jumps that are too short in one direction are too long in another.  Tuning the width of the proposal distribution to get a reasonable acceptance rate will end up with a compromise size that is smaller that what could be used.  We can further tune the proposal distribution to have the same ellipticity and orientation (degeneracy) as the target distribution to help to alleviate this problem by matching proposal's covariance matrix (for a gaussian proposal) to the covariance of the target.  That sounds great, but how to we do that, when the target distribution is what we are trying to find.  Well, we can start out with a poorly tuned proposal distribution, let it burn in and explore the distribution for a while, then use the samples that we have generated for far (which are drawn from the target) to estimate a proposal covariance matrix
+\begin{equation}
+  \tilde C_{\textrm{prop},ab} = \frac{1}{N_\textrm{chain} - 1} \sum ( \Theta_a - \bar \Theta_a)  ( \Theta_b - \bar \Theta_b).
+\end{equation}
+It is okay to change the proposal distribution during the chain.  The Markov process only depends on the previous position and, as long as detailed balance is maintained, it does not matter if the proposal evolves.  The sampling algorithm is free to periodically revisit the proposal distribution and retune to the parameters.
+
+If the distribution is multimodal or curved, this strategy can still struggle to explore the distribution well.  You could tune your proposal to very efficiently probe one isolated island of parameter space without ever visiting the other islands.  Running parallel chains on an altered likelihood can help you explore such a parameter space \citep{2016MNRAS.455.1919V}.  We can set up several chains to sample the modified posterior
+\begin{equation} [\mathcal{L}(d|\Theta)]^{1/T}p(\Theta). \end{equation}  
+This is called a tempered distribution by analogy with metal working, where precisely controlling the temperature can increase the robustness of the steel.  The parameter $T \geq 1$ is called the temperature and serves to flatten and spread out the likelihood.  The samples in high temperature chains are more spread out, like high temperature particles jumping around the potential well.  We can have a sequence of chains at a few different temperatures, with the highest temperature chains blending out the complicated structure in the likelihood.  The chain with $T=1$ is the coldest and our target distribution.  It will tend to settle into the regions of highest probability.  As the sampling proceeds, we implement occasional swaps of points between the nearby temperature chains.  The swapping of ``colder'' points into the hotter chains keeps them focused on the higher probability areas.  The swapping of hotter points into the colder chains ensures that the coldest chains explore the whole parameter space. Swapping in a point from the other chain does introduce points into our coldest, target chain that are not drawn from the target distribution, so you don't want to do it too often or from too high a temperature, however the detailed balance condition means that all subsequent points are successfully drawn from the chain, and we can later throw out the few swapped-in points, since we know which ones they are.
+
+It is often helpful to reparameterize the problem so that parameters match the degeneracy directions of the target distribution.  An example of this we will get to in the CMB is to translate the other cosmological parameters into a parameter for the angular size of the sound horizon.  This is what the CMB measures extremely well, so by having a parameter just for that, we can take appropriately small steps in that direction.
+
+% https://cobaya.readthedocs.io/en/latest/sampler_mcmc.html
+You also have flexibility to sample only some parameters on certain proposals and other parameters on other proposals, so long as detailed balance is maintained.  This is useful in the case where the computation of the likelihood is fast for altering some parameters and slow for altering others.  For example, for supernova, if we change only the shape parameter $\alpha$, the new likelihood value can be computed by just multiplying and adding already computed terms, but if we change $\Omega_m$, we have to compute an integral.  We again will revisit this when we talk about sampling posteriors for CMB.
+
+In many cases you may not need any of these strategies, but it is good to at least have some awareness that they exist.
 
 
-\subsubsection{Affine invariant algorithm}
+
+\subsection{Affine invariant algorithm}
+\begin{figure}[t]
+  \includegraphics[width=\textwidth]{figs/cosmological_parameters/affine_invariant.pdf}
+  \caption{In the affine invariant MCMC algorithm, a set of walkers traverse the parameter space containing the probability distribution.  In the stretch move, a walker generates a prospective new position along a line toward another randomly-selected walker, which is then accepted or rejected with some probability.  Under an affine transformation to new parameters, the shape of the probability distribution changes, but the network of walkers transforms the same way, so the relative position and probability of the prospective move is the same regardless of the parameterization.} \label{fig:affine_invariant}
+\end{figure}
+
+An alternative scheme eases some difficulties with parameter degeneracy by using an algorithm that is invariant to affine transformations, reparameterizations that take the take the form
+\begin{equation}
+  \Theta^* = A \Theta + B
+\end{equation}
+and are additionally invertible (i.e.\ $A$ is an invertible $N_\textrm{par} \times N_\textrm{par}$ matrix).  This solves the difficulty if the probability distribution is elongated, but not if it is strongly curved.
+
+Affine invariant MCMC\index{affine invariant Monte Carlo Markov chain} uses an ensemble of points, known as walkers, that together transverse the parameter space.  The key insight is that an affine reparameterization transforms the probability distribution, but it also transforms the network of walkers in the same way.  So as long at the points in the chain are generated in a way that depends on the distribution of the walkers alone, and also satisfies detailed balance, it will not be sensitive to the particular parameterization in use.  The python code \texttt{emcee} \citep{2013PASP..125..306F} is a widely used implementation of this algorithm.
 
 
-emcee \citep{2013PASP..125..306F}
+Figure \ref{fig:affine_invariant} illustrates the idea.  There are several ways to generate new points in the chain \citep{2010CAMCS...5...65G}, but the most common is called the \textit{stretch move}.  If $\{ \Theta^{(k)}_{i} \}$ is the set of $K$ walkers at step $i$, then we can loop through $k$ to generate  $\Theta^{(k)}_{i+1}$.  First, we randomly select another walker $j \neq k$ and draw a line between $\Theta^{(k)}_{i}$ and the latest position of walker $j$: this may be $\Theta^{(j)}_{i}$ if walker $j$ has not been updated yet or $\Theta^{(j)}_{i+1}$ if it has.  This line has the formula,
+\begin{equation}
+  \Theta^{(k)\prime} =  \Theta^{(j)}_\mathrm{latest} + Z [  \Theta^{(k)}_{i}  -  \Theta^{(j)}_\mathrm{latest} ],
+\end{equation}
+for real numbers $Z$, where $Z=0$ and $Z=1$ select the positions of the two walkers.  To proposal a new sample, we draw a value of $Z$ from a proposal distribution $g(z)$.  This proposal will be symmetric if
+\begin{equation}
+  g(1/z) = z g(z),
+\end{equation}
+and furthermore satisfies detailed balance if it is accepted with probability
+\begin{equation}
+  a = \mathrm{min}\left( 1,Z^{N_\mathrm{par} - 1} \frac{p(\Theta'|d)}{p(\Theta^{(k)}_i|d)}          \right).
+\end{equation}
+For the proposal, \citet{2010CAMCS...5...65G} recommend a type of bounded (or truncated) Pareto distribution:
+\begin{equation}
+  g(z) = \left\{
+    \begin{array}{ll}
+      z^{-1/2} &\mbox{if }z\in [1/a,a], \\
+      0 &\mbox{otherwise},
+    \end{array}       \right.
+\end{equation}
+with a tunable parameter $a$, scaling up or down the moves, that they set to $a=2$.  Looking at the proposal distribution, it favors candiate that are between the point and the random partner, but looking at the acceptance probability, the $Z$-scaling disfavors positions close to the random partner.  Since $Z$ is the radius from the random partner, the volume element in a shell around it is proportional to $Z^{N_\textrm{par}}$.
+
+\paragraph{Affine-invariant recipe (serial stretch move).}  Pulling it all together, we can use the following recipe to  generate steps in the chain.  Looping over each walker $k$ for $0 \leq k < K$,
+\begin{enumerate}
+\item[]
+  \begin{enumerate}
+  \item Select another walker $j \neq k$, and take the latest value $ \Theta^{(j)}_\mathrm{latest} = \Theta^{(j)}_{i}$ or  $\Theta^{(j)}_{i+1}$ if available.
+  \item Generate $Z \leftarrow g(z)$. \label{affine_invariant_recipe_serial_start}
+  \item Propose new position  $ \Theta^{\prime} =  \Theta^{(j)}_\mathrm{latest} + Z [  \Theta^{(k)}_{i}  -  \Theta^{(j)}_\mathrm{latest} ]$.
+  \item Compute acceptance probability
+    $$  a = \mathrm{min}\left( 1,Z^{N_\mathrm{par} - 1} \frac{p(\Theta'|d)}{p(\Theta^{(k)}_i|d)}.          \right) $$
+  \item Generate uniform random deviate $u \leftarrow U(0,1)$.
+  \item Update active walker:\label{affine_invariant_recipe_serial_end}
+    \begin{enumerate}
+    \item if $u \leq a$, accept the proposal and set $\Theta^{(k)}_{i+1} = \Theta^{\prime}$.
+    \item if $u>a$, reject the proposal and repeat  $\Theta^{(k)}_{i+1} = \Theta^{(k)}_{i}$.
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+Because the algorithm needs the latest walker positions, it is a manifestly serial algorithm, like Metropolis--Hastings.  Using the previous positions, rather than the latest, for the whole set of walkers violates detailed balance \citep{2013PASP..125..306F}.  That makes parallelizing the algorithm somewhat non-trivial, you cannot split over the $K$ walkers and updated them all at once.  There is a workaround by splitting up the walkers and updating one group by the latest positions of the other groups, which can be parallelized over up to $K/2$ tasks.
+
+\paragraph{Affine-invariant recipe (parallel stretch move).}  Split the walkers into two groups: $0 \leq k < \lfloor K/2 \rfloor$ and  $\lfloor K/2 \rfloor + 1 \leq k < K$.  Assign each $k$ in the first group to a parallel task, and follow the steps below.  When that is complete, assign each $k$ in the second group to a parallel task, and follow the steps below.
+\begin{enumerate}
+\item[]
+  \begin{enumerate}
+  \item Select a walker $j$ from the other group, take the latest value $ \Theta^{(j)}_\mathrm{latest}$.  If we are working on the first group, none of the second group will be updated, so use $\Theta^{(k)}_{i}$.  If we are working on the second group, at this point, all of the first group will be updated, so use $\Theta^{(k)}_{i+1}$.
+  \item Follow steps (b)--(f) for the serial stretch move.     
+  \end{enumerate}
+\end{enumerate}
+
+If we imagine the extreme of splitting the walkers into $K$ groups of one each, we recover the serial algorithm from the parallel one.
 
 
+\subsection{Parameter uncertainties}
+\begin{figure}[t]
+  \includegraphics[width=\textwidth]{figs/cosmological_parameters/confidence_intervals.pdf}
+  \caption{Several probability distributions of types you may encounter.  All distributions are zero outside the depicted range.  The horizontal threshold lines and the shaded colors indicate the 68\% and 95\% smallest credible intervals.  Note that in some cases, the thresholds intersect the probability curve at two points, in which case a two-sided uncertainty interval is appropriate.  Note in other cases, the probability is piled up against a prior at zero, and the threshold only intersects at one point (or at that point and also at zero).  In this case a one-sided uncertainty upper limit at the given probability is appropriate.}\label{fig:credible_intervals}
+\end{figure}
+
+In science, we always have to characterize our lack of knowledge with an error bar or some indication of our uncertainty.  We can use our chains to estimate the mean and variance of a parameter's distribution,
+\begin{eqnarray}
+  \bar{\Theta}_a &=&  \frac{1}{N_\textrm{chain}} \sum_i \Theta_{ia} \\ \nonumber
+  \bar{\sigma}^2_{\Theta_a} &=&  \frac{1}{N_\textrm{chain}-1} \sum_i \left(\Theta_{ia} - \bar{\Theta}_a \right)^2, 
+\end{eqnarray}
+which is translating our uncertainty in the result of our experiment, as recorded in the covariance of the data, to our uncertainty our measurement of the paramters.  However, as we will see, such a symmetric error bar around the mean can be uninformative or misleading in some cases, and we must try another strategy.
+
+In Bayesian statistics, the formal concept to quote uncertainty is a credible interval\index{credible interval}, credible set, or credible region: a portion of parameter space that the parameter has a set probability of occupying.  The true value of our parameter is not random; the probability distribution of our posterior characterizes our knowledge of that parameter.  If we say we are 95 percent sure that a parameter lies within a certain range, we have defined that range as a 95 percent  credible interval.  We typically use 68 percent and 95 percent credible intervals because that is roughly the amount of probability within $\pm 1\sigma$ and $\pm 2 \sigma$ from the mean of a gaussian distribution.
+
+Credible intervals are not uniquely defined, any range with the appropriate probability is valid, but a few commonly used one are most useful and important.  Several single-peaked, single-parameter distributions appear in Figure \ref{fig:credible_intervals} to guide the discussion.  When you present an error bar or parameter range, it will be a great help to your reader if you explain what type of credible interval you are providing, and a great help to yourself if you are sure what it is that you have done.
 
 
+%\begin{description}
+\paragraph{Symmetric interval around the mean or peak.}  This type of interval is often reported as
+$$\mbox{mean value} \pm \mbox{error bar} \qquad \mbox{or} \qquad \mbox{peak value} \pm \mbox{error bar},$$
+  and it works well for nearly symmetric distributions.  You build it by starting at your central value of choice, and expanding the interval symmetrically until it encompasses the desired probability.  This procedure always constructs a single connected interval.  From an MCMC chain, it is easy to start with the mean and expand the interval to contain 68\% or 95\% of the samples, working directly from the chain.  For a gaussian distribution, this will roughly match one or two standard deviations, but will be different for a skewed or otherwise non-gaussian distribution.  However, it is more difficult to positively identify the peak of the distribution from the chain directly.  A histogram of the chain is subject to ambiguities from binning: wide bins smooth out details and narrow bins leave sampling noise that causes a jagged curve, making the peak hard to find.  On the other hand, as we have seen, for some distributions, the mean is not necessarily in a region of high probability.
+\paragraph{Smallest credible interval / smallest credible set.}  This interval finds the most compact, high-probability region of the parameter space that contains the requisite probability.  This is constructed by gradually lowering a horizontal threshold, intersecting the probability curve at one or more places.  We have found the interval when the integral of the selected region matches the desired probability.   These intervals are often quoted as
+  $$\mbox{peak value}^{+\textrm{upper\ limit}}_{-\textrm{lower\ limit}},$$
+  and are good for skewed distributions.  It always includes the peak (the mode).
+  If the distribution is multimodal, this can create disconnected intervals of high probability.  From a chain, it faces the same difficulties as the symmetric interval above.  Another option for both problems is kernel density estimation\index{kernel density estimation}, a technique that assigns a little lump of probability (or kernel) to each sample in the chain. They sum together to make a nice, continuous approximation of the probability function, but there is still the same trade-off as with the histogram: wide kernels make a smooth function but hide details, narrow kernels (delta functions are the extreme limit) preserve details but make a jagged function.
 
-\subsubsection{Gibbs sampling}
-Or maybe delay this to the CMB chapter
+  Sometimes, the threshold only intersects the probability function at one point.  In such cases, it make sense to report the interval as a parameter upper limit.
+  
+\paragraph{Quantile-based interval.}  This category of credible interval can be quickly computed from the chains themselves.  For example, rank ordering the chain samples by parameter value and then taking the 16th-to-84th percentile region yields a 68 percent credible interval.  This is an example of a median credible interval of equal-tailed interval.  It can be reported as
+$$ \mbox{median value}^{+\textrm{upper\ limit}}_{-\textrm{lower\ limit}}, $$
+because it always contains the median.  Such intervals are always easily computable directly from the chains, but may not make sense in a case where an upper limit or lower limit is appropriate.  In that case, the lowest credible interval or highest credible interval makes since.  For example, the rightmost distribution in Figure \ref{fig:credible_intervals} has a 95\% lowest credible interval defined by the region below the 95th percentile, which sets the same upper limit, for that shape of distribution, as the smallest credible interval.
+%\end{description}
 
-\subsubsection{Model selection}
+Remember that credible intervals are shorthand to help discuss about the values of parameters.  The full information is in the posterior probability, which is always the most complete way to characterize it.
 
-Bayesian evidence
+The credible interval is closely related to the idea of a confidence interval.  In frequentist statistics, if you took the data repeatedly, the confidence interval for the resulting statistical estimator would overlap the true value with the specified probability.  Thus the 95\% confidence intervals from 100 imagined, repeated experiment you would expect to overlap the true value 95 times on average.  This is in contrast to the Bayesian view that we only need think about the one experiment we have actually computed, and the credible interval characterizes our knowledge of the parameter's value.  It is correct to say that a credible interval does reflect our confidence about our knowledge of the true value, and so, although the ideas are technically different, the terms credible interval and confidence interval are used somewhat interchangeably in the discourse of the cosmology community.  You probably don't want to be that person who says, ``Erm...\ \textit{actually,} that's a \textit{credible} interval.''  It's okay to just quietly know the difference.
 
-Model selection
+\section{Model selection}
 
-``Suspiciousness'' and ``Index of Inconsistency'' which I don't know what they are.
+\begin{table}[t]
+  \begin{center}
+    \begin{tabular}{ll}
+      $K$ &	\textbf{Strength of evidence} \\ \hline \\
+      1--3.2 &	Not worth more than a bare mention \\
+      3.2--10 &	Substantial \\
+      10--100 &	Strong \\
+      $> 100$ &	Decisive  \\ \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \caption{Qualitative descriptors of the strength of evidence from the Bayes factor $K$. See \citet{Kass01061995} or a similar table by \citet{jeffreys1998theory}.}  \label{tab:bayes_factor}
+\end{table}
 
-\subsubsection{Confidence intervals}
-credible intervals
+One of the most important tasks we have is to decide between models.  The Bayes factor\index{Bayes factor}, is a ratio of likelihoods that helps us make that decision:
+\begin{equation}
+  K  = \frac{\mathcal{L}(d|\Theta_1)}{\mathcal{L}(d|\Theta_2)},
+\end{equation}
+which is the ratio of probabilities that the observed data comes from the parameters under comparison. 
+If we are trying to decide between classes of models, $m_1$ and $m_2$, then we need to integrate over the model parameters like so
+\begin{equation}
+  K = \frac{Z_1}{Z_2} = \frac{\mathcal{L}(d|m_1)}{\mathcal{L}(d|m_2)} = \frac{\int d\Theta_1\, p(\Theta_1 | m_1)\mathcal{L}(d|\Theta_1, m_1)}{\int d\Theta_2\, p(\Theta_2 | m_2)\mathcal{L}(d|\Theta_2, m_2)},
+\end{equation}
+including a prior term for the probability of a set of parameters within each model.  The quantity $Z_1$ is the \textit{evidence} of model 1, and likewise for model 2.  A Bayes factor more than unity implies that model 1 should be favored over model two, but you would need a Bayes factor of 10 or more before you would consider the evidence to be strong (See table \ref{tab:bayes_factor}).  The when you have a class of models with large number of parameters, the Bayes factor imposes a penalty.  This is a quantitative expression of Occam's razor that prefers simpler explanations.  If it is compatible with the data, a rigid model with few parameters is preferable to a flexible model that could potentially fit a wide variety of data.  The Bayes factor penalty helps to prevent over-fitting.
+
+The marginalization integral over all the possible model parameters can be computationally challenging to perform, and we will revisit it below when we discuss nested sampling.  An alternative is to use the Bayesian information criterion (BIC), which is an approximation to the evidence terms in the Bayes factor.  The idea here is that if the sample of data points is large, the integral over the parameters gets most of its contribution from the peak of the integrand, the peak of the likelihood, and the prior may be fairly linear over such a small region.
+
+The approximation employed by the BIC is
+\begin{equation}
+  Z = \mathcal{L}(d|m) = \int d\Theta\, p(\Theta | m)\mathcal{L}(d|\Theta, m) \approx \exp( \log \hat{\mathcal{L}} - (k/2) \log(n) + \mathcal{O}(1) )
+\end{equation}
+where $\hat{\mathcal{L}} = \mathrm{max}_\Theta \mathcal{L}(d|\Theta,m)$ is the maximum likelihood value, $k$ is the number of parameters, $n$ is the number of identically distributed data points, and the prior is making the $\mathcal{O}(1)$ contribution: not very informative at the peak of a narrow likelihood.  That is equivalent to making the approximation that the likelihood of the model is gaussian
+\begin{equation}
+  \mathcal{L}(d|m) \approx \exp( -\mathrm{BIC}/2 )
+\end{equation}
+where the criterion is
+\begin{equation}
+  \mathrm{BIC} = k \log(n) - 2 \log(\hat{\mathcal{L}})
+\end{equation}
+and the dependence on the data comes through the peak value of the likelihood.
+
+Lower BIC is better. In form, it is kind of like a $\chi^2$, but while we have used $\chi^2(\Theta)$ to find particular parameters of a model, BIC is for the whole class of models.  You can here explicitly see the penalty for parameters is the log of the number of data points times the number of parameters.  The closely-related Akaike information criterion (AIC),
+\begin{equation}
+  \mathrm{AIC} = 2k - 2 \log(\hat{\mathcal{L}})
+\end{equation}
+is more forgiving of additional parameters and leans more heavily on goodness-of-fit.
+
+Ratios of likelihoods (or exponentiated BIC or AIC values) tell you which model is better.  It does not tell you if either model is good.  You should always replot your most-favored model against the data as a sanity check, and use variables so that it is easy to do so.
+
+% ``Suspiciousness'' and ``Index of Inconsistency'' which I don't know what they are.
+
+\section{Other parameter algorithms}
+We are only exploring the tip of the iceberg when it comes to sampling algorithms, and it's not possible to be comprehensive here.  Below are listed some important ones that arise in cosmological contexts.
+
+\subsection{Hamiltonian Monte Carlo}\index{Hamiltonian Monte Carlo}
+When the parameter space dimensionality is very large, say, many thousands of parameters, a variant of the MCMC helps us to more efficiently explore the parameter space, but the penalty is that we have to be able to compute gradients of the posterior distribution, something we don't have to do in the Metropolis-Hastings or Affine Invariant algorithms.  Since many recent computer languages are now including automatic differentiation (autodiff) libraries, which are useful in optimizing machine learning algorithms, this is less of a penalty than it was even in the 2010s.
+
+The Hamiltonian Monte Carlo (HMC) algorithm alternate standard MCMC moves with a proposal where we let the point follow a dynamic trajectory through the parameter space with equations of motion like a classical particle in a potential well. We define the Hamiltonian as the sum of a potential energy and kinetic energy,
+\begin{equation}
+  \mathcal{H}(\Theta,p) = U(\Theta) + p^\dag M^{-1} p/2.
+\end{equation}
+The potential energy is set as the negative logarithm of the target distribution
+\begin{equation}
+  U(\Theta) = - \log p(\Theta|d).
+\end{equation}
+If the likelihood is gaussian and we have a flat prior, we have $U(\Theta) = 2\chi^2(\Theta)$.  The kinetic energy term is looks like the usual $p^2/2m$ except we are using a symmetric, positive definite mass matrix $M$ instead of a single number because some parameters vary over a much wider ranges than others.  You can use a covariance matrix computed from a preliminary MCMC chain to approximate the mass matrix, additionally taking account of degeneracies.
+
+Hamiltonian dynamics in generalized coordinates gives the equations of motion
+\begin{equation}
+  \frac{d\Theta_a}{dt} = \frac{\partial \mathcal{H}}{\partial p_a} \qquad\mbox{and}\qquad
+  \frac{dp_a}{dt} = \frac{\partial \mathcal{H}}{\partial \Theta_a}
+\end{equation}
+for the $a$-th parameter and its conjugate momentum.  This leads to recognizable equations of motion
+\begin{equation}
+  \frac{d\Theta_a}{dt} = M^{-1} p \qquad\mbox{and}\qquad
+  \frac{dp_a}{dt} = \nabla U
+\end{equation}
+where the first equation is just the definition of velocity and the second is like Newton's second law for force the particle experiences.
+
+Our picture is that we are going to give the particle at position $\Theta$ a kick with momentum $p$, drawn from a gaussian distribution with the mass matrix as the covariance, $\mathcal{N}(0,M)$.  We then let the particle coast through phase space with constant energy (constant $\mathcal{H}$) to another position in the space $\Theta'$.  In practice, we will use a numerical integrator to move from $\Theta$ to  $\Theta'$ some time later, so our energy conservation will be good but not perfect.  Then we will accept or reject the move with acceptance probability
+\begin{equation}
+  a  = \mathrm{min} \left( 1, \frac{\exp[ - H(\Theta',p')] }{\exp[ - H(\Theta,p)]} \right)
+\end{equation}
+The exponential comes from the Boltzmann distribution, where the probability of a state is the exponential of the negative energy in terms of the temperature.  Because we will have pretty good energy conservation, the Hamiltonian in the numerator and denominator are nearly the same, and these moves are almost always accepted.  If we tune the HMC to travel a long way across the parameter distribution, we can explore widely across the parameter space with few rejected steps.  Then we can choose a new momentum and take another HMC step, or take a standard MCMC steps from this new part of the parameter space.
+
+The typical numerical integrator is the leapfrog integrator, which in a timestep $\Delta t$ makes this update:
+\begin{eqnarray}
+  p(t + \Delta t/2) &=&  p(t) - (\Delta t / 2) \nabla U |_{\Theta(t)} \\ \nonumber
+  \Theta(t + \Delta t) &=& x(t) + \Delta t \, M^{-1}\, p(t + \Delta t/2) \\ \nonumber
+  p(t + \Delta t) &=& p(t + \Delta t/2)  - (\Delta t / 2) \nabla U |_{\Theta(t+\Delta t)}.
+\end{eqnarray}
+You can see the need to take the gradient of the potential energy with respect to all the parameters and so the gradient of the posterior:
+\begin{equation}
+  \nabla U = - {\nabla p(\Theta|d)/p(\Theta|d)},
+\end{equation}
+evaluated at the appropriate value of $\Theta$.  %The gradient of the potential is just the force that the particle experiences and $M^{-1} p$ is just the velocity.
+
+The accuracy of the integrator is controlled by $\Delta t$.  The leapfrog integrator has much better energy conservation than the simplest Euler integrator, which jumps both the position and momentum ahead by $\Delta t$ directly.  The length of the trajectory is controlled by the total number of such steps we take, for a total integration time $L_\textrm{steps} \Delta t$. You tune $\Delta t$ and $L_\textrm{steps}$ for best perfomance.
+
+If you let the the trajectory continue for too long, the particle can complete an orbit and come back to close to your position, defeating your purpose to widely explore the space.  The No U-Turn Sampler (NUTS) is an HMC variant that attempts to detect and adjust $L_\textrm{steps}$ automatically to maximize how far the particle travels.
+
+\subsection{Importance sampling} \label{sec:importance_sampling} 
+Suppose you have already generated a chain through a long and tiresome process for one dataset with the posterior $p(\Theta,d_1)$.  Now we have some additional, independent data, $d_2$.  Importance sampling\index{importance sampling} allows us to update the chain to incorporate it.  Like any joint posterior, this works well if the new and old posteriors are compatible with each other.  We compute weights for each point and their sum as
+\begin{equation}
+  q_i = \frac{p(\Theta_i|d_2)}{p(\Theta_i|d_1)}
+%\end{equation}
+\qquad \mbox{} \qquad
+%\begin{equation}
+  Q = \sum_i q_i.
+\end{equation}
+Then we can approximate integrals against the joint posterior as a weighted average of the original chain:
+\begin{equation}
+  \langle \Theta \rangle = \int d\Theta'\, \Theta' p(\Theta'|d_1) p(\Theta'|d_2) \approx \frac{1}{Q} \sum q_i \Theta_i.
+\end{equation}
+
+The effective number of samples is less that the original number of samples
+\begin{equation}
+  N^\textrm{new}_\textrm{chain,eff} = \frac{Q^2}{\sum q_i^2}
+\end{equation}
+Equal weight like $q_i = \mbox{constant}$ give an effective length of the chain that matches the original:  $N^\textrm{new}_\textrm{chain,eff} = N^\textrm{old}_\textrm{chain}$.\footnote{For this reason, it's no problem if the posteriors are not properly normalized.  The quantity $q_i/Q$ always sums to one.}  At the other extreme, if $q_i$ is large for only one sample and negligable for the others, it gets all the weight and $N^\textrm{new}_\textrm{chain,eff} = 1$.
+
+We can generate new samples of the joint posterior by the following recipe that returns sample $\Theta_i$ from the original chain with probability $q_i/Q$.  We add the weights in a cumulative sum
+\begin{equation}
+  r_j = \sum_{i<j} q_i/Q,
+\end{equation}
+which ranges from zero to one, and divides the unit interval into segments $[r_j, r_{j+1})$.    To generate a sample, generate a uniform deviate on the unit interval, find which segment $j$ it lands in, and return $\Theta_j$.  It is okay to repeat samples, and indeed the original chain will include repeated samples from the rejected steps.
+
+  The independence of the two data sets here is absolutely key.  If the second data set includes the information of the first, that information will be double counted, and the importance-sampled joint posterior distribution will be wrong.
 
 
-
-\section{Simulation-based inference}
-
+\subsection{Nested sampling}
 
 
-\section*{Exercises}
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/cosmological_parameters/nested_sampling.pdf}
+  \end{center}
+  \caption{One step in the nested sampling algorithm for integrating the likelihood (blue contours).  From a set of prior distributed points sampling the parameter space, the point ($\Theta_i$, orange star) with lowest likelihood ($\mathcal{L}_i$) is eliminated and replaced with a new point (teal star) with higher likelihood.  The (light  yellow) volume between the surfaces defined by the eliminated and new lowest likelihood point ($\Theta_{i+1}$, yellow star) is taken as the weight $w_{i+1}$ and estimated with a statistical approximation; the next step will accumulate the approximate contribution $w_{i+1} \mathcal{L}_{i+1}$ toward the total integral of the likelihood.  It is called nest because each new set of points lives in a tighter and tigher volume.  A real application would use hundreds to thousands of points.} \label{fig:nested_sampling}
+\end{figure}
+
+Nested sampling is an algorithm to calculate the integral needed for the Bayes factor for a class of models $m$:
+\begin{equation}
+  \mathcal{L}(d|m) = \int d\Theta\, p(\Theta | m)  \mathcal{L}(d|\Theta, m).
+\end{equation}
+
+The basic strategy is to distribute a group of points around the parameter space as specifed by the prior $p(\Theta | m)$.  We calculate the likelihood for all the points and target the least likely point for elimination.  We replace it with a new point selected randomly from the prior, but one that must have a higher likelihood than the point we are eliminating.  As in Figure \ref{fig:nested_sampling}, we want to work from the outside in toward the peak, and use the volume between lowest- and next-lowest-likelihood points to approximate the integral, assuming this has the lowest-likelihood value throughout the volume.
+
+This volume is very hard to compute.  A result from statistics, using this procedure with $N$ points working its way toward the peak,  gives us some expectations about that the prior volume $X_i$ above the lowest remaining likelihood point at step $i$.  Regardless of distribution, the ratio of volumes between steps is sometimes more and sometimes less, but averages \begin{equation}X_i/X_{i-1} = (1+1/N)^{-1} \approx 1-1/N \approx \exp(-1/N)\end{equation} for large $N$.
+Thus after $i$ steps, the volume is approximately $X_i \propto \exp(-i/N)$ and proportional to the initial, outermost volume.
+The volume weight is then $w_i = X_{i-1} - X_i$ and the contribution to the approximate integral is $w_i \mathcal{L}_i$.  We start with $X_0 = 1$ because the whole prior volume is above points out at infinity and the prior is normalized to have unit integral.
+
+\paragraph{Nested sampling recipe.}  With a set of $N$ parameter points selected from the prior, $\Theta_1, ..., \Theta_N$, repeat the following steps until the desired accuracy is achieved.
+\begin{enumerate}
+\item Identity $\Theta_i$, the point in the set with the lowest likelihood $\mathcal{L}_i$.
+\item Estimate the the remaining volume above  $\mathcal{L}_i$ as $X_i = \exp(-i/N)$
+\item Estimate the volume counted by this step as $w_i = X_{i-1} - X_i$.
+\item Add $w_i \mathcal{L}_i$ to the accumulating total for Z = $\mathcal{L}(d|m)$.
+\item Save the values $\Theta_i$, $\mathcal{L}_i$ and $w_i$, and remove $\Theta_i$ from the set.
+\item Add a new point to the set, sampled from the priod $p(\Theta|m)$. It must have a likelihood above $\mathcal{L}_i$.  
+\end{enumerate}
+
+The first steps account for huge volumes but almost no likelihood.  The late points account for small volumes but large likelihoods.  Because it works from the outside in, the algorithm can be good at finding and accounting for multiple peaks.  The algorithm is more accurate the more points $N$ you include, but also takes a longer time to hike up the likelihood hill, because it take smaller steps.  In pratices, you want a few hundred points for $N_\textrm{par} < 10$ up to a few thousand for higher dimension problems.  Dynamic nested samplers can inject more point in high likelihood regions, raising the effective resolution.  If doubling the number of points does not significantly affect the computed evidence, then the original number was okay.  
+
+Nested sampling provides an estimate for the posterior distribution $p(\Theta| d) = \mathcal{L}(d|\Theta) p(\Theta|m)$, which is the purpose of our all other algorithms.   Indeed, sometimes researchers will do nested sampling just for that side benefit.  We can do importance sampling on the discarded samples $\Theta_i$ with weights
+\begin{equation}
+  q_i = w_i \mathcal{L}_i/Z
+\end{equation}
+and then compute integrals against the posterior or generate a chain from the posterior via the method that splits the segment $[0,1]$ as in section \ref{sec:importance_sampling}.
+
+It is challenging to sample from the prior in the increasingly small remaining volume.  You could try rejection sampling: sample a point from the original prior, but reject it if its likelihood falls below the threshold.  However, this procedure becomes less and less efficient as the algorithm proceeds to raise the threshold and shrink the available volume.
+
+The original (``simple'' or ``classic'') algorithm \citep{SiviaSkilling2006} sampled new points near to the existing points, using one of them to start a short (20-50 step) MCMC chain to sample the prior, with the additional rejection criterion that the chain must remain above the likelihood threshold.
+
+Ellipsoidal sampling (implemented by e.g. Multinest and Ultranest) draws an ellipsoid around the remaining points, slightly larger than the minimum size.  It picks a sample inside (uniformly or otherwise) and, upon comparison to the prior and the prior's maximum in the region, accepts or rejects the point with rejection sampling.
+
+Slice sampling (implemented by e.g. Polychord), takes a remaining point, chooses a random direction, and steps out along that line until it finds some endpoints where below the likelihood threshold.  The stepping out procedure is specifically designed to satisfy detailed balance.  We try endpoints, for a uniform random value $u$ on $[0,1]$, that are $u \Delta\ell$ and $(1-u) \Delta\ell$ along the line, establishing a line segment that the original point could be anywhere inside.  We may need to repeatedly lengthen the segment and set it down again randomly to find endpoints below the threshold.  Next, using inversion sampling of the prior to generate a candidate point along the line segment, we check its likelihood.  If the likelihood threshold is exceeded, we accept the new point.  If not, we shorten the segment to that point, and sample again, repeating the process until we succeed.
+
+%\subsection{Simulation-based inference}
+%Finally,
+%normalizing flows
+
+\exercises
 \begin{enumerate}
 
-\item Check both cases, that the numerator or the denominator is larger, to show that Equation~\ref{eqn:MH_acceptance} satifies the condition of detailed balance.
+\item Check both cases, that the numerator or the denominator is larger, to show that Equation~\ref{eqn:MH_acceptance} satisfies the condition of detailed balance.
 
+\item Write a 1-d Metropolis-Hastings MCMC to sample from a lognormal distribution,
+  $$ p(x) = \frac{ 1 }{ x \sigma\sqrt{2 \pi } } \exp\left( -\frac{ (\log x-\mu)^2 }{2 \sigma^2} \right),$$
+  for parameters $\mu = 0$ and $\sigma = 0.5$.  Run 10 chains of $10^4$ steps each.
+  \begin{enumerate}
+  \item After you adjust the size of your proposal distribution, what acceptance probability do you find?
+  \item What is the value of the Gelman-Rubin statistic for your set of chains?
   \end{enumerate}
+  
+\item Some kind of bayes factor between two models, using BIC to compare to hypothetical distributions to a small data set.
+
+\item Applications of HMC, integrating a trajectory around a correlated gaussian in 2 d with a leap frog integrator, checking the energy conservation.
+
+\item Application of nested sampling in 1d, gaussian with a broad uniform prior.
+  
+\end{enumerate}
