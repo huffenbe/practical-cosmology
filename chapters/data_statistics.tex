@@ -197,7 +197,15 @@ If we have a bad model, such that the model cannot reproduce the signal for any 
 
 If the survival function probability is very close to zero, then that model is probably not a good fit, given the assumption of error bars.  That can be useful to disprove a null hypothesis and discover something: if, for example, if there is low probability that a certain amount of flux was measured by chance from no source, then there must be a source of emission there.  On the other hand, if the probability to achieve some value of $\chi^2$ or lower is unreasonably close to one, this can mean the assumed error bars are over-estimated.
 
+\section{Generating random deviates}
+In later chapters, as we measure the cosmological parameters, we will rely on sampling methods to draw examples of cosmological models or to simulate random data sets.  Fortunately, scientific and numerical computing libraries provide the ability to generate random variables from many different distribution functions (\texttt{scipy.stats} offers well more than 100 options).
 
+Sometimes, however, we need to sample from a probability distribution that is not in that standard set.
+We will discuss two elementary ways to do that here, and then discuss several more serious methods in Chapter \ref{ch:cosmological_parameters}.
+
+\subsection{Rejection sampling}
+
+\subsection{Inversion sampling}
 
 \section*{Exercises}
 
@@ -231,4 +239,11 @@ with inverse-variance weights $w_i = 1/\sigma^2_i$ yields the smallest variance 
 
 \item For the data set in Exercise \ref{ex:chi2_data}, what is the upper limit on $A$?  Use the probability survival function for $\chi^2$ to determine the value  that we are confident with 95 percent probability that $A$ is below, $P(\chi^2 > \chi^2(A)| k) = 0.05$ or equivalently, $$ \int_0^{\chi^2(A)} dx\,p(x = \chi^2|k) = 0.95.$$
 
+\item Write two routines to generate random variables values from a cosine-shaped distribution on the interval $[-\pi/2,\pi/2]$.
+  \begin{enumerate}
+  \item Use rejection sampling.
+  \item Use inversion sampling.
+  \end{enumerate}
+Verify each routine by making histograms of the random deviate values.  Which algorithm is faster for large numbers of deviates?
+  
 \end{enumerate}
