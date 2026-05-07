@@ -1,136 +1,766 @@
 \chapter{The Cosmic Microwave Background} \label{ch:CMB}
 
-What is the cosmic microwave background?
+The cosmic microwave background (CMB) is the left-over glow of thermal radiation from the Big Bang.  The universe is statistically homogeneous, but not literally homogeneous, so there are perturbations to the density, velocity, and pressure; these perturbations are small at early times at all scales and are small even today on large scales.  These perturbations show up in the CMB as correlation across wide angles in the sky: density fluctuations make gravitational potential perturbations that show up via gravitational redshifts as temperature anisotropies in the CMB (the Sachs-Wolfe effect).  Gravitational attraction, pressure gradients, and (theoretical but not yet observed) gravitational waves make velocity perturbations that are visible in the polarization anisotropies.  The CMB power spectrum is a pillar of modern cosmology because it is both precisely measureable and predictable from theory.
 
-The universe is not perfectly homogeneous, but the perturbations are small at early times and on large scales.
+\section{Thermal history of the universe}
+A complete account of the early thermal history of the universe is beyond our scope, but the basic story is this: as universe expanded and cooled, different processes dominated.  Various parts of this early history get imprinted on the CMB.
 
+The earliest history we do not understand well.  The earliest epoch for which we have some evidence is inflation, a postulated exponentially-rapid expansion that would serve to iron out spatial curvature, dilute magnetic monopoles, and generate  a nearly-scale-invariant power spectrum of initial fluctuations, both in density (scalar or curvature) and gravitational waves (tensor), by rapidly expanding quantum field fluctuations from microscopic to macroscopic to cosmological scales.  Inflation's mechanism is uncertain, but the simplest models include a scalar field that is high on a shallow potential, slowly rolling down.  Such an expansion rapidly cools the universe.
 
-The CMB power spectrum is pillar of modern cosmology because it is both measureable and predictable from theory.
+However it happens, the epoch of inflation then ends.  The field decays to standard model particles, dumping its energy density in the newborn universe and re-heating it to extremely high temperature.    The exponential expansion ends, replaced with a power law expansion of radiation domination.  This sets the initial conditions for the ``Hot Big Bang.''
 
-T = 0.3 eV atoms form
+We are not sure of how the next processes take place or even in what order.  Some process generates some kind or kinds of dark matter.   Some process of baryogenesis imprints an imbalance between particles and antiparticles.  Initially there are a large number of each, but as the universe cools and they annhilate, a fractional excess of $\sim 2\times 10^{-9}$ particles remains.  We know such a process must violate Baryon number conservation, C-symmetry and CP-symmetry, and be out of thermal equilibrium (the Sakharov conditions), or counter processes will simply replace the deficit of antiparticles.  Different scenarios are proposed, but we are not yet sure what happens.
 
-T = 0.25 eV photons decouple and stream freely
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/CMB/gstar.png}
+  \caption{Effective relativistic degrees of freedom $g_*$ in the early universe, as a function of temperature.  The solid line is the degrees of freedom for the energy density.  The dotted line is the similar expression for entropy density.  \textcolor{purple}{From Baumann, need better version.}}
+\end{figure}
 
-z = 1100
+As the universe cools, we finally get to processes that we understand better, ones that start to be in the range of our particle accelerators.
+First is the electroweak phase transition, which distiguishes photons from the $W^{\pm}$ and $Z$ bosons.  If this is a first-order phase transition, this could promote some baryogenesis (but perhaps not enough).
 
-$t_{\rm CMB} = $ 380,000 years
+At this point, the temperature is still so high that all the standard model particles we know about were relativistic.  The energy density of a relativistic boson is 
+\begin{equation}
+ \rho_B =  g \frac{\pi}{30}  (T)^4,
+\end{equation}
+where $g$ is the number of (spin/polarization) states or degrees of freedom per particle. (We have $g=1$ for a massive spin-0 particle, $g=3$ for a massive spin-1 particle, or $g=2$ for a massless spin-2 boson like a photon.  Spin-1 but massless gluons have $g=16$ for 8 colors and 2 helicities.  Antiparticles double the number of states when they exist.)  This energy density comes from integrating the energy against the Bose-Einstein energy distribution function for that type of particles.  For Fermions, integrating against the Fermi-Dirac distribution yields a similar expression, but smaller by a fraction 7/8:
+\begin{equation}
+ \rho_F = \frac{7}{8} \times  g \frac{\pi}{30}  T^4,
+\end{equation}
+and again $g$ is the number of degrees of freedom. (We have $g=2$ for a spin-1/2 fermion like the electron. Spin 1/2 quarks also have 3 color states.)  When all particles are relativistic and in equilibrium with each other, at the same temperature, then the total energy density is written
+\begin{equation}
+ \rho =  g_*(T) \frac{\pi}{30}  T^4, \label{eq:gstar_rho}
+\end{equation}
+where the $g_*(T)$ is a total of the degrees of freedom available at temperature $T$.  Counting 1 for each boson and 7/8 for each fermion, we can sum up the degrees of freedom as
+\begin{equation}
+  g_* = \sum_{\textrm{Bosons }i} g_i + \frac{7}{8}\times \sum_{\textrm{Fermions }i} g_i \qquad \textrm{(particles relativistic)}
+\end{equation}
+Accounting for all known standard model particles, quarks, leptons, and force carriers, this sum yields $g_* = 106.75$.\footnote{
+There is a similar expression for entropy density:\begin{equation}
+ s = \frac{2\pi^2}{45} g_{*s}(T) T^3.
+\end{equation}
+}
+
+The main reaction keeping particles in equilibrium is annihilation and pair-production
+\begin{equation}
+  p + \bar p \leftrightarrow 2 \gamma,
+\end{equation}
+but as the universe expands and the temperature falls ($T\propto 1/a$), particle rest masses begin to exceed the energy available in the photons.  Particles annihilate and are not replaced.  They fall out of equilibrium according to their masses, starting with the most massive, the top quark.  We can keep track of the energy density with an effective number of degrees of freedom $g_*(T)$ that keeps the form of Equation (\ref{eq:gstar_rho}) but is no longer a literal count of degrees of freedom.  (Between annihilation episodes, the $+1$ or $+7/8$ count of relativistic particles is still a pretty good approximation because relativisitic particles carry so much more energy that non-relativistic ones.)  
+
+Reactions stop, or \textit{freeze out}\index{freeze out}, when the reaction rate falls below the Hubble rate $H(a)$.  The reaction rate
+\begin{equation}
+  \Gamma = n(a) \sigma(T) v(T),
+\end{equation}
+if the product of number density ($\propto a^{-3}$), reaction cross-section, and particle velocity ($c$ if relativistic, $\propto 1/a$ if not).  The particles become too sparse to find partners with which to react or annihilate before expansion carries them apart.  After that, there will be a negligable number of annihilation reactions, leaving some relict density, but the particles will still decay away if channels are available to them.
+
+The top quark is the most massive particle in the standard model, so it annihlates and drops out of equilibrium first.  Next are the vector bosons of the weak force $W^\pm$ and  $Z^0$ and the Higgs boson.  These are followed by the bottom quark, charm quark, and tau lepton.  Each of these annihilations dump energy into the photon field, boosting the temperature above what it would be following the strict $1/a$ law, and the photons put it into the particles still in equilibrium.  One reason that the cold dark matter might be cold, even if it was thermally produced in equilibrium (which we don't know for sure), is that it could have been produced at such early times that subsequent annihilation of particles (standard model and unknown ones) raised the temperature of everthing else while the temperature / kinetic energy of the dark matter redshifted away to negligibility.
+
+What follows is a dramatic change, the quantum chromodynamic (QCD) phase transition.  At this moment, free quarks in the bulk quark-gluon plasma become confined within individual baryons and mesons.  We lose all the color and spin degrees of freedom associates with those quarks and gluons as they stop participating in the equilibrium reactions.  This causes a big drop in $g_*$.  At the same time, we gain some new particles that couldn't exist before without being blasted apart by energetic photons, like protons and neutrons, which are already non-relativistic, and the pi-mesons (pions), which are still relativistic, but not for long.  These pions annihilate next, along with the muon leptons.
+
+When the neutrinos fall out of equilibrium next, they follow a different story. Neutrinos can't directly decay to photons because they don't couple to the electromagnetic field.   At this point, the main interactions keeping the neutrinos in equlibrium are
+\begin{equation}
+  \nu + \bar \nu \leftrightarrow e^- + e^+   \qquad \mbox{via neutral current $Z$ boson},
+\end{equation}
+and
+\begin{equation}
+  \nu_e + e^- \leftrightarrow e^- + \nu_e   \qquad \mbox{via charged current $W$ boson, $\nu_e$ only}.
+\end{equation}
+Neutrinos don't decay, and leave a sizeable relict population that influences the CMB in important ways.  They still exist today, as a low-energy cosmic neutrino background, but will be extremely difficult to directly detect.
+
+We are now about 1 second after the Big Bang.
+
+Finally, at about 25 seconds, the electrons and positrons---the lightest charged standard model particles---fall out of equilibrium and annihilate, boosting the photon temperature in such a way to conserve entropy.  The neutrinos, having mostly decoupled by now, largely miss out on this temperate boost, and end up with a slightly lower temperature than the photons.  The electron-positron event is also the last time the photons, the light that 400k years later becomes the CMB, were in equilibrium with other particles.  The thermal equilibrium throughout the early history, with the creation and destruction of photons, establishes it as black body radiation with a Planck spectrum.  The photons continue to rapidly scatter, but these interations modify the spectrum hardly at all, and the expansion of the Universe also preserves the Planck spectrum.  {At this point there are only relativistic photons and relativistic neutrinos (at slightly lower temperature) and $g_* = 3.38$.}\footnote{Gravitons decoupled early, have very low temperature, and (probably) contribute negligibly to the radiation energy density.}
+
+At about {200 seconds}, the temperature and density of the universe drops to the nuclear-physics energy scale, low enough to support nucleosynthesis of light elements.  Free neutrons beta decay with a half-life just over {10 minutes}.  So there is a race for successful Big Bang nucleosynthesis.  The temperature must drop enough that nascent nuclei are not immediately blasted apart by high energy photons before we run out of neutrons, which are decaying away. Deuterium, the first link in the nuclear chain, is particularly fragile, and is a bottleneck.  Eventually about 25 percent of the baryons are converted to $^4$He, with trace amounts in other nuclei up to Li and Be.  This process is complete at {about 20 minutes}.  \textcolor{purple}{We will revisit nucleosynthesis constraints on cosmology in chapter \ref{}.}
+
+At about 50 kyr, the energy density of radiation, dropping like $a^{-4}$, falls below the density of matter, which is dropping only as $a^{-3}$.  This change mark an important evolution in how perturbations grow in the universe, something we will analyze when we look at the 3d matter power spectrum in Chapter \ref{ch:galaxy_correlations}.
+
+At last, we come to the atomic-physics energy scale processes that make the CMB.
+At about 250 kyr after the Big Bang, the temperature has fallen to $T = 0.3$ eV, low enough that about half of the protons in the universe have managed to settle into hydrogen atoms, a process called ``\textit{re}combination'' despite this being the first time these particles have been able to join to together without being blasted back apart by energetic photons.  As the universe cools further, more hydrogen forms, but the highest energy photons in the tail of the ionize enough electrons to frequently scatter photons via Thomson scattering, keeping the material opaque and tightly coupled.  Only when the temperature falls to about $T = 0.25$ eV $= 2900$ K, at about 380 kyr,  do the photons gradually decouple and stream freely.  This is light that will redshift to be the cosmic microwave background, but at this point it peaks in the IR.  When we look at the CMB, we are looking at the thin shell recording the final scattering events of those photons: the last-scattering surface when the universe became neutral and transparent for the first time.
+
+Later processes also affect the CMB.  As the radiation density continues to drop, its gravitational potential decays away.  As photons tranverse potential wells, the decay generates the early Integrated Sachs-Wolfe (ISW) effect, as photons climb out of potential wells that are shallower than the ones they fell into.  The same thing happens when dark energy begins to dominate over matter at late times ($z<1$); the potential decays, causing the late-time ISW effect and anisotropies on large scales that correlate with large-scale matter structures.
+
+The reionization\index{reionization} of the universe's atoms by starlight and AGN radiation (uncertain but roughly $6<z<20$) liberates the electrons from much of the hydrogen.  The density is much lower at the time, but the electrons still manage to scatter about 5--7 percent of CMB photons.  More on this below.  Other major processes affecting the CMB are gravitational lensing by the large-scale structure of density fluctuations after they have grown by gravity to much larger amplitudes at later times (most significant around $2<z<4$, but detectable across a broad range).  Scattering in rare reservoirs of hot electrons, chiefly in the cores of galaxy clusters, imparts a specific spectral distortion to the CMB called the Sunyaev-Zel'dovich effect (the effect is redshift independent but the structures develop late).  We will discuss these in Chapter \ref{ch:secondaries}.
+
+By the time the CMB reaches us, the temperature is $T_\textrm{CMB} (z=0) = 2.72$ K, and despite everthing it has been through, it remains one of the most perfect Planck thermal blackbody spectra ever measured.  The peak frequency is about 150 GHz, corresponding to a wavelength of about {2 mm}.
 
 
 \section{Anisotropies}
-To examine correlations in the CMB we again want to decompose it into a series of harmonic functions.  Because the surface of the sphere has a finite area, the spectrum of harmonics is discrete.  We can write it as
-\begin{equation}
-  T(\mathbf{n} = \theta,\phi) = \sum_{lm} a_{lm} Y_{lm}(\mathbf{n})
-\end{equation}
-where the $Y_{lm}$ functions are the spherical harmonic functions and the $a_{lm}$ is common name for the harmonic coefficients.  Most of the time, the exact form of these functions are not important, but we sometimes use some definitions and identities that are listed in a supplemental section at the end of this chapter.
 
-As usual, the power spectrum (typically called $C_l$) is the variance of the harmonic coeffients.  The $a_{lm}$ are statistically independent, and so the covariance matrix of them is diagonal.  We express this as
-\begin{equation}
-  \langle a_{lm} a_{l'm'}^* \rangle = C_l \delta_{ll'} \delta_{mm'}
-\end{equation}
-Using a Boltzmann solver, we can compute this theoretical power spectrum from a particular cosmological model via the parameters $C_l(\Omega_c,\Omega_b,\dots)$.  
 
-The CMB is very Gaussian.  In other words, each complex-valued $a_{lm}$ is drawn from a Gaussian distibution with mean zero and variance $C_l$.  Because the temperature is real valued,  $a_{l(-m)} = a_{lm}^*$ and the positive $m$-values determine the negative ones. Every $m$ value for the same $l$ has the same variance, so a simple estimator for the power spectrum is to average over the different $m$s,
-\begin{equation}
-  \bar C_l = \frac{1}{2l+1} \sum_m |a_{lm}|^2,
-\end{equation}
-but this type of estimator is biased if the whole sky is not available.
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/CMB/cobe-wmap-planck.png}
+  \caption{The cosmic microwave background, as measured by three satellite missions, increasing in resolution and sensitivity over time.  The color scale is about $\pm 300$ $\mu$K.  \textcolor{purple}{Remake with common color bar and scale.}} \label{fig:cobe-wmap-planck}
+\end{figure}
 
+The CMB signal on the sky is diffuse, and so its surface brightness has units like spectral flux density per solid angle, for example Jy/sr. The radiation follows a Planck spectrum,
+\begin{equation}
+  B(\nu,T) = \frac{8\pi \nu^3}{c^3} \frac{1}{\exp(h\nu/k_BT) - 1}
+\end{equation}
+The temperature has fluctuations that we can separate from the background temperature,
+\begin{equation}
+  T(\hat \mathbf n) = T_0 + \Delta T(\hat \mathbf{n}),
+\end{equation}
+so we can also separate spectrum of the mean background from the fluctuation and expand it,
+\begin{equation}
+B_0 + \Delta B = B(\nu,T_0) + \left. \frac{\partial B}{\partial T} \right|_{T_0} \Delta T.
+\end{equation}
+The rms relative fluctuations $\Delta B / B_0 \sim \Delta T / T_0 \sim 10^{-5}$, so there isn't much point to go to higher order.  For $x = h\nu/k_BT$, the blackbody temperature derivative is
+\begin{equation}
+  \frac{\partial B}{\partial T} = \frac{k_B}{2} \left( \frac{k_BT}{hc} \right)^2 \left(\frac{x^2}{\sinh(x/2)} \right)^2
+\end{equation}
+It is conventional in CMB maps to translate flux density to CMB thermodynamic temperature\index{thermodynamic temperature} units, even non-CMB signals, as
+\begin{equation}
+  \Delta T = \left[ \frac{\partial B}{\partial T}  \right]^{-1} \Delta B.
+\end{equation}
+Thus we might say that the peak of a galaxy's emission, or some gas cloud in the Milky Way, is so-and-so $\mu K$, even though that doesn't actually correspond to the physical temperature of that object.  Images of temperature perturbations in the CMB sky, with the Milky Way's contaminating emission cleaned out, appear in Figure \ref{fig:cobe-wmap-planck}.
+
+
+To examine correlations in the CMB across the sky, we again want to decompose it into a series of harmonic functions.  Because the surface of the sphere has a finite area, the spectrum of harmonics is discrete.  Because it is two dimensional, we need two numbers to specify which harmonic we are describing.  Thus we write our harmonic expansion as 
+\begin{equation}
+  T(\mathbf{n} = \theta,\phi) = \sum_{lm} a_{lm} Y_{lm}(\mathbf{n}), \label{eq:sphharm_synthesis}
+\end{equation}
+as sum of complex coefficients ($a_{lm}$) times as set of oscillatory, complex functions ($Y_{lm}$).  This is very much the same as the Fourier expansion, except that we have a continuous function on the left side and a discrete sum of coefficients times functions on the right side. For the surface of the sphere the appropriate harmonic functions are the spherical harmonics $Y_{lm}$, solutions to the wave equation in this geometry.  Most of the time, the exact form of these functions is not very important, but sometimes we'll use definitions and identities that are listed in a supplemental section at the end of this chapter.  The index $l$ can take any nonnegative integer value and, for a particular l, $m$ ranges from $-l \dots l$, so that $|m| \leq l$, for a total of $2l + 1$ values of $m$ per value of $l$.
+A band limited function has all $a_{lm}$ coefficients with $l > l_\textrm{max}$ equal to zero, where $l_\textrm{max}$ is called the band limit.
+
+To get the harmonic coefficients from the sky map, we use the transformation
+\begin{equation}
+  a_{lm} = \int d\Omega\, T(\mathbf{n})\, Y^*_{lm}(\mathbf{n}) \label{eq:sphharm_analysis}
+\end{equation}
+which takes advantage of the orthogonality relationship of the spherical harmonics.  Note that the synthesis transform (Equation \ref{eq:sphharm_synthesis}) is a discrete sum, while the analysis transform (\ref{eq:sphharm_analysis}) is an integral.
+
+The monopole $T_0$ goes completely into $a_{00}$ and experiments designed to measure the anisotropies do it by examining small differences on the sky, and so they can't measure the monopole anyway.  Similarly, the dipole coefficients $a_{1m}$ get fitted out when removing the velocity component of our motion, so most analysis starts at $l=2$. 
+
+As in the Fourier case, we define the power spectrum (typically called $C_l$) as the variance of the harmonic coeffients.  The condition of isotropy causes the $a_{lm}$ coefficients, which are random variables, to be statistically independent, and so the covariance matrix of them is diagonal.  Unlike in quantum mechanics, where the $Y_{lm}(\mathbf{n})$ functions are the angular portion of the electronic wavefunctions of hydrogen, the $l$ and $m$ indices do not carry the same physical meaning, respectively, of the total and $z$-component of angular momentum.  However, the $m$ index is still dependent on the definition of the $z$ axis.  Isotropy implies that the direction of the $z$ axis cannot be statistically meaningful, thus all $a_{lm}$ coefficients with the same $l$ have the same variance, regardless of $m$.\footnote{Similar considerations imply that the spherical harmonics of rotated maps are linear combinations of the $a_{lm}$ at the same $l$: \begin{equation}a^\textrm{rot}_{lm} = D^l_{mm'}a'_{lm'}. \end{equation}}  Isotropy also implies that the different $l$ multipoles can't be correlated (see supplemental section).   With these considerations, we can express the variance as
+\begin{equation}
+  \langle a_{lm} a_{l'm'}^* \rangle = C_l \delta_{ll'} \delta_{mm'},
+\end{equation}
+diagonal in ${lm}$ and only a function of $l$.
+
+With a specialized code called a Boltzmann solver, which uses perturbation theory in general relativity, we can compute this theoretical power spectrum from a particular cosmological model via the cosmological parameters:
+\begin{equation}
+  C_l = C_l(\Omega_c,\Omega_\Lambda,\dots).
+\end{equation}
+The Boltzmann solver (popular ones are \texttt{CAMB} and \texttt{CLASS}, based on the method from the older \texttt{CMBfast}) keeps track of the all the fluctuations in the compenents and interations between the components.  Other sources cover this computation in great detail, so we won't do it here, beyond a few considerations in the next section.
+
+The CMB is very Gaussian.  In other words, each complex-valued $a_{lm}$ is drawn from a Gaussian distibution with mean zero and variance $C_l$.  Because the temperature is real valued,  $a_{l(-m)} = (-1)^m a_{lm}^*$, the positive $m$-valued coefficients determine the negative ones.  We can easily synthesize mock $a_{lm}$ coefficients with a part of unit variance gausiian random deviates, as we did for Fourier components in Equation (\ref{eq:harmonic_synthesis}), ensuring that the coefficients are real and have the right variance. Thus,
+\begin{equation}
+  a_{l0} = \sqrt{C_l}\, Z_0   \qquad \mbox or \qquad a_{lm} = \sqrt{\frac{C_l}{2}} \, (Z_r + i Z_i) \quad (m>0),
+\end{equation}
+for real-valued, unit-variance Gaussian random deviates $Z_0, Z_r, Z_i$.
+
+
+
+Since every $m$-valued coefficient for the same $l$ has the same variance $C_l$, a simple estimator for the power spectrum is to average over the different $m$s,
+\begin{equation}
+  \bar C_l = \frac{1}{2l+1} \sum_{m=-l}^l |a_{lm}|^2.
+\end{equation}
+You can check that $\langle \bar C_l \rangle = C_l$ is unbiased, but this type of estimator is biased if the whole sky is not available, as with the 1-d power spectrum estimate with a mask.  A main difference to the 1-d case is that we have multiple harmonics $m$ with which to estimate the power spectrum at each $l$, so (in the absence of noise and beam) it gets easier to compute the power spectrum at high $l$.
+
+
+Mostly because it flattens out the CMB's red spectrum, a conventional way to display the power spectrum is 
+\begin{equation}
+  D_l = \frac{l(l+1)}{2\pi} C_l.
+\end{equation}
+The Sachs-Wolfe effect on large scales is also flat in $D_l$.
+
+\begin{figure}[t]
+  \includegraphics[width=\linewidth]{figs/CMB/cmb_cl.pdf}
+  \caption{Observer CMB power spectrum from the Planck mission, in red, with the best fitting six-parameter $\Lambda$CDM model in the thin green line.  For that model, the irreducible sample variance of having only one realization of the sky is the marked with the broad green band.  Adapted from the \textcolor{purple}{Planck Collaboration}} \label{fig:cmb_cl}
+\end{figure}
+
+Figure \ref{fig:cmb_cl} shows a debiased band-power estimate of the CMB temperature power spectrum from the Planck satellite (2009-2013) along with a theoretical computation of the expected power spectrum in a best-fitting cosmological model.  We describe the shape as a series of peaks caused by acoustic oscillations in the primordial plasma.
+
+The correlation function and power spectra contain the same information with
+\begin{equation}
+   C(\theta) = \mathrm{Cov}(T(n),T(n')) = \sum_l (2l+1) C_l P_l(\cos \theta), \label{eq:ang_corrfun}
+\end{equation}
+where $P_l$ is the Legendre polynomial and $\cos \theta = n \cdot n'$.  In particular, the total variance in the field is
+\begin{equation}
+  \sigma^2 = C(\theta = 0) = \sum_l (2l+1) C_l
+\end{equation}
+which is just a sum of the variances $C_l$ from each of the $(2l+1)$ count of  $m$-modes at each $l$.
+
+Polarization has power spectra, too, but we will stick with temperature for a while until we get the basics down.
 
 \section{What information is in the power spectrum?}
+There are two main pictures to develop intuition about the fluctuations in the microwave background, in real-space and with harmonics although neither precisely represents how the real calculation is made.  Both pictures depend on the fact that we are on a fixed clock.  There is only a certain amount of time between the Big Bang and photon decoupling for the initial conditions to develop into the image we see in the CMB.
+
+\subsection{Real space picture}
+\begin{figure}[t]
+  \includegraphics[width=0.5\linewidth]{figs/CMB/overdensity_forces_1.pdf}
+  \includegraphics[width=0.5\linewidth]{figs/CMB/overdensity_forces_2b.pdf}
+  \caption{Evolution of an over density is a competition betwee competing effects that attempt to concentrate the overdensity or diffuse it.  Over time, it develops an expanding sound wave called an acoustic oscillation, with a maximum radius called the drag radius $r_d$.} \label{fig:overdensity_forces}
+\end{figure}
 
 
-\section{Signal, beam, pixels, and noise}
+You can imagine a localized parcel of material that represents an initial overdensity (Figure \ref{fig:overdensity_forces}).  In the early universe, this parcel is subject to a number of forces or influences. The overall expansion of the universe acts to smooth out the overdensity.  Baryonic matter has gravity that tends to gather material into the overdensity, while its joint pressure with the trapped photons tends to resist getting squeezed.  Dark matter, on the other hand, provides gravity but no pressure.  Dark energy doesn't play much role at this early stage since its energy density is so small compared to the others.  Neutrinos, interacting only weakly, stream out of the overdensity, carrying their energy density with them and tending to smooth out the perturbation and pull it out by gravity.  As the temperature drops and scattering lessens, photons too start to leak out of the overdensity, carrying away energy density.
 
-The CMB signal is smoothed by the finite resolution of the telescope.  We describe the point-spread function or the beam of the telescope by a function on the sphere $b(\mathbf{n})$ which is mostly concentrated around its maximum at the north pole but can have sidelobes caused by diffraction into the aperture.  The actual temperature that the telescope sees at an instant can be expressed as a convolution
+The combination of these influence results in a sound wave in the baryons-photon fluid that propagates away from the initial perturbation, like a ripple from a pebble thrown into a pond.  In the time until photon decoupling, the outer edge of that ripple gets to a  radius known as the comoving sound horizon,
 \begin{equation}
-  T(\mathbf{n},\omega) = \int d\mathbf{n}' [D(\mathbf{n},\omega)b](\mathbf{n}') T(\mathbf{n}')
+  r_s = \int_{0}^{t_\textrm{CMB}} dt\, \frac{c_s(t)}{a(t)} = \int_{z_\textrm{CMB}}^\infty dz\, \frac{c_s(z)}{H(z)}, \label{eq:comoving_sound_horizon}
 \end{equation}
-The rotation operator $D$ takes the beam from its fiducial orientation to point in the direction $\mathbf{n}$ with an orientation rotation $\omega$ around the telescope boresight, then the integral collects the light from the unmodified sky in the directions that the telescope is sensitive to.  Unlike optical telescope, CMB telescopes do not take pictures.  They scan back and forth over and over, collecting low signal-to-noise data that is later averaged and re-assembled into a sky map.  We defer the mapmaking discussion to later, but one consequence is that one point on the sky may be seen from many different angles and by many different detectors, which can average to symmetrize the beam.  So although there are fast algorithms to compute the full convolution\footnote{totalconvolver}, for the main beam, it is often good enough to use a azimuthally symmetric beam approximation $b(\mathbf{n}) = b(\theta)$.  In that case the beam convolution can be written as a multiplication in harmonic space,
+where $c_s(t)$ is the physical sound speed.\footnote{Note also what the sound horizon is not, \begin{equation} r_s \neq a(t_\textrm{CMB})^{-1}\int_{0}^{t_\textrm{CMB}} dt\, c_s(t), \end{equation} because the sound wave is additionally being carried outward by the comoving expansion of the fluid.}  At early times, a relativisitic plasma has a sound speed of $c/\sqrt{3}$, but at later times the sound speed evolves based on the composition of the materials.  The speed of sound is a derivative of the fluid's equation of state  
+\begin{equation}
+  c_s  = \left( \frac{\partial P}{\partial \rho}  \right)^{1/2},
+\end{equation}
+and so goes to zero as the electrons recombine and the pressure drops.  The formation of the acoustic oscillation drives some separation between the baryons, reacting to pressure forces, and the dark matter, which falls toward the overdensity unimpeded except by the gravity of the outgoing wave. 
+
+The density profile of this sound wave is complicated, and sensibly depends on the composition of the universe at that time.  That profile, the response of the plasma to the impulse of the localized overdensity, represents the Green's function for the differential equations governing the evolution of perturbations.  A different model universe will develop a different Green's function.  Unlike the figure of our imagination, the initial conditions do not generate individual localized overdensities; gaussian random density perturbations are everywhere.  They develop into a final form which is the Green's function convolved with the initial density field.
+
+Thus the CMB that we observe is that evolved field projected through the thin shell of the surface of last scattering.  The power spectrum is the harmonic transform of the initial conditions convolved with the Green's function, where in harmonic space the convolution is just a multiplication.  
+The angular scale of the comoving sound horizon
+\begin{equation}
+  \theta_*  =\frac{r_s}{D_M(z_\textrm{CMB})}, \label{eq:sound_horizon_angle}
+\end{equation}
+marks the size of the first acoustic peak on the sky.
+
+Subsequent peaks are the higher harmonics, but the detailed shape depends on the composition of the universe.  At smaller and smaller scales (higher $l$),  neutrino streaming and photon diffusion damp the oscillations, suppressing and smoothing out the peaks more and more.
+
+\subsection{Harmonic picture}
+
+\begin{figure}[!t]
+  \includegraphics[width=\linewidth]{figs/CMB/oscillations.pdf}
+  \caption{Schematic picture of oscillations of Fourier modes of density at various scales, plotted at a spatial coordinate and evolving in time left-to-right. In the plasma, a traveling sound wave has the sinusoidal form and higher-$k$ modes oscillate faster.  Before the time until photon decoupling is up, some modes never reach their maximum, some just have time to oscillate to their maximum amplitude (marking the first power spectrum peak), some have time to get back to zero amplitude, some to the opposite maximum, and some execuate several oscillations.  Everything in between is also possible.  Both positive and negative maxima correspond to peaks in the power spectrum.
+    This schematic picture ignores effects of varying sound speed, gravity, baryon loading, and damping.
+  } \label{fig:oscillations}
+\end{figure}
+
+When we make a harmonic decomposition of the primordial density in 3d, we find that the plasma makes the harmonic coefficients oscillate in time.  We'll only sketch the evolution of oscillations here, and discuss them again in the next chapter.  The basic picture relevant here is the harmonics of density fluctuate with an approximately sinusoidal form of a traveling sound wave $\sin(k x - \omega(k) t + \varphi)$ for some phase.  Longer wavelength, lower $k$ modes oscillate slower and shorter wavelength, higher $k$ modes oscillate quicker.  On scales small compared to $H(a)^{-1}$, where we can ignore GR effects, the frequency of oscillation is: 
+\begin{equation}
+  \omega^2 = c_s(t)^2 k^2/a(t)^2  - 4\pi G \bar \rho(t).
+\end{equation}
+In the CMB, we see a superposition of these plane waves, going in every direction and with every wavelength, projected onto the last scattering surface.  As in Figure \ref{fig:oscillations}, on the fixed clock until recombination, the longest wavelength modes do not get to complete any complete oscillations.  The modes that reach their first maximum correspond to the first acoustic peak in the power spectrum.  The modes that return to zero correspond to the first trough.  The modes that reach their first minimum (negative maximum) correspond to the second peak.  The power spectrum is a squared quantity, so peaks occur at both the maxima and minima (which are really just maxima with a different phase).  
+ 
+As noted, a full treatment of the computation of the CMB power spectrum is beyond our level here, and there are some good pedagogical explanations \citep{2022cosm.book.....B,2006APh....25..151L}, but I want to mention a few considerations.  Part of the calculation projects the measurement of three-dimensional fluctuations onto the two-dimensional sky in the following form, the so-called line-of-sight formalism \citep{1996ApJ...469..437S}, which in flat space is:
+\begin{equation}
+  C^{TT,s}_l = (4\pi)^2 \int k^2\, dk P^s(k) \left| \int_0^{r_\textrm{max}} dr \, S^{T,s}(r,k)\, j_l(kr) \right|^2.
+\end{equation}
+The notation $T$ and $s$ indicates that this equation is specifically for the temperature power spectrum from scalar (density) fluctuations (as opposed to e.g.\ polarization from tensor fluctuations, which exist too).  There are three ingredients.  The 3-d power spectrum of initial fluctuation comes out of inflation as an initial condition.  Then we have an integral over distance (or conformal time\footnote{It is conventional to do this integral in conformal time, but note that in flat space, conformal time, comoving distance, and comoving coordinate have the simple relationship $\eta_\textrm{now} - \eta = \chi = r$.}) of the source function $S(r,k)$ between the present day and the beginning of time.  The source function contains all the physics: it is the solution of the coupled differential equations for the dark matter pertubations, baryon perturbations, baryon velocity, and photon scattering, all in full GR, accounting for the coordinate gauge and other complications.  It also accounts for the details of recombination and the thickness of the last scattering surface.  Finally, the spherical Bessel function $j_l$ does the projection from 3-d to 2-d.  The spherical Bessel appears in the expansion of a plane wave $\exp(i \mathbf{k} \cdot \mathbf{r})$ (see supplemental section \ref{sup:sphereical_harmonics}), while in non-flat space, we could use a different expansion of the hypergeometric harmonics.  We will see similar expressions when we compute angular cross correlations between cosmological signals in Chapter \ref{ch:cross_correlations}.
+
+
+
+\subsection{Effects of parameters}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/CMB/cmb_params.pdf}
+  \caption{Effect on the CMB power spectrum of various cosmological parameters, as computed by a Boltzmann code.  In each case, the orange line is a fiducial cosmology that fits the Planck data well.  The blue line increases the parameter value and the green line decreases the value.  Parameter ranges are exaggerated beyond current constraints to emphasize the effects.} \label{fig:cmb_params}
+\end{figure}
+
+The cosmological parameters set the sound speed, expansion rate, density, and distance to the redshift of the CMB, so they determine the location and amplitudes of the peaks.  Figure \ref{fig:cmb_params} illustrates the effect on the theoretical CMB power spectrum of varying cosmological parameters.  We vary parameters one at a time, keeping the others constant.  We start with the parameters that the supernovae can measure too.
+
+\paragraph{Curvature.}  First we look at $\Omega_k$, which here we are trading off against $\Omega_\Lambda$ to maintain $\sum_i \Omega_i = 1$.  (We will do the same with other density parameters later to keep the fiducial $\Omega_k=0$ geometry flat.)  The main effect is to scale the locations of the peaks in $l$, by influencing the geometry and distance to the last scattering surface.  This makes such a characteristic change in the appearance of the CMB power spectrum that the CMB is an excellent probe of curvature; it is the best evidence that we have that the universe is spatially flat.
+
+\paragraph{Hubble constant.}
+Next, as a parameter for the CMB, the Hubble constant $H_0$ controls the distance from here to the last scattering surface.  It also controls the overall expansion rate, in particular the clock time for the universe to cool to the photon decoupling temperature.  Particularly in the first peak, changes to $H_0$ do not make a large difference.  However, as CMB experiments have improved to provide better measurements of the higher $l$ peaks, and of polarization, the CMB power spectrum has somewhat broken that degeneracy and can measure $H_0$ on it own.
+
+It is common to perform MCMC parameter chains using the sound horizon angle $\theta_*$ (Equation \ref{eq:sound_horizon_angle}) in favor of the Hubble constant.  The angle is measured very precisely and less degenerate than $H_0$ with $\Omega_m$, and from it we can recover $H_0$, as we see below.  In the Equation (\ref{eq:comoving_sound_horizon}) for the sound horizon, we have a dependence on the Hubble parameter to account for the expansion of the universe during the propogation of the sound wave.  Looking back at Equation (\ref{eqn:H_in_terms_of_Omega}), we can combine the Hubble parameter into the $\Omega$ parameters like so,
+\begin{eqnarray}
+  H(z) = H_0 E(z) &=& (100 h\, \mbox{km/s/Mpc})\, E(z) \\ \nonumber &=& (100\, \mbox{km/s/Mpc}) \, (\Omega_r h^2 a^{-4} + \Omega_m h^2 a^{-3} + \dots)^{1/2}.
+\end{eqnarray}
+Now, the sound speed and condition for photon decoupling depend only on temperature, which in turn depends only on redshift, not time directly.  Given the temperature today, the plasma will always have the same history as a function of redshift.  Thus if we fit for $\Omega h^2$ combinations of density parameters, $r_s$ won't depend explicitly on the Hubble parameter.  That is why, in the next row of the figure, we fit for density of matter components times $h^2$. This same effect leads to the strong degeneracy between $H_0$ or $h$ and $\Omega_m$.  (We know $\Omega_r$ well because the CMB temperature is precisely measured by COBE/FIRAS.)
+
+\paragraph{Dark matter and baryon densities.}
+Unlike the distance measurements, the CMB depends separately on the cold dark matter density (which provide gravity but not pressure) and the baryon density (which provides both gravity and pressure).  We use parameters $\omega_c = \Omega_c h^2$ and $\omega_b = \Omega_b h^2$, and since these are the two types of matter, we have $\Omega_m = \Omega_c + \Omega_b$.  (In a flat cosmology, we will have $\Omega_\Lambda = 1 - \Omega_m$ and $\Omega_k = 0$.)
+
+The effects on the peaks of the matter densities are complicated and notably distinct.  In the figure we are adjusting (e.g.) $\omega_c$ but holding $H_0$ constant.  Increasing the dark matter density decreases the height of all peaks, and shifts the positions of the higher peaks.  On the other hand, increasing the baryon density increases the first peak, \textit{decreases} the second peak, and has smaller effects at the higher peaks.  The CMB is really good at telling the difference between cold dark matter and baryons.  We thus know with high confidence that the dark matter is not just some hidden cache of baryons that we for some reason can't see; it is some separate substance, and there is about five times as much of it as baryons.
+
+So if we fit for $\theta_*$, $\omega_c$, and $\omega_b$, how do we get back to our standard cosmological parameters?  In a flat cosmology, if we write the $\theta_*$ relationship as
+\begin{equation}
+  D_M \left(H_0, \Omega_m = (\omega_c + \omega_b)/h^2 \right)  = \frac{r_s(\omega_c,\omega_b)}{\theta_*},
+\end{equation}
+the right side depends only on the (fixed) fitting parameters and is constant, while the left side will only equal the right if we find the uniquely determined value of $H_0$.  We can use a root-finding algorithm to locate it.  Once we have found $H_0$ or $h$, we can convert the $\omega_c$ and $\omega_b$ parameters to $\Omega_c$ and $\Omega_b$.  (In non-flat cosmology, we can make a similar fit including $\Omega_\Lambda h^2$ or $\Omega_k h^2$ as the extra fitting parameter.)
+
+\paragraph{Initial spectrum.}
+The next two parameters are more straightforward.  They describe the dimensionless initial power spectrum of fluctionations, presumably from inflation:
+\begin{equation}
+  \Delta_s(k) = A_s \left(\frac{k}{k_\textrm{pivot}} \right)^{n_s - 1}
+\end{equation}
+where $A_s$ is the amplitude and $n_s-1$ is the spectral tilt.  It is conventional to use $k_\textrm{pivot} = 0.05\ \mbox{Mpc}^{-1}$.  These parameters have simple effects on the power spectrum.  The amplitude $A_s$ simply scales the spectrum up and down.  There is no prediction for what this amplitude should be, and we can fit it but not derive much understanding from it.  The tilt of the initial spectrum $n_s$ simply acts to tilt the CMB power spectrum.  Increasing $n_s$ lowers the low-$k$ spectrum and raises the high-$k$ spectrum.
+
+We have measured $n_s$ to be slightly less than unity, so $n_s - 1 < 0$ and the spectrum is slightly red.  This was predicted by models on inflation and confirmed by the WMAP and Planck satellite missions.  A stationary, continuously-ongoing process of inflation creates large scales and small scales from the same mechanism, and so has $n_s - 1 = 0$, a scale invariant spectrum.  Such an inflationary process, however, will never end.  A process of inflation that is ending, by contrast, starting to depart from its process of slowly rolling down the potential, will have a slightly red spectrum, in line with what we have measured.  
+
+\paragraph{Reionization.}  The optical depth to recombination, $\tau$, gives the probability that a photon scatters \textit{after} the last scattering surface.  When stars, AGN, and energetic objects in the late universe emit ionizing radiation, they liberate the capture electrons in the intergalactic medium.  In other words, the chance that a CMB photon comes to us directly from the CMB is $\exp(-\tau)$, which we find to be about 94 percent.  The quantity $\tau$ represents the integral of the physical free electron density $n_e$ along the line of sight times the Thomson scattering cross section:
+\begin{equation}
+  \tau = \sigma_T \int_{t_\textrm{CMB}}^{t_\textrm{now}} dt\,n_e(t) = \int_0^{z_\textrm{CMB}} dz\, \frac{n_e(z)}{(1+z) H(z)}.
+\end{equation}
+The electron history of reionization is complicated because we don't yet know precisely the sources of radiation and when they begin emitting.  Also some electrons are bound to hydrogen and some to helium, with different binding energies.
+
+
+%If the reionization process delivers energetic photons that can ionize atoms equally, the the free electron density is
+%\begin{equation}
+%  n_e(z) = x_e(z) n_{H,0} (1+z)^3 \left[ 1 + \frac{Y_p}{4(1-Y_p)} \right]
+%\end{equation}
+%where $x_e(z)$ is the ionization fraction (which is zero for a fully neutral medium, and unity for complete ionization), $n_{H,0}$ is the present-day hydrogen density, and $Y_p$ is the mass fraction in helium. \textcolor{purple}{check this for 2 electrons and four neucleons per helium}.
+
+As a parameter, the main effect of $\tau$ is to suppress all correlations, as the photon directions get randomized by the electron scattering.  Because the power spectrum in a squared quantity, this suppression factor is $\exp(-2\tau)$.  As is clear from the graph, this effect is highly degenerate with the $A_s$ parameter on nearly all scales.
+
+The exception is on very large scales, not so visible here, where the free electrons generate new correlations in the power spectrum from the correlations in the matter density.  This is very like the correlations imparted at the surface of last scattering, but because the reionization process happens relatively near to us, the correlations are at very large angles, on tens of degrees.  As we will see, low-$l$ polarization is particularly helpful for making the $\tau$ measurement, but it is extremely challenging because of galactic foreground and large sample variance.
+
+\paragraph{Neutrinos and relativistic particles.}  Neutrinos, interacting only weakly, carry energy density out of the matter concentrations at the speed of light and serve to suppress the acoustic peaks.
+%$N_\textrm{eff}$
+%$\sum m_\nu$
+From solar, reactor, and atmospheric neutrinos experiments, we know that neutrinos have mass, and we know some of the splittings between the mass eigenstates, one about 0.05 eV and one about 0.01 eV, but not the order of the splittings or actual masses of any of the particles.  In the particular scenario we have plotted in figure \ref{fig:cmb_params}, we include one massive and two essentially massless neutrinos in the fiducial model, and vary the number of massless neutrinos.  The ``effective number of neutrinos'' parameter $N_\textrm{eff}$ enumerates a thermal population of neutrinos with the temperature of the cosmic neutrinos, as we discuss.  The neutrinos are relativistic particles at the time of the CMB, and any other similarly non-reactive relativistic particle, so-called ``dark radiation,''\index{dark radiation} will have an effect on  $N_\textrm{eff}$.  Thus tightening constraints on the effective number of neutrinos is a good way to search for a broad class of unknown physics beyond the standard model. (The standard model value is $N_\textrm{eff} = 3.046$, not exactly 3, since the neutrinos do pick up a slight temperature boost from the $e^+$--$e^-$ annihilation.)  If a dark radiation particle freezes out earlier than neutrinos, it will (1) miss out on the temperature boost from subsequent annihilations, (2) have a lower temperature than the neutrinos, and (3) contribute less than one whole equivalent neutrino to this parameter.
+
+The extra relativistic energy density that comes with extra particle has several effects in power spectrum observable.  In the Friedman equation, the  Hubble parameter is $H^2 \propto \rho$, so the expansion is faster, we cool to the decoupling epoch quicker, the sound horizon is smaller, and peaks shift to higher $l$.  The sound horizon shrinks faster than the photon diffusion scale, so high-$l$ peaks get especially damped.
+
+Neutrinos (and hypothetical dark radiation) are not bound to the baryon-photon plasma, but stream out of overdensities at the speed of light.  Out ahead of the sound wave, their gravitational pull draws the oscillation outward.  More energy in this component creates a phase shift in the acoustic peaks that is unique among other parameters.  Finally, more energy in this radiation component delays matter radiation equality, creating a larger potential decay in the early ISW effect, and enhacing the power in the first peak.
+
+We know there cannot be another neutrino like the ones we know about---we would see it here---but there might be other particles that froze out at higher energies waiting to be discovered.
+
+Changing the total mass of the neutrino has very small effect on the temperature power spectrum that we can't see well in plots like these.  The massive neutrinos are relativistic at this point and their contribution to $N_\textrm{eff}$ is their main effect.  However, in the late universe, they become non-relativistic, and the extra matter density that they carried out of the overdensity becomes important to the formation of large scale structure.  We will see this later in the effects of gravitational lensing on the CMB (Chapter \ref{ch:secondaries}).
+
+
+\section{Beams}
+
+\begin{figure}[t]
+  \includegraphics[width=\textwidth]{figs/CMB/beam_demo.pdf}
+  \caption{Simulated CMB sky with smoothing by three different beams.  Left: maps smoothed at 1 arcmin, 1 degree, and 10 degrees.  Right:  The effect on the harmonics as seen in the full sky observed power spectrum, as compared to the input theory.}
+  \label{fig:planck-act}
+\end{figure}
+
+
+\begin{figure}[t]
+  \includegraphics[width=\textwidth]{figs/CMB/planck-act-TE.png}
+  \caption{Resolution compared between the Planck and the Atacama Cosmology Telescope surveys, in temperature and $E$-type polarization (discussed in the next chapter).}
+  \label{fig:planck-act}
+\end{figure}
+
+The CMB signal is smoothed by the finite resolution of the telescope.  We describe the point-spread function or the beam of the telescope by a function on the sphere $b(\mathbf{n})$ which is mostly concentrated around its maximum at the north pole but can have sidelobes caused by diffraction into the aperture.  The actual temperature that the telescope sees at an instant can be expressed as a type of convolution,
+\begin{equation}
+  T(\mathbf{n},\psi) = \int d\mathbf{n}' [D(\mathbf{n},\psi)b](\mathbf{n}') T(\mathbf{n}'),  \label{eq:totalconvolver}
+\end{equation}
+where the rotation operator $D$ takes the beam from its fiducial orientation to point in the direction $\mathbf{n}$ with an orientation rotation $\psi$ around the telescope boresight, then the integral collects the light from the unmodified sky in the directions that the telescope is sensitive to.  This is the impulse response of the telescope optics to a delta function or point source of emission.  Because ground-based telescopes can more easily and cheaply have larger apertures than space-based experiments, they typically have much better resolution, as seen in Figure \ref{fig:planck-act}.  
+
+
+Unlike optical telescopes, CMB telescopes do not take pictures.  They scan back and forth over and over, collecting low signal-to-noise data that is later averaged and re-assembled into a sky map.  We defer the mapmaking discussion to later, but one consequence is that one point on the sky may be seen from many different angles and by many different detectors, which can average to symmetrize the beam.  So although there are faster-than-na\"ive algorithms to compute the full convolution \citep{2001PhRvD..63l3002W,2010ApJS..190..267P}, for the main beam, it is often good enough to use a azimuthally symmetric beam approximation $b(\mathbf{n}) = b(\theta)$ for the effective beam in the map, since there is little $\psi$ dependence left.  In that case, the beam convolution can be written as a multiplication in harmonic space,
 \begin{equation}
   a_{lm}^{\rm beam} = b_l a_{lm}
 \end{equation}
-
-
+where the harmonic representation of an aximuthally symmetric beam is
 \begin{equation}
-  b_l = \int d(\cos \theta) P_l(\cos \theta) b(\theta)
+  b_l = \int d(\cos \theta)\, P_l(\cos \theta)\, b(\theta)
+\end{equation}
+Beams are often quoted by their real space full width at half maximum (FWHM) value.  This is 5--30 arcmin for Planck, 1-2 arcmin for ACT, SPT, and Simons Observatory.
+Note that beam function $b(\theta)$ in real space integrates to unity over all angles.  That means that the beam transform $b_l$ goes to unity as $l$ goes to zero, so the beam convolution preserves the monopole and the mean signal.  This type of modification is a type of filter applied to the data.  In the case of the beam, it is a low-pass filter, which allows low spatial frequencies to pass unscathed while suppressing high spatial frequencies.  Thus beams make it hard to compute the high-$l$ power spectrum.
+
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[width=0.4\linewidth]{figs/CMB/HEALPixintrof1.pdf}
+    \includegraphics[width=0.59\linewidth]{figs/CMB/healpix_pixwin.pdf}
+  \end{center}
+  \caption{Left: HEALpix pixelization of the sphere at resolution $N_\textrm{side} = 1$, 2, 4, and 8, clockwise from top left.  As the additional pixels hierarchically split up the base pixels, they fall on common rings of latitude, easing the computation of spherical harmonics.
+    Right: pixel window functions for HEALPix maps with different $N_\textrm{side}$ parameters, showing how smaller pixels sensibly leave higher multipoles $l$ unsupressed by averaging within the pixels.} \label{fig:healpix} 
+\end{figure}
+
+\section{Pixelized data}
+As with the 1-d random field, we have to discretize our data to process it on a computer.  Because the geometry is on the sphere, with curvature and natural periodicity, this raises some interesting challenges.  There are many map projections for laying out the sphere into pixels \citep{2002A&A...395.1077C}, but we will focus on two that are in common use for CMB studies and that have the support of significant software ecosystems.
+
+\paragraph{HEALPix.}
+The Hierarchical Equal Area isoLatitude Pixelization \citep[HEALPix,][]{2005ApJ...622..759G}, represented in Figure \ref{fig:healpix}, is the common approach to represent full-sky data sets.  It breaks the sky into 12 base pixels, four around the North Pole, four around the equator, and four around the South Pole, then breaks those base pixels into squarish arrays of  $N_\textrm{side} \times N_\textrm{side}$ pixels.  The resolution parameter $N_\textrm{side}$ must be a factor of two.  At each level $n$ with $N_\textrm{side} = 2^n$, four subpixels divide the pixel one level up, at $n-1$, in a hierarchical way.  The placement of the pixel centers and edges (which are known analytically) ensure that every pixel $p$ contains an equal area or solid angle: $\Delta\Omega_p = \Omega_\textrm{pix} = 4\pi/N_\textrm{pix}$, where 
+$N_\textrm{pix} = 12 N_\textrm{side}^2$.  The equal-area property makes the pixelization an efficient representation of the sky.
+
+Spherical harmonic transforms are a time and resource consuming operation.  The isolatitude property, that pixel centers fall only on a certain small number of latitude lines in common, helps make them faster.  The pixel centers are equally spaced along the rings.  The spherical harmonics can be factored as
+\begin{equation}
+  Y_{lm}(\theta,\phi) = \lambda_{lm}(\theta) \exp(im\phi).
+\end{equation}
+When the analysis transform integral is made discrete, we have
+\begin{equation}
+    a_{lm} = \int d\Omega\, T(\mathbf{n})\, Y^*_{lm}(\mathbf{n}) \approx \sum_{\textrm{pixel}\ p}\Delta\Omega_p w^\textrm{quad}_p T(\theta_p,\phi_p) \lambda_{lm}(\theta_p) \exp(im\phi_p),
+\end{equation}
+where $w^\textrm{quad}_p$ are quadrature weights to improve the accuracy of the integral (more on these below).  We can reorganize the sum to include isolatitude rings and compute the sum over the $\phi$ direction as an FFT on each ring
+\begin{eqnarray}
+  a_{lm}  &\approx& \sum_{\textrm{ring}\ j} \sum_{\substack{\textrm{pixel}\ p\\ \textrm{in\ ring}\ j}} \Delta\Omega_j w^\textrm{quad}_j T(\theta_j,\phi_p) \lambda_{lm}(\theta_j) \exp(im\phi_p) \\ \nonumber
+  & \approx & \sum_{\textrm{ring}\ j} \Delta\Omega_j w^\textrm{quad}_j T_m(\theta_j)  \lambda_{lm}(\theta_j).
+\end{eqnarray}
+That has the dual benefit of making the $\phi$ part of the transformation fast and exact and reducing the number of steps in the $\theta$ sum. 
+
+HEALPix is supported by a wide range of computer libraries for Fortran, C++, and Julia, and the widely-used Python package \texttt{healpy}.  These libraries support: translating angles to pixel array indices, spherical harmonic transforms, transform-based derivatives, beam smoothing, and many other common operations.
+
+Unlike the FFT, the $\theta$-portion of the spherical harmonic transformation, as a Riemann sum on a discrete grid, is not exact.  Because the functions will oscillate too fast, the typical rule of thumb is to not compute harmonics from a HEALPix map past $l_\textrm{max} = 3 N_\textrm{side}$ although $2 N_\textrm{side}$ is safer.  The maximum multipole needed for an analysis dictates the pixel resolution.  An arbitrary signal written into a pixelized map will not be recovered exactly through a transform-inverse transform cycle.
+
+The right choice of quadrature weights greatly increases the accuracy for band-limited functions \citep{2013A&A...554A.112R}, are built into the libraries, and cost very little to compute.  An additional strategy is to iteratively make corections with analysis and synthesis transforms of the signal residuals, written here in a matrix form for iteration $i$.
+\begin{equation}
+    a_{i+1} = a_{i} + Y^{\dag} W^q (T - Y a_{i}),
+\end{equation}
+where $W^q$ is the diagonal matrix of integation and quadrature weights for that pixelization.  With an appropriate $l_\textrm{max}$, typically 3--5 iterations achieves sufficient accuracy (much better than the observation noise, which is the benchmark that matters), but it will vary by the problem.  HEALPix libraries will do this iteration automatically with the appropriate options set.
+
+In the matrix form, note that the synthesis operation, converting harmonics to a map, is $T = Ya$, is a matrix with entries
+\begin{equation}
+  Y_{(p)(lm)} = Y_{lm}(\Omega_p)
+\end{equation}
+and provides exact values for those pixel centers, but the analysis operation for a specific pixelization, converting to harmonics, is $a = Y^{\dag}W^q T$, where the entries of W are
+\begin{equation}
+  W^q_{(p)(p')} = \Delta\Omega_p w^\textrm{quad}_p \delta_{pp'}.
 \end{equation}
 
-The signal on the sky has units like spectral flux density per solid angle, for example Jy/sr.  An extended source of radiation, like a dust cloud in the Milky Way, nearby galaxy large enough to see detail, or the Cosmic Microwave Background (CMB) also has a \textit{surface brightness} given in the same units, and by integrating over an aperture, you can measure how much total brightness (flux density) an object has.
-
-
-
-pixel window function
-
-
-Noise
-
-red at low multipoles, white at high multipoles
-
-$l_{\rm knee}$
-
-The total data 
+This makes explicit that the while we are approximating the inverse of the synthesis operation as $Y^{-1} \approx Y^{\dag} W^q$, there is a separate adjoint (conjugate transpose) synthesis transform operator $Y^{\dag}$.  This makes subtle implementation differences if we are looking at the covariance of our signal in pixels, say
 \begin{equation}
-  a^{\rm data}_{lm} = b_l a_{lm} + n_{lm}
+  \langle TT^\dag \rangle = Y \langle a a^\dag \rangle Y^\dag,
 \end{equation}
-fits the model of data equals response to signal plus noise.
+which needs the adjoint transform, not the analysis (inverse) transform.  If your bandlimit is low and your pixelization high resolution, the quadrature weights make less difference compared to a flat weighting, but if you mix up the adjoint and synthesis transforms, you may find mystifying factors of the pixel size floating around in your code.  When we implement the Wiener filter, we need to multiply maps by the signal covariance, an operation like
+\begin{equation}
+Y \langle a a^\dag \rangle Y^\dag x  = b,
+\end{equation}
+so the difference  is relevant there.
+
+\paragraph{Plate Carr\'ee (\texttt{pixell}).}
+Another common pixelization for wide area surveys (like ACT or SO) is the plate carr\'ee (``flat square''), or equiangular, projection as implemented in \texttt{pixell} \citep{2021ascl.soft02003N}.  Both HEALPix and pixell depend on the highly-optimized \texttt{libsharp} \citep{2013A&A...554A.112R} for their spherical harmonic transforms.  Benefits \texttt{pixell} include a simple mapping from the coordinates to the pixel centers: $\theta_i = i\pi/N_\theta$ and $\phi_j = 2\pi j/N_\phi$.  This pixelization is isolatitudinal.  Because of the simple pixel positions, it is feasible to take approximate derivatives by finite differences, while, for practical purposes, HEALPix needs to go through harmonic transforms to compute derivatives.  For small ranges of latitude, particularly near the equator, pixell or other rectilinear pixelizations can approximate the spherical harmonic transformation with FFTs, employing the flat sky approximation, discussed in supplemental section \ref{}.  Finally, pixell uses a standard world coordinate system to relate the pixel indices to spherical coordinates, and so maps in that format can be visualized by a broader set of astronomy tools.  On the down side, the \texttt{pixell} plate carr\'ee pixelization extended to the poles has a tiny pixel size, which makes it inefficient in terms of storage size for full-sky maps.
+
+Typically sky maps are stored in Flexible Image Transport System (FITS) format as a binary table extension (HEALPix) or as a primary image (\texttt{pixell}).
+
+\paragraph{Pixel Window functions.}
+When a signal is averaged into pixels, small scale features are lost. In an approximation that the pixels are azimuthally symmetric, this feature can be approximated as pixel window function\index{pixel window function}, applied after the beam.  
+\begin{equation}
+  a^{\rm pixelized}_{lm} = w^{\rm pix}_l b_l a_{lm} 
+\end{equation}
+For HEALPix, the pixel window function is computed as lower $N_\textrm{side}$ and extrapolated to higher $N_\textrm{side}$.  For pixell, the pixels are simply tophats in $\phi$ and $\theta$, and so the pixel window function in the flat sky approximation is a sinc function in each direction, e.g.,
+\begin{equation}
+w^\textrm{pix}(l_\phi) = \frac{\sin(\pi l_\phi \Delta \phi)}{\pi l_\phi \Delta\phi}.
+\end{equation}
+Note that pixel window functions, like beams, go to unity as $l$ goes to zero, so they too preserve the monopole.
+
+\section{Map noise}
+
+Layered on top of the CMB signal in the map is noise, which comes from the electronics, clouds/the atmosphere, cosmic rays, or even the shot noise of the photons coming in.  In real-life experiments, this noise, which we might describe by pixel values $n_j$, harmonic coefficients $n_{lm}$, and a power spectrum $N_l$, tends to be red on large scales (declining with $l$ low multipoles) due to electronic drift or atmospheric fluctuations and white at small scales (constant with $l$ at high multipoles) due to photon shot noise or detector amplifier noise.
+
+The noise contribution is far more complicated that the signal though, because the noise does not have to be isotropic.  Space experiments need to avoid the Sun and so observe regions ecliptic poles (perpendicular to the plane of the solar system) more often.  Ground based experiments need to scan at a constant elevation to keep the atmospheric power close to constant, not point too low to avoid looking through too much atmosphere, and avoid the sun and moon.  The pattern of how much time is spent looking at each portion of the sky is often complicated, and the noise variance is roughly proportional to it.
+
+The full covariance for the noise in our sky map, expressed in the pixel basis or the harmonic basis is
+\begin{equation}
+  \textrm{Cov}(n_p,n_p') = N_{pp'} \qquad \mbox{or} \qquad \textrm{Cov}(n_{lm},n_{l'm'}) = N_{lml'm'}
+\end{equation}
+and it is enormous.  A dense matrix with size $N_\textrm{pix}^2$, where $N_\textrm{pix}$ is in the millions to hundreds of millions, is too large to store let alone manipulate.  Many of our later operations will require that we do things like multiply by the inverse of the covariance matrix, so we need some clever workarounds.  Next, we will enumerate some approximations for the noise covariance that later we will employ to make such operations tractable.  Usually this involves finding a basis in which the noise, or relevant part of the noise, has a diagonal covariance matrix.
+
+The total data for the CMB temperature harmonics is
+\begin{equation}
+  d_{lm} = w^{\rm pix}_l b_l a_{lm} + n_{lm},
+\end{equation}
+which fits the linear model of data equals response to signal plus noise.
 
 
 
+
+\paragraph{Uniform white noise.}  The uniform, or homogeneous, white noise approximation is
+\begin{eqnarray}
+\langle n(\Omega) \rangle &=& 0 \nonumber \\
+\langle n(\Omega) n(\Omega') \rangle &=& \sigma^2 \delta(\Omega - \Omega') ,
+\end{eqnarray}
+which defines the ensemble mean and variance.  Although this model is in some senses pathological (it has finite power even in the limit of small scales), it is an extremely useful example.  It is uniform in that the variance is the same in every direction, and it is uncorrelated, since every direction is independent of every other.
+
+Let's compute the variance in a pixelized white noise field.  Let $\Delta\Omega_p$ define the area of a pixel $p$.  The value in that pixel (call it $\bar n$) is the noise averaged over the pixel's area:
+\begin{equation}
+\bar n = \frac{1}{\Delta\Omega_p} \int_{\Delta\Omega_p} \,d\Omega\, n(\Omega).
+\end{equation}
+Then the ensemble mean is easy to calculate:
+\begin{equation}
+\langle \bar n \rangle= \frac{1}{\Delta\Omega_p} \int_{\Delta\Omega_p} \,d\Omega\, \langle n(\Omega) \rangle = 0.
+\end{equation}
+The variance is not much harder
+\begin{eqnarray}
+\langle \bar n^2 \rangle &=& \frac{1}{{\Delta\Omega_p}^2} \int_{\Delta\Omega_p}  \,d\Omega\, \,d\Omega'\,\langle n(\Omega) n(\Omega') \rangle \nonumber \\
+&=& \frac{1}{{\Delta\Omega_p}^2} \int_{\Delta\Omega_p}  \,d\Omega\, \,d\Omega'\,\sigma^2 \delta(\Omega - \Omega') \nonumber \\
+&=& \frac{\sigma^2}{{\Delta\Omega_p}^2} \int_{\Delta\Omega_p}  \,d\Omega \nonumber \\
+&=& \frac{\sigma^2}{{\Delta\Omega_p}}.
+\end{eqnarray}
+So the variance is inversely proportional to the area.  This makes sense.  For white noise, all non-overlapping patches of the sky are independent, so the errors add in quadrature.  When you average, the standard deviation of the mean is inversely proportional to the square root of number of patches averaged, which itself is proportional to the area $1/{\Delta\Omega_p}$.  Thus the variance inversely proportional to the pixel area shouldn't be unexpected.
+ 
+Also pay attention to units.  $n$ and $\bar n$ have the same units as the signal, which are the same as the units of $\sigma \Delta\Omega_p^{-1/2}$.  That means that $\sigma$ has the slightly odd unit of signal-radians.  This doesn't matter much when we're working with radians and steradians which are  dimensionless, but can be important if we're doing expressing a noise as, for example, $\sigma = 5$ $\mu$K arcmin.  That would mean that a one arcminute-square pixel gets noise with a standard deviation  10 $\mu$K.  But be careful to note that the units are \textit{not} temperature \textit{per} angle; they are temperature \textit{times} angle.  Bigger pixels average over more sky area, so they have lower noise variance.  You have to divide by that square root of that bigger area to cancel the angle unit.
+
+The expression for pixeled noise variance provides a simple recipe to create a map with white noise.  You assign each pixel $\sigma \Delta\Omega_p^{-1/2}$ times a unit-variance Gaussian deviate.
+
+%We can compute the angular power spectrum of this white noise in the usual way.
+%using some simple properties of spherical harmonics.  We can decompose the signal into spherical harmonic coefficients:
+%\begin{equation}
+%n(\Omega) = \sum_{lm} a_{lm} Y_{lm}(\Omega) 
+%\end{equation}
+%We can multiply by a spherical harmonic function, integrate over the sphere and us the orthogonality relation $\int d\Omega Y_{lm}(\Omega) Y_{l'm'}(\Omega) = \delta_{ll'}\delta_{mm'}$ to get the coefficients explicitly.
+%\begin{equation}
+%a_{lm} = \int \,d\Omega\, A(\Omega)  Y^*_{lm}(\Omega) 
+%\end{equation}
+Leaving the pixel behind, we can compute the angular power spectrum $N_l$ according to the formula $\langle n_{lm} n^*_{l'm'} \rangle = N_l\, \delta_{ll'}\delta_{mm'}$ by writing out the left hand side explicitly and using the orthonormality property of the spherical harmonic functions.
+\begin{eqnarray}
+\langle n_{lm} n^*_{l'm'} \rangle &=& \left\langle  \int \,d\Omega\, A(\Omega)  n^*_{lm}(\Omega) \  \int \,d\Omega'\, n(\Omega')  Y_{l'm'}(\Omega')  \right\rangle \nonumber \\
+&=&  \int \,d\Omega d\Omega'\, \langle A(\Omega) A(\Omega') \rangle  Y^*_{lm}(\Omega)  Y_{l'm'}(\Omega') \nonumber \\
+&=&  \int \,d\Omega d\Omega'\,  \sigma^2 \delta(\Omega - \Omega')  Y^*_{lm}(\Omega)  Y_{l'm'}(\Omega') \nonumber \\
+&=&  \sigma^2   \int \,d\Omega \,  Y^*_{lm}(\Omega)  Y_{l'm'}(\Omega) \nonumber \\
+&=& \sigma^2 \delta_{ll'}\delta_{mm'}
+\end{eqnarray}
+So we see that $N_l = N_\textrm{white}= \sigma^2$.
+The units here can also be confusing, because the units on $N_l$ look like signal${}^2$ and signal$^2$-solid angle, which are the same because radians/steradians are dimensionless.  If you have the noise standard deviation
+expressed as any other angular unit, like we did above with arcminutes, you must convert it to radians to compute $N_l$ correctly.  Note also the defining property of white noise: it has a flat power spectrum at all $l$.
+
+We also see that uniform white noise has a diagonal noise covariance in real space, including when averaged into pixels, and the harmonic basis, since it is uniform and isotropic.
+
+
+\paragraph{Anistropic uncorrelated noise.}  Where a telescope looks more, there is less noise.
+We can add the next level of realism by modulating the noise covariance proportional to the number of observation samples a telescope measured in each pixel.  This gives the noise covariance in the pixel basis this form:
+\begin{equation}
+N_{pp'} =  \sigma^2_p \delta_{pp'}= \frac{\sigma^2}{\Delta\Omega_p N_\textrm{obs}(p)}  \delta_{pp'}
+\end{equation}
+
+This model for the noise covariance is diagonal in pixel space but non-diagonal in harmonic space.  We can still compute the effective pseudo-power spectrum of that noise (more on this below) finding that it is
+\begin{equation}
+\langle \tilde N_l \rangle = \frac{\sigma^2}{4\pi} \sum_p  \left(\frac{1}{N_\textrm{obs}(p)} \right)^2.
+\end{equation}
+The noise is still white, but it is not uniform or isotropic.
+
+\paragraph{Isotropic correlated noise.}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/CMB/ACT_DR6_map_noise_power.pdf}
+  \caption{Estimates of noise power spectra from noise maps of ACT DR6.  These can be used in an isotropic noise model, although the noise they derive from is not isotropy.  From \citet{2025JCAP...11..062L}.}
+\end{figure}
+Another direction to add realism in a simple model is to consider the power spectrum as a sum of homogeneous and isotropic red noise and white noise terms, described by power spectra like:
+\begin{equation}
+N_l = N_\textrm{red} \left( \frac{l}{l_\textrm{knee}} \right)^{\alpha_\textrm{knee}} + N_\textrm{white},
+\end{equation}
+where $l_\textrm{knee}$ is the multipole where the red noise portion equals the amplitude $N_\textrm{red}$ and ${\alpha_\textrm{knee}}$ is the index of the red spectrum.  It is common, but not universal, to give the red and white parts the same amplitude, so that the knee is the transition multipole from red to white.
+
+\paragraph{Translation invariant, anisotropic 2d noise.}  This noise is homogeneous but not isotropic.  This type of noise uses the flat sky approximation to assign power to 2d Fourier harmonics, but different harmonics get different variances. This is written as
+\begin{equation}
+N_{\textrm{2d tr.\ inv.},\mathbf{ll'}} = \left\langle n(\mathbf l) n(\mathbf l')^* \right\rangle = N(\mathbf{l}) \delta_\mathbf{ll'}.
+\end{equation}
+This is diagonal in the harmonics, so while larger to describe than an isotropic $N_l$, it is still tractable to store and invert.  The power in the noise is often anisotropically distributed, as in Figure \ref{fig:act_DR6_noise}, with certain scan or other directions getting more noise variance.
+
+This type of noise is statistically invariant under translations in the plane of the sky, but not rotations.  The flat sky approximation breaks down on scales larger than $\sim 10^\circ$, so this method cannot treat large sky areas.
+
+\paragraph{Realistic noise.}
+\begin{figure}
+  \includegraphics[height=5.2cm]{figs/CMB/Atkins2024pa5_f090_set0_map_T.pdf}\hfill
+  \includegraphics[height=5.2cm]{figs/CMB/Atkins2024_pa5_f090_set0_2d_T_sims.pdf}
+  \caption{Noise-only map computed from a difference of ACT Data Release 6 (DR6) \citep[from][]{2025JCAP...05..015A}.  Left are the noise maps for two regions of the sky, above with good cross-linking, diagonal-left and diagonal-right scans that are not very visible.  The second with nearly-parallel, vertical scans and bad cross linking.  Right are the 2d flat-sky-approximation Fourier components, displayed as amplitude-squared.  The orientation of the scans is more visible here.  Above shows the complicated and anistropic noise behavior.  Below, the strong vertical striping is caused by noise modes with $l_y \approx 0$.} \label{fig:act_DR6_noise}
+\end{figure}
+
+In  Figure \ref{fig:act_DR6_noise}, we see a visualization of the map noise in the ACT data.  This is made from taking the difference of map splits, labeled $A$ and $B$, where maps are made from two distinct but equivalent halves of the data:
+\begin{equation}
+  d^A = T + n^A  \qquad d^B = T + n^B.
+\end{equation}
+A coadded map is 
+\begin{equation}
+  \frac{1}{2} ( d^A  + d^B ) = T +  \frac{1}{2} (n^A + n^B),
+\end{equation}
+while the difference map is
+\begin{equation}
+  \frac{1}{2} ( d^A - d^B ) =  \frac{1}{2} (n^A - n^B)
+\end{equation}
+Because $n^A$ and $n^B$ are independent random variables, the sum and the difference have the same variance.  The temperature signal cancels in the difference map, so it is a realization of pure noise.  Although the noise in the difference map is not literally the same as the coadd map, for gaussian noise, it is drawn from the same distribution.
+
+We can test any particular noise model to see if the difference map could have been drawn from it.  Using a different split yields a different noise map, but it is correlated to other noise maps and to the coadded map with signal becuase, ultimately, they derive from the same total data.
+
+A few types of models attempt to capture more of the salient features of the complicated noise of the type in Figure \ref{fig:act_DR6_noise}, which has directional, anisotropic features that vary across the sky.  In the tiled \textit{constant correlation} noise model \citep{2020JCAP...12..046N}, 
+
+\begin{equation}
+N^{-1} = W^{-1/2} N_\textrm{2d tr.\ inv.}^{-1} W^{-1/2}
+\end{equation}
+where a pixel-diagonal weighting matrix
+\begin{equation}
+  W^{-1/2}_{pp'} = N_\textrm{obs}(p) ^{1/2} w_\textrm{tile}(p) \delta_{pp'}
+\end{equation}
+modulates the Fourier-harmonic-diagonal noise matrix
+$ N_\textrm{2d tr.\ inv.}$ describing the local power.
+By breaking up the sky into localized tiles, idea is that we can use the local flat-sky approximation to characterize the local anisotropic power in the noise, which normally would be translation invariant, but the weighting matrix spatially adjusts the the variance in response to the number of oberservations and allows us with $w_\textrm{}(p)$ to manage the transition to another tile where the local power is distributed differently.  This helps to handle changes in scan directions across the sky.  Unfortunately, it cannot encode correlations larger than the tile size, which is limited by the flat sky approximation.
+
+
+Tiling is just one multi-scale approach, where the properties on different scales and different locations are handled separately by using a series of tractable operations.  Another is a \textit{``wavelet''-based} noise model \citep{2023JCAP...11..073A} that estimates the variance of the noise map after convolved with a series of directional filters.  These filters are designed to be directional (large ellipticity) and both compact in real space and harmonic space---the filter kernels look like ellipses with oscillating, decaying edges. The convolutions can be executed as in Equation \ref{eq:totalconvolver}, capturing the covolution in multiple orientations.  By treating the filter functions as an over-complete basis, you can synthesize a new noise realization by sampling the filter coefficients according to the variance evaluated from data.  This doesn't allow you directly to do operations like multiplying by the inverse of the noise covariance, but it does provide valuable noise Monte Carlo simulations that can be used to establish or check the error bars of downstream analysis products.  Map based noise simulations like these are easier to generate than the more accurate but also more costly simulations of time-ordered data of the telescopes scans, which is an addition way to generate noise realizations, described below.
 
 \section{Measuring the power spectrum}
 
-two dimensional masking,
-apodization, growing or shrinking the mask
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/CMB/ACT-dr6_appendix_c_mask.png}
+  \caption{Mask from ACT DR6 for the computation of the power spectrum.  Included areas are blue, while excluded areas are transparent, and reveal the emission from the plane of the Milky Way, an arc in this celestial coordinate projection.The blue area is full of holes to mask out emission from compact bright objects, mostly external galaxiesm.  Note also that the mask window's edge has a gradual (apodized) fade between zero and one.  The orange line marks the extent of ACT observations.}\label{fig:CMB_mask}
+\end{figure}
+
+Making a two dimensional mask for the CMB is more of an art than a science.  We want to exclude point sources of radiation (like galaxies) and the gas and dust emission of the Milky Way, but not eliminate so much area to ruin the statistics of the measurement.  Some of these foreground effects will be left in our measurement of the background, and we will have to deal with them later.  We want our mask to be apodized, to have a gradual change from including to excluding the , which helps the representation of the mask to be more compact in harmonic space.
+
+As before, we will mask the sky with a weighting function $w(\Omega)$ and define a pseudo-harmonic of our data as
+\begin{equation}
+  \tilde d_{lm} = \int d\Omega\, w(\Omega)\, d(\Omega)\, Y_{lm}^*(\Omega).
+\end{equation}
+
+With that we can define our pseudo-power spectrum estimator, or pseudo-$C_l$ (p$C_l$), estimator:
+\begin{equation}
+  \tilde C_l = \frac{1}{2l+1} \sum_m |\tilde d_{lm} |^2.
+\end{equation}
+We can also define a cross spectrum estimator between splits
+\begin{equation}
+  \tilde C_l^{AB} = \frac{1}{2}\frac{1}{2l+1} \sum_m \tilde d^A_{lm} \tilde d^{B*}_{lm} + \tilde d^{A*}_{lm}  \tilde d^{B}_{lm}.
+\end{equation}
+That can be advantageous because the noise in the splits does not correlate with the other noise or the signal:
+\begin{equation}
+  \langle d^A d^B \rangle = \langle (a+n^A) (a+n^B) \rangle = \langle a a \rangle+\langle a n^B \rangle+  \langle n^A a \rangle+\langle n^A n^B \rangle =  \langle a a \rangle.
+\end{equation}
+So a power spectrum or pseudo spectrum that is estimated from the cross spectrum of noise splits will not contain any noise power on average.  There may be accidental correlation between the signal and noise that contributes to the variance of the estimator.  That we will have to account for.
+
+It is also at this stages that we typically will make the correction for the beand and pixel window functions:
+\begin{equation}
+  \tilde C_l = \frac{1}{2l+1} \sum_m (w^\textrm{pix}_l b_l)^{-2}|\tilde d_{lm} |^2.
+\end{equation}
 
 
 
-including cross spectra
+In any case, we know from sections \ref{sec:band_powers} and \ref{sec:bandpower_wf} exactly how to convert a pseudo power spectrum estimator into an unbiased band power estimator and how to compare it with theory.  We express the relationship between the pseudo spectrum ensemble average and the theory power spectrum in terms of the mode-coupling matrix
+\begin{equation}
+  \langle \tilde C_{l_1} \rangle = \sum_{l_2} W_{l_1 l_2} C_{l_2}. 
+\end{equation}
+The only difference is the form of the mode coupling matrix, which on the sphere is \citep{2002ApJ...567....2H}
+\begin{equation}
+  W_{l_1 l_2} = \frac{2l_2+1}{4\pi} \sum_{l_3} (2l_3 + 1) \left(
+  \begin{array}{ccc}
+    l_1 & l_2 & l_3 \\
+    0 & 0 & 0
+  \end{array}
+    \right)^2  \tilde{W}_{l_3} \label{eq:mode_coupling_matrix}
+\end{equation} 
+where
+\begin{equation}
+   \tilde{W}_{l} = \frac{1}{2 l + 1} \sum_m | w_{l m} |^2
+\end{equation}
+is the power spectrum estimator applied to the mask.
+
+The first and most important thing is examining Equation (\ref{eq:mode_coupling_matrix}) is to not freak out at the Wigner 3-$j$ symbol, the name for the three columns of angular momentum quantum number pairs that appear in parentheses squared.  This is just a shorthand for a complicated function that helps with the addition of angular momenta in quantum mechanics, and that would not be so intimidating if it was written as $$f(l_1,l_2,l_3,m_1,m_2,m_3).$$ You can just think of it as a special function that has certain symmetries and orthogonality relationships (you likely won't need to worry much about it) and that will be computed by already existing libraries.\footnote{The Wigner 3-$j$ symbols relate simply to the Clebsch-Gordan coefficients, which may a slightly more familiar way to add quantum angular momenta, but the 3-$j$ symbols have better symmetries for this purpose.}
+
+Equation (\ref{eq:mode_coupling_matrix}) is exactly analogous to Equation (\ref{eq:mode_coupling_matrix_1d}) or (\ref{eq:pseudoharmonic_correlation}) as it expresses the mode coupling matrix as the power spectrum of the mask at a difference of multipoles/wavenumbers.  Describing how angular momenta with $l_1$ and $l_2$ and different directions could sum to give various values of $l_3$, here the 3-$j$ symbol has selection rules that ensure the physical requirements of the triangle inequality, $|l_1 - l_2| \leq l_3 \leq l_1+l_2$, and that $l_1 + l_2 + l_3$ is an even integer; the 3-$j$ symbol is zero otherwise.  There are many possible combination we have to sum over, where before difference in the wavenumber argument (\textcolor{violet}{$k-k_1$}) was easier to see directly.  We can also see the utility in having a mask/weight function with smooth edges.  Sharp features imply large high-$l$ harmonic coefficients, and significant power in $\tilde{W}_{l_3}$ to high $l_3$.  That couples multipoles $l_1$ and $l_2$ that are farther apart.  We would prefer narrower band powers to capture features in the spectrum, and if the mask has a compact representation in harmonic space, that is easier.  Thus the mask has competing goals of maximizing usable area, excluding contamination, and having a compact harmonic representation.
+
+The pseudo power spectrum is a 1-d object, so we proceed just as in the 1-d case.  In a matrix notation, we can write the effect of the binning operator as
+\begin{equation}
+  \mathcal{\tilde C} = B\tilde C
+\end{equation}
+so that 
+\begin{equation}
+  B \langle \tilde C \rangle =  B W  C
+\end{equation}
+We define our debiased, observed power spectrum as
+\begin{equation}
+{\mathcal C^{\rm obs}} \equiv ( B W {\bar B})^{-1} B \tilde C = K^{-1} B \tilde C = K^{-1} \mathcal{\tilde C},
+\end{equation}
+with a band power window function 
+\begin{equation}
+  {\mathcal W} = (B W \bar B)^{-1} B W,
+\end{equation}
+so that the ensemble average of the observed power spectrum is band power window function times the theory spectrum. 
+\begin{equation}
+\langle {\mathcal C^{\rm obs}}  \rangle =  {\mathcal W} C
+\end{equation}
+
+\begin{figure}
+  \begin{minipage}[t]{0.3\textwidth}
+    \vspace*{0mm}
+    \includegraphics[width=\textwidth]{figs/CMB/mask.pdf}
+    \includegraphics[width=\textwidth]{figs/CMB/masked_map.pdf}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.7\textwidth}
+   \vspace*{0mm}
+   \includegraphics[width=\textwidth]{figs/CMB/band_powers.pdf}
+  \end{minipage}
+  \caption{Demonstration of the band power spectrum computation with a synthetic partial sky CMB measurement.  To the left is a mask that blocks the Galactic plane and the image of the masked CMB.  To the right is the theory power spectrum and the realized average power in the (full-sky) harmonics.  The mask knocks down the power in the spectrum approximately by a factor of the still-available sky $f_\textrm{sky}$, not accounting for the mode coupling.}
+ \end{figure}
+
+\section{Errors on the spectrum}
+Now that we have the power spectrum of the sky, we want to know the uncertainty on that measurement.  Let's discard the mask for the moment and consider the simple statistic for estimating the full-sky power spectrum:
+\begin{equation}
+  \bar C_l = \frac{1}{2l+1} \sum_{m=-l}^l |a_{lm}|^2.
+\end{equation}
+
+For $m>0$, we can express the magnitude of the coefficients in terms of the zero-mean, unit-variance gaussian deviates which are labeled, e.g.\ $Z_{r,m}$.
+\begin{equation}
+  |a_{l|m|}|^2 = \frac{C_l}{2}\, (Z_{r,m}^2 + Z_{i,m}^2) 
+\end{equation}
+Since for a real field the harmonics are related by the symmetry condition, the positive and negative $m$ harmonics depend on the same gaussian deviates.
+
+Considering just a single $l$ and gathering the positive and negative $m$ deviates together,
+\begin{equation}
+  \sum_{m} |a_{lm}|^2 = C_l Z_0^2 + 2 \times (C_l/2) \times (Z_{r,1}^2 + Z_{i,1}^2 +\dots + Z_{r,l}^2 + Z_{i,l}^2 ),
+\end{equation}
+we cancel the 2, pull the $C_l$ out of the sum, and relabel the identically-distributed gaussian deviates to obtain, 
+\begin{equation}
+ \frac{1}{2l+1} \sum_{m} |a_{lm}|^2 = \frac{C_l}{2l+1} \sum_{j=1}^{2l+1} Z_j^2.
+\end{equation}
+That shows that $\bar C_l$ is proportional to a $\chi^2$-distributed random variable with $2l+1$ degrees of freedom.
+
+Using this expression, we can compute the variance of the power spectrum estimator:
+\begin{equation}
+  \mathrm{Var}(\bar C_l) = \left\langle ( \bar C_l -\langle \bar C_l \rangle )^2 \right\rangle
+\end{equation}
+Since the estimator is unbiased, the ensemble average of the estimator is the theory, $\langle \bar C_l \rangle = C_l$.  We can expand the square and apply the ensemble average again.
+\begin{eqnarray}
+  \mathrm{Var}(\bar C_l) &=& \left\langle \bar C_l^2 - 2 \bar C_l C_l + C_l^2 \right\rangle \\ \nonumber
+  & = & \left\langle \bar C_l^2 \right\rangle - 2\left\langle \bar C_l \right\rangle C_l + \left\langle C_l^2 \right\rangle \\ \nonumber
+  &=& \left\langle \bar C_l^2 \right\rangle - 2 C_l^2 + C_l^2 \\ \nonumber
+  &=&  \left\langle \bar C_l^2 \right\rangle - C_l^2
+\end{eqnarray}
+
+In the estimator squared, pulling the non-random variables out of the average, we find
+\begin{equation}
+ \left\langle \bar C_l^2 \right\rangle =  \frac{C_l^2}{(2l+1)^2} \left\langle \left( \sum_{j=1}^{2l+1} Z_j^2 \right)^2 \right\rangle, \label{eqn:average_pCl_sq}
+\end{equation}
+while we can write the sum squared as a double sum:
+\begin{equation}
+\left( \sum_{j=1}^{2l+1} Z_j^2 \right)^2 =  \sum_{jj'}  Z_j^2 Z_{j'}^2.
+\end{equation}
+
+For a Gaussian distribution, the central moments are
+\begin{equation}
+  \langle X - \mu \rangle = \left\{
+  \begin{array}{ll}
+    0, & \mbox{$p$ odd}; \\
+    \sigma^p (p-1)!!, & \mbox{$p$ even},
+  \end{array}\right.
+\end{equation}
+where the double factorial is 
+\begin{equation}
+  n!! = \left\{ \begin{array}{ll}
+    n(n-2)(n-4)\dots  5 \cdot 3 \cdot 1, &  \mbox{$n$ odd};\\
+    n(n-2)(n-4)\dots  4 \cdot 2, &  \mbox{$n$ even}. \\
+  \end{array} \right.
+\end{equation}
+So relevant to our case, we have
+\begin{equation}
+  \langle Z^2 \rangle = 1,  \qquad  \langle Z^4 \rangle = 3.
+\end{equation}
+
+It is thus important if $j=j'$ or $j \neq j'$, as the variables are independent for the latter case.  We separate those out of the sums
+\begin{equation}
+\sum_{jj'}  Z_j^2 Z_{j'}^2 = \sum_j Z_j^4 + \sum_j \sum_{j' \neq j} Z_j^2 Z_{j'}^2
+\end{equation}
+Taking the ensemble average
+\begin{equation}
+  \sum_j  \langle Z_j^4 \rangle + \sum_j \sum_{j' \neq j} \langle Z_j^2\rangle \langle Z_{j'}^2 \rangle = \sum_j 3 + \sum_j \sum_{j' \neq j} 1 \cdot 1
+ \end{equation}
+where we took advantage of their independence to note $\langle Z_j^2 Z_{j'}^2 \rangle=\langle Z_j^2\rangle \langle Z_{j'}^2 \rangle$.  Now we just need to count up the number of terms in each constant sum.  We find it is
+\begin{equation}
+ (2l+1)\cdot 3 + (2l+1)(2l) \cdot 1 = (2l + 1)(2l+3)
+\end{equation}
+
+Substituting that all the way back to Equation (\ref{eqn:average_pCl_sq}), we find 
+\begin{equation}
+\left\langle \bar C_l^2 \right\rangle = \frac{(2l+3) C_l^2}{2l+1}
+\end{equation}
+so the variance is
+\begin{equation}
+\mathrm{Var}(\bar C_l) = \left\langle \bar C_l^2 \right\rangle - C_l^2 = \frac{2l+3}{2l+1} C_l^2 - \frac{2l+1}{2l+1} C_l^2 = \frac{2}{2l+1} C_l^2.
+\end{equation}
+We can consider this as that a single mode contributes $2 C_l^2$ to the variance, but when we average over the $2l+1$ modes, we reduce the variance by that factor.   If the harmonics have contributions from uncorrelated signal and noise then the variance replaces the signal-only power spectrum with the spectrum of signal plus beam-adjusted noise.
+\begin{equation}
+\mathrm{Var}(\bar C_l) =  \frac{2}{2l+1} (C_l + b_l^{-2} N_l)^2
+\end{equation}
+
+This variance is exact for the full-sky case, but an important and useful approximation for partial sky coverage argues that the main effect of the reduced area is having fewer modes to average over.  This is known as the Knox formula\index{Knox formula} and says that for a bandpower b $b$ containing that averages over a width of $\Delta l$ multipoles around $l$, the variance is
+\begin{equation}
+\mathrm{Var}(\mathcal{C}^{obs}_b) \approx  \frac{2}{(2l+1)f_\textrm{sky} \Delta l} (C_l + b_l^{-2} N_l)^2
+\end{equation}
+and while it does not account for mode coupling, it is an excellent way to get a ballpark estimate for the variance of the power spectrum measurement
+
+While the Knox formula gives a good enough estimate for many purposes, for precision work we often need something more precise.    We can improve on that estimate by constructing a band-power covariance matrix out of carefully selected noise-split power spectra.  This has much more complicated accounting but it fairly computationally efficient.  Finally, we can make a synthetic Monte Carlo realization of the signal and noise process, and repeatedly execute the band power estimation.  This captures the covariance between bands but can be somewhat costly to get a precision measurement.
 
 
-construction of the covariance matrix via cross spectra
-
-errors, knox formula
+\exercises
 
 
-\section{Time-ordered data, calibration, and mapmaking}
-
-Planck satellite calibration on dipole and orbital changes to the dipole.
-
-gain calibration
-
-detector time constants; time constant deconvolution
-
-deglitching
-
-data cuts
-
-filter and bin map making
-
-maximum likelihood mapmaking
-
-gain fluctuations model error
-
-
-\section{Foreground mitigation}
-
-\section{Polarization anisotropies}
-
-\section{Likelihood construction}
-
-full pixel-based likelihood
-
-cross-spectra likelihood
-
-
-multifrequency likelihood to include foreground contributions
-
-early 2000s polarization likelihood whose name I'm blanking on...
-Hamimeche and Lewis
-
-
-
-
-\section*{Supplemental: spherical harmonic functions}
+\begin{subappendices}
+\section{Supplemental: spherical harmonic functions}\label{sup:spherical_harmonics}
 
 The function is band limited if there are only zero harmonics above some $l_{\rm max}$.  The CMB is not band limited, but our observation of the CMB is in practice band limited by the finite resolution of the telescope we use to observe it.
 
@@ -151,23 +781,112 @@ This in particular means that for $l=0$, $m=0$, we must have
 
 Another important identity for spherical harmonics is the addition theorem
 \begin{equation}
-  \sum_{m} Y_{lm}(\mathbf{n}) Y_{lm}(\mathbf{n}') = \frac{2l+1}{4\pi} P_l(\mathbf{n \cdot n}') 
+  \sum_{m} Y_{lm}(\mathbf{n}) Y_{lm}(\mathbf{n}') = \frac{2l+1}{4\pi} P_l(\mathbf{n \cdot n}') \label{eq:addition_theorm}
 \end{equation}
 for $\mathbf{n}$ as a unit vector pointing to $(\theta,\phi)$ and similarly for $\mathbf{n}'$.
 
-
-
-
-Expansion of a plane wave:
+If the signal is real, $T(\theta,\phi) = T(\theta,\phi)^*$.  Since the spherical harmonics have the symmetry
 \begin{equation}
-  \exp({i \mathbf k \cdot \mathbf r}) = \sum_{l} (2 l + 1) i^l j_l(k r) P_l(\hat{\mathbf k} \cdot \hat{\mathbf r})
+Y_{lm}{}^* (\theta, \phi) = (-1)^{-m} Y_{l(-m)} (\theta, \phi),
+\end{equation}
+that implies that $a_{l(-m)} = (-1)^m a_{lm}^*$.
+
+Because the spherical harmonic transformation is just a sum with constant coefficients, derivatives with respect to the angles pass directly through to the spherical harmonic functions, as in:
+\begin{equation}
+\frac{\partial T}{\partial \theta} = \sum_{lm} a_{lm} \frac{\partial Y_{lm}}{\partial \theta}.
+\end{equation}
+
+The partial derivative with respect to $\theta$ (the polar or co-latitude angle) is a little messy,
+\begin{equation}
+\frac{\partial Y_{\ell m}(\theta, \phi)}{\partial \theta} = m \cot \theta Y_{\ell m}(\theta, \phi) + \sqrt{(\ell-m)(\ell+m+1)} e^{-i\phi} Y_{\ell, m+1}(\theta, \phi),
+\end{equation}
+while the partial with respect to $\phi$ (the azimuthal angle or longitude angle) is simpler,
+\begin{equation}
+\frac{\partial Y_{\ell m}(\theta, \phi)}{\partial \phi} = im Y_{\ell m}(\theta, \phi).
+\end{equation}
+These expressions make it fairly easy to compute the derivative of functions by computing the transform, applying the appropriate factors of $l$ and $m$, transforming back, and applying the proper functions of $\theta$ and $\phi$.
+
+The same strategy can compute the gradient along the surface, based on the gradient of the spherical harmonic functions,
+\begin{equation}
+\nabla_S Y_{\ell m} = \hat{\theta} \frac{\partial Y_{\ell m}}{\partial \theta} + \hat{\phi} \frac{1}{\sin \theta} \frac{\partial Y_{\ell m}}{\partial \phi}.
+\end{equation}
+
+The angular part on the Laplacian $\nabla \cdot \nabla Y_{lm}$, since the spherical harmonics have no radial dependence, is simple:
+\begin{equation}
+r^2 \nabla^2 Y_{\ell m} = \left[ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right] Y_{\ell m} = -\ell(\ell+1) Y_{\ell m}
+\end{equation}
+
+
+The expansion of a plane wave into Legendre polynomials is:
+\begin{equation}
+  \exp({i \mathbf k \cdot \mathbf r}) = \sum_{l} (2 l + 1) i^l j_l(k r) P_l(\hat{\mathbf k} \cdot \hat{\mathbf r}).
 \end{equation}
 where $j_l$ are the spherical bessel functions of the first kind.
 
+Then using the addition theorem, we can look at the Legendre polynomial in terms of spherical harmonics,
 \begin{equation}
-  \exp({i \mathbf{k} \cdot \mathbf{r}}) = 4 \pi \sum_{lm} i^l j_l(k r) Y_{lm}{}(\hat{\mathbf k}) Y_{lm}^{*}(\hat{\mathbf r})
+  \exp({i \mathbf{k} \cdot \mathbf{r}}) = 4 \pi \sum_{lm} i^l j_l(k r) Y_{lm}{}(\hat{\mathbf k}) Y_{lm}^{*}(\hat{\mathbf r}).
 \end{equation}
 This relationship is vital when we come to projecting the harmonics of signal in the bulk of space into signals on the sphere of the sky.
 
 
-\section*{Supplemental: the flat-sky approximation}
+\section{Supplemental: isotropy and covariance}
+
+A rotation $R = (\alpha,\beta,\gamma)$ by the three Euler angles (for yaw, pitch, and roll) transforms the $a_{lm}$ harmonics with the Wigner $D$-functions, another set of special functions:
+\begin{equation}
+  a_{lm} = \sum_{m_1} D^l_{mm_1}(R) a'_{lm_1}
+\end{equation}
+
+To explore the effect of isotropy, we can examine the covariance of the coefficients.
+\begin{eqnarray}
+  \left\langle a_{lm} a^*_{l'm'} \right\rangle &=& \left\langle \sum_{m_1 m_2} D^l_{mm_1}(R) a'_{lm_1}  D^{l'*}_{m' m_2}(R)a^{\prime*}_{l'm_2} \right\rangle \\ \nonumber
+  &=&  \sum_{m_1 m_2} D^l_{mm_1}(R) D^{l'*}_{m' m_2}(R) \left\langle  a'_{lm_1} a^{\prime*}_{l'm_2} \right\rangle
+\end{eqnarray}
+Isotropy means that both of these covariances in angle brackets must be the same matrix, so
+\begin{equation}
+C_{lml'm'} =  \sum_{m_1 m_2} D^l_{mm_1}(R)  D^{l'*}_{m' m_2}(R) C_{l m_1 l' m_2}
+\end{equation}
+The matrices don't depend on the rotation angle (isotropy), but we can anyway integrate both sides over all possible rotations, $\int dR = \int_0^{2\pi} d\alpha\,\int_0^{\pi} \sin\beta\, d\beta\, \int_0^{2\pi} d\gamma$, and pull the sum and $C$ matrices out of the integral.
+\begin{equation}
+C_{lml'm'} \int dR =  \sum_{m_1 m_2}  C_{l m_1 l' m_2} \int dR \, D^l_{mm_1}(R) \, D^{l'*}_{m' m_2}(R)
+\end{equation}
+  The empty integral (over yaw, pitch, roll) is
+\begin{equation}
+  \int dR = 4\pi \times 2\pi = 8\pi^2
+\end{equation}
+while the integral of the Wigner $D$ functions is their orthogonality relation
+\begin{equation}
+  \int dR \, D^l_{mm_1}(R)\,  D^{l'*}_{m' m_2}(R) = \frac{8\pi^2}{2l +1} \delta_{ll'}\delta_{mm'}\delta_{m_1 m_2}.
+\end{equation}
+Cancelling the $8\pi^2$ we get
+\begin{eqnarray}
+C_{lml'm'}  &=&  \delta_{ll'} \delta_{mm'} \frac{1}{2l +1} \sum_{m_1 m_2} C_{l m_1 l' m_2} \delta_{m_1 m_2} \\ \nonumber
+&=&  \delta_{ll'} \delta_{mm'}  \left( \frac{1}{2l +1} \sum_{m_1} C_{l m_1 l' m_1} \right),
+\end{eqnarray}
+which shows that covariance has the form
+\begin{equation}
+   \left\langle a_{lm} a^*_{l'm'} \right\rangle = C_{lml'm'} = C_l \delta_{ll'} \delta_{mm'}.
+\end{equation}
+Then of course the term in parentheses,
+\begin{equation}
+   \left( \frac{1}{2l +1} \sum_{m_1} C_{l m_1 l' m_1} \right) =  \frac{1}{2l +1}  \sum_{m_1} C_l \delta_{ll'} =  \frac{2l+1}{2l +1}  C_l \delta_{ll'} = C_l \delta_{ll'}
+\end{equation}
+is consistent with that.  Thus we have shown that isotropy produces a diagonal covariance matrix that depends only on $l$. 
+
+
+
+
+
+\section{Future Supplemental: Wick's theorem applied to harmonics}
+
+
+\section{Future Supplemental: the flat-sky approximation}
+
+
+\end{subappendices}
+
+
+
+
+
+
