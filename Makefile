@@ -1,6 +1,6 @@
 all : practical-cosmology.pdf #Huffenberger-measuring_distance.pdf
 
-practical-cosmology.pdf : practical-cosmology.tex chapters/*.tex *.bib figs/*/*.pdf
+practical-cosmology.pdf : practical-cosmology.tex chapters/*.tex *.bib figs/*/*.pdf exercises/*/*.pdf
 	lualatex -interaction=nonstopmode -halt-on-error  $<
 	makeindex $(shell basename $< .tex)
 	bibtex $(shell basename $< .tex)
