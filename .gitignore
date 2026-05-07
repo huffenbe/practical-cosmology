@@ -10,4 +10,5 @@ access.pdf
 *.out
 *.bbl
 *.blg
+*.bak
 misc/
