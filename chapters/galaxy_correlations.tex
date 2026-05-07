@@ -1,4 +1,4 @@
-\chapter{Galaxy correlations}
+\chapter{Galaxy correlations} \label{ch:galaxy_correlations}
 
 Perturbations in the matter field are small at early times and even today on large scales.  We can do perturbation theory and linearize the force of gravity.
 
@@ -20,29 +20,65 @@ We have the comoving vector $\mathbf{x}$ and the comoving wavevector  $\mathbf{k
 
 For non-flat spaces, $\exp(i \mathbf{k \cdot x})$ is the wrong basis function, but there are correct ones you can use if needed.
 
-Once GR is linearized, the Fourier modes evolve independently following a differential equation
+The matter power spectrum is
+\begin{equation}
+\langle  \delta(\mathbf{k}) \delta^*(\mathbf{k'}) \rangle = (2\pi)^3 P(k) \delta(\mathbf{k-k'})
+\end{equation}
+as usual, and we want to see how it develops over time.
+
+In the early universe and on large scales, we can use a linearized version of GR to track evolution of perturbations.  The Fourier modes evolve independently following a differential equation
 \begin{equation}
   \ddot \delta(\mathbf{k},t) + 2 H \dot \delta(\mathbf{k},t) + \left( \frac{c_s(t)^2 k^2}{a^2} - 4\pi G \bar \rho(t) \right) \delta(\mathbf{k},t)
 \end{equation}
 Depending on the signs of the terms, this looks an equation for a damped harmonic oscillator or for an unstable exponential growth or decay.
 
-In the second term, the Hubble parameter looks like the damping term in the oscillator equation and is referred to the Hubble friction.  It corresponds to expansion damping the growth of perturbation by spreading material out.  In the first part of the third term, the pressure term retards growth as the pressure of the fluid resists collapse.  In the second part of the third term, gravity promotes growth.
 
-Early on the sound speed is for a relativistic fluid.  \textbf{At late times, I don't know if there is an effective k dependence in the sound speed.  Probably.}
 
-Growth functions on large scales
-solutions
+In the second term, the Hubble parameter looks like the damping term in the oscillator equation and is referred to the Hubble friction.  It corresponds to expansion damping the growth of perturbation by spreading material out.  In the first part of the third term, the pressure term retards growth as the pressure of the fluid resists collapse.  In the second part of the third term, gravity promotes growth.  When the pressure term is significant, $ k^2 \gg 3\pi a^2 G\rho c_s^{-2}$ (the so-called ``Jeans wavenumber''), the  small scale (large $k$) modes oscillate, as we talked about in the CMB.  At later times, when the sound speed goes to zero after recombination, gravity dominates for modes on all scales.
+
+When gravity dominates, we have a separable equation with growing and decaying solutions:
 \begin{equation}
    \delta(\mathbf{k},t) =  \delta_+(\mathbf{k}) D_+(t) + \delta_-(\mathbf{k}) D_-(t)
 \end{equation}
-ignore the decaying modes.
+We ignore the decaying modes which quickly fade away.   We normalize the growth function so that $D_+(t_\textrm{now}) = 1$.
 
-Growing modes have different behavior inside and outside the horizon which gives rise to the overall shape of the matter power spectrum.
+\begin{table}
+  \begin{center}
+  \begin{tabular}{lcc}
+    \hline
+    Epoch &  $k > aH$ (``inside'')&  $k < aH$(``outside'') \\
+    \hline
+    radiation dom. &  $\propto \log t \propto \log a$  &   $\propto t \propto a^2$ \\
+    matter dom. & $\propto t^{2/3} \propto a$  &  $\propto t^{2/3} \propto a$ \\
+    dark energy dom. & constant & constant \\ \hline 
+  \end{tabular}
+  \end{center}
+  \caption{Functional forms for the growth of scales of different sizes, inside and outside the comoving Hubble radius.}\label{tab:growth_function}
+\end{table}
 
-The matter power spectrum is
-\begin{equation}
-\langle  \delta(\mathbf{k}) \delta^*(\mathbf{k'}) \rangle = (2\pi)^3 P(k) \delta(\mathbf{k-k'})
-\end{equation}
+
+Growing modes have different behavior for modes with $k < aH$ and $k > aH$ (See Table \ref{tab:growth_function}). This compares the comoving wavenumber to the characteristic size scale of the of the universe at the time, comoving Hubble radius $(aH)^{-1}$.  In somewhat sloppy terminology, this scale $(aH)^{-1}$ is often called the ``horizon'' although it is not a particle horizon or event horizon by their definition.  Instead the Hubble radius $(aH)^{-1}$ is the linear approximation to the maximum comoving distance which a particle can travel in one Hubble time $(H^{-1})$.  Physically it means that inside the Hubble radius, processes can act to enhance or smooth out fluctuations.  Outside the Hubble radius, the expansion of space at that time is pulling points apart faster than any process can keep up, so fluctuations are essentially frozen in.
+
+The initial dimensionless spectrum of scalar fluctuations is
+\begin{equation}\Delta_s = \frac{k^3}{(2\pi)^3}\, P_\Phi(k) \propto k^{n_s - 1}\end{equation}
+and is the spectrum for the graviational potential.  The Poisson equation $\nabla^2 \Phi = 4\pi G \rho$ implies that potential fluctuations relate to matter fluctuations as $k^2 \delta_\Phi \propto \delta$ and so $P_\Phi(k) = k^{-4} P_\delta$.  Thus the initial $P(k) \propto k^{1}$.
+
+The process of small scales freezing in before matter radiation equality gives rise to the overall shape of the matter power spectrum.  On a power spectrum plot during radiation domination the comoving Hubble horizon declines as $a a^{-3/2} = a^{-1}$
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[height=8cm]{figs/galaxy_correlations/matter_power_spectrum_shape.pdf}
+  \end{center}
+  \caption{Early time development of the peak in the matter power spectrum prior to matter radiation equality.  Before matter radiation equality, only power at $k < aH$, outside the comoving Hubble radius, can grow quickly.  After matter-radiation equality, the power spectrum on all scales grows together, locking in the overall peaked structure.  The acoustic oscillations develop on the right-side downward slope.}
+\end{figure}
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[height=8cm]{figs/galaxy_correlations/Pk.pdf}
+  \end{center}
+  \caption{Late time development of matter power spectrum.}
+\end{figure}
+
 
 Galaxies are biased tracers of the matter field.  Typically this is modeled with a linear bias, e.g. for galaxies of mass $M$
 \begin{equation}
@@ -54,7 +90,7 @@ More massive galaxies tend to form in denser areas, at the peaks of the density 
   \begin{center}
     \fakeplot
   \end{center}
-  \caption{Plot showing the increase in bias as a function of mass.}
+  \caption{Figure indicating peak-background split. Right: Plot showing the increase in bias as a function of mass.}
 \end{figure}
 
 The relationship between a power spectrum and a correlation function is
@@ -71,17 +107,21 @@ The relationship between a power spectrum and a correlation function is
  \langle  A(\mathbf{x})A(\mathbf{x+r}) \rangle = \frac{4\pi}{(2\pi)^3} \int dk\, k^2\, \frac{\sin(kr)}{kr} P(k)
 \end{equation}
 
-linear matter power spectrum
-halofit
-non-linear mass
+%linear matter power spectrum
+%halofit
+%non-linear mass
 
+%\textcolor{red}{Something about dynamical dark energy here or in cosmological parameters section.}
+
+% sigma8
 
 \section{Baryon Acoustic Oscillations}
 
 
+
 \section{Estimating galaxy correlation functions}
 
-\textcolor{red}{Subsection needs some work.  Introduce idea of averaging over galaxies separate from averaging over matter fluctuations?}
+%\textcolor{red}{Subsection needs some work.  Introduce idea of averaging over galaxies separate from averaging over matter fluctuations?}
 
 If galaxies of a particular category are at positions $\mathbf{x}_i$, then the galaxy signal is the sum over delta functions
 \begin{equation}
@@ -107,24 +147,24 @@ and the pixelated galaxy overdensity as
   \delta_{g,j} = \frac{n_j - n}{n}
 \end{equation}
 which naturally has zero mean.
-For a given density, you could make the volumes $dV_j$ so small that there is a negligible probability to have more than zero or one galaxy in the volume.  The probability of one galaxy then is approximately $n dV_j$, which is a very small number.
+For a given density, you could make the volumes $\Delta V_j$ so small that there is a negligible probability to have more than zero or one galaxy in the volume.  The probability of one galaxy then is approximately $n \Delta V_j$, which is a very small number.
 
 
-For two separate volumes, the correlation function $\xi(r)$ is simply the correlation function of this field, but we have to be careful at separation $r=0$ because then we are talking about the same pixel twice.
+For two separate volumes, the correlation function $\xi(r)$ is simply the correlation function of this field, but we have to be careful at separation $r=0$ because then we are talking about the same volume twice.
 
 
-Then, even if there is no correlation function we have a $n$ chances of having one galaxy and $(1-n)$ chance of having zero galaxies.  So the $\langle N_j N_j \rangle = n dV_j \cdot 1^2 + (1-n dV_j) \cdot 0^2 = n dV_j$ (no correlation).  Dividing out the volume, we find the total correlation is the Poisson term plus the normal correlation function.
+In the same volume pixel, even if there is no correlation function, we have a $n$ chances of having one galaxy and $(1-n)$ chance of having zero galaxies.  So the \begin{equation}\langle N_j N_j \rangle = n \Delta V_j \cdot 1^2 + (1-n \Delta V_j) \cdot 0^2 = n \Delta V_j. \qquad \mbox{(no correlation)}\end{equation}  Dividing out the volume, we find the total correlation is the Poisson term plus the normal correlation function.
 \begin{equation}
- \langle n_j n_{j'} \rangle = n \frac{1}{dV_j} \delta_{jj'} + n^2 \xi(r)
+ \langle n_j n_{j'} \rangle = n \frac{1}{\Delta V_j} \delta_{jj'} + n^2 \xi(r)
 \end{equation}
 
 You can even take the pixel size to zero and directly say that
 \begin{equation}
-  \delta_g(x) = \frac{g(\mathbf x) - n }{n}
+  \delta_g(\mathbf x) = \frac{g(\mathbf x) - n }{n}
 \end{equation}
  in which case the Kronecker delta function in pixels becomes a Dirac delta  
 \begin{equation}
- \langle (g(\mathbf{x})-n) (g(\mathbf{x+s}) - n) \rangle = n \delta(\mathbf r) + n^2 \xi(s)
+ \langle (g(\mathbf{x})-n) (g(\mathbf{x+s}) - n) \rangle = n \delta(\mathbf s) + n^2 \xi(s)
 \end{equation}
 
 The other way to view the correlation function is as the excess probability to find a pair of galaxies at a particular distance.   If the positions of the galaxies were independent, then the chance to have one galaxy in $V_1$ \textit{and} one galaxy in another volume $V_2$ would be their product $P = n^2 V_1 V_2$.  Galaxies are not independent, they are more common in denser areas and drawn together by gravity.  The correlation function $\xi(r)$ gives the excess probability to find a pair in small volumes separated by $r$:
@@ -210,11 +250,18 @@ having canceled the error in the selection function.  Again, by increasing the d
 
 Because of this robustness to errors in the selection function, and because it has a smaller variance than the pair counting, the Landy-Szalay estimator is widely used.  Other authors have constructed other, similar estimators to minimize bias and variance when the correlation function is not small, as we assumed, but for more realistic conditions.
 
+Errors on these correlation functions can be estimated analytically by considering the matter fluctuations as a gaussian random field and then adding to that the Poisson errors on the discrete count of pairs in $DD(s)$, or by Monte Carlo methods like generating mock catalogs.  You can use bootstrap and jackknife methods to check the covariance models and use them and null tests to look for systematics.
 
 
-\subsubsection{Error estimates}
-Error estimates  bootstrap, jackknife, mock catalogs, poisson errors on $DD(s)$
-  
+\begin{figure}
+\includegraphics[width=0.33\linewidth]{figs/galaxy_correlations/multipoles_BGS_BRIGHT-21.35_0.1_0.4.pdf}
+\includegraphics[width=0.33\linewidth]{figs/galaxy_correlations/multipoles_LRG_0.6_0.8.pdf}
+\includegraphics[width=0.33\linewidth]{figs/galaxy_correlations/multipoles_QSO_0.8_2.1.pdf}
+\caption{Correlation function measurements of the DESI DR2 catalog, illustrating the BAO feature.  Different types of galaxies are visible to different distances.  The Bright Galaxy Sample (BGS) probes $0.1 < z < 0.4$, this Large Red Galaxy (LRG) sample probes $0.6 < z < 0.8$ (and other LRGs are split into catalogs at lower and higher redshift. and the Quasi-Stellar Object (Quasar, QSO) sample probes redshift $0.8 < z < 2.1$.}\label{fig:DESI_BAO}
+\end{figure}
+ 
+\subsection{BAO and cosmology}
+
 
 \subsection{Isotropy and the fiducial cosmology}
 
@@ -250,20 +297,22 @@ The discussion of the correlation function follows Christopher Hirata's lecture 
 DESI power spectrum method paper
 
 
-\section*{Exercises}
+\exercises
 
 \begin{itemize}
   \item Show that the LS estimator cancels the $\epsilon$-dependent term and has the expectation value that matches the equation.
 \end{itemize}
 
-\section*{Supplemental: Fourier transform of a spherical function}
+\begin{subappendices}
+
+\section{Supplemental: Fourier transform of a spherical function}
 \begin{eqnarray}
   f(\mathbf{k}) &=& \int d^3x \exp(- i \mathbf{k \cdot x}) \\
   &=& \int d^3x \exp(- i \mathbf{k \cdot x}) Y_{00} \sqrt{4\pi}
 \end{eqnarray}
 
 
-\section*{Supplemental: Integral constraint}
+\section{Supplemental: Integral constraint}
 Now let's deal with this other systematic effect that we have thus ignored,  the overall density of galaxies, $\tilde n$ versus the true $n$. Cosmological fluctuations of the matter and galaxy density on the scale of the survey or larger can raise or lower the number density of galaxies within the survey compared to the mean number in the Universe overall.  (In comparison, the Poisson error in the number of galaxies is negligable for modern surveys with millions of galaxies.)
 
 Our only way to estimate the density of galaxies is to divide the actual count of galaxies by the effective volume of the survey. 
@@ -320,3 +369,6 @@ The correlation $\langle F F \rangle$ is also quadratic in $\delta_g$:
 \end{eqnarray}
 
 \textcolor{red}{this section not finished}
+ 
+
+\end{subappendices}
