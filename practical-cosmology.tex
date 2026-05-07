@@ -3,9 +3,11 @@
   pdfversion = 1.7,
   testphase = {phase-II,tagpdf}
 }
-\documentclass{book}
+\documentclass[oneside]{book}
 \usepackage{tagpdf}
 \tagpdfsetup{activate, paratagging=false}%, paratagging=true, interword=true} 
+
+%\includeonly{chapters/cosmological_parameters.tex}
 
 %%%%%
 % Redefine section to get some headers
@@ -38,7 +40,8 @@
 \setmainfont{TeX Gyre Pagella}
 % 2. Set the math font to Pagella Math
 \setmathfont{TeX Gyre Pagella Math}
-\setmathfont{TeX Gyre Pagella Math}[range={cal,bfcal},StylisticSet=1]
+\setmathfont[range={\symcal}]{TeX Gyre Schola Math}
+%\setmathfont{Asana Math}[range={\symcal}]
 % Set the sans serif font
 \setsansfont{Cantarell}[Scale=MatchUppercase]
 % Set the monospace font
@@ -48,6 +51,7 @@
 \usepackage{xcolor}
 \usepackage{aas_macros}
 \usepackage{graphicx}
+\usepackage{appendix}
 
 \usepackage[bookmarks]{hyperref}
 \usepackage{makeidx}
@@ -75,10 +79,12 @@
 \newcommand\fakeplot{%%
   \fbox{\rule{1in}{0pt}Plot placeholder \rule{1in}{0pt}\rule{0pt}{2in}}}
 
+\newcommand\exercises{\phantomsection \addcontentsline{toc}{section}{Exercises} \section*{Exercises}}
+
 
 \begin{document}
 
-
+ 
 
 \begin{titlepage}
 \begin{center}
@@ -108,21 +114,36 @@
 
 \include{chapters/preface.tex}
 
+\phantomsection \addcontentsline{toc}{section}{Contents}
 \tableofcontents
-
+ 
 \include{chapters/introduction.tex}
+
+\part{The Evolving Metric}
 \include{chapters/basics.tex}
 \include{chapters/data_statistics.tex}
 \include{chapters/standard_candles.tex}
 \include{chapters/distance_ladder.tex}
 \include{chapters/cosmological_parameters.tex}
+
+
+\part{Fluctuations and Correlations}
 \include{chapters/correlation_functions_power_spectra.tex}
 \include{chapters/CMB.tex}
-\include{chapters/CMB_secondaries.tex}
+\include{chapters/CMB_mapmaking.tex}
+\include{chapters/CMB_polarization.tex}
 \include{chapters/galaxy_correlations.tex}
+
+\part{Many Messengers}
+\include{chapters/CMB_secondaries.tex}
 \include{chapters/cosmic_shear.tex}
 \include{chapters/cross_correlations.tex}
 \include{chapters/nonlinearities.tex}
+% Need BBN somewhere here?
+% Recent: 2026arXiv260122239Y
+
+% Need simulation based inference
+
 
 \bibliographystyle{apj}
 \bibliography{ref.bib}
