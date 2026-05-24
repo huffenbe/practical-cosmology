@@ -1,35 +1,38 @@
 \DocumentMetadata{
-  lang = en-US,
-  pdfversion = 1.7,
-  testphase = {phase-II,tagpdf}
+%  pdfversion=1.7,
+%  pdfstandard=ua-1,
+  lang=en-US,
+  tagging=on
+%  testphase={phase-III,math,table}
 }
+
 \documentclass[oneside]{book}
-\usepackage{tagpdf}
-\tagpdfsetup{activate, paratagging=false}%, paratagging=true, interword=true} 
+%\usepackage{tagpdf}
+%\tagpdfsetup{activate, paratagging=false}%, paratagging=true, interword=true} 
 
 %\includeonly{chapters/cosmological_parameters.tex}
 
 %%%%%
 % Redefine section to get some headers
-\makeatletter
+%\makeatletter
 % --- H1: Sections ---
-\let\oldsection\section
-\renewcommand{\section}{\@ifstar{\@starsection}{\@normsection}}
-\newcommand{\@starsection}[1]{\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\oldsection*{#1}\tagmcend\tagstructend}
-\newcommand{\@normsection}[1]{\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\oldsection{#1}\tagmcend\tagstructend}
+%\let\oldsection\section
+%\renewcommand{\section}{\@ifstar{\@starsection}{\@normsection}}
+%\newcommand{\@starsection}[1]{\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\oldsection*{#1}\tagmcend\tagstructend}
+%\newcommand{\@normsection}[1]{\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}\oldsection{#1}\tagmcend\tagstructend}
 
 % --- H2: Subsections ---
-\let\oldsubsection\subsection
-\renewcommand{\subsection}{\@ifstar{\@starsubsection}{\@normsubsection}}
-\newcommand{\@starsubsection}[1]{\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\oldsubsection*{#1}\tagmcend\tagstructend}
-\newcommand{\@normsubsection}[1]{\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\oldsubsection{#1}\tagmcend\tagstructend}
+%\let\oldsubsection\subsection
+%\renewcommand{\subsection}{\@ifstar{\@starsubsection}{\@normsubsection}}
+%\newcommand{\@starsubsection}[1]{\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\oldsubsection*{#1}\tagmcend\tagstructend}
+%\newcommand{\@normsubsection}[1]{\tagstructbegin{tag=H2}\tagmcbegin{tag=H2}\oldsubsection{#1}\tagmcend\tagstructend}
 
 % --- H3: Subsubsections ---
-\let\oldsubsubsection\subsubsection
-\renewcommand{\subsubsection}{\@ifstar{\@starsubsubsection}{\@normsubsubsection}}
-\newcommand{\@starsubsubsection}[1]{\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\oldsubsubsection*{#1}\tagmcend\tagstructend}
-\newcommand{\@normsubsubsection}[1]{\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\oldsubsubsection{#1}\tagmcend\tagstructend}
-\makeatother
+%\let\oldsubsubsection\subsubsection
+%\renewcommand{\subsubsection}{\@ifstar{\@starsubsubsection}{\@normsubsubsection}}
+%\newcommand{\@starsubsubsection}[1]{\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\oldsubsubsection*{#1}\tagmcend\tagstructend}
+%\newcommand{\@normsubsubsection}[1]{\tagstructbegin{tag=H3}\tagmcbegin{tag=H3}\oldsubsubsection{#1}\tagmcend\tagstructend}
+%\makeatother
 
 
 
@@ -60,7 +63,7 @@
 \setlength{\parskip}{1 ex}
 %\setlength{\parindent}{0 ex}
  
-
+ 
 
 \hypersetup{
     pdftitle={Practical Cosmology},

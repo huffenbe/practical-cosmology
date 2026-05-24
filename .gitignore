@@ -1,5 +1,6 @@
 practical-cosmology.pdf
 access.pdf
+access-texlive2023.tex
 *~
 *.aux
 *.log
@@ -11,5 +12,6 @@ access.pdf
 *.bbl
 *.blg
 *.bak
+*-mathml.html
 misc/
 __pycache__
