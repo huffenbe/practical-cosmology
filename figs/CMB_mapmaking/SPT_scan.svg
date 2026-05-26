@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210.42459mm"
+   height="140.52328mm"
+   viewBox="0 0 210.42459 140.52328"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="SPT_scan.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.85690891"
+     inkscape:cx="88.690873"
+     inkscape:cy="322.08791"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Concave triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker93"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Concave triangle arrow"
+       markerWidth="0.5"
+       markerHeight="0.5"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path93" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.212296,-44.361618)">
+    <path
+       style="fill:#000080;stroke:#000080;stroke-width:1.76388;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker93);marker-end:url(#marker93)"
+       d="m 166.50621,110.05363 v 7.25767"
+       id="path1"
+       inkscape:transform-center-x="-1.2513212"
+       inkscape:transform-center-y="4.607746"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#008080;stroke-width:1.76389;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker93);marker-end:url(#marker93)"
+       d="M 48.739333,113.68246 H 161.26067"
+       id="path2"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+       x="169.97266"
+       y="106.87467"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="stroke-width:0.264583"
+         x="169.97266"
+         y="106.87467">elevation nod</tspan></text>
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,108.39079 H 161.26067"
+       id="path3"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,103.09912 H 161.26067"
+       id="path4"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,97.807453 H 161.26067"
+       id="path5"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,92.515786 H 161.26067"
+       id="path6"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,87.224119 H 161.26067"
+       id="path8"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,81.932452 H 161.26067"
+       id="path9"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,76.640785 H 161.26067"
+       id="path10"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,71.349118 H 161.26067"
+       id="path11"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,66.057451 H 161.26067"
+       id="path12"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,60.765784 H 161.26067"
+       id="path13"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,55.474117 H 161.26067"
+       id="path14"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,50.18245 H 161.26067"
+       id="path15"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,50.18245 H 161.26067"
+       id="path16"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.739333,44.890783 H 161.26067"
+       id="path17"
+       inkscape:transform-center-x="-71.437516"
+       inkscape:transform-center-y="-19.400238"
+       sodipodi:nodetypes="cc" />
+    <g
+       id="g23"
+       transform="translate(-34.80228,-103.52161)">
+      <g
+         id="g21"
+         transform="translate(0.1076038)">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.705556;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ConcaveTriangle);marker-end:url(#ConcaveTriangle)"
+           d="M 59.858258,172.90979 V 161.26965"
+           id="path18" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.705556;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#ConcaveTriangle);marker-end:url(#ConcaveTriangle)"
+           d="m 54.038188,167.08972 h 11.64014"
+           id="path19" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+         x="53.142769"
+         y="155.13702"
+         id="text19"><tspan
+           sodipodi:role="line"
+           id="tspan19"
+           style="stroke-width:0.264583"
+           x="53.142769"
+           y="155.13702">South</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+         x="73.237335"
+         y="168.71428"
+         id="text20"><tspan
+           sodipodi:role="line"
+           id="tspan20"
+           style="stroke-width:0.264583"
+           x="73.237335"
+           y="168.71428">East</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+         x="35.137352"
+         y="168.71428"
+         id="text21"><tspan
+           sodipodi:role="line"
+           id="tspan21"
+           style="stroke-width:0.264583"
+           x="35.137352"
+           y="168.71428">West</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+         x="53.142769"
+         y="182.12454"
+         id="text24"><tspan
+           sodipodi:role="line"
+           id="tspan24"
+           style="stroke-width:0.264583"
+           x="53.142769"
+           y="182.12454">North</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+       x="77.058174"
+       y="119.90547"
+       id="text23"><tspan
+         sodipodi:role="line"
+         id="tspan23"
+         style="stroke-width:0.264583"
+         x="77.058174"
+         y="119.90547">Constant elevation scan</tspan></text>
+    <g
+       id="g24"
+       transform="translate(35.506454,2.1166667)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.9389px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;stroke-width:0.264583"
+         x="-34.749313"
+         y="150.33273"
+         id="text96"><tspan
+           sodipodi:role="line"
+           id="tspan96"
+           style="stroke-width:0.264583"
+           x="-34.749313"
+           y="150.33273">horizon</tspan></text>
+      <rect
+         style="fill:#d3bc5f;stroke:none;stroke-width:0.881944;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect100-7"
+         width="210.42459"
+         height="15.872922"
+         x="-35.71875"
+         y="151.24814" />
+    </g>
+    <rect
+       style="fill:none;stroke:none;stroke-width:0.881944;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect101"
+       width="13.051068"
+       height="15.905024"
+       x="106.54813"
+       y="168.97987" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold';letter-spacing:0px;stroke-width:0.264583"
+       x="0.84603733"
+       y="184.8849"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan25"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.46667px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif Bold';stroke-width:0.264583"
+         x="0.84603733"
+         y="184.8849">South Pole Scan</tspan></text>
+  </g>
+</svg>
