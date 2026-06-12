@@ -94,7 +94,7 @@ In flat space ($k=0$), the physical distance (like you would measure with a rule
 \end{equation}
 while the physical velocity of an object is
 \begin{equation}
-  v_{\rm phys} = \frac{d(\ell_{\rm phys})}{dt} = \frac{da}{dt} r + a \frac{dr}{dt} = \frac{\dot a}{a} a r + a \frac{dr}{dt} = H \ell_{\rm phys} + v_{\rm pec}   \quad\mbox{(flat case)}
+  v_{\rm phys} = \frac{d(\ell_{\rm phys})}{dt} = \frac{da}{dt} r + a \frac{dr}{dt} = \frac{\dot a}{a} a r + a \frac{dr}{dt} = H \ell_{\rm phys} + v_{\rm pec}   \quad\mbox{(flat case)} \label{eqn:vpec_flat}
 \end{equation}
 The first term in the velocity is called the \textit{Hubble flow}\index{Hubble flow} and the second term is called the \textit{peculiar velocity}\index{peculiar velocity}.  The Hubble flow is the velocity that you measure from the expansion of the Universe.  Nearby, where the Hubble parameter is close to the present-day value, we find that galaxies tend to move away from us at around 70 km/s per Mpc of distance away.  The peculiar velocity is the independent velocity of a galaxy and is typically around 1000 km/s, so we need to look further than tens of Mpc away for the Hubble flow to dominate the overall velocity of an object.  In practice, we measure the \textit{cosmological redshift}\index{redshift}, $z$, of the spectral lines of an object compared to the wavelength of emission.
 \begin{equation} 
@@ -312,9 +312,14 @@ This discussion has readied us to examine several additional, distinct notions o
   \label{fig:distances1}
 \end{figure}
 
-
 \paragraph{Comoving distance.}
 As mentioned, we call $\chi$ the comoving distance or the comoving radial distance.  It is the physical distance today if we were to measure with a ruler to the point where the emission (previously) came from.  We also see that $\chi = \eta_\textrm{now} - \eta_\textrm{em}$ keeps track of the conformal time.
+
+\paragraph{Line-of-sight proper distance.}  If, the comoving distance $\chi(z)$ tells us the distance \textit{today} to a point that emitted light at redshift $z$, the proper distance is the distance \textit{at the time of emission}:
+\begin{equation}
+  d_p(z) = a(z) \chi(z).
+\end{equation}
+
 
 \paragraph{Transverse comoving distance.}  This also sometimes called the comoving angular distance or the metric distance and people often use the symbol $D_M$.  This is the distance used to compute an arc length \textit{as measured today}, so we are not worried about the expansion of the universe.  So an arc with angle $\delta\theta$ and radius $\chi$ has an arc length $D_M \delta\theta$.  See Figure~\ref{fig:distances1}.  We have already encountered this quantity, which is
 \begin{equation}
@@ -418,6 +423,22 @@ which defines $D_L$.  Although this is common, I'm once again not sure that it i
   D_L(z) = (1+z) D_M(z).
 \end{equation}
 
+
+\section{Velocities}
+
+The recession velocity of an object is
+\begin{equation}
+  \dot d_p = H a \chi + a \dot \chi = H d_p + v_{\textrm{pec},\parallel}
+\end{equation}
+generalizing the Hubble flow and peculiar velocity term of Equation \ref{eqn:vpec_flat} to possibly non-flat spaces.
+
+In any case, the total magnitude squared of the peculiar velocity is
+\begin{equation}
+  v_\textrm{pec}^2 = a^2 \left[\dot \chi^2 + S_k(\chi)^2 (\dot \theta^2 + \sin^2\theta \dot \phi^2)\right].
+\end{equation}
+where we see the angular portion of the velocity acts the same as in standard spherical polar coordinates, with $r = S_k(\chi) = D_M$.
+
+\textcolor{purple}{Note that $D_M = S$ is the distance for transverse proper motions.  Redshift and peculiar redshift.  ``Superluminal'' quasar jets?}
 
 
 \section*{Exercises}
