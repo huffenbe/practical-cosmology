@@ -1,8 +1,29 @@
-\chapter{CMB polarization and parameters}
+\chapter{CMB polarization}
 
+Like the temperature anisotropies, there are anisotropies in the polarization.  This is linear polarization, since Thomson scattering (the dominant mechanism during the epoch of last scattering) cannot generate circular polarization.  However, any electron subject to a radiation field with a quadrupole intensity will scatter light in a with a linear polarization, even if the initial field is unpolarized.  See figure \ref{fig:pol_in_thomson_scattering}.
 
+These quadrupoles arise from the doppler shifted radiation from the surrounding plasma.  So as the temperature anisotropies are revealing densities at the surface of last scattering, polarization anisotropies reveal a snapshot of the velocity field.
+
+\begin{figure}
+  \fakeplot
+  \caption{Three diagrams of polarization scattering}\label{fig:pol_in_thomson_scattering}
+\end{figure}
+
+\begin{figure}
+  \fakeplot
+  \caption{Two diagrams of velocity perturbations} \label{fig:velocity_doppler_quadrupoles}
+\end{figure}
+
+Mapmaking
+
+For a well-sampled polarization map, the polarization noise is typically $\sigma_p = \sqrt{2} \sigma_I$.
 
 quickbeam, quickpol \citep{2017A&A...598A..25H}
+
+polarization component separation
+QU vs EB
+
+\chapter{CMB likelihoods and parameters}
 
 \section{Likelihood construction}
 
@@ -21,6 +42,9 @@ Hamimeche and Lewis
 
 
 \subsection{Gibbs sampling}
+
+
+That kernel density estimator style likelihood based on the gibbs samples.
 
 
 \section{Parameter estimation considerations}
