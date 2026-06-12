@@ -26,15 +26,31 @@ The matter power spectrum is
 \end{equation}
 as usual, and we want to see how it develops over time.
 
-In the early universe and on large scales, we can use a linearized version of GR to track evolution of perturbations.  The Fourier modes evolve independently following a differential equation
+In the early universe and on large scales, we can use a linearized version of GR to track evolution of perturbations.
+
+The linearized Poisson equation takes the form
 \begin{equation}
-  \ddot \delta(\mathbf{k},t) + 2 H \dot \delta(\mathbf{k},t) + \left( \frac{c_s(t)^2 k^2}{a^2} - 4\pi G \bar \rho(t) \right) \delta(\mathbf{k},t)
+  \nabla^2 \Phi = 4\pi G a^2 \bar\rho \delta
 \end{equation}
-Depending on the signs of the terms, this looks an equation for a damped harmonic oscillator or for an unstable exponential growth or decay.
+in the Newtonian approximation.  In full GR, the equation takes a similar form, but the potential $\Phi$ becomes the ``Bardeen'' potential and the $\delta \rho$ is replaced by the related comoving density contrast but which is gauge dependent.  These combine with linearized continuity and Euler (Newton's 2nd law) equations to describe the evolution of density and velocity perturbations.
 
+The conformal Hubble parameter $\mathcal{H} = aH = \dot a$ and the prime means $d/d\eta = a (d/dt)$. 
+\begin{eqnarray}
+  \delta' &=& -(1+w)(\nabla \cdot \mathbf{v} - 3 \Phi') - 3 \mathcal{H}(c_s^2 - w) \delta   \mbox{(continuity)}\\
+  \mathbf{v}' &=& -\mathcal{H}(1-3w)\mathbf{v} - \frac{c_s^2}{1+w} \nabla \delta - \nabla \Phi  \mbox{(Euler)}
+\end{eqnarray}
+The peculiar velocity $\mathbf{v}$ in these equations is the change in physical coordinates per time.  In terms of comoving coordinates $\mathbf{x}$, a particle with velocity $\mathbf{v}$ evolve according to \begin{equation}
+  \mathbf{v} = a \dot\mathbf{x} \frac{a d\mathbf{x}}{dt} = \frac{d\mathbf{x}}{d\eta}. 
+\end{equation}
 
+Combining the time derivative of the continuity equation with the divergence of the Euler equation yields a wave equation.
+In the Fourier basis, as usual, $\nabla \delta = i\mathbf{k}\delta$, $\nabla \cdot \mathbf{v} = i\mathbf{k}\cdot \mathbf{v}$, and $\nabla^2 \delta = -k^2 \delta$.   The Fourier modes evolve independently, and in the Newtonian approximation follows a differential equation
+\begin{equation}
+  \ddot \delta(\mathbf{k},t) + 2 H \dot \delta(\mathbf{k},t) + \left( \frac{c_s(t)^2 k^2}{a^2} - 4\pi G \bar \rho(t) \right) \delta(\mathbf{k},t) = 0 
+\end{equation}
+The different species evolve differently, all following a similar equation.  Depending on the signs of the terms, this looks an equation for a damped harmonic oscillator or for an unstable exponential growth or decay.
 
-In the second term, the Hubble parameter looks like the damping term in the oscillator equation and is referred to the Hubble friction.  It corresponds to expansion damping the growth of perturbation by spreading material out.  In the first part of the third term, the pressure term retards growth as the pressure of the fluid resists collapse.  In the second part of the third term, gravity promotes growth.  When the pressure term is significant, $ k^2 \gg 3\pi a^2 G\rho c_s^{-2}$ (the so-called ``Jeans wavenumber''), the  small scale (large $k$) modes oscillate, as we talked about in the CMB.  At later times, when the sound speed goes to zero after recombination, gravity dominates for modes on all scales.
+In the second term, the Hubble parameter looks like the damping term in the oscillator equation and is referred to the Hubble friction.  It corresponds to expansion damping the growth of perturbation by spreading material out.  In the first part of the third term, the pressure term retards growth as the pressure of the fluid resists collapse.  In the second part of the third term, gravity promotes growth.  When the pressure term is significant, $ k^2 \gg 3\pi a^2 G\rho c_s^{-2}$ (the so-called ``Jeans wavenumber''), as in the combined baryon-photon fluid, the  small scale (large $k$) modes oscillate, as we talked about in the CMB.  At later times, when the sound speed goes to zero after recombination, gravity dominates for modes on all scales.
 
 When gravity dominates, we have a separable equation with growing and decaying solutions:
 \begin{equation}
@@ -53,7 +69,7 @@ We ignore the decaying modes which quickly fade away.   We normalize the growth 
     dark energy dom. & constant & constant \\ \hline 
   \end{tabular}
   \end{center}
-  \caption{Functional forms for the growth of scales of different sizes, inside and outside the comoving Hubble radius.}\label{tab:growth_function}
+  \caption{Functional forms for the growth of matter pertubations on scales of different sizes, inside and outside the comoving Hubble radius.}\label{tab:growth_function}
 \end{table}
 
 
@@ -295,6 +311,15 @@ LS paper \citet{1993ApJ...412...64L}
 The discussion of the correlation function follows Christopher Hirata's lecture notes which are findable online.
 
 DESI power spectrum method paper
+
+
+EFT component measurements, purturbation theory
+
+FFTLog
+
+Emanuele Castorina Redshift weighted constraints on png from clustering of eBOSS DR14
+
+Emanuele Castorina zero bias tracers
 
 
 \exercises
