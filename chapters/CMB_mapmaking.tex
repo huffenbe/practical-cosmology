@@ -21,7 +21,7 @@ As we have mentioned, CMB telescope do not take pictures, as the signal-to-noise
 \section{Time-ordered data and calibration}
 
 \begin{equation}
-  d(t_i) = \int \d\Omega R(t_i,\theta,\phi) s(\theta,\phi) + n(t_i)
+  d(t_i) = \int d\Omega R(t_i,\theta,\phi) s(\theta,\phi) + n(t_i)
 \end{equation}
 where $s$ is the sky signal.
 
@@ -102,54 +102,6 @@ This equation contains several operations on map-like or TOD-like objects ($\mat
 
 Returning to the linear form $Ax = b$, both side of the equation describe map-sized objects, and we can efficiently compute all the operations to compute $b$ and multiply map $x$ by $A$.  Matrix $A$ is square, positive definite, symmetric, and invertible, but we are unable to store or invert it.
 
-In this situation, the iterative method of conjugate gradient descent is a good approach.  This method notes that $Ax = b$ is the same as finding the minimum of the quadratic function
-\begin{equation}
-  f(x) = \frac{1}{2} x^\dag A x +  x^\dag  b
-\end{equation}
-so that $\nabla f = Ax - b$.  From any point, we can follow the gradient down to the minimum of the function.  The residual at the $k$th step is
-\begin{equation}
-  r_k = b - A x_k,
-\end{equation}
-the negative of the gradient at that point, and we could take the steps $r_k$ to get to the next $x$ value.  Instead it is more efficient to take steps $p_k$ that are ``perpendicular'' or conjugate to the previous steps, using the matrix A as the metric for the dot product.  This is like the Gram-Schmidt procedure to find an orthogonal basis:
-\begin{equation}
-  p_k = r_k - \sum_{k'<k} \frac{r_{k}^\dag A p_{k'}}{ p_{k'}^\dag A p_{k'}} p_{k'}
-\end{equation}
-This is the direction most in the direction of the gradient while still conjugate to all the previous steps.  Minimizing the function along this direction, the next optimal location for $x$ is
-\begin{equation}
-  x_{k+1} = x_k + \alpha_k p_k
-\end{equation}
-where the scalar 
-\begin{equation}
-  \alpha_k = \frac{p_k^\dag (b - A x_k)}{p_{k}^\dag A p_{k}} = \frac{p_k^\dag r_k}{p_{k}^\dag A p_{k}} 
-\end{equation}
-
-That implies that 
-\begin{equation}
-  r_{k+1} = r_k - \alpha_k A p_k
-\end{equation}
-
-We also have for $k\neq k'$ that  $r_k^\dag r_{k'} = 0$ and by design
-$  p_k^\dag A p_{k'} = 0$.
-
-We don't have to recompute the whole Gram-Schmidt sum each iteration.  Since $p_0 = r_0$, we can inductively show that $p_k^\dag r_k = r_k^\dag r_k$ and thus
-\begin{equation}
-  \alpha_k = \frac{r_k^\dag r_k}{p_{k}^\dag A p_{k}}
-\end{equation}
-The updated step is
-\begin{equation}
-  p_{k+1} = r_{k+1} + \beta_k p_k
-\end{equation}
-where
-\begin{equation}
-  \beta_k = \frac{r_{k+1}^\dag r_{k+1}}{r_k^\dag r_k}
-\end{equation}
-keeps track of the running sum of the Gram-Schmidt process.
-
-Thus we can solve for $x$ by iterating this process until the residual gradient gets sufficiently close to zero.  You can speed up the convergence if you \textit{precondition}\index{preconditioner} the system with some matrix
-\begin{equation}
-  A_0^{-1} A x = A_0^{-1} b.
-\end{equation}
-Usually in mapmaking we use the diagonal preconditioner $A_0 = P^\dag P = N_{\rm obs}$, and the total process takes a few hundred iterations.
 
 How do we build the noise model?  If we have a guess of the map, we can compute and estimate for the noise as
 \begin{equation}
@@ -184,6 +136,69 @@ Gain fluctuations is a model error,
   d = g(t) Ps + n
 \end{equation}
 also adds a transfer function even to ML mapmaking \cite{Naess and Louis}.
+
+
+\section{Noise in the map}
+
+\paragraph{Anistropic uncorrelated noise.}  Where a telescope looks more, there is less noise.
+We can add the next level of realism by modulating the noise covariance proportional to the number of observation samples a telescope measured in each pixel.  This gives the noise covariance in the pixel basis this form:
+\begin{equation}
+N_{pp'} =  \sigma^2_p \delta_{pp'}= \frac{\sigma^2}{\Delta\Omega_p N_\textrm{obs}(p)}  \delta_{pp'}
+\end{equation}
+
+This model for the noise covariance is diagonal in pixel space but non-diagonal in harmonic space.  We can still compute the effective pseudo-power spectrum of that noise (more on this below) finding that it is
+\begin{equation}
+\langle \tilde N_l \rangle = \frac{\sigma^2}{4\pi} \sum_p  \left(\frac{1}{N_\textrm{obs}(p)} \right)^2.
+\end{equation}
+The noise is still white, but it is not uniform or isotropic.
+
+\paragraph{Translation invariant, anisotropic 2d noise.}  This noise is homogeneous but not isotropic.  This type of noise uses the flat sky approximation to assign power to 2d Fourier harmonics, but different harmonics get different variances. This is written as
+\begin{equation}
+N_{\textrm{2d tr.\ inv.},\mathbf{ll'}} = \left\langle n(\mathbf l) n(\mathbf l')^* \right\rangle = N(\mathbf{l}) \delta_\mathbf{ll'}.
+\end{equation}
+This is diagonal in the harmonics, so while larger to describe than an isotropic $N_l$, it is still tractable to store and invert.  The power in the noise is often anisotropically distributed, as in Figure \ref{fig:act_DR6_noise}, with certain scan or other directions getting more noise variance.
+
+This type of noise is statistically invariant under translations in the plane of the sky, but not rotations.  The flat sky approximation breaks down on scales larger than $\sim 10^\circ$, so this method cannot treat large sky areas.
+
+\paragraph{Realistic noise.}
+\begin{figure}
+  \includegraphics[height=5.2cm]{figs/CMB/Atkins2024pa5_f090_set0_map_T.pdf}\hfill
+  \includegraphics[height=5.2cm]{figs/CMB/Atkins2024_pa5_f090_set0_2d_T_sims.pdf}
+  \caption{Noise-only map computed from a difference of ACT Data Release 6 (DR6) \citep[from][]{2025JCAP...05..015A}.  Left are the noise maps for two regions of the sky, above with good cross-linking, diagonal-left and diagonal-right scans that are not very visible.  The second with nearly-parallel, vertical scans and bad cross linking.  Right are the 2d flat-sky-approximation Fourier components, displayed as amplitude-squared.  The orientation of the scans is more visible here.  Above shows the complicated and anistropic noise behavior.  Below, the strong vertical striping is caused by noise modes with $l_y \approx 0$.} \label{fig:act_DR6_noise}
+\end{figure}
+
+In  Figure \ref{fig:act_DR6_noise}, we see a visualization of the map noise in the ACT data.  This is made from taking the difference of map splits, labeled $A$ and $B$, where maps are made from two distinct but equivalent halves of the data:
+\begin{equation}
+  d^A = T + n^A  \qquad d^B = T + n^B.
+\end{equation}
+A coadded map is 
+\begin{equation}
+  \frac{1}{2} ( d^A  + d^B ) = T +  \frac{1}{2} (n^A + n^B),
+\end{equation}
+while the difference map is
+\begin{equation}
+  \frac{1}{2} ( d^A - d^B ) =  \frac{1}{2} (n^A - n^B)
+\end{equation}
+Because $n^A$ and $n^B$ are independent random variables, the sum and the difference have the same variance.  The temperature signal cancels in the difference map, so it is a realization of pure noise.  Although the noise in the difference map is not literally the same as the coadd map, for gaussian noise, it is drawn from the same distribution.
+
+We can test any particular noise model to see if the difference map could have been drawn from it.  Using a different split yields a different noise map, but it is correlated to other noise maps and to the coadded map with signal becuase, ultimately, they derive from the same total data.
+
+A few types of models attempt to capture more of the salient features of the complicated noise of the type in Figure \ref{fig:act_DR6_noise}, which has directional, anisotropic features that vary across the sky.  In the tiled \textit{constant correlation} noise model \citep{2020JCAP...12..046N}, 
+
+\begin{equation}
+N^{-1} = W^{-1/2} N_\textrm{2d tr.\ inv.}^{-1} W^{-1/2}
+\end{equation}
+where a pixel-diagonal weighting matrix
+\begin{equation}
+  W^{-1/2}_{pp'} = N_\textrm{obs}(p) ^{1/2} w_\textrm{tile}(p) \delta_{pp'}
+\end{equation}
+modulates the Fourier-harmonic-diagonal noise matrix
+$ N_\textrm{2d tr.\ inv.}$ describing the local power.
+By breaking up the sky into localized tiles, idea is that we can use the local flat-sky approximation to characterize the local anisotropic power in the noise, which normally would be translation invariant, but the weighting matrix spatially adjusts the the variance in response to the number of oberservations and allows us with $w_\textrm{}(p)$ to manage the transition to another tile where the local power is distributed differently.  This helps to handle changes in scan directions across the sky.  Unfortunately, it cannot encode correlations larger than the tile size, which is limited by the flat sky approximation.
+
+
+Tiling is just one multi-scale approach, where the properties on different scales and different locations are handled separately by using a series of tractable operations.  Another is a \textit{``wavelet''-based} noise model \citep{2023JCAP...11..073A} that estimates the variance of the noise map after convolved with a series of directional filters.  These filters are designed to be directional (large ellipticity) and both compact in real space and harmonic space---the filter kernels look like ellipses with oscillating, decaying edges. The convolutions can be executed as in Equation \ref{eq:totalconvolver}, capturing the covolution in multiple orientations.  By treating the filter functions as an over-complete basis, you can synthesize a new noise realization by sampling the filter coefficients according to the variance evaluated from data.  This doesn't allow you directly to do operations like multiplying by the inverse of the noise covariance, but it does provide valuable noise Monte Carlo simulations that can be used to establish or check the error bars of downstream analysis products.  Map based noise simulations like these are easier to generate than the more accurate but also more costly simulations of time-ordered data of the telescopes scans, which is an addition way to generate noise realizations, described below.
+
 
 \section{Foreground mitigation}
 \begin{figure}
@@ -233,6 +248,66 @@ NILC
 
 \begin{enumerate}
 \item For a real-valued function, how many independent numbers are in its complex, spherical harmonic coefficient representation?  At what $l_\textrm{max}$ is that equal to the number of pixels values in a HEALPix map with resolution parameter $N_\textrm{side}$?
+  
+\item Derive the map making equation
 \end{enumerate}
+
+
+
+\begin{subappendices}
+  \section{Supplemental: conjugate gradient descent}
+In this situation, the iterative method of conjugate gradient descent is a good approach.  This method notes that $Ax = b$ is the same as finding the minimum of the quadratic function
+\begin{equation}
+  f(x) = \frac{1}{2} x^\dag A x +  x^\dag  b
+\end{equation}
+so that $\nabla f = Ax - b$.  From any point, we can follow the gradient down to the minimum of the function.  The residual at the $k$th step is
+\begin{equation}
+  r_k = b - A x_k,
+\end{equation}
+the negative of the gradient at that point, and we could take the steps $r_k$ to get to the next $x$ value.  Instead it is more efficient to take steps $p_k$ that are ``perpendicular'' or conjugate to the previous steps, using the matrix A as the metric for the dot product.  This is like the Gram-Schmidt procedure to find an orthogonal basis:
+\begin{equation}
+  p_k = r_k - \sum_{k'<k} \frac{r_{k}^\dag A p_{k'}}{ p_{k'}^\dag A p_{k'}} p_{k'}
+\end{equation}
+This is the direction most in the direction of the gradient while still conjugate to all the previous steps.  Minimizing the function along this direction, the next optimal location for $x$ is
+\begin{equation}
+  x_{k+1} = x_k + \alpha_k p_k
+\end{equation}
+where the scalar 
+\begin{equation}
+  \alpha_k = \frac{p_k^\dag (b - A x_k)}{p_{k}^\dag A p_{k}} = \frac{p_k^\dag r_k}{p_{k}^\dag A p_{k}} 
+\end{equation}
+
+That implies that 
+\begin{equation}
+  r_{k+1} = r_k - \alpha_k A p_k
+\end{equation}
+
+We also have for $k\neq k'$ that  $r_k^\dag r_{k'} = 0$ and by design
+$  p_k^\dag A p_{k'} = 0$.
+
+We don't have to recompute the whole Gram-Schmidt sum each iteration.  Since $p_0 = r_0$, we can inductively show that $p_k^\dag r_k = r_k^\dag r_k$ and thus
+\begin{equation}
+  \alpha_k = \frac{r_k^\dag r_k}{p_{k}^\dag A p_{k}}
+\end{equation}
+The updated step is
+\begin{equation}
+  p_{k+1} = r_{k+1} + \beta_k p_k
+\end{equation}
+where
+\begin{equation}
+  \beta_k = \frac{r_{k+1}^\dag r_{k+1}}{r_k^\dag r_k}
+\end{equation}
+keeps track of the running sum of the Gram-Schmidt process.
+
+Thus we can solve for $x$ by iterating this process until the residual gradient gets sufficiently close to zero.  You can speed up the convergence if you \textit{precondition}\index{preconditioner} the system with some matrix
+\begin{equation}
+  A_0^{-1} A x = A_0^{-1} b.
+\end{equation}
+Usually in mapmaking we use the diagonal preconditioner $A_0 = P^\dag P = N_{\rm obs}$, and the total process takes a few hundred iterations.
+
+
+
+  
+\end{subappendices}
 
 

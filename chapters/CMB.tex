@@ -421,7 +421,7 @@ w^\textrm{pix}(l_\phi) = \frac{\sin(\pi l_\phi \Delta \phi)}{\pi l_\phi \Delta\p
 \end{equation}
 Note that pixel window functions, like beams, go to unity as $l$ goes to zero, so they too preserve the monopole.
 
-\section{Map noise}
+\section{Noise}
 
 Layered on top of the CMB signal in the map is noise, which comes from the electronics, clouds/the atmosphere, cosmic rays, or even the shot noise of the photons coming in.  In real-life experiments, this noise, which we might describe by pixel values $n_j$, harmonic coefficients $n_{lm}$, and a power spectrum $N_l$, tends to be red on large scales (declining with $l$ low multipoles) due to electronic drift or atmospheric fluctuations and white at small scales (constant with $l$ at high multipoles) due to photon shot noise or detector amplifier noise.
 
@@ -431,7 +431,7 @@ The full covariance for the noise in our sky map, expressed in the pixel basis o
 \begin{equation}
   \textrm{Cov}(n_p,n_p') = N_{pp'} \qquad \mbox{or} \qquad \textrm{Cov}(n_{lm},n_{l'm'}) = N_{lml'm'}
 \end{equation}
-and it is enormous.  A dense matrix with size $N_\textrm{pix}^2$, where $N_\textrm{pix}$ is in the millions to hundreds of millions, is too large to store let alone manipulate.  Many of our later operations will require that we do things like multiply by the inverse of the covariance matrix, so we need some clever workarounds.  Next, we will enumerate some approximations for the noise covariance that later we will employ to make such operations tractable.  Usually this involves finding a basis in which the noise, or relevant part of the noise, has a diagonal covariance matrix.
+and it is enormous.  A dense matrix with size $N_\textrm{pix}^2$, where $N_\textrm{pix}$ is in the millions to hundreds of millions, is too large to store let alone manipulate. 
 
 The total data for the CMB temperature harmonics is
 \begin{equation}
@@ -439,8 +439,7 @@ The total data for the CMB temperature harmonics is
 \end{equation}
 which fits the linear model of data equals response to signal plus noise.
 
-
-
+In this chapter, we will discuss the simplest approximations for noise, where it is (1) uniform and uncorrelated and (2) where it is uniform and correlated.  In the next chapter, after we have discussed mapmaking, we will enumerate some additional approximations for the noise covariance.   Many of our later operations will require that we do things like multiply by the inverse of the covariance matrix, so we need some clever workarounds to make such operations tractable.  Usually this involves finding a basis in which the noise, or relevant part of the noise, has a diagonal covariance matrix.
 
 \paragraph{Uniform white noise.}  The uniform, or homogeneous, white noise approximation is
 \begin{eqnarray}
@@ -493,19 +492,6 @@ expressed as any other angular unit, like we did above with arcminutes, you must
 
 We also see that uniform white noise has a diagonal noise covariance in real space, including when averaged into pixels, and the harmonic basis, since it is uniform and isotropic.
 
-
-\paragraph{Anistropic uncorrelated noise.}  Where a telescope looks more, there is less noise.
-We can add the next level of realism by modulating the noise covariance proportional to the number of observation samples a telescope measured in each pixel.  This gives the noise covariance in the pixel basis this form:
-\begin{equation}
-N_{pp'} =  \sigma^2_p \delta_{pp'}= \frac{\sigma^2}{\Delta\Omega_p N_\textrm{obs}(p)}  \delta_{pp'}
-\end{equation}
-
-This model for the noise covariance is diagonal in pixel space but non-diagonal in harmonic space.  We can still compute the effective pseudo-power spectrum of that noise (more on this below) finding that it is
-\begin{equation}
-\langle \tilde N_l \rangle = \frac{\sigma^2}{4\pi} \sum_p  \left(\frac{1}{N_\textrm{obs}(p)} \right)^2.
-\end{equation}
-The noise is still white, but it is not uniform or isotropic.
-
 \paragraph{Isotropic correlated noise.}
 
 \begin{figure}
@@ -518,52 +504,6 @@ N_l = N_\textrm{red} \left( \frac{l}{l_\textrm{knee}} \right)^{\alpha_\textrm{kn
 \end{equation}
 where $l_\textrm{knee}$ is the multipole where the red noise portion equals the amplitude $N_\textrm{red}$ and ${\alpha_\textrm{knee}}$ is the index of the red spectrum.  It is common, but not universal, to give the red and white parts the same amplitude, so that the knee is the transition multipole from red to white.
 
-\paragraph{Translation invariant, anisotropic 2d noise.}  This noise is homogeneous but not isotropic.  This type of noise uses the flat sky approximation to assign power to 2d Fourier harmonics, but different harmonics get different variances. This is written as
-\begin{equation}
-N_{\textrm{2d tr.\ inv.},\mathbf{ll'}} = \left\langle n(\mathbf l) n(\mathbf l')^* \right\rangle = N(\mathbf{l}) \delta_\mathbf{ll'}.
-\end{equation}
-This is diagonal in the harmonics, so while larger to describe than an isotropic $N_l$, it is still tractable to store and invert.  The power in the noise is often anisotropically distributed, as in Figure \ref{fig:act_DR6_noise}, with certain scan or other directions getting more noise variance.
-
-This type of noise is statistically invariant under translations in the plane of the sky, but not rotations.  The flat sky approximation breaks down on scales larger than $\sim 10^\circ$, so this method cannot treat large sky areas.
-
-\paragraph{Realistic noise.}
-\begin{figure}
-  \includegraphics[height=5.2cm]{figs/CMB/Atkins2024pa5_f090_set0_map_T.pdf}\hfill
-  \includegraphics[height=5.2cm]{figs/CMB/Atkins2024_pa5_f090_set0_2d_T_sims.pdf}
-  \caption{Noise-only map computed from a difference of ACT Data Release 6 (DR6) \citep[from][]{2025JCAP...05..015A}.  Left are the noise maps for two regions of the sky, above with good cross-linking, diagonal-left and diagonal-right scans that are not very visible.  The second with nearly-parallel, vertical scans and bad cross linking.  Right are the 2d flat-sky-approximation Fourier components, displayed as amplitude-squared.  The orientation of the scans is more visible here.  Above shows the complicated and anistropic noise behavior.  Below, the strong vertical striping is caused by noise modes with $l_y \approx 0$.} \label{fig:act_DR6_noise}
-\end{figure}
-
-In  Figure \ref{fig:act_DR6_noise}, we see a visualization of the map noise in the ACT data.  This is made from taking the difference of map splits, labeled $A$ and $B$, where maps are made from two distinct but equivalent halves of the data:
-\begin{equation}
-  d^A = T + n^A  \qquad d^B = T + n^B.
-\end{equation}
-A coadded map is 
-\begin{equation}
-  \frac{1}{2} ( d^A  + d^B ) = T +  \frac{1}{2} (n^A + n^B),
-\end{equation}
-while the difference map is
-\begin{equation}
-  \frac{1}{2} ( d^A - d^B ) =  \frac{1}{2} (n^A - n^B)
-\end{equation}
-Because $n^A$ and $n^B$ are independent random variables, the sum and the difference have the same variance.  The temperature signal cancels in the difference map, so it is a realization of pure noise.  Although the noise in the difference map is not literally the same as the coadd map, for gaussian noise, it is drawn from the same distribution.
-
-We can test any particular noise model to see if the difference map could have been drawn from it.  Using a different split yields a different noise map, but it is correlated to other noise maps and to the coadded map with signal becuase, ultimately, they derive from the same total data.
-
-A few types of models attempt to capture more of the salient features of the complicated noise of the type in Figure \ref{fig:act_DR6_noise}, which has directional, anisotropic features that vary across the sky.  In the tiled \textit{constant correlation} noise model \citep{2020JCAP...12..046N}, 
-
-\begin{equation}
-N^{-1} = W^{-1/2} N_\textrm{2d tr.\ inv.}^{-1} W^{-1/2}
-\end{equation}
-where a pixel-diagonal weighting matrix
-\begin{equation}
-  W^{-1/2}_{pp'} = N_\textrm{obs}(p) ^{1/2} w_\textrm{tile}(p) \delta_{pp'}
-\end{equation}
-modulates the Fourier-harmonic-diagonal noise matrix
-$ N_\textrm{2d tr.\ inv.}$ describing the local power.
-By breaking up the sky into localized tiles, idea is that we can use the local flat-sky approximation to characterize the local anisotropic power in the noise, which normally would be translation invariant, but the weighting matrix spatially adjusts the the variance in response to the number of oberservations and allows us with $w_\textrm{}(p)$ to manage the transition to another tile where the local power is distributed differently.  This helps to handle changes in scan directions across the sky.  Unfortunately, it cannot encode correlations larger than the tile size, which is limited by the flat sky approximation.
-
-
-Tiling is just one multi-scale approach, where the properties on different scales and different locations are handled separately by using a series of tractable operations.  Another is a \textit{``wavelet''-based} noise model \citep{2023JCAP...11..073A} that estimates the variance of the noise map after convolved with a series of directional filters.  These filters are designed to be directional (large ellipticity) and both compact in real space and harmonic space---the filter kernels look like ellipses with oscillating, decaying edges. The convolutions can be executed as in Equation \ref{eq:totalconvolver}, capturing the covolution in multiple orientations.  By treating the filter functions as an over-complete basis, you can synthesize a new noise realization by sampling the filter coefficients according to the variance evaluated from data.  This doesn't allow you directly to do operations like multiplying by the inverse of the noise covariance, but it does provide valuable noise Monte Carlo simulations that can be used to establish or check the error bars of downstream analysis products.  Map based noise simulations like these are easier to generate than the more accurate but also more costly simulations of time-ordered data of the telescopes scans, which is an addition way to generate noise realizations, described below.
 
 \section{Measuring the power spectrum}
 
@@ -830,6 +770,11 @@ Then using the addition theorem, we can look at the Legendre polynomial in terms
 This relationship is vital when we come to projecting the harmonics of signal in the bulk of space into signals on the sphere of the sky.
 
 
+\section{Future Supplemental: the flat-sky approximation}
+
+\section{Future Supplemental: Euler angles}
+
+
 \section{Supplemental: isotropy and covariance}
 
 A rotation $R = (\alpha,\beta,\gamma)$ by the three Euler angles (for yaw, pitch, and roll) transforms the $a_{lm}$ harmonics with the Wigner $D$-functions, another set of special functions:
@@ -875,12 +820,8 @@ is consistent with that.  Thus we have shown that isotropy produces a diagonal c
 
 
 
-
-
 \section{Future Supplemental: Wick's theorem applied to harmonics}
 
-
-\section{Future Supplemental: the flat-sky approximation}
 
 
 \end{subappendices}
