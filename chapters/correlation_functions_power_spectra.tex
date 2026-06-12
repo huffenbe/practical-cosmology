@@ -111,7 +111,7 @@ Then we can examine the correlation of those fourier-space average quantities, a
   \langle \bar a(k)  \bar a^*(k) \rangle &=& \frac{1}{(\Delta k)^2} \int_{\Delta_k} dk'_1 dk'_2 \langle a(k'_1) g^*(k'_2) \rangle \\
   &=& \frac{1}{(\Delta k)^2} \int_{\Delta k} dk'_1 dk'_2 \ 2\pi P(k'_1) \delta(k'_1 - k'_2) \\
   &=& \frac{2\pi}{(\Delta k)^2}  \int_{\Delta k} dk'_1 \  P(k'_1) \\
-  &=& \frac{2\pi}{\Delta k}  \bar P(k),
+  &=& \frac{2\pi}{\Delta k}  \bar P(k), \label{eqn:power_in_interval}
 \end{eqnarray}
 where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same.  In distinct intervals, the correlation would obviously be zero due to the delta function.  The limit taking the interval size to zero, $\Delta k \rightarrow 0$, reproduces the behavior of the delta function in the power spectrum definition.
 
@@ -151,34 +151,34 @@ using the definition of the fourier transform of the weight $w$ in the next to l
 
 \section{Discrete data}
 
-In practice, we have pixels or some sampled data $a_j = a(x_j)$ where $x_j = j\Delta x$ is sampled at intervals $\Delta x = L/N$, where the total interval runs from $x=0$ to $x=L$ and is split into $N$ samples.   The Fourier transform integral becomes a Riemann sum.  We will assume that the function is periodic with that finite interval, so the spectrum of Fourier coefficients will be discrete, at intervals in harmonic space $k_p = p\Delta k$ where the interval size $\Delta k = 2\pi/N\Delta x$.  Every sample gets a position index $j$ and every harmonic gets a frequency index $p$.  With these changes, the transform equation becomes,
+In practice, we have pixels or some sampled data $a_j = a(x_j)$ where $x_j = j\Delta x$ is sampled at intervals $\Delta x = L/N$, where the total interval runs from $x=0$ to $x=L$ and is split into $N$ samples.   The Fourier transform integral becomes a Riemann sum.  We will assume that the function is periodic with that finite interval, so the spectrum of Fourier coefficients will be discrete, at intervals in harmonic space $k_q = q\Delta k$ where the interval size $\Delta k = 2\pi/N\Delta x$.  Every sample gets a position index $j$ and every harmonic gets a frequency index $q$.  With these changes, the transform equation becomes,
 \begin{eqnarray}%%%
-  a_p = a(k_p) & = & \Delta x \sum_j a(x_j) \exp(- i k_p  x_j) \\
-  & = & \Delta x \sum_j a_j \exp(-2\pi i pj/N). \label{eqn:dft}
+  a_q = a(k_q) & = & \Delta x \sum_j a(x_j) \exp(- i k_q  x_j) \\
+  & = & \Delta x \sum_j a_j \exp(-2\pi i qj/N). \label{eqn:dft}
 \end{eqnarray}
- This sum is in the form of a discrete fourier transform.  This is advantageous because computer algorithms can compute it very fast: the Fast Fourier Transform (FFT) algorithm can use divide-and-conquer techniques to compute the $N$ results for $a_p$  in just ${\mathcal O}(N \log N)$ operations instead of ${\mathcal O}(N^2)$, which is what a naive implementation would take.  At large sizes, this is a significant computational savings.  For the divide and conquer algorithms to work efficiently, we want to ensure that our number of samples is factorable into small prime numbers: a power of two or, like $3072 = 2^9 \cdot 3^2$, a product of powers of twos and threes; finding a good choice is usually not burdensome.
+ This sum is in the form of a discrete fourier transform.  This is advantageous because computer algorithms can compute it very fast: the Fast Fourier Transform (FFT) algorithm can use divide-and-conquer techniques to compute the $N$ results for $a_q$  in just ${\mathcal O}(N \log N)$ operations instead of ${\mathcal O}(N^2)$, which is what a naive implementation would take.  At large sizes, this is a significant computational savings.  For the divide and conquer algorithms to work efficiently, we want to ensure that our number of samples is factorable into small prime numbers: a power of two or, like $3072 = 2^9 \cdot 3^2$, a product of powers of twos and threes; finding a good choice is usually not burdensome.
 
  Similarly, we can synthesize a discrete time series from Fourier coefficients as
  \begin{eqnarray}
-   a_j = a(x_j) = \frac{\Delta k}{2\pi}  \sum_p a_p \exp(2\pi i pj/N) \label{eqn:idft}
+   a_j = a(x_j) = \frac{\Delta k}{2\pi}  \sum_q a_q \exp(2\pi i qj/N) \label{eqn:idft}
  \end{eqnarray}
  As matrix operations, these discrete Fourier transforms are exact inverses of each other.
 
 The definition of the power spectrum in the discrete case is
  \begin{equation}
-   \langle a(k_p) a^*(k_{p'}) \rangle = 2\pi \bar P(k_p) \frac{\delta_{pp'}}{\Delta k}, \label{eqn:power_spectrum_definition_discrete}
+   \langle a(k_q) a^*(k_{q'}) \rangle = 2\pi \bar P(k_p) \frac{\delta_{qq'}}{\Delta k}, \label{eqn:power_spectrum_definition_discrete}
   \end{equation}
- coming from the earlier equation for the average power in a small cell.  The Kronecker delta scaled by the cell size in Fourier space takes the place of the Dirac delta function in the original definition.  We'll drop the bar on $P$ for the upcoming discussion.
+ coming from Equation (\ref{eqn:power_in_interval}) for the average power in a small cell.  The Kronecker delta scaled by the cell size in Fourier space takes the place of the Dirac delta function in the original definition.  We'll drop the bar on $P$ for the upcoming discussion.
 
 
 
  The highest frequency or shortest wavelength that a discretely-sampled signal can represent is a sequence proportional to $\{ \dots,+1,-1,+1,-1,+1,-1,\dots \}$, a sinusoid with frequency $k_\textrm{max} = \pi / \Delta x$.  (Two points per cycle means half the sampling frequency: $k_\textrm{max} =  (N/2)\, \Delta k$.)  This highest frequency is called the Nyquist frequency\index{Nyquist frequency} and is the \textit{band limit}\index{band limit} of this sampled representation of the line.  Any signal with a frequency higher than the sampling frequency is subject to the phenomena of aliasing, the interference between the sampling and signal frequencies that makes a high-frequency signal show up at lower frequencies.  In other contexts, this is the same phenomena as acoustic beats or Moir\'e patterns.  If a continuous signal function $a(x)$ is band-limited, that is, it contains only frequencies below the band limit, then it can be \textit{exactly} represented by the discrete Fourier coefficient, even at off-grid points, due to a specialized interpolation called the sampling theorem, 
  \begin{equation}
-   a(x) =  \Delta x \sum_p  a_p \frac{\sin[k_\textrm{max}(x-p\Delta x)] }{\pi (x-p\Delta x)},
+   a(x) =  \Delta x \sum_q  a_q \frac{\sin[k_\textrm{max}(x-q\Delta x)] }{\pi (x-q\Delta x)},
  \end{equation}
  which is an interesting result that we won't use much.
 
- We often deal with pixelized data, where information that we have gathered is averaged or binned into pixels before we analyze it.  This causes the signal to be modified by a \textit{pixel window function}\index{pixel window function}, which we will discuss in more detail later, but upshot is that fluctuations on smaller and smaller scales are increasingly suppressed as they approach the pixel size.
+ We often deal with pixelized data, where information that we have gathered is averaged or binned into pixels before we analyze it, rather than purely sampled from a single point.  This causes the signal to be modified by a \textit{pixel window function}\index{pixel window function}, which we will discuss in more detail later, but upshot is that fluctuations on smaller and smaller scales are more and more suppressed as they approach the pixel size.  Clearly, information within the pixel is destroyed by the averaging process.
 
 
  \subsection{Implementation and synthetic signals}
@@ -191,21 +191,21 @@ The definition of the power spectrum in the discrete case is
  
 On a computer, the signal that we are trying to transform is often a real-valued array of numbers (and less often a complex array).  We have played a little fast and loose with the limits on the indices, which will correspond to the array in the computer, but we need to be careful to get things right.
 
-In the Riemann sums, if we include the left side of every interval, then the sum in Equation~\ref{eqn:dft}, for example, should include position indices $j = 0 \dots N-1$.  We can compute positive and negative frequencies up to the band limit, so we could let the frequency index be $p = -N/2 \dots N/2$.  However, it is also clear that Equation~\ref{eqn:dft} is periodic in $p$ with period $N$, so $a_p = a_{p+N}$.  In particular, the negative frequencies can be remapped to positive frequencies: $a_{-p} = a_{N-p}$.  Thus most implementations will also let the range on frequency index be $p = 0 \dots N-1$, similar to the position index.
+In the Riemann sums, if we include the left side of every interval, then the sum in Equation~\ref{eqn:dft}, for example, should include position indices $j = 0 \dots N-1$.  We can compute positive and negative frequencies up to the band limit, so we could let the frequency index be $q = -N/2 \dots N/2$.  However, it is also clear that Equation~\ref{eqn:dft} is periodic in $q$ with period $N$, so $a_q = a_{q+N}$.  In particular, the negative frequencies can be remapped to positive frequencies: $a_{-q} = a_{N-q}$.  Thus most implementations will also let the range on frequency index be $q = 0 \dots N-1$, similar to the position index.
 
-In this convention, the zero frequency is stored at $p=0$.  Then the positive frequencies are stored in the first half of the array, at $p=1 \dots \lfloor N/2 \rfloor -1$.  The the negative frequencies start at $p =  \lfloor N/2 \rfloor$ and are placed in increasing order up to $p = N-1$, which holds frequency $-\Delta k$ in the very last array entry.  In higher-dimension FFTs, we follow this convention for all the frequency indices.
+In this convention, the zero frequency is stored at $q=0$.  Then the positive frequencies are stored in the first half of the array, at $q=1 \dots \lfloor N/2 \rfloor -1$.  The the negative frequencies start at $q =  \lfloor N/2 \rfloor$ and are placed in increasing order up to $q = N-1$, which holds frequency $-\Delta k$ in the very last array entry.  In higher-dimension FFTs, we follow this convention for all the frequency indices.
 
 Some computer libraries or packages will have a special FFT routine for real-valued signals.    Because a real function is its own complex conjugate, we have that $a(x)=a(x)^*$ implies $a(-k) = a(k)^*$: the negative-frequency harmonics are the complex conjugates of the positive frequency harmonics.  To save space, these real-to-complex transform routines will use a real array of size $N$ for the signal and a complex array of size $\lfloor N/2 \rfloor - 1$ for the harmonics, saving about half on memory usage.  In higher-dimension FFTs, only one of the indices is treated this way, typically the index that changes the fastest as you step through memory.
 
-Now we have all the tools to make a synthetic, real-valued signal whose power spectrum we specify.  After choosing what $P(k)$ we want for the power spectrum, and remembering that the power spectrum provides the variance for the harmonic coeffients, $ \langle a(k_p) a^*(k_{p'}) \rangle = 2\pi P(k_p) / \Delta k$, we can set the zero mode as
+Now we have all the tools to make a synthetic, real-valued signal whose power spectrum we specify.  After choosing what $P(k)$ we want for the power spectrum, and remembering that the power spectrum provides the variance for the harmonic coeffients, $ \langle a(k_q) a^*(k_{q'}) \rangle = 2\pi P(k_q) / \Delta k$, we can set the zero mode as
 \begin{equation}
-  a(k = p =0) =  \sqrt{\frac{2\pi}{\Delta k } P(k = 0)}\, Z_1
+  a(k = q =0) =  \sqrt{\frac{2\pi}{\Delta k } P(k = 0)}\, Z_1
 \end{equation}
 where $Z_1$ is a random variable with zero mean and unit variance.  Note that the zero harmonic must be real valued.  Almost always, we want to create a Gaussian random field,\footnote{If, on the other hand, we needed the harmonics to have specific 3rd or 4th moments, we could choose another distribution.  Simulations to generate the mean fields and biases in CMB lensing estimators may employ the Bernoulli distribution (which have the minimal kurtosis) with a random complex phase to reduce the 4th moment variance on the 2-point estimator.} and so use a routine to generate $Z_1$ as a random deviate distributed from a normal distribution like $Z_1 \sim {\mathcal N}(\mu = 0, \sigma^2 = 1)$.
 
-Next, we loop through the positive and negative frequencies together, ensuring that the harmonics are set as complex conjugates and get the correct variance.  For each $p$, 
+Next, we loop through the positive and negative frequencies together, ensuring that the harmonics are set as complex conjugates and get the correct variance.  For each $q$, 
 \begin{equation}
-  a_p =  a^*_{N-p} = \sqrt{\frac{2\pi}{\Delta k } P(k = p \Delta k)}\, \frac{Z_1 + i Z_2}{\sqrt{2}} \label{eq:harmonic_synthesis}
+  a_q =  a^*_{N-q} = \sqrt{\frac{2\pi}{\Delta k } P(k = q \Delta k)}\, \frac{Z_1 + i Z_2}{\sqrt{2}} \label{eq:harmonic_synthesis}
 \end{equation}
 where $Z_1$ and $Z_2$ are both unit-variance deviates.  We populate the real and imaginary part of the harmonic on equal footing and normalize with the $\sqrt{2}$ because the variance of the deviates is $\langle |Z_1 + i Z_2 |^2 \rangle = \langle Z_1^2\rangle + \langle Z_2^2  \rangle = 2$.
 
@@ -228,42 +228,42 @@ Figure \ref{fig:Pk_randoms} shows an example of synthetic gaussian random fields
  Let us add a mask or weight function to the discretely sampled data, so the weighted data and harmonics are
  \begin{eqnarray}
    \tilde a_j &=& a_j w_j \\
-   \tilde a_p &=& \Delta x \sum_j \exp(-2\pi i pj/N) a_j w_j
+   \tilde a_q &=& \Delta x \sum_j \exp(-2\pi i qj/N) a_j w_j
  \end{eqnarray}
 
  As a start to computing the correlation, we can take the product of the masked harmonics, and then expand the true signal into the true harmonics:
  \begin{eqnarray}
-   |\tilde a_p |^2 = \tilde a_p \tilde a_p^* &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i pj/N) \exp(2\pi i pj'/N) a_j  a_{j'} w_j w_{j'}  \nonumber \\
-   &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i pj/N) \exp(+2\pi i pj'/N) \nonumber \\
-   & & \times   \left(\frac{\Delta k}{2\pi}\right)^2 \sum_{p_1 p_2}  \exp(2\pi i p_1 j/N) \exp(-2\pi i p_2 j'/N) \nonumber \\
-   & & \times a_{p_1} a^*_{p_2} w_j w_{j'}
+   |\tilde a_q |^2 = \tilde a_q \tilde a_q^* &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i qj/N) \exp(2\pi i qj'/N) a_j  a_{j'} w_j w_{j'}  \nonumber \\
+   &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i qj/N) \exp(+2\pi i qj'/N) \nonumber \\
+   & & \times   \left(\frac{\Delta k}{2\pi}\right)^2 \sum_{q_1 q_2}  \exp(2\pi i q_1 j/N) \exp(-2\pi i q_2 j'/N) \nonumber \\
+   & & \times a_{q_1} a^*_{q_2} w_j w_{j'}
  \end{eqnarray}
 Let's gather the $\Delta x$ with the $\Delta k$ and take the ensemble average, using the Equation~(\ref{eqn:power_spectrum_definition_discrete}) replace the product of harmonics.
  \begin{eqnarray}
- \langle  |\tilde a_p |^2 \rangle &=& \left(\frac{\Delta x\Delta k}{2\pi}\right)^2  \sum_{jj'p_1p_2} \exp(-2\pi i pj/N)  \exp(+2\pi i pj'/N) \nonumber \\
- & & \exp(2\pi i p_1 j/N) \exp(-2\pi i p_2 j'/N){2\pi} P(k_{p_1}) \frac{\delta_{p_1 p_2}}{\Delta k} w_j w_{j'}
+ \langle  |\tilde a_q |^2 \rangle &=& \left(\frac{\Delta x\Delta k}{2\pi}\right)^2  \sum_{jj'p_1p_2} \exp(-2\pi i qj/N)  \exp(+2\pi i qj'/N) \nonumber \\
+ & & \exp(2\pi i q_1 j/N) \exp(-2\pi i q_2 j'/N){2\pi} P(k_{q_1}) \frac{\delta_{q_1 q_2}}{\Delta k} w_j w_{j'}
  \end{eqnarray}
-Use the delta function to sum over $p_2$ and separately gather the exponentials with $j$ and $j'$.  
+Use the delta function to sum over $q_2$ and separately gather the exponentials with $j$ and $j'$.  
 \begin{eqnarray}
- \langle   |\tilde a_p |^2 \rangle &=&  \frac{\Delta k}{2\pi}\left(\Delta x \right)^2  \sum_{jj'p_1}\exp(-2\pi i (p-p_1)j/N)  w_j \nonumber \\
-  & & \qquad \qquad \exp(+2\pi i (p-p_1) j'/N)  w_{j'}   P(k_{p_1})
+ \langle   |\tilde a_q |^2 \rangle &=&  \frac{\Delta k}{2\pi}\left(\Delta x \right)^2  \sum_{jj'p_1}\exp(-2\pi i (q-q_1)j/N)  w_j \nonumber \\
+  & & \qquad \qquad \exp(+2\pi i (q-q_1) j'/N)  w_{j'}   P(k_{q_1})
 \end{eqnarray}
 That reveals Fourier tranforms of the weight functions
 \begin{eqnarray}
-  \langle  |\tilde a_p |^2 \rangle &=& \frac{\Delta k}{2\pi}  \sum_{p_1} w_{p-p_1} w_{p-p_1}^*  P(k_{p_1}) \\
-  &=& \left(\frac{\Delta k}{2\pi}\right)  \sum_{p_1} |w_{p-p_1}|^2  P(k_{p_1})
+  \langle  |\tilde a_q |^2 \rangle &=& \frac{\Delta k}{2\pi}  \sum_{q_1} w_{q-q_1} w_{q-q_1}^*  P(k_{q_1}) \\
+  &=& \left(\frac{\Delta k}{2\pi}\right)  \sum_{p_1} |w_{q-q_1}|^2  P(k_{q_1})
 \end{eqnarray}
 Multiplying both sides by $2\pi/\Delta k$ we can define the observed pseudo-spectum as
 \begin{equation}
-  \tilde P(k_p) = \frac{\Delta k}{2\pi} |\tilde a_p |^2
+  \tilde P(k_q) = \frac{\Delta k}{2\pi} |\tilde a_q |^2
 \end{equation}
 to obtain a statistic that is, on average, simply related to the true power spectrum. We can package the modulus of the weight function harmonics as a matrix,
 \begin{equation}
-  W_{pp_1} = \left( \frac{\Delta k}{2\pi} \right)^2 |w_{p-p_1}|^2, \label{eq:mode_coupling_matrix_1d}
+  W_{qq_1} = \left( \frac{\Delta k}{2\pi} \right)^2 |w_{q-q_1}|^2, \label{eq:mode_coupling_matrix_1d}
 \end{equation}
 called the mode-coupling matrix, and express the whole relationship between the ensemble average of the observed pseudo power spectrum and the true spectrum as a matrix equation
 \begin{equation}
-  \langle \tilde P(k_p) \rangle =  \sum_{p_1} W_{pp_1}  P(k_{p_1}).
+  \langle \tilde P(k_q) \rangle =  \sum_{q_1} W_{qq_1}  P(k_{q_1}).
 \end{equation}
 Written as a matrix equation it is
 \begin{equation}
@@ -271,54 +271,54 @@ Written as a matrix equation it is
 \end{equation}
 Normally all the sums include positive and negative frequencies, and so we have to be careful how they are arranged within the vector.  If we are using a half-complex implementation, such that the frequency index only contains non-negative frequencies, then we need to rearrage the sum
 \begin{equation}
-\sum_{p_1} |w_{p-p_1}|^2  P(k_{p_1}) = |w_{p-0}|^2 P(0) +  \sum_{0<{p_1}} (  |w_{p-{p_1}}|^2 +  |w_{p+{p_1}}|^2 ) P(k_{p_1}).
+\sum_{q_1} |w_{q-q_1}|^2  P(k_{q_1}) = |w_{q-0}|^2 P(0) +  \sum_{0<{q_1}} (  |w_{q-{q_1}}|^2 +  |w_{q+{q_1}}|^2 ) P(k_{q_1}).
 \end{equation}
-In either case, if the frequency index overruns the range $|p_1| <  \lfloor N/2 \rfloor - 1$, it needs to select the correct frequency index in a periodic way.  These details needs to be taken into account when building the $W$ matrix.
+In either case, if the frequency index overruns the range $|q_1| <  \lfloor N/2 \rfloor - 1$, it needs to select the correct frequency index in a periodic way.  These details needs to be taken into account when building the $W$ matrix.
 
 In Figure \ref{fig:mask_pseudoPk}, we can see the effect of this bias on the pseudo power spectrum.  At small scales, there is a fractional loss of power that is approximately equal to the effective volume fraction of the mask
 \begin{equation}
-  f = \frac{1}{N} \sum w_i.
+  f = \frac{1}{N} \sum_j w_j.
 \end{equation}
 In the figure, that approximation is good to about 1 percent at high $k$.  On scales comparable to the mask we need the full matrix $W$ to capture the behavior.
 
-Our equation invites us to invert the $W$ matrix to get an unbiased estimate of the observed power spectrum as something like ``${P}^{\rm obs} = W^{-1} \tilde P$,'' and indeed this is our basic strategy, but there are some subtleties.  First, $W$ may be non-invertible.  The more of the data the mask removes, usually the harder it is to invert $W$.  Furthermore, the pseudo-spectrum $\tilde P$ only draws one sample of the power for the mode at $k_p$, so the sample variance is very large.  In the next section, we will find that binning together several modes with similar wavenumbers can help to alleviate both problems.
+Our equation invites us to invert the $W$ matrix to get an unbiased estimate of the observed power spectrum as something like ``${P}^{\rm obs} = W^{-1} \tilde P$,'' and indeed this is our basic strategy, but there are some subtleties.  First, $W$ may be non-invertible.  The more of the data the mask removes, usually the harder it is to invert $W$.  Furthermore, the pseudo-spectrum $\tilde P$ only draws one sample of the power for the mode at $k_q$, so the sample variance is very large.  In the next section, we will find that binning together several modes with similar wavenumbers can help to alleviate both problems.
 
 \section{Band powers} \label{sec:band_powers}
 To improve statistics on the estimation of the spectrum, we want to average together the power from several harmonics.  We will do this with a matrix ``binning operator'' $B$ that makes a weighted average of the power over some band of wavenumbers
 \begin{equation}
-  \tilde {\mathcal P}_b  = \sum_p B_{bp} \tilde P_p
+  \tilde {\mathcal P}_b  = \sum_q B_{bq} \tilde P_q
 \end{equation}
-where the reduced-size, binned pseudo-spectrum is on the left and the band $b$ contains some set of harmonics.   We use weights $g(p)$ in the band, so that the total weight in a band is
+where the reduced-size, binned pseudo-spectrum is on the left and the band $b$ contains some set of harmonics.   We use weights $g(q)$ in the band, so that the total weight in a band is
 \begin{equation}
-  G(b) = \sum_{p} g_b(p).
+  G(b) = \sum_{p} g_b(q).
 \end{equation}
 We set up the binning operator with the total weight as the normalization to the weighted average
 \begin{equation}
-  B_{bp} = g_b(p)/G(b)
+  B_{bq} = g_b(q)/G(b)
 \end{equation}
 It is not a requirement, but bands are typically disjoint: each harmonic contributes only to a single band.
 
-We also need an ``unbinning'' operator $\bar B_{pb}$, or reciprocal binning operator, so that
+We also need an ``unbinning'' operator $\bar B_{qb}$, or reciprocal binning operator, so that
 \begin{equation}
-  \sum_p B_{bp}\bar B_{pb'} = \delta_{bb'}  \label{eqn:binning_delta_function}
+  \sum_q B_{bq}\bar B_{qb'} = \delta_{bb'}  \label{eqn:binning_delta_function}
 \end{equation}
 It is the right-inverse of $B$.  That is saying that if you had a binned spectrum, unbinned it, and binned it back, it would be be unchanged.  However, we cannot go the other way.  The binned spectrum has less information in it than the unbinned spectrum, and we cannot recover details of the spectrum finer than the bin width once it has been binned.    An unbinning operator with this property is
 \begin{equation}
-  \bar B_{pb} = h_b(p)/H(b)
+  \bar B_{qb} = h_b(q)/H(b)
 \end{equation}
 so long as the normalization is 
 \begin{equation}
-  H(b) = \frac{1}{G(b)}\sum_p g_b(p)h_b(p).
+  H(b) = \frac{1}{G(b)}\sum_q g_b(q)h_b(q).
 \end{equation}
-In an exercise, you can show that this definition satisfies Equation (\ref{eqn:binning_delta_function}).  The function $h_b(p)$ is the anticipated shape of the power spectrum within the band.
+In an exercise, you can show that this definition satisfies Equation (\ref{eqn:binning_delta_function}).  The function $h_b(q)$ is the anticipated shape of the power spectrum within the band.
 
-We have freedom to choose whatever weights and power spectrum shape are most appropriate to our particular case, but in typical usage, we might choose uniform weights ($g_b(p) = 1$) and flat band powers ($h_b(p)=1$).  That choice sets $G(b)$ to be the count of harmonics contributing to the band and $H(b) = 1$.  In this typical usage, we end up assuming that the power spectrum is flat in the bands determined by the bins.
+We have freedom to choose whatever weights and power spectrum shape are most appropriate to our particular case, but in typical usage, we might choose uniform weights ($g_b(q) = 1$) and flat band powers ($h_b(q)=1$).  That choice sets $G(b)$ to be the count of harmonics contributing to the band and $H(b) = 1$.  In this typical usage, we end up assuming that the power spectrum is flat in the bands determined by the bins.
 
 The matrix product
 \begin{equation}
-  \sum_b \bar B_{pb}B_{bp'} 
+  \sum_b \bar B_{qb}B_{bq'} 
 \end{equation}
-is not the identity matrix, but, applied to a power spectrum, will average it into piecewise bands of the specified shape determined by $h(p)$.
+is not the identity matrix, but, applied to a power spectrum, will average it into piecewise bands of the specified shape determined by $h(q)$.
 
 
 \section{Estimator and band-power window functions} \label{sec:bandpower_wf}
@@ -332,11 +332,11 @@ Let's employ this binning, looking back at Equation~(\ref{eqn:ensemble_mode_coup
 \begin{equation}
   B \langle \tilde P \rangle =  B W  P
 \end{equation}
-Then we approximate $\bar B B$ as the identity matrix and insert it between the mode-coupling matrix and the true spectrum.
+Then we approximate $\bar B B$ as the identity matrix (which it is not) and insert it between the mode-coupling matrix and the true spectrum.
 \begin{equation}
   B \langle \tilde P \rangle \approx  B W {\bar B} B P. \label{eqn:bandpower_approximation}
 \end{equation}
-This is only exact if the power spectrum $P$ has the same functional form as anticipated in the reciprocal binning operator.  Then we can invert the binned mode-coupling matrix and bring everything inside the ensemble average to obtain
+This is only exact if the power spectrum $P$ has the same functional form as anticipated by $h(q)$ in the reciprocal binning operator.  Then we can invert the binned mode-coupling matrix and bring everything inside the ensemble average to obtain
 \begin{equation}
  \langle( B W {\bar B})^{-1} B \tilde P \rangle \approx B P
 \end{equation}
