@@ -66,6 +66,12 @@ implies
   p(a|b) p(b) =  p(b|a) p(a)
 \end{equation}
 
+We can go further to chain conditional probabilities into a hierarchical relationship like
+\begin{equation}
+  p(a|c) = \int db p(a|b) p(b|c).
+\end{equation}
+
+
 Now let's step back to the context of science.  Substituting in the model parameters and data, and rearranging, the quantity that we are targeting---the \textit{posterior probability}\index{posterior probability} density $p(\Theta | d )$---has the following expression:
 \begin{equation}
   p(\Theta | d ) = \frac{1}{p(d)} p(d | \Theta) p(\Theta) \label{eqn:bayes_density}

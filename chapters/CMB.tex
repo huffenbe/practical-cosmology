@@ -153,9 +153,9 @@ for real-valued, unit-variance Gaussian random deviates $Z_0, Z_r, Z_i$.
 
 Since every $m$-valued coefficient for the same $l$ has the same variance $C_l$, a simple estimator for the power spectrum is to average over the different $m$s,
 \begin{equation}
-  \bar C_l = \frac{1}{2l+1} \sum_{m=-l}^l |a_{lm}|^2.
+  \hat C_l = \frac{1}{2l+1} \sum_{m=-l}^l |a_{lm}|^2.
 \end{equation}
-You can check that $\langle \bar C_l \rangle = C_l$ is unbiased, but this type of estimator is biased if the whole sky is not available, as with the 1-d power spectrum estimate with a mask.  A main difference to the 1-d case is that we have multiple harmonics $m$ with which to estimate the power spectrum at each $l$, so (in the absence of noise and beam) it gets easier to compute the power spectrum at high $l$.
+You can check that $\langle \hat C_l \rangle = C_l$ is unbiased, but this type of estimator is biased if the whole sky is not available, as with the 1-d power spectrum estimate with a mask.  A main difference to the 1-d case is that we have multiple harmonics $m$ with which to estimate the power spectrum at each $l$, so (in the absence of noise and beam) it gets easier to compute the power spectrum at high $l$.
 
 
 Mostly because it flattens out the CMB's red spectrum, a conventional way to display the power spectrum is 
@@ -427,17 +427,18 @@ Layered on top of the CMB signal in the map is noise, which comes from the elect
 
 The noise contribution is far more complicated that the signal though, because the noise does not have to be isotropic.  Space experiments need to avoid the Sun and so observe regions ecliptic poles (perpendicular to the plane of the solar system) more often.  Ground based experiments need to scan at a constant elevation to keep the atmospheric power close to constant, not point too low to avoid looking through too much atmosphere, and avoid the sun and moon.  The pattern of how much time is spent looking at each portion of the sky is often complicated, and the noise variance is roughly proportional to it.
 
-The full covariance for the noise in our sky map, expressed in the pixel basis or the harmonic basis is
-\begin{equation}
-  \textrm{Cov}(n_p,n_p') = N_{pp'} \qquad \mbox{or} \qquad \textrm{Cov}(n_{lm},n_{l'm'}) = N_{lml'm'}
-\end{equation}
-and it is enormous.  A dense matrix with size $N_\textrm{pix}^2$, where $N_\textrm{pix}$ is in the millions to hundreds of millions, is too large to store let alone manipulate. 
-
 The total data for the CMB temperature harmonics is
 \begin{equation}
   d_{lm} = w^{\rm pix}_l b_l a_{lm} + n_{lm},
 \end{equation}
 which fits the linear model of data equals response to signal plus noise.
+
+The full covariance for the noise in our sky map, expressed in the pixel basis or the harmonic basis is
+\begin{equation}
+  \textrm{Cov}(n_p,n_p') = N_{pp'} \qquad \mbox{or} \qquad \textrm{Cov}(n_{lm},n_{l'm'}) = N_{lml'm'}
+\end{equation}
+and it is enormous.  A dense matrix with size $N_\textrm{pix}^2$, where $N_\textrm{pix}$ is in the millions to hundreds of millions, is in general too large to store let alone manipulate, but in practice a few simplifications or approximations may apply.
+
 
 In this chapter, we will discuss the simplest approximations for noise, where it is (1) uniform and uncorrelated and (2) where it is uniform and correlated.  In the next chapter, after we have discussed mapmaking, we will enumerate some additional approximations for the noise covariance.   Many of our later operations will require that we do things like multiply by the inverse of the covariance matrix, so we need some clever workarounds to make such operations tractable.  Usually this involves finding a basis in which the noise, or relevant part of the noise, has a diagonal covariance matrix.
 
@@ -494,9 +495,9 @@ We also see that uniform white noise has a diagonal noise covariance in real spa
 
 \paragraph{Isotropic correlated noise.}
 
-\begin{figure}
+\begin{figure}[t]
   \includegraphics[width=\linewidth]{figs/CMB/ACT_DR6_map_noise_power.pdf}
-  \caption{Estimates of noise power spectra from noise maps of ACT DR6.  These can be used in an isotropic noise model, although the noise they derive from is not isotropic.  From \citet{2025JCAP...11..062L}.}
+  \caption{Estimates of noise power spectra from noise maps of ACT DR6 compared to a theory power spectrum in gray, for temperature and $E$-mode polarization.  These can be used in an isotropic noise model, although the noise they derive from is not isotropic.  From \citet{2025JCAP...11..062L}.}
 \end{figure}
 Another direction to add realism in a simple model is to consider the power spectrum as a sum of homogeneous and isotropic red noise and white noise terms, described by power spectra like:
 \begin{equation}
@@ -506,11 +507,6 @@ where $l_\textrm{knee}$ is the multipole where the red noise portion equals the 
 
 
 \section{Measuring the power spectrum}
-
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/CMB/ACT-dr6_appendix_c_mask.png}
-  \caption{Mask from ACT DR6 for the computation of the power spectrum.  Included areas are blue, while excluded areas are transparent, and reveal the emission from the plane of the Milky Way, an arc in this celestial coordinate projection.The blue area is full of holes to mask out emission from compact bright objects, mostly external galaxiesm.  Note also that the mask window's edge has a gradual (apodized) fade between zero and one.  The orange line marks the extent of ACT observations.}\label{fig:CMB_mask}
-\end{figure}
 
 Making a two dimensional mask for the CMB is more of an art than a science.  We want to exclude point sources of radiation (like galaxies) and the gas and dust emission of the Milky Way, but not eliminate so much area to ruin the statistics of the measurement.  Some of these foreground effects will be left in our measurement of the background, and we will have to deal with them later.  We want our mask to be apodized, to have a gradual change from including to excluding the , which helps the representation of the mask to be more compact in harmonic space.
 
@@ -532,6 +528,11 @@ That can be advantageous because the noise in the splits does not correlate with
   \langle d^A d^B \rangle = \langle (a+n^A) (a+n^B) \rangle = \langle a a \rangle+\langle a n^B \rangle+  \langle n^A a \rangle+\langle n^A n^B \rangle =  \langle a a \rangle.
 \end{equation}
 So a power spectrum or pseudo spectrum that is estimated from the cross spectrum of noise splits will not contain any noise power on average.  There may be accidental correlation between the signal and noise that contributes to the variance of the estimator.  That we will have to account for.
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/CMB/ACT-dr6_appendix_c_mask.png}
+  \caption{Mask from ACT DR6 for the computation of the power spectrum.  Included areas are blue, while excluded areas are transparent, and reveal the emission from the plane of the Milky Way, an arc in this celestial coordinate projection.The blue area is full of holes to mask out emission from compact bright objects, mostly external galaxiesm.  Note also that the mask window's edge has a gradual (apodized) fade between zero and one.  The orange line marks the extent of ACT observations.}\label{fig:CMB_mask}
+\end{figure}
 
 It is also at this stages that we typically will make the correction for the beand and pixel window functions:
 \begin{equation}
@@ -598,12 +599,13 @@ so that the ensemble average of the observed power spectrum is band power window
   \caption{Demonstration of the band power spectrum computation with a synthetic partial sky CMB measurement.  To the left is a mask that blocks the Galactic plane and the image of the masked CMB.  To the right is the theory power spectrum and the realized average power in the (full-sky) harmonics.  The mask knocks down the power in the spectrum approximately by a factor of the still-available sky $f_\textrm{sky}$, not accounting for the mode coupling.}
  \end{figure}
 
-\section{Errors on the spectrum}
+\section{Covariance of the spectrum}
 Now that we have the power spectrum of the sky, we want to know the uncertainty on that measurement.  Let's discard the mask for the moment and consider the simple statistic for estimating the full-sky power spectrum:
 \begin{equation}
-  \bar C_l = \frac{1}{2l+1} \sum_{m=-l}^l |a_{lm}|^2.
+  \hat C_l = \frac{1}{2l+1} \sum_{m=-l}^l |a_{lm}|^2.
 \end{equation}
 
+Can we write down $M_{ll'} = \mathrm{Cov}( \hat C_l, \hat C_{l'})$ in terms of quantities we know?
 For $m>0$, we can express the magnitude of the coefficients in terms of the zero-mean, unit-variance gaussian deviates which are labeled, e.g.\ $Z_{r,m}$.
 \begin{equation}
   |a_{l|m|}|^2 = \frac{C_l}{2}\, (Z_{r,m}^2 + Z_{i,m}^2) 
@@ -616,25 +618,24 @@ Considering just a single $l$ and gathering the positive and negative $m$ deviat
 \end{equation}
 we cancel the 2, pull the $C_l$ out of the sum, and relabel the identically-distributed gaussian deviates to obtain, 
 \begin{equation}
- \frac{1}{2l+1} \sum_{m} |a_{lm}|^2 = \frac{C_l}{2l+1} \sum_{j=1}^{2l+1} Z_j^2.
+\hat C_l = \frac{1}{2l+1} \sum_{m} |a_{lm}|^2 = \frac{C_l}{2l+1} \sum_{j=1}^{2l+1} Z_j^2.
 \end{equation}
-That shows that $\bar C_l$ is proportional to a $\chi^2$-distributed random variable with $2l+1$ degrees of freedom.
+That shows that $(2l+1)\hat C_l/C_l$ is a $\chi^2$-distributed random variable with $2l+1$ degrees of freedom (compare Equation \ref{eqn:sum_of_gaussians}).\footnote{This is also a version of the Gamma distribution and the univariate Wishart distribution.}
 
-Using this expression, we can compute the variance of the power spectrum estimator:
+Using this expression, we can compute the variance of the power spectrum estimator (using Equation \ref{eqn:variance_diff_squares}):
 \begin{equation}
-  \mathrm{Var}(\bar C_l) = \left\langle ( \bar C_l -\langle \bar C_l \rangle )^2 \right\rangle
+  \mathrm{Var}(\hat C_l) = \left\langle ( \hat C_l -\langle \hat C_l \rangle )^2 \right\rangle = \left\langle \hat C_l^2 \right\rangle - C_l^2
 \end{equation}
-Since the estimator is unbiased, the ensemble average of the estimator is the theory, $\langle \bar C_l \rangle = C_l$.  We can expand the square and apply the ensemble average again.
-\begin{eqnarray}
-  \mathrm{Var}(\bar C_l) &=& \left\langle \bar C_l^2 - 2 \bar C_l C_l + C_l^2 \right\rangle \\ \nonumber
-  & = & \left\langle \bar C_l^2 \right\rangle - 2\left\langle \bar C_l \right\rangle C_l + \left\langle C_l^2 \right\rangle \\ \nonumber
-  &=& \left\langle \bar C_l^2 \right\rangle - 2 C_l^2 + C_l^2 \\ \nonumber
-  &=&  \left\langle \bar C_l^2 \right\rangle - C_l^2
-\end{eqnarray}
-
+%Since the estimator is unbiased, the ensemble average of the estimator is the theory, $\langle \hat C_l \rangle = C_l$.  We can expand the square and apply the ensemble average again.
+%\begin{eqnarray}
+%  \mathrm{Var}(\hat C_l) &=& \left\langle \hat C_l^2 - 2 \hat C_l C_l + C_l^2 \right\rangle \\ \nonumber
+%  & = & \left\langle \hat C_l^2 \right\rangle - 2\left\langle \hat C_l \right\rangle C_l + \left\langle C_l^2 \right\rangle \\ \nonumber
+%  &=& \left\langle \hat C_l^2 \right\rangle - 2 C_l^2 + C_l^2 \\ \nonumber
+%  &=&  \left\langle \hat C_l^2 \right\rangle - C_l^2
+%\end{eqnarray}
 In the estimator squared, pulling the non-random variables out of the average, we find
 \begin{equation}
- \left\langle \bar C_l^2 \right\rangle =  \frac{C_l^2}{(2l+1)^2} \left\langle \left( \sum_{j=1}^{2l+1} Z_j^2 \right)^2 \right\rangle, \label{eqn:average_pCl_sq}
+ \left\langle \hat C_l^2 \right\rangle =  \frac{C_l^2}{(2l+1)^2} \left\langle \left( \sum_{j=1}^{2l+1} Z_j^2 \right)^2 \right\rangle, \label{eqn:average_pCl_sq}
 \end{equation}
 while we can write the sum squared as a double sum:
 \begin{equation}
@@ -643,7 +644,7 @@ while we can write the sum squared as a double sum:
 
 For a Gaussian distribution, the central moments are
 \begin{equation}
-  \langle X - \mu \rangle = \left\{
+  \langle (X - \mu)^p \rangle = \left\{
   \begin{array}{ll}
     0, & \mbox{$p$ odd}; \\
     \sigma^p (p-1)!!, & \mbox{$p$ even},
@@ -665,35 +666,48 @@ It is thus important if $j=j'$ or $j \neq j'$, as the variables are independent 
 \begin{equation}
 \sum_{jj'}  Z_j^2 Z_{j'}^2 = \sum_j Z_j^4 + \sum_j \sum_{j' \neq j} Z_j^2 Z_{j'}^2
 \end{equation}
-Taking the ensemble average
+Taking the ensemble average, we have
 \begin{equation}
-  \sum_j  \langle Z_j^4 \rangle + \sum_j \sum_{j' \neq j} \langle Z_j^2\rangle \langle Z_{j'}^2 \rangle = \sum_j 3 + \sum_j \sum_{j' \neq j} 1 \cdot 1
+  \sum_j  \langle Z_j^4 \rangle + \sum_j \sum_{j' \neq j} \langle Z_j^2\rangle \langle Z_{j'}^2 \rangle = \sum_j 3 + \sum_j \sum_{j' \neq j} 1 \cdot 1,
  \end{equation}
-where we took advantage of their independence to note $\langle Z_j^2 Z_{j'}^2 \rangle=\langle Z_j^2\rangle \langle Z_{j'}^2 \rangle$.  Now we just need to count up the number of terms in each constant sum.  We find it is
+where we took advantage of statistical independence to note $\langle Z_j^2 Z_{j'}^2 \rangle=\langle Z_j^2\rangle \langle Z_{j'}^2 \rangle$.  Now we just need to count up the number of terms in each constant sum.  We find it is
 \begin{equation}
  (2l+1)\cdot 3 + (2l+1)(2l) \cdot 1 = (2l + 1)(2l+3)
 \end{equation}
 
 Substituting that all the way back to Equation (\ref{eqn:average_pCl_sq}), we find 
 \begin{equation}
-\left\langle \bar C_l^2 \right\rangle = \frac{(2l+3) C_l^2}{2l+1}
+\left\langle \hat C_l^2 \right\rangle = \frac{(2l+3) C_l^2}{2l+1}
 \end{equation}
 so the variance is
 \begin{equation}
-\mathrm{Var}(\bar C_l) = \left\langle \bar C_l^2 \right\rangle - C_l^2 = \frac{2l+3}{2l+1} C_l^2 - \frac{2l+1}{2l+1} C_l^2 = \frac{2}{2l+1} C_l^2.
+M_{ll} = \mathrm{Var}(\hat C_l) = \left\langle \hat C_l^2 \right\rangle - C_l^2 = \frac{2l+3}{2l+1} C_l^2 - \frac{2l+1}{2l+1} C_l^2 = \frac{2}{2l+1} C_l^2. \label{eqn:Cl_variance}
 \end{equation}
-We can consider this as that a single mode contributes $2 C_l^2$ to the variance, but when we average over the $2l+1$ modes, we reduce the variance by that factor.   If the harmonics have contributions from uncorrelated signal and noise then the variance replaces the signal-only power spectrum with the spectrum of signal plus beam-adjusted noise.
+We can consider this as that a single mode contributes $2 C_l^2$ to the variance, but when we average over the $2l+1$ modes, we reduce the variance by that factor.  Because all the harmonics are independent, there is no correlation between different $l$ multipoles.  Thus the covariance of the estimators is diagonal,
 \begin{equation}
-\mathrm{Var}(\bar C_l) =  \frac{2}{2l+1} (C_l + b_l^{-2} N_l)^2
+  M_{ll'} = M_{ll} \delta_{ll'}.
 \end{equation}
 
-This variance is exact for the full-sky case, but an important and useful approximation for partial sky coverage argues that the main effect of the reduced area is having fewer modes to average over.  This is known as the Knox formula\index{Knox formula} and says that for a bandpower b $b$ containing that averages over a width of $\Delta l$ multipoles around $l$, the variance is
+
+
+If the harmonics have contributions from signal and noise then the variance replaces the signal-only power spectrum with the spectrum of signal plus beam-adjusted noise.
+\begin{equation}
+ \mathrm{Var}(\hat C_l) =  \frac{2}{2l+1} (C_l + b_l^{-2} N_l)^2
+\end{equation}
+
+This variance is exact for the full-sky case, and is a function of the input power.
+
+The partial-sky coverage covariance, which we might denote as $\tilde M_{ll'}$ for pseudo-$C_l$ estimators or $\mathcal{M}_{bb'}$ for band powers, need not be diagonal.  The covariance matrix can be computed exactly from the mode-coupling matrix, but the cost is impractical at high multipoles $\mathcal{O}(l_\textrm{max}^6)$.  There are, however, $\mathcal{O}(l_\textrm{max}^3)$ approximations, accurate at small scales, that are available in public codes \citep{2019JCAP...11..043G}.
+
+For the diagonal of the partial sky covariance, a simple, important, and useful approximation for argues that the main effect of the reduced area is having fewer modes to average over.  This is known as the Knox formula\index{Knox formula} and says that for a bandpower b $b$ containing that averages over a width of $\Delta l$ multipoles around $l$, the variance is
 \begin{equation}
 \mathrm{Var}(\mathcal{C}^{obs}_b) \approx  \frac{2}{(2l+1)f_\textrm{sky} \Delta l} (C_l + b_l^{-2} N_l)^2
 \end{equation}
 and while it does not account for mode coupling, it is an excellent way to get a ballpark estimate for the variance of the power spectrum measurement
 
-While the Knox formula gives a good enough estimate for many purposes, for precision work we often need something more precise.    We can improve on that estimate by constructing a band-power covariance matrix out of carefully selected noise-split power spectra.  This has much more complicated accounting but it fairly computationally efficient.  Finally, we can make a synthetic Monte Carlo realization of the signal and noise process, and repeatedly execute the band power estimation.  This captures the covariance between bands but can be somewhat costly to get a precision measurement.
+%While the Knox formula gives a good enough estimate for many purposes, for precision work we often need something more precise.
+%We can improve on that estimate by
+Another strategy is to construct a band-power covariance matrix out of carefully selected noise-split power spectra.  This has much more complicated accounting but it fairly computationally efficient.  Finally, we can make a synthetic Monte Carlo realization of the signal and noise process, and repeatedly execute the band power estimation.  This captures the covariance between bands but can be somewhat costly to get a precision measurement.
 
 
 \exercises

@@ -47,8 +47,14 @@ The variance\index{variance} of the distribution is the second central moment, d
 \begin{equation}
   \sigma^2 = \left\langle (x - \mu)^2 \right\rangle = \left\langle (x - \langle x \rangle)^2 \right\rangle =  \int dx\,  (x-\mu)^2  p(x) 
 \end{equation}
-The standard deviation\index{standard deviation} is simply the square root of the variance.  A Gaussian distribution is totally described by the mean and variance, and the higher moments can be expressed in terms of them.  The variance for the Poisson distribution has the same value as its mean $\mu$.  General non-Gaussian probability distributions may have information beyond what is in the mean and variance.   The third central moment measures the skewness, how asymmetric the distribution is around the mean.  The fourth central moment, kurtosis, measures how much of a peak or plateau the distrubution has.\footnote{Formal definitions of skewness and kurtosis are normalized by the standard deviation.}  
+The standard deviation\index{standard deviation} is simply the square root of the variance.  As we see in the exercises, another expression for the variance is
+\begin{equation}
+  \sigma^2 = \left\langle x^2\right\rangle - \mu^2. \label{eqn:variance_diff_squares}
+\end{equation}
+A Gaussian distribution is totally described by the mean and variance, and the higher moments can be expressed in terms of them.  The variance for the Poisson distribution has the same value as its mean $\mu$.  General non-Gaussian probability distributions may have information beyond what is in the mean and variance.   The third central moment measures the skewness, how asymmetric the distribution is around the mean.  The fourth central moment, kurtosis, measures how much of a peak or plateau the distrubution has.\footnote{Formal definitions of skewness and kurtosis are normalized by the standard deviation.}  
 
+
+  
 Functions of random variables are also random variables. For example, if $Y=f(X)$ is a one-to-one function in the interval, then a certain event $ X \in [a, b]$ is the same as $Y \in [f(a),f(b)]$. Thus
 \begin{equation}
   \int_{f(a)}^{f(b)} dy \ p_Y(y) = \int_{a}^{b} dx \ p_X(x)
@@ -177,7 +183,11 @@ Minimizing $\chi^2$ is equivalent to maximizing the probability function that da
 \end{equation}
 Because the Gaussian distribution is ubiquitous, this assumption is often justified.  This is the first example of a \textit{maximum likelihood} method.  We will talk much more about likelihoods when we discuss Bayesian statistics in the context of cosmological parameters in Chapter \ref{ch:likelihoods_cosmology}.
 
-Suppose that we have fortunately reproduced the true signal with our model and our probability is Gaussian.  Then the $\chi^2$ statistic is simply the sum of $n_i^2/\sigma_i^2$, or the sum of a $k$ number of unit-variance Gaussian random variables.  In that case, $\chi^2$ as a random variable is drawn from the $\chi^2$-distribution with $k$ degrees of freedom.  The probability distribution function is 
+Suppose that we have fortunately reproduced the true signal with our model and our probability is Gaussian.  Then the $\chi^2$ statistic is simply the sum of $n_i^2/\sigma_i^2$, or the sum of a $k$ number of unit-variance Gaussian random variables.
+\begin{equation}
+  \chi^2 = \sum_{i=1}^k Z_i.  \label{eqn:sum_of_gaussians}
+\end{equation}
+In that case, $\chi^2$ as a random variable is drawn from the $\chi^2$-distribution with $k$ degrees of freedom.  The probability distribution function is 
 \begin{equation}
   p(x = \chi^2, k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{(k/2)-1}\exp(-x/2).
 \end{equation}
@@ -212,6 +222,11 @@ We will discuss two elementary ways to do that here, and then discuss several mo
 \begin{enumerate}
 
 \item Suppose $X$ is a random variable with probability distribution $p_X(x)$, mean $\mu_x$, and variance $\sigma_x^2$.  We make a linear transformation so that $Y = a X + b$.  What are the mean and variance of $Y$?
+
+\item From the definition of variance, derive the following relation.
+  \begin{equation}
+    \sigma^2 = \left\langle x^2\right\rangle - \mu^2
+  \end{equation}
   
 \item Show that for a data set $d_i = s + n_i$ with noise that has standard deviation $\sigma_i$, that the weighted-average estimate
   $$
