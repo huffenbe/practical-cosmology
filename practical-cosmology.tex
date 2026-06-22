@@ -11,6 +11,14 @@
 %\tagpdfsetup{activate, paratagging=false}%, paratagging=true, interword=true} 
 
 %\includeonly{chapters/cosmological_parameters.tex}
+\includeonly{
+%chapters/data_statistics,
+%chapters/CMB_likelihood.tex,
+%chapters/correlation_functions_power_spectra.tex,
+%chapters/CMB.tex,
+%chapters/CMB_mapmaking.tex,
+%chapters/CMB_polarization.tex,
+chapters/CMB_likelihood.tex}
 
 %%%%%
 % Redefine section to get some headers
@@ -63,7 +71,9 @@
 \setlength{\parskip}{1 ex}
 %\setlength{\parindent}{0 ex}
  
- 
+\usepackage{amsmath}
+%\usepackage{bm}
+\DeclareMathOperator{\Tr}{Tr}
 
 \hypersetup{
     pdftitle={Practical Cosmology},
@@ -135,6 +145,7 @@
 \include{chapters/CMB.tex}
 \include{chapters/CMB_mapmaking.tex}
 \include{chapters/CMB_polarization.tex}
+\include{chapters/CMB_likelihood.tex}
 \include{chapters/galaxy_correlations.tex}
 
 \part{Many Messengers}
