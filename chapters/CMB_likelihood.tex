@@ -1,0 +1,339 @@
+\chapter{CMB likelihoods and parameters}
+
+You have to test the likelihood to make sure it delivers appropriate results for your experiment.
+
+
+\section{Single field likelihood}
+
+Exact likelihood
+
+harmonic based
+
+full pixel-based likelihood
+
+\subsection{Approximations}
+
+
+
+\section{Multi-field likelihood}
+
+\begin{equation}
+  \hat C^{AB}_l = \frac{1}{2l+1} \sum_m a^A_{lm} a^{B*}_{lm} 
+\end{equation}
+
+Column vector $n$ entries
+\begin{equation}
+  \mathbf{a}_{lm} = ( a^A_{lm}, a^B_{lm}, a^C_{lm}, \dots   )^\top
+\end{equation}
+
+Real, symmetric $n\times n $ covariance matrix
+\begin{equation}
+  \mathbf{C}_l = \left\langle \mathbf{a}_{lm} \mathbf{a}_{lm}^\dag \right\rangle
+  = \left\langle \left(
+  \begin{array}{ccc}
+     a^A_{lm} a^{A*}_{lm} & a^A_{lm} a^{B*}_{lm} & \dots \\
+     a^B_{lm} a^{A*}_{lm} & a^B_{lm} a^{B*}_{lm} &  \\
+     \vdots &  & \ddots
+  \end{array}
+  \right)
+  \right\rangle
+  \end{equation}
+
+
+Estimator
+\begin{equation}
+  \hat \mathbf{C}_l =  \frac{1}{2l+1} \sum_m \mathbf{a}_{lm} \mathbf{a}^{\dag}_{lm} 
+\end{equation}
+is also $n\times n$.  Because of the symmetry $a_{l(-m)} = a_{lm}^*$, the sum over the positive and negative $m$ values cancels all the imaginary parts, and leaves the estimator as a real, symmetry matrix as well. 
+
+For a Gaussian random field, the random variable is $\mathbf{a}_{lm}$, and we have
+\begin{equation}
+  P(\mathbf{a}_{lm} | \mathbf{C}_l) = \frac{1}{2\pi |\mathbf{C}_l|} \exp\left(-\frac{1}{2}   \mathbf{a}^{\dag}_{lm}  \mathbf{C}^{-1}_l \mathbf{a}_{lm}  \right)
+\end{equation}
+For the whole set of $m$ values the total probability is
+\begin{equation}
+  P(\{ \mathbf{a}_{lm}\} | \mathbf{C}_l) = \prod_{-l \leq m \leq l}   P( \mathbf{a}_{lm} | \mathbf{C}_l)
+\end{equation}
+but it is easier to write the log probability
+\begin{equation}
+   -2 \log P(\{ \mathbf{a}_{lm}\} | \mathbf{C}_l) = \sum_{m=-l}^l \left(  \mathbf{a}^{\dag}_{lm}  \mathbf{C}^{-1}_l \mathbf{a}_{lm}  + \log|\mathbf{C}_l|   \right) + \mbox{const.}
+\end{equation}
+We are going to make a set of transformations to this important, exact, full-sky likelihood function.
+
+Note that the $1 \times 1$ results of the matrix multiplications can be rewritten as a sum of traces, then we can use the properties of the trace to reorder the matrices.  Noting that the sum of a trace is the trace of a sum, we find
+\begin{eqnarray}
+  \sum_m \mathbf{a}^{\dag}_{lm} \mathbf{C}^{-1}_l \mathbf{a}_{lm} 
+ &=& \sum_m \Tr\left( \mathbf{a}^{\dag}_{lm} \mathbf{C}^{-1}_l \mathbf{a}_{lm} \right) \\ \nonumber
+&=&  \sum_m \Tr\left(\mathbf{C}^{-1}_l \mathbf{a}_{lm} \mathbf{a}^{\dag}_{lm}  \right)  \\ \nonumber
+ &=& \Tr\left(\mathbf{C}^{-1}_l  \sum_m \mathbf{a}_{lm} \mathbf{a}^{\dag}_{lm}  \right) \\ \nonumber
+ &=& (2l+1) \Tr\left(\mathbf{C}^{-1}_l \hat \mathbf{C}_l  \right) = (2l+1) \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) \\ \nonumber
+\end{eqnarray}
+That means the probability is 
+\begin{equation}
+   -2 \log P(\{ \mathbf{a}_{lm}\} | \mathbf{C}_l) = \sum_m (2l+1)\left( \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right)  + \log|\mathbf{C}_l|  \right) + \mbox{const.}
+\end{equation}
+Once again, the cross spectrum estimator is the sufficient statistic to describe the likelihood.  All sets of $\mathbf{a}_{lm}$ coefficients that have the same $\hat \mathbf{C}_l$ have the same likelihood.
+
+\begin{equation}
+  P( \hat \mathbf{C}_l |  \mathbf{C}_l ) = \int d\{\mathbf{a}_{lm}\} P( \hat \mathbf{C}_l | \{\mathbf{a}_{lm}\}) P(\{ \mathbf{a}_{lm}\} | \mathbf{C}_l)  
+\end{equation}
+but since $P(\{ \mathbf{a}_{lm}\} | \mathbf{C}_l)$ doesn't depend on the $\{ \mathbf{a}_{lm}\}$, just  $\hat \mathbf{C}_l$, we can pull it out of the integral:
+\begin{eqnarray}
+  P( \hat \mathbf{C}_l |  \mathbf{C}_l ) &=& \frac{1}{2\pi |\mathbf{C}_l|^{2l+1}}
+  \exp \left[ (2l+1) \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) \right] \times \\ \nonumber
+  & & \qquad \qquad \int d\{\mathbf{a}_{lm}\} \ \delta\left(\hat \mathbf{C}_l -  \frac{1}{2l+1} \sum_m \mathbf{a}_{lm} \mathbf{a}^{\dag}_{lm} \right).\  %P(\{ \mathbf{a}_{lm}\} | \mathbf{C}_l)
+\end{eqnarray}
+
+The Jacobian for the transformation is not very easy, but is a \textcolor{purple}{standard result in statistics textbooks like \citet{} ???}
+\begin{equation}
+\int  d\{\mathbf{a}_{lm}\} \delta\left(\hat \mathbf{C}_l -  \frac{1}{2l+1} \sum_m \mathbf{a}_{lm} \mathbf{a}^{\dag}_{lm} \right) \propto  |\hat \mathbf{C}_l|^{(2l-n)/2} 
+\end{equation}
+
+So
+\begin{equation}
+  P( \hat \mathbf{C}_l |  \mathbf{C}_l ) \propto \frac{|\hat \mathbf{C}_l|^{(2l-n)/2} }{  | \mathbf{C}_l |^{(2l+1)/2}}\exp \left[- (2l+1) \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right)/2 \right] \label{eqn:wishart}
+\end{equation}  %  Normalization  (2^n (2l+1))^{(2l+1)/2}
+As a function of estimator $\hat \mathbf{C}_l$, this is a Wishart distribution with $2l+1$ degrees of freedom and scale matrix $\mathbf{C}_l$, a distribution generating random symmetric matrices (in this case size $n\times n$), $(2l+1) \hat \mathbf{C}_l \sim W_n(\mathbf{C}_l,2l+1)$.  The mean equals the theory power spectra, $\langle \hat \mathbf{C}_l \rangle = \mathbf{C}_l$, but the most probable value is $ \hat \mathbf{C}_l  = (2l-n)/(2l-1) \mathbf{C}_l$.
+
+
+Equation (\ref{eqn:wishart}), treated as a likelihood function of the theory $\mathbf{C}_l$, and treated with a flat prior, is an inverse Wishart distribution,  $\mathbf{C}_l \sim W_n^{-1}((2l+1) \hat \mathbf{C}_l,2l+n)$ with $2l-n$ degrees of freedom.  The difference in the number of degrees of freedom is embedded in the Jacobian and reflects the fact that the harmonics carry $2l+1$ pieces of information but the matrix $C_l$ only has $n(n+1)/2$ pieces of information.  We will have more to say about the inverse Wishart distribution when we get to Gibbs sampling in Section \ref{sec:gibbs}.  The most likely value is $ \mathbf{C}_l  = \hat \mathbf{C}_l $, but the mean value is $\langle \mathbf{C}_l \rangle = (2l+1)/(2l - 2n - 1) \hat \mathbf{C}_l$.
+
+The covariance of a pair of full-sky estimators (entries from matrix $\hat\mathbf{C}_l$) is
+\begin{equation}
+  \textrm{Cov}( \hat C^{AB}_l,  \hat C^{DE}_l) = \frac{1}{2l+1} \left(  C^{AD}_l  C^{BE}_l +  C^{AE}_l  C^{BD}_l \right) \label{eqn:Cl_nfields_cov}
+\end{equation}
+(compare Equation \ref{eqn:Cl_variance}).  Note estimators for spectra are on the left (they are the statistic we and computing the variance of) and theory spectra are on the right (they determine the covariance's value).  Since  $\hat\mathbf{C}_l$ is symmetric, is has only $N_\textrm{spec} = n(n+1)/2$ unique entries.  We can take the combinations of those entries and make a $N_\textrm{spec} \times N_\textrm{spec}$-sized covariance matrix, with entries given by Equation \ref{eqn:Cl_nfields_cov}.
+
+We can make a packed vector operation vecp() to transform the matrices into $n(n+1)/2$-length vectors (sometimes called the half-vector operation vech()), 
+\begin{equation}
+ \hat{\mathbfsf{X}}_l = \textrm{vecp}(\hat \mathbf{C}_l)
+\end{equation}
+so that in the polarization case we might have $N_\textrm{spec} = 3 \cdot (3+1)/2 = 6$ entries in a column vector, capturing just the non-redudant triangle: 
+\begin{equation}
+  \hat{\mathbfsf{X}}_l
+  = \textrm{vecp} \left(
+\begin{array}{ccc}
+  \hat C_l^{TT} & \hat C_l^{TE} & \hat C_l^{TB} \\
+  \hat C_l^{TE} & \hat C_l^{EE} & \hat C_l^{EB} \\
+   \hat C_l^{TB}&  \hat C_l^{EB} & \hat C_l^{BB} 
+\end{array}
+\right)
+ = ( \hat C_l^{TT},\hat C_l^{EE},\hat C_l^{BB},\hat C_l^{TE},\hat C_l^{EB},\hat C_l^{TB})^\top
+\end{equation}
+The order of the entries doesn't matter as long as you are consistent.  You can also construct a vector for the theory power spectra  ${\mathbfsf{X}}_l = \textrm{vecp}(\mathbf{C}_l)$ (with no hats) or any other symmetric $n \times n$ matrix.
+
+The covariance of the power spectrum estimator is
+\begin{equation}
+  \mathbfsf{M}_l = \left\langle (\hat{\mathbfsf{X}}_l - \langle \hat{\mathbfsf{X}}_l \rangle)(\hat{\mathbfsf{X}}_l - \langle \hat{\mathbfsf{X}}_l \rangle)^\top \right\rangle,
+\end{equation}
+or a symmetric matrix with entries
+\begin{equation}
+  [\mathbfsf{M}_l]_{ii'} = \textrm{Cov}(\hat{\mathbfsf{X}}_{l,i},\hat{\mathbfsf{X}}_{l,i'}) 
+\end{equation}
+where, for example, you could have $i = TE$ or any of the other pairs.  
+There's nothing magic about matrix  $\mathbfsf{M}_l$; it just an accounting tool.  It is the covariance of the packed estimator $\hat{\mathbfsf{X}}_l = \textrm{vecp}(\hat\mathbf{C}_l)$ and its entries are from Equation (\ref{eqn:Cl_nfields_cov}), built from paired combinations of $C_l^{AB}$.  In that sense it is a function of $\mathbf{C}_l$, as $\mathbfsf{M}(\mathbfsf{X}_l)$ or $\mathbfsf{M}(\mathbf{C}_l)$.
+
+A useful identity of this $\mathbfsf{M}_l$ matrix relies on this structure of its construction out of $\mathbf{C}_l$ matrices.  If we vectorize any symmetric matrices,
+\begin{equation}
+  \mathbfsf{Y}_1 = \textrm{vecp}(\mathbf{G_1}) \qquad \mbox{and} \qquad  \mathbfsf{Y}_2 = \textrm{vecp}(\mathbf{G_2}),
+\end{equation}
+then this scalar product is (see Section \ref{app:like_cov_ident}),
+\begin{equation}
+  \mathbfsf{Y}_1^\top \mathbfsf{M}_l^{-1} \mathbfsf{Y}_2 = \frac{2l+1}{2} \Tr (\mathbf{G}_1 \mathbf{C}^{-1}_l\mathbf{G}_1 \mathbf{C}^{-1}_l). \label{eqn:magic_vecp_M_identity}
+\end{equation}
+A particular example of this is
+\begin{equation}
+  \mathbfsf{X}_l^\top \mathbfsf{M}_l^{-1} \mathbfsf{X}_l = \frac{2l+1}{2} \Tr (\mathbf{C}_l \mathbf{C}^{-1}_l\mathbf{C}_l \mathbf{C}^{-1}_l) = \frac{2l+1}{2} \Tr \mathbf{I} = \frac{(2l+1)n}{2} 
+\end{equation}
+Both $\mathbfsf{M}$ and $\mathbfsf{X}$ are built from the theory $\mathbf{C}_l$, and in this combination the $\mathbf{C}_l$'s all cancel, leaving a constant no matter their values.
+
+So let's turn back to the likelihood for $\mathbf{C}_l$, from Equation (\ref{eqn:wishart}).  The log likelihood is 
+\begin{equation}
+  -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) = (2l+1)  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) + (2l+1) \log |\mathbf{C}_l| - (2l-n) \log |\hat \mathbf{C}_l| + \mbox{const.} \label{eqn:log_wishart_with_hat}
+\end{equation}
+We want to re-express this in terms of the packed $\mathbfsf{M}$ and $\mathbfsf{X}$ variables.  For the trace term, we can notice that
+\begin{equation}
+  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) =  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l  \mathbf{C}_l \mathbf{C}^{-1}_l\right) 
+\end{equation}
+puts it in the form of the identity, showing that
+\begin{equation}
+  (2l+1)   \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) = 2 \hat{\mathbfsf{X}}_l^\top  \mathbfsf{M}_l^{-1} \mathbfsf{X}_l.
+\end{equation}
+For the determinant terms, we can show the relationship between the $\mathbfsf{M}_l$ and its ingredient $\mathbf{C}_l$ (Section \ref{app:like_cov_ident}).
+\begin{equation}
+\log|\mathbfsf{M}_l| = (n+1) \log |\mathbf{C}_l| + n \log 2 - \frac{n(n+1)}{2} \log (2l+1)
+\end{equation}
+So in terms of the packed variables, the exact, full-sky likelihood is
+\begin{equation}
+   -2 \log \mathcal{L}( \hat{\mathbfsf{X}}_l |  \mathbfsf{X}_l ) = 2 \hat{\mathbfsf{X}}_l^\top  \mathbfsf{M}_l^{-1} \mathbfsf{X}_l + \frac{2l+1}{n+1} \log|\mathbfsf{M}_l|  - \frac{2l-n}{n+1} \log|\hat{\mathbfsf{M}}_l| + \mbox{const.}  
+\end{equation}
+The third term introduces and employs the symbol $\hat{\mathbfsf{M}}_l = \mathbfsf{M}(\mathbf{C}_l = \hat{\mathbf{C}}_l )$.  It is the approximation for the covariance matrix where we use the estimated power spectrum as a stand-in for the theory power spectrum, and is what is needed to represent the $\hat \mathbf{C}_l$ determinant term in the exact likelihood.  Of course, for a fixed data set and estimator, this term is constant with respect to $\mathbfsf{X}_l$ and can be lumped into the other constant.
+
+So what have we accomplished?  We have a mathematically exact likelihood for the case where we have an uncontaminated signal available over the full sphere.  Unfortunately, this is a situation we never find ourselves in.  This exact likelihood for the theory $\mathbf{C}_l$ is manifestly non-Gaussian.  At high multipoles, the full-sky likelihood is approximately gaussian, as we will see.  The Gaussian also serves as a useful approximation in other situtations.
+
+\subsection{Gaussian likelihood}
+At high multipoles $l$, we average down the sample variance over a large number of $m$ values, and the difference between the theory and the estimator gets small.  From Equation (\ref{eqn:Cl_nfields_cov}), we can see that
+%\begin{equation}
+%  \mathbf{E}_l = \mathbf{C}_l - \hat\mathbf{C}_l   
+%\end{equation}
+the fluctuation is a small quantity, scaling as $\mathcal{O}((2l+1)^{-1/2})$.
+
+For fixed $\hat\mathbf{C}_l$, we have the exact likelihood as a function of $\mathbf{C}_l$,
+\begin{equation}
+  -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) = (2l+1)  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) + (2l+1) \log |\mathbf{C}_l| + \mbox{const.}
+\end{equation}
+and we will make an expansion of this likelihood around its peak at $\mathbf{C}_l = \hat\mathbf{C}_l$.
+We define the small quantity
+\begin{equation}
+  \mathbf{E} =   \hat\mathbf{C}_l^{-1/2} (\mathbf{C}_l  -  \hat\mathbf{C}_l) \hat\mathbf{C}_l^{-1/2},
+\end{equation}
+so that we can write
+\begin{equation}
+   \mathbf{C}_l =  \hat\mathbf{C}_l  +  \hat\mathbf{C}_l^{1/2}\mathbf{E}_l \hat\mathbf{C}_l^{1/2} = \hat\mathbf{C}_l^{1/2} (\mathbf{I} + \mathbf{E})  \hat\mathbf{C}_l^{1/2}.
+\end{equation}
+Then keeping terms up to order $\mathcal{O}(\mathbf{E}^2)$, we find for the trace term that
+\begin{eqnarray}
+  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) &=& \Tr\left( \hat \mathbf{C}_l\hat\mathbf{C}_l^{-1/2} (\mathbf{I} + \mathbf{E})^{-1}  \hat\mathbf{C}_l^{-1/2} \right) \\ \nonumber
+  &=& \Tr\left( \hat\mathbf{C}_l^{-1/2} \hat \mathbf{C}_l\hat\mathbf{C}_l^{-1/2} (\mathbf{I} + \mathbf{E})^{-1}  \right) \\ \nonumber
+  &=& \Tr\left( (\mathbf{I} + \mathbf{E})^{-1}  \right) \\
+  &=& n - \Tr \mathbf{E} + \Tr \mathbf{E^2} + \dots,
+\end{eqnarray}
+having used the power series $ (\mathbf{I} + \mathbf{E})^{-1} = \mathbf{I} - \mathbf{E} + \mathbf{E}^2 + \dots $.
+
+To examine the log determinant term, we make use of the properties that $|\mathbf{AB}| = |\mathbf{A}||\mathbf{B}| = |\mathbf{BA}|$ and  $\log |\mathbf{A}| = \Tr(\mathbf{L})$ if $\mathbf{L} = \log(\mathbf{A})$ (which makes sense if you diagonalize $\mathbf{A}$).  So in our case, 
+\begin{eqnarray}
+  \log |\mathbf{C}_l| = \log \left|\hat\mathbf{C}_l^{1/2} (\mathbf{I} + \mathbf{E})  \hat\mathbf{C}_l^{1/2} \right|
+  &=& \log \left| \mathbf{I} + \mathbf{E}   \right| + \log |\hat\mathbf{C}_l| \\ \nonumber
+  &=& \Tr(\mathbf{E}) - \frac{1}{2} \Tr(\mathbf{E}^2) + \dots + \log |\hat\mathbf{C}_l|,
+\end{eqnarray}
+where we have used  $\log( \mathbf{I} + \mathbf{E}) = \mathbf{E} - \mathbf{E}^2/2 + \dots$, the power seriers for the matrix logarithm.  Note the last term, with the estimator, is constant in as a function of the theory $\mathbf{C}_l$.
+
+Substituting back into the likelihood and summing up, the linear $\Tr(\mathbf{E})$ terms cancel and we are left with
+\begin{equation}
+   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) = \frac{2l+1}{2} \Tr(\mathbf{E^2}) + (2+1) \mathcal{O}(\mathbf{E}^3) + \mbox{const.}
+\end{equation}
+Employing the definition of $\mathbf{E}$, we have
+\begin{eqnarray}
+ \frac{2l+1}{2} \Tr(\mathbf{EE}) &=& \frac{2l+1}{2}\Tr( (\mathbf{C}_l  -  \hat\mathbf{C}_l) \hat\mathbf{C}_l^{-1}  (\mathbf{C}_l  -  \hat\mathbf{C}_l) \hat\mathbf{C}_l^{-1}) \\ \nonumber
+&=&(\mathbfsf{X}_l -  \hat{\mathbfsf{X}}_l)^\top \hat{\mathbfsf{M}}^{-1} (\mathbfsf{X}_l - \hat{\mathbfsf{X}}_l)
+\end{eqnarray}
+and then using the identity again (Equation \ref{eqn:magic_vecp_M_identity}) we find 
+\begin{equation}
+-2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) \approx (\mathbfsf{X}_l -  \hat{\mathbfsf{X}}_l)^\top \hat{\mathbfsf{M}}^{-1} (\mathbfsf{X}_l - \hat{\mathbfsf{X}}_l) + \mbox{const.}
+\end{equation}
+
+
+\subsection{Hamimeche and Lewis likelihood}
+The likelihood approximation of \citet{2008PhRvD..77j3013H} is exact for the full sky and generalizes straightforwardly to the cut sky, and so is widely used.  The derivation is not so straightforward, but the main strategy is to manipulate the exact, full-sky likelihood so that it takes a quadratic form, thus making it look gaussian.
+Since we have freedom to add terms constant in $\mathbf{C}_l$, we can pull like a rabbit from a hat two constant terms in the likelihood.
+\begin{eqnarray}
+  -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) &=& (2l+1)  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) + (2l+1) \log |\mathbf{C}_l| \nonumber \\ 
+  &&  - (2l+1) \log |\hat\mathbf{C}_l| - (2l+1)n + \mbox{const.}
+\end{eqnarray}
+Note that this does not capture the full dependence on $\hat\mathbf{C}_l$ (compare Equation \ref{eqn:log_wishart_with_hat}), some of which remains in the ``+ const.'' term.  These constants are specifically chosen, using properties of determinants, to make the following expression convenient,
+\begin{equation}
+   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) =(2l+1) \left\{   \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) - \log |\hat\mathbf{C}_l\mathbf{C}^{-1}_l| -n \right\} + \mbox{const.},  \label{eqn:HL_start}
+\end{equation}
+so that at the peak of the likelihood,  where $\mathbf{C} = \hat \mathbf{C}_l$, the terms inside the braces sum to zero.  Then we split $\mathbf{C}^{-1}_l = \mathbf{C}^{-1/2}_l\mathbf{C}^{-1/2}_l$ and wrap the estimator in both the trace and determinant term to make their arguments symmetric
+\begin{equation}
+   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) =(2l+1) \left\{  \Tr\left( \mathbf{C}^{-1/2}_l \hat \mathbf{C}_l \mathbf{C}^{-1/2}_l \right) - \log | \mathbf{C}^{-1/2}_l\hat\mathbf{C}_l\mathbf{C}^{-1/2}_l| -n \right\} + \mbox{const.},
+\end{equation}
+The trace and the determinant depend only on the eigenvalues and their argument $\mathbf{C}^{-1/2}_l \hat \mathbf{C}_l \mathbf{C}^{-1/2}_l$ is a normal matrix, so we diagonalize
+\begin{equation}
+  \mathbf{C}^{-1/2}_l \hat \mathbf{C}_l \mathbf{C}^{-1/2}_l = \mathbf{U}_l \mathbf{D}_l\mathbf{U}^\dag_l
+\end{equation}
+with diagonal matrix $\mathbf{D}$ and unitary matrix $\mathbf{U}$.  Then we can just sum up over the $n$ fields for the trace.  The determinant is a product, so the log determinant is also a sum.
+\begin{equation}
+   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) =(2l+1) \sum_A \left\{ D_{l,AA} - \log  D_{l,AA} - 1 \right\} + \mbox{const.},
+\end{equation}
+We make this expression quadratic and start to make it amenable to our matrix identity (Equation \ref{eqn:magic_vecp_M_identity}) by writing 
+\begin{equation}
+  -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) =\frac{2l+1}{2} \Tr(\mathbf{g}_l\mathbf{g}_l)
+\end{equation}
+for some matrix $\mathbf{g}$, a compact packaging of the full-sky likelihood.  This works out if we define a scalar function
+\begin{equation}
+  g(x) = \textrm{sign}(x-1) \sqrt{2 (x- \log(x) -1)}
+\end{equation}
+which captures the behavior inside the braces and then make $\mathbf{g}$ the diagonal matrix,
+\begin{equation}
+  g_{l,AB} = g(D_{l,AA}) \delta_{AB}.
+\end{equation}
+(The sign() makes g(x) differentiable at $x=1$; without it the function has a kink.)  We have wrapped up all the behavior of the likelihood into this scalar function of the eigenvalues $\mathbf{C}^{-1/2}_l \hat \mathbf{C}_l \mathbf{C}^{-1/2}_l$.
+
+We next make a set of manipulations to the trace of $\mathbf{gg}$ to put it in the form of our matrix identity.  In doing some we will use a fiducial theory model for the power spectra $\mathbf{C}_{f,l}$ and another unitary matrix of our chosing $\mathbf{V}_l$.\footnote{\citet{2008PhRvD..77j3013H} continue to choose $\mathbf{V}=\mathbf{U}$, the matrix in the previous diagonalization.  That may be wise once we start making approximations but for now we have flexibility.}  As we have seen already, because unitary matrices have $\mathbf{VV}^\dag = \mathbf{V}^\dag \mathbf{V} = \mathbf{I}$, they can be inserted in pairs in and around the trace's argument with no effect.
+\begin{eqnarray}
+  \Tr(\mathbf{g}_l\mathbf{g}_l) &=& \Tr( \mathbf{V}\mathbf{g}_l \mathbf{V}^\dag \mathbf{V}\mathbf{g}_l \mathbf{V}^\dag) \\ \nonumber
+  &=& \Tr(\mathbf{C}^{-1/2}_{f,l}\mathbf{C}^{1/2}_{f,l} \mathbf{V}\mathbf{g}_l\mathbf{V}^\dag\mathbf{C}^{1/2}\mathbf{C}^{-1/2}_{f,l})^2 \\ \nonumber
+  &=& \Tr(\mathbf{C}^{-1/2}_{f,l} \mathbf{C}_{g,l} \mathbf{C}^{-1/2}_{f,l})^2 \\ \nonumber
+  &=& \Tr(\mathbf{C}^{-1/2}_{f,l} \mathbf{C}_{g,l} \mathbf{C}^{-1}_{f,l} \mathbf{C}_{g,l} \mathbf{C}^{-1/2}_{f,l}) \\ \nonumber
+  &=& \Tr( \mathbf{C}_{g,l} \mathbf{C}^{-1}_{f,l} \mathbf{C}_{g,l} \mathbf{C}^{-1}_{f,l}) \\ \nonumber
+\end{eqnarray}
+where we have introduced the ``gaussianized'' cross-spectra:
+\begin{equation}
+  \mathbf{C}_{g,l} = \mathbf{C}^{1/2}_{f,l} \mathbf{V}\mathbf{g}_l\mathbf{V}^\dag\mathbf{C}^{1/2}_{f,l}.
+\end{equation}
+Note that it doesn't matter what we choose for our fiducial model and unitary matrix here: through elaborate cancellation, we always return $\Tr(\mathbf{g}_l\mathbf{g}_l)$.  Now the trace matches the form of our magic identity.  Once we make a packed version of our gaussianized spectra $\mathbfsf{X}_{g,l} = \textrm{vecp}(\mathbf{C}_{g,l})$, we find
+\begin{eqnarray}
+  -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) &=&\frac{2l+1}{2} \Tr( \mathbf{C}_{g,l} \mathbf{C}^{-1}_{f,l} \mathbf{C}_{g,l} \mathbf{C}^{-1}_{f,l})+ \mbox{const.} \\ \nonumber
+  &=& \mathbfsf{X}_{g,l}^\top \mathbfsf{M}_{f,l}^{-1} \mathbfsf{X}_{g,l} + \mbox{const.},
+\end{eqnarray}
+which is in the form of a zero-mean gaussian with the fixed covariance based on the fiducial model.  Again, the particular fiducial model don't matter.  The variables $\mathbfsf{M}$ and $\mathbfsf{X}$ depend on the fiducal model $\mathbf{C}_{f,l}$ in complementary ways to always produce the exact full-sky likelihood.
+
+We have come a long way and have yet to make any approximation.  We have a gaussianized form for the likelihood for the full sky that is diagonal in multipole $l$.  The approximation in the HL likelihood approximation is to take the same form but now use the \textit{cut-sky} covariance from the fiducial model, which is no longer diagonal, so we need to treat the whole set of multipoles at once
+\begin{equation}
+ -2 \log \mathcal{L}(\{ \tilde{\mathbf{C}}_l\} | \{ \mathbf{C}_l \} ) \approx \tilde{\mathbfsf{X}}_{g}^\top \tilde{\mathbfsf{M}}_{f}^{-1} \tilde{\mathbfsf{X}}_{g} + \mbox{const.}
+\end{equation}
+This is tested by HL and found to work well, and it is likely important to have a use, as they did, a fiducial model close to the true model and the same unitary matrix, so that, as far as possible, $\mathbfsf{M}$ is similar in structure to $\mathbfsf{M}_f$ and $\mathbf{C}_{g,l}$ is similar to $\mathbf{C}^{-1/2}_l \hat \mathbf{C}_l \mathbf{C}^{-1/2}_l$.
+
+\subsection{Offset HL likelihood}
+
+\section{Multifrequency likelihood with foregrounds}
+
+
+cross-spectra likelihood
+
+construction of the covariance matrix via cross spectra
+
+multifrequency likelihood to include foreground contributions
+
+\section{Low-$l$ likelihood}
+
+
+\subsection{Gibbs sampling} \label{sec:gibbs}
+
+
+That kernel density estimator style likelihood based on the gibbs samples.
+
+
+\section{Parameter estimation}
+
+Cobaya frame work
+
+MCMC sampler in cobaya, fast and slow sampling
+% https://cobaya.readthedocs.io/en/latest/sampler_mcmc.html
+
+Slow parameters ($\omega_c, \omega_b, n_s, N_\textrm{eff}$)
+Fast parameters ($A_s, \tau$, nuisance, forground)
+Fast mapped ($\theta_\textrm{MC}$).  Note difference to $\theta_*$
+
+
+\exercises
+
+\begin{enumerate}
+\item Derive  Equation  (\ref{eqn:Cl_nfields_cov})
+
+\item Check that the term in $\{\}$ braces in Equation (\ref{eqn:HL_start}) indeed sum to zero at the peak of the likelihood.
+
+  
+\end{enumerate}
+    
+\begin{subappendices}
+
+\section{Supplemental: gaussian covariance identities}\label{app:like_cov_ident}
+For HL likelihood.
+
+$M^{-1}$ product to trace of $C_l$
+
+det M to det C
+
+\end{subappendices}
