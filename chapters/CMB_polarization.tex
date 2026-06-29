@@ -23,6 +23,31 @@ quickbeam, quickpol \citep{2017A&A...598A..25H}
 polarization component separation
 QU vs EB
 
+Full sky estimators for polarization and cross-estimators are
+\begin{eqnarray}
+  \hat C^{EE} &=& \frac{1}{2l+1} \sum_m E_{lm} E_{lm}^* \\ \nonumber
+  \hat C^{TE} &=& \frac{1}{2l+1} \sum_m T_{lm} E_{lm}^* \\ \nonumber
+  \hat C^{BB} &=& \frac{1}{2l+1} \sum_m B_{lm} B_{lm}^* \\ \nonumber
+  \hat C^{EB} &=& \frac{1}{2l+1} \sum_m E_{lm} B_{lm}^*
+\end{eqnarray}
+and so forth.
+
+For a single temperature and polarization dataset, the symmetric that makes the fields real valued, $a_{l(-m)}^X = (-1)^{m} a_{lm}^{X*}$ picks up negative and positive $m$ coefficients from the sum and ensures that, for example
+$\hat C_l^{T_1E_1} = \hat C_l^{E_1T_1}$ and $\hat C_l^{E_1B_1} = \hat C_l^{B_1E_1}$, and they are also real valued.  For two data sets in cross correlation,
+\begin{equation}
+  \hat C_l^{T_1E_2} = \hat C_l^{E_2T_1} \quad\mbox{and}\quad
+  \hat C_l^{E_1E_2} = \hat C_l^{E_2E_1} \quad\mbox{and}\quad
+  \hat C_l^{E_1B_2} = \hat C_l^{B_2E_1}, \mbox{etc.},
+\end{equation}
+and are also real and equal because of the symmetry.  On the other hand, although each is real, 
+\begin{equation}
+  \hat C_l^{T_1E_1} \neq \hat C_l^{T_1E_2} \neq \hat C_l^{E_1T_2} \quad\mbox{and}\quad
+  \hat C_l^{E_1B_1} \neq  \hat C_l^{E_1B_2} \neq \hat C_l^{B_1E_2},
+\end{equation}
+and so on, because those compute different estimates based on distinct fieldsThe measurement of e.g.\ $E_1$ is different than $E_2$ and can't be swapped for it.  They have with different noise realizations (and later potentially different masking).  All of these tend to get shorthanded as TE and ET or  EB and BE, causing some unnecessary confusion.  You need to be a little careful about what you are talking about.
+
+
+\section{Partial sky, purified and ambiguous modes}
 
 
 
