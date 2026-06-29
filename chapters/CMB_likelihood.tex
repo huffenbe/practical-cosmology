@@ -44,7 +44,7 @@ Estimator
 \begin{equation}
   \hat \mathbf{C}_l =  \frac{1}{2l+1} \sum_m \mathbf{a}_{lm} \mathbf{a}^{\dag}_{lm} 
 \end{equation}
-is also $n\times n$.  Because of the symmetry $a_{l(-m)} = a_{lm}^*$, the sum over the positive and negative $m$ values cancels all the imaginary parts, and leaves the estimator as a real, symmetry matrix as well. 
+is also $n\times n$.  Because of the symmetry $a_{l(-m)} = (-1)^m a_{lm}^*$, the sum over the positive and negative $m$ values cancels all the imaginary parts, and leaves the estimator as a real, symmetric matrix as well. 
 
 For a Gaussian random field, the random variable is $\mathbf{a}_{lm}$, and we have
 \begin{equation}
@@ -172,18 +172,22 @@ The third term introduces and employs the symbol $\hat{\mathbfsf{M}}_l = \mathbf
 So what have we accomplished?  We have a mathematically exact likelihood for the case where we have an uncontaminated signal available over the full sphere.  Unfortunately, this is a situation we never find ourselves in.  This exact likelihood for the theory $\mathbf{C}_l$ is manifestly non-Gaussian.  At high multipoles, the full-sky likelihood is approximately gaussian, as we will see.  The Gaussian also serves as a useful approximation in other situtations.
 
 \subsection{Gaussian likelihood}
-At high multipoles $l$, we average down the sample variance over a large number of $m$ values, and the difference between the theory and the estimator gets small.  From Equation (\ref{eqn:Cl_nfields_cov}), we can see that
-%\begin{equation}
-%  \mathbf{E}_l = \mathbf{C}_l - \hat\mathbf{C}_l   
-%\end{equation}
-the fluctuation is a small quantity, scaling as $\mathcal{O}((2l+1)^{-1/2})$.
+At high multipoles $l$, the power spectrum estimator averages down the sample variance over a large number of $m$ values, and the difference between the theory and the estimator gets small.  Because the estimator $\hat \mathbf{C}_l$ is the sum of many indentically distributed random variables, it is clear from the central limit theorem that  $P( \hat \mathbf{C}_l |  \mathbf{C}_l )$ \textit{as a function of the estimator} $\hat \mathbf{C}_l$ becomes Gaussian at high $l$.  At all $l$ values, $\mathbfsf{M}_l$ is the covariance of the estimator $\hat{\mathbfsf{X}}_l = \mathrm{vecp}(\hat \mathbf{C}_l)$ and the mean value is $\langle \hat{\mathbfsf{X}}_l \rangle = \mathbfsf{X}_l $, so we have the standard multivariate Gaussian form for $n(n+1)/2$ variables:
+\begin{equation}
+-2 \log  P( \hat \mathbf{C}_l |  \mathbf{C}_l ) \approx   (\hat{\mathbfsf{X}}_l - \mathbfsf{X}_l)^\top {\mathbfsf{M}}^{-1} (\hat{\mathbfsf{X}}_l - \mathbfsf{X}_l ) + \log |\mathbfsf{M}| + \frac{n(n+1)}{2} \log(2\pi), \label{eqn:gaussian_approx_for_hatCl}
+\end{equation}
+again as a function of $\hat \mathbf{C}_l$.  For the likelihood, we need the same probability but as a function of $\mathbf{C}_l$, and we can argue that we should just take $\mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) = P( \hat \mathbf{C}_l |  \mathbf{C}_l )$ with the approximation above.
 
+It is also instructive to derive the high-$l$ limit as a function of $\mathbf{C}_l$ directly from the exact likelihood\footnote{This follows the standard argument that an inverse Wishart approaches a Gaussian when it have a large number of degrees of freedom.} and note the differences that we find. 
 For fixed $\hat\mathbf{C}_l$, we have the exact likelihood as a function of $\mathbf{C}_l$,
 \begin{equation}
   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) = (2l+1)  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) + (2l+1) \log |\mathbf{C}_l| + \mbox{const.}
 \end{equation}
-and we will make an expansion of this likelihood around its peak at $\mathbf{C}_l = \hat\mathbf{C}_l$.
-We define the small quantity
+We will make an expansion of this likelihood around its peak at $\mathbf{C}_l = \hat\mathbf{C}_l$.  From Equation (\ref{eqn:Cl_nfields_cov}), we can see that
+%\begin{equation}
+%  \mathbf{E}_l = \mathbf{C}_l - \hat\mathbf{C}_l   
+%\end{equation}
+the fluctuation that causes the difference $\mathbf{C}_l  -  \hat\mathbf{C}_l$ is a small quantity at high-$l$, scaling as $\mathcal{O}((2l+1)^{-1/2})$.  Based on that, we define the small quantity
 \begin{equation}
   \mathbf{E} =   \hat\mathbf{C}_l^{-1/2} (\mathbf{C}_l  -  \hat\mathbf{C}_l) \hat\mathbf{C}_l^{-1/2},
 \end{equation}
@@ -210,7 +214,7 @@ where we have used  $\log( \mathbf{I} + \mathbf{E}) = \mathbf{E} - \mathbf{E}^2/
 
 Substituting back into the likelihood and summing up, the linear $\Tr(\mathbf{E})$ terms cancel and we are left with
 \begin{equation}
-   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) = \frac{2l+1}{2} \Tr(\mathbf{E^2}) + (2+1) \mathcal{O}(\mathbf{E}^3) + \mbox{const.}
+   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) = \frac{2l+1}{2} \Tr(\mathbf{E}^2) + (2+1) \mathcal{O}(\mathbf{E}^3) + \mbox{const.}
 \end{equation}
 Employing the definition of $\mathbf{E}$, we have
 \begin{eqnarray}
@@ -222,19 +226,25 @@ and then using the identity again (Equation \ref{eqn:magic_vecp_M_identity}) we 
 -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) \approx (\mathbfsf{X}_l -  \hat{\mathbfsf{X}}_l)^\top \hat{\mathbfsf{M}}^{-1} (\mathbfsf{X}_l - \hat{\mathbfsf{X}}_l) + \mbox{const.}
 \end{equation}
 
+The differences to Equation (\ref{eqn:gaussian_approx_for_hatCl}) are (1) the covariance is the constant $\hat{\mathbfsf{M}}$, not the variable ${\mathbfsf{M}}$ and (2) the lack of a log covariance term, which would be constant anyway because $\hat{\mathbfsf{M}}$ is constant.  Which is right?  Well neither is right, they are both approximations.  At very high $l$, the estimator is close to the theory, $\hat{\mathbfsf{M}} \approx {\mathbfsf{M}}$ which is approximately constant across the range with appreciable likelihood, and these approximations approach each other.  In general, Equation (\ref{eqn:gaussian_approx_for_hatCl}) appears to give better results, but both are poor approximations for the CMB at $l<30$.
+
+\textcolor{purple}{Should do the fiducial model since that is often used in practice...  HL has some analysis that shows it gives the right peaks for parameters but the wrong width.}
+
+
+
 
 \subsection{Hamimeche and Lewis likelihood}
-The likelihood approximation of \citet{2008PhRvD..77j3013H} is exact for the full sky and generalizes straightforwardly to the cut sky, and so is widely used.  The derivation is not so straightforward, but the main strategy is to manipulate the exact, full-sky likelihood so that it takes a quadratic form, thus making it look gaussian.
-Since we have freedom to add terms constant in $\mathbf{C}_l$, we can pull like a rabbit from a hat two constant terms in the likelihood.
+A likelihood approximation introduced \citet{2008PhRvD..77j3013H} is exact for the full sky and generalizes straightforwardly to the cut sky, and so is widely used.  The derivation is not so straightforward, but the main strategy is to manipulate the exact, full-sky likelihood so that it takes a quadratic form, thus making it look gaussian.
+Since we have freedom to add terms constant in $\mathbf{C}_l$, we can pull (like a rabbit from a hat) two constant terms into the likelihood.
 \begin{eqnarray}
   -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) &=& (2l+1)  \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) + (2l+1) \log |\mathbf{C}_l| \nonumber \\ 
   &&  - (2l+1) \log |\hat\mathbf{C}_l| - (2l+1)n + \mbox{const.}
 \end{eqnarray}
-Note that this does not capture the full dependence on $\hat\mathbf{C}_l$ (compare Equation \ref{eqn:log_wishart_with_hat}), some of which remains in the ``+ const.'' term.  These constants are specifically chosen, using properties of determinants, to make the following expression convenient,
+Note that this does not capture the full dependence\footnote{Compare the $2l-n$ coefficient in Equation \ref{eqn:log_wishart_with_hat}.} on $\hat\mathbf{C}_l$, some of which remains in the ``+ const.'' term, but that is fine because we are treating it as indeed fixed and constant.  These particular constants are specifically chosen to lead to the following convenient expression,
 \begin{equation}
    -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) =(2l+1) \left\{   \Tr\left( \hat \mathbf{C}_l \mathbf{C}^{-1}_l \right) - \log |\hat\mathbf{C}_l\mathbf{C}^{-1}_l| -n \right\} + \mbox{const.},  \label{eqn:HL_start}
 \end{equation}
-so that at the peak of the likelihood,  where $\mathbf{C} = \hat \mathbf{C}_l$, the terms inside the braces sum to zero.  Then we split $\mathbf{C}^{-1}_l = \mathbf{C}^{-1/2}_l\mathbf{C}^{-1/2}_l$ and wrap the estimator in both the trace and determinant term to make their arguments symmetric
+so that at the peak of the likelihood,  where $\mathbf{C}_l = \hat \mathbf{C}_l$, the terms inside the braces sum to zero.  Then we split $\mathbf{C}^{-1}_l = \mathbf{C}^{-1/2}_l\mathbf{C}^{-1/2}_l$ and wrap the estimator in both the trace and determinant term to make their arguments symmetric
 \begin{equation}
    -2 \log \mathcal{L}( \hat \mathbf{C}_l |  \mathbf{C}_l ) =(2l+1) \left\{  \Tr\left( \mathbf{C}^{-1/2}_l \hat \mathbf{C}_l \mathbf{C}^{-1/2}_l \right) - \log | \mathbf{C}^{-1/2}_l\hat\mathbf{C}_l\mathbf{C}^{-1/2}_l| -n \right\} + \mbox{const.},
 \end{equation}
