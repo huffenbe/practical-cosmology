@@ -92,10 +92,11 @@ for i in range(Nreal) :
  
 fsize = [12,9]
 
+
 figure(1,figsize=fsize)  
 subplot(211)
-plot(k,Pth, lw=3, label=r'Theory $P(k)$')
-plot(k,Prandom[0],'.', label=r'Random $|a(k_q)|^2 \Delta k /2\pi$')
+plot(k,Pth, lw=3, label=r'theory $P(k)$')
+plot(k,Prandom[0],'.', label=r'single random $|a(k_q)|^2 \Delta k /2\pi$')
 
 loglog()
 
@@ -138,7 +139,7 @@ legend(loc='upper right')
 
 ####
 subplot(312)
-plot(k,array(Wkwork['modecoupling'][:,0]).flatten(), label=r"$W_{q0} = |w_q|^2$")
+plot(k,array(Wkwork['modecoupling'][:,0]).flatten(), label=r"mode coupling $W_{q0} = |w_q|^2$")
 #plot(k,array(diag(Wkwork['modecoupling'])).flatten(), label=r"$W_{pp}$")
 #axhline(fsky,c='k',ls=":",label='mask fraction $f$')
 
@@ -149,20 +150,23 @@ legend()
 #####
 subplot(313)
 
-plot(k,average(wPrandom,axis=0)/Pth,'.',c='C2', label=r"Average pseudo-spectrum $ \tilde P(k)/P(k)$")
+plot(k,wPrandom[0]/Pth,'.',c='C2', label=r"single pseudo-spec. $ \tilde P(k)/P(k)$")
+
+plot(k,average(wPrandom,axis=0)/Pth,'.',c='C4', lw=2, label=r"mean pseudo-spec. $ \tilde P(k)/P(k)$")
 plot(k,WPth/Pth, label=r'mode-coupled theory $(WP)(k)/P(k)$')
 
-axhline(1.0,c='gray',ls="-",lw=0.5)#,label='unbiased')
+axhline(1.0,c='gray',ls=":",lw=0.5)#,label='unbiased')
 
-axhline(fsky,c='k',ls=":",label='mask fraction $f$')
+axhline(fsky,c='k',ls=":",label='unmasked fraction $f$')
 
-#ylim(ymin=1e-6)
+ylim(ymin=-0.1,ymax=3.7)
 #loglog()
 semilogx()
 xlabel(r"Wavenumber $k$ (Mpc$^{-1}$)")
 ylabel(r"pseudo-power ratio $\tilde P(k)/P(k)$")
 
-annotate('unbiased', xy=(0.3,1.03), color='gray',zorder=0)
+annotate('unbiased', xy=(1e-3,1.05), color='gray',zorder=0)
+#annotate('unmasked fraction', xy=(1e-3,fsky*1.05), color='gray',zorder=0)
 
 legend()
 
@@ -171,22 +175,28 @@ legend()
 savefig("mask_pseudoPk.pdf",bbox_inches='tight')
 
 
-
+#################################
 ##############
+###  Debiased spectra
 ##############
-##############
-
+###################################
 figure(3,figsize=[12,12])
 subplot(311)
 
-plot(k,Pth, lw=3, label=r'Theory $P(k)$')
+plot(k,Pth, lw=3, label=r'theory $P(k)$')
 
 errorbar(bins['ombins'],mean(pseudo_binned_Pk,axis=0),yerr=None,xerr=bins['xerr'],label=r'mean binned  $\tilde \mathcal{P}(k)$',ls='none',c='gray',lw=3,alpha=0.8)
+
 
 errorbar(bins['ombins'],mean(unbiased_binned_Pk,axis=0),
          yerr=None, #std(unbiased_binned_Pk),
          xerr=bins['xerr'],
-         label=r'mean debiased $\mathcal{P}^{obs}(k)$',ls='none',c='C2')
+         label=r'mean debiased $\mathcal{P}^{obs}(k)$',ls='none',c='C4', lw=2)
+
+errorbar(bins['ombins'],unbiased_binned_Pk[0],
+         yerr=None, #std(unbiased_binned_Pk),
+         xerr=bins['xerr'],
+         label=r'single debiased $\mathcal{P}^{obs}(k)$',ls='none',c='C2', lw=0.8)
 
 errorbar(bins['ombins'],-mean(unbiased_binned_Pk,axis=0),yerr=None,xerr=bins['xerr'],ls='none',c='C2',alpha=0.25)
 
@@ -196,19 +206,20 @@ legend()
 ylabel(r"Power")
 
 
-subplot(312)
+subplot(313)
 #plot(k,array(Wkwork['bpwf'][1,:]).flatten())
 #plot(k,array(Wkwork['bpwf'][5,:]).flatten())
-plot(k,array(Wkwork['bpwf'][4,:]).flatten(), label=r"$b=4$")
-plot(k,array(Wkwork['bpwf'][7,:]).flatten(), label=r"$b=7$")
-plot(k,array(Wkwork['bpwf'][10,:]).flatten(), label=r"$b=10$")
+plot(k,array(Wkwork['bpwf'][10,:]).flatten(), label=r"$b=10$",c='#888888', ls=":")
+plot(k,array(Wkwork['bpwf'][7,:]).flatten(), label=r"$b=7$",c='#555555',ls="--")
+plot(k,array(Wkwork['bpwf'][4,:]).flatten(), label=r"$b=4$",c='#000000')
 
 semilogx()
 legend()
 ylabel("Band-power window\n" r"function $\mathcal{W}_{bq}$")
+xlabel(r"Wavenumber $k$ (Mpc$^{-1}$)")
 
 
-subplot(313)
+subplot(312)
 errorbar(bins['ombins'],
          mean(pseudo_binned_Pk,axis=0)/
          array(bins['B']*matrix(Pth.reshape(-1,1))).flatten(),
@@ -233,7 +244,7 @@ errorbar(bins['ombins'],
          array(bins['B']*matrix(Pth.reshape(-1,1))).flatten(),
          yerr=None, # std(unbiased_binned_Pk,axis=0)/sqrt(Nreal),
          xerr=bins['xerr'],
-         ls='none', c='C2',lw=5, alpha=0.3,
+         ls='none', c='C4',lw=5, alpha=0.3,
          label=r'mean debiased $\mathcal{P}^{\rm obs}/(BP)$')
 
 errorbar(bins['ombins'],
@@ -241,8 +252,16 @@ errorbar(bins['ombins'],
          array(Wkwork['bpwf']*matrix(Pth.reshape(-1,1))).flatten(),
          yerr=None, # std(unbiased_binned_Pk,axis=0)/sqrt(Nreal),
          xerr=bins['xerr'],
-         ls='none', c='C2',
+         ls='none', c='C4',lw=2,
          label=r'mean debiased $\mathcal{P}^{\rm obs}/(\mathcal{W}P)$')
+
+errorbar(bins['ombins'],
+         unbiased_binned_Pk[0]/
+         array(Wkwork['bpwf']*matrix(Pth.reshape(-1,1))).flatten(),
+         yerr=None, # std(unbiased_binned_Pk,axis=0)/sqrt(Nreal),
+         xerr=bins['xerr'],
+         ls='none', c='C2', lw = 0.8,
+         label=r'single debiased $\mathcal{P}^{\rm obs}/(\mathcal{W}P)$')
 
 '''
 # Binned theory over band-pass windowed theory
@@ -255,15 +274,18 @@ errorbar(bins['ombins'],
          label=r'$BP/(\mathcal{W}P)$')
 '''
 
-axhline(1.0,c='gray',ls="-",lw=0.5)#,label='unbiased')
-annotate('unbiased', xy=(0.2,1.03), color='gray',zorder=0)
+axhline(1.0,c='gray',ls=":",lw=0.5)#,label='unbiased')
+annotate('unbiased', xy=(0.2,1.05), color='gray',zorder=0)
 
-xlabel(r"Wavenumber $k$ (Mpc$^{-1}$)")
-ylabel(r"binned power ratio")
 
-legend()
+legend(loc='upper right',ncols=2)
 
 semilogx()
+ylabel(r"binned power ratio")
 
 
 savefig('binned_Pk.pdf',bbox_inches='tight')
+
+
+
+

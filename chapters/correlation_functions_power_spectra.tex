@@ -1,16 +1,16 @@
 \chapter{Measurement of correlations} \label{ch:correlations}
 
-Although we live in a three-dimensional space, we will introduce concepts of harmonic analysis in one dimension for simplicity.  This has applications to measurements of the density along lines of sight, like absorption of Lyman-$\alpha$ in quasar spectra (see Figure \ref{fig:Lyaforest}), which is an important traces of the small-scale matter power spectrum.  We can then generalize, in the next chapters, to harmonics in two dimensions on the sky and in three dimensions filling all space.
+Although we live in a three-dimensional space, to simply things, we will introduce fluctuations and the analysis of their harmonics in one dimension.  This has applications to measurements of the density along lines of sight, like absorption of Lyman-$\alpha$ in quasar spectra (see Figure \ref{fig:Lyaforest}), which is an important tracer of the small-scale matter power spectrum.  We can then generalize, in the next chapters, to two dimensions (on the sky) for the Cosmic Microwave Background and to three dimensions (filling all space) for galaxy surveys and other tracers of the matter field.
 
-To be general, we will represent the density, absorption, or emission of whatever we consider as a function $a(x)$ of the comoving cartesian position $x$.  You may notice that we don't actually have access to the comoving cartesian position.  For example, in the Lyman-$\alpha$ forest, we only have the redshifts of the absorption.  This is  important, but we will ignore it for now.  In practice, we need to assume some fiducial cosmology to translate redshifts to radial comoving positions, then use the angles on the sky to translate into cartesian coordinates.  If our fiducial cosmology is wrong, we will induce distortions in our perception of the correlations.  We will deal with this more when we get to 3-d galaxy clustering.
+To be general, we will represent the physical property of whatever we consider (think density, but it could be absorption, emission, etc.) as a function $a(x)$ of the comoving cartesian position $x$.  You may notice that we don't actually have access to the comoving cartesian position.  For example, in the Lyman-$\alpha$ forest, we only have the redshifts of the absorption.  This is  important, but we will ignore it for now and revisit it when we address galaxy clustering.\footnote{In practice, we need to assume some fiducial cosmology to translate redshifts to radial comoving positions, then use the angles on the sky to translate into cartesian coordinates.  If our fiducial cosmology is wrong, we will induce distortions in our perception of the correlations.} %We will deal with this more when we get to 3-d galaxy clustering.
 
-The details of how to estimate correlations without bias are somewhat technical, but we are going to go through it in as concise a way as possible to tell the complete story.  It will set us up for better understanding when we get to the CMB and galaxy clustering.  In the big picture, we are going to introduce the statistics of correlated random fields in real space and harmonic space.  Then we will look at the practicalities of having a discrete or pixelized data set where we have to mask out part due to contamination.  We will see how to estimate the power spectrum in this case, correcting for bias caused by the masking.
+The details of how to estimate correlations without bias are somewhat technical, but we are going to go through it in as concise a way as possible to tell the complete story.  It will set us up for better understanding when we get to the CMB and galaxy clustering.  In the big picture, we are going to introduce the statistics of correlated random fields in real space and harmonic space.  Then we will look at the practicalities of having a discrete or pixelized data set where we have to discard, or ``mask out,'' part of the data due to contamination.  We will see how to estimate the correlations of harmonic coeffiecients, the power spectrum, correcting for the bias caused by the masking.
 
 \begin{figure}[!t]
 \begin{center}
   \includegraphics[width=\linewidth]{figs/correlations/Lya-forest-60.png}
 \end{center}
-  \caption{Illustration of how neutral hydrogen absorption at high redshift creates the Lyman-$\alpha$ forest.  Two similar quasars, at low redshift above and high redeshift below, both have significant Ly-$\alpha$ emission in the rest-frame UV at 121.57 nm.  The high redshift quasar below has significant absorption in the continuum blueward of Ly-$\alpha$ caused by then-extant neutral hydrogen structures that create a forest of lines.  As the universe expanded, gas clouds would absorb whatever emission corresponded to the Ly$\alpha$ wavelength, while the quasar's line gets increasingly redshifted.  These lines can be interpreted as an accounting of the matter density, with significant modeling required to characterize what hydrogen remains neutral.  By low redshift, most hydrogen is ionized and the forest is not present.
+  \caption{Illustration of how neutral hydrogen absorption at high redshift creates the Lyman-$\alpha$ forest, a tracer of fluctuations in the matter field at redshifts $z\sim 2$--$6$.  Two similar quasars, at low redshift (top) and higher redshift (bottom), have significant Ly-$\alpha$ emission in the rest-frame UV at 121.57 nm.  The high-redshift quasar has significant absorption in the continuum blueward of Ly-$\alpha$ caused by then-extant neutral hydrogen structures that create a forest of lines.  As the universe expanded, gas clouds absorb whatever emission corresponded to the Ly$\alpha$ wavelength, while the quasar's line gets increasingly redshifted.  These lines can be interpreted as an accounting of the matter density, with significant modeling required to characterize what hydrogen remains neutral.  By low redshift, most hydrogen is ionized and the forest is not present.
   \textcolor{purple}{Remake this image to clean up, zoom in and for copyright issues. Original by Bill Keel.  This one found  on Ned Wright's website.}} \label{fig:Lyaforest}
 \end{figure}
 
@@ -19,11 +19,11 @@ We can examine the covariance of the field $a$ at two positions:
 \begin{equation}
   {\rm Cov}(a(x),a(x')) = \left\langle (a(x) - \langle a(x) \rangle) (a(x') - \langle a(x') \rangle ) \right\rangle
 \end{equation}
-If the field is homogeneous then $\langle a(x) \rangle = \langle a \rangle = \mbox{constant}$, the same value regardless of position, and furthermore, the covariance can only depend on the separation between the points and not on their particular positions.  Thus we can define a correlation function of separation as
+If the field is homogeneous then $\langle a(x) \rangle = \langle a \rangle = \mbox{constant}$, the same value regardless of position, and furthermore, the covariance can only depend on the separation between the points and not on their particular positions.  Thus we can define the correlation\index{correlation function} as a function of separation only as
 \begin{equation}
   \xi ( r = |x - x'| ) = {\rm Cov}(a(x),a(x'))
 \end{equation}
-Everywhere, the variance of the field is $\sigma^2 = \xi(r=0)$.  This is a 2-point statistic\index{2-point statistics}, so-called because it measures the field at two points.  The covariance and its analog in harmonic space, the power spectrum, are extremely important statistical properties of the distribution of material in the cosmos.  They are our main tools to learn about the cosmological model by using fluctuations (in density, emission, polarization, etc.)\ around the mean background.  The fluctuations are small for most of the universe's history, so their analysis is amenable to pertubation theory.  Much of cosmology is estimating from data the correlation, covariance, or power spectra of various quantities in a robust way without statistical biases and then comparing them to predictions  from theoretical models for the same quantities.  We can thus learn the allowable parameter ranges for those models or rule them out entirely.
+Everywhere, the variance of the field is $\sigma^2 = \xi(r=0)$.  This is a 2-point statistic\index{2-point statistics}, so-called because it measures the field at two points.  This correlation function and its analog in harmonic space, the power spectrum, are extremely important statistical properties of the distribution of material in the cosmos.  They are our main tools to learn about the cosmological model by using fluctuations (in density, emission, polarization, etc.)\ around the mean background.  The fluctuations are small for most of the universe's history, so their analysis is amenable to perturbation theory.  The job for many cosmologists is to estimate from data the correlation, covariance, or power spectra of various quantities in a robust way without statistical biases and predict the same quantities from theoretical models for comparison.  We thus learn the allowable parameter ranges for those models or rule them out entirely.
 
 A gaussian random field is a random field where the values are drawn from a gaussian distribution.  The central limit theorem says that any process that is due to the sum of a large number of similarly-sized small contributions will be given by a gaussian distribution.  This is a good approximation for the density distribution at early times and for the distribution of temperatures in the CMB.
 
@@ -35,7 +35,7 @@ as (typically) non-independent random variables that are related by a covariance
 \end{equation}
 with mean $\mu$ and covariance matrix given by the correlation function evaluated at all the separations of pairs
 \begin{equation}
-  \Sigma = \left[ \begin{array}{cccc}
+  \Sigma = \textrm{Cov}(a,a) = \left[ \begin{array}{cccc}
     \xi(0) & \xi(|x_1-x_2|) & \dots & \xi(|x_1-x_n|) \\
     \xi(|x_2-x_1|) & \xi(0) & \dots & \xi(|x_2-x_n|) \\
     \vdots & \vdots & \ddots & \vdots \\
@@ -46,7 +46,7 @@ For a continuous field, the distribution could relate an infinite number of poin
 
 The gaussian random field highlights that the mean and covariance (or correlation function) are properties of the probability distribution that the random field $a$ is drawn from.  In the cosmological context, the correlation function will depend on cosmological parameters.  We will have to look at data, which gives us a imperfect measurement of a particular realization of $a(x)$, and try to estimate the correlation function, from which we can draw inferences about our cosmological model and its parameters.  For Gaussian random fields, the mean and covariance---which are the first and second moments of the distribution---capture all the information in the field.  For non-Gaussian fields, higher order moments can also carry information.
 
-You can get some intuition about the correlation function from physical processes, even if you don't yet make a precise computation.  Gravity draws material together, therefore we expect the correlation function for matter to be greater on small scale where gravity is stronger, and even negative on larger scales where the material has been drawn from.  The most massive objects tend to form only in the densest portions of the universe, forming together in clumps.  Therefore we find that the Galaxy clusters, massive dark matter halos with 100s to 1000s of galaxies, treated as single objects, have much stronger correlations amongst themselves than do a collection of run-of-the-mill Milky-Way-type galaxies.  If some process is blowing bubbles into the universe, or piling up material into spherical shells of a certain size, that will show up as a peak in the correlation function at that separation.  We will see several such examples in later chapters going forward.
+You can get some intuition about the correlation function from physical processes, even if you don't yet make a precise computation.  Gravity draws material together, therefore we expect the correlation function for matter to be greater on small scales where gravity is stronger, and even negative on larger scales where the material has been drawn from.  The most massive objects tend to form only in the densest portions of the universe, forming together in clumps.  Therefore we find that the Galaxy clusters, massive dark matter halos with 100s to 1000s of galaxies, treated as single objects, have much stronger correlations among themselves than do a collection of run-of-the-mill Milky-Way-type galaxies.  If some process is blowing bubbles into the universe, or piling up material into spherical shells of a certain size, that will show up as a peak in the correlation function at that separation.  We will see several such examples in later chapters going forward.
 
 
 
@@ -64,25 +64,22 @@ so that the coefficients of the expansion are
 \end{equation}
 These are called the harmonic coefficients at comoving wavenumber $k$.  They are the complex amplitudes of the (oscillatory, complex exponential) Fourier modes.  They are the appropriate functions to use because they solve the wave equation in one dimension.%
 %
-\footnote{The convention in cosmology is to decompose large scale structure in flat space with modes like $\exp(i \mathbf{k} \cdot \mathbf{x})$.  The comoving wavenumber $k$ is like an angular frequency ($\omega$).  Expressing the standard frequency as $f = \omega/2\pi$ makes the notation for Fourier transforms cleaner \citep{numerical recipes}, but  we stick to the comoving wavenumber convention here.  If the space is not flat, $\exp(i \mathbf{k}\cdot \mathbf{x})$ is not correct basis to expand into, and we use other, more complicated, hypergeometric functions instead, which are the solutions to the wave equation in those spaces.}  Often we will refer to $k$ as the (spatial) frequency.
+\footnote{The convention in cosmology is to decompose perturbations and large scale structure in flat space with 3-dimensional modes in like $\exp(i \mathbf{k} \cdot \mathbf{x})$.  The comoving wavenumber $k$ is like an angular frequency ($\omega$).  Expressing the standard frequency as $f = \omega/2\pi$ makes the notation for Fourier transforms cleaner \citep{1992nrca.book.....P}, but we stick to the comoving wavenumber convention here.  If the space is not flat, $\exp(i \mathbf{k}\cdot \mathbf{x})$ is not correct basis to expand into, and we use other, more complicated, hypergeometric functions instead, which are the solutions to the wave equation in those spaces.}  Often we will refer to $k$ as the (spatial) frequency.
 The second equation is called the Fourier transform or analysis of the function, while the first is called the inverse fourier transform or the synthesis of the function.  We build up the function out of the oscillatory modes, and the harmonic coefficients tell us how much of each mode we need.  
 
-We only use a single symbol $a$ for the real-space function $a(x)$ and its transform $a(k)$.  This emphasises that there is only a single function that is being expressed in either a real or harmonic basis, the same way that a vector is the same vector no matter what coordinates you use to enumerate the components.
+We only use a single symbol $a$ for the real-space function $a(x)$ and its transform $a(k)$.  This emphasizes that there is only a single function that is being expressed in either a real or harmonic basis, the same way that a vector is the same vector no matter what coordinates you use to enumerate the components.
 
  For a homogeneous and isotropic signal, the definition of the power spectrum is the variance of the Fourier modes.
 \begin{equation}
   \langle a(k) a^*(k') \rangle = 2\pi P(k) \delta(k - k') 
 \end{equation}
-This definition is extremely important and we will use it and similar relationships again and again.   When homogeneous and isotropic, the different $k$ modes are independent random variables, signified by the delta function, making the covariance diagonal.  The delta function is a little hard to think about, but any non-zero-sized region will have a finite covariance, which we explore shortly.
+This definition is extremely important and we will use it and similar relationships again and again.   When homogeneous and isotropic, the different modes $a(k)$ are independent random variables, signified by the delta function, making the covariance diagonal.  The role of the Dirac delta function (supplemental section \ref{sec:dirac_delta}) is a little hard to conceptualize, but any non-zero-sized region will have a finite covariance, which we explore shortly.
 
-Spectra are often classified as red, white, or blue, metaphorically named after the color of light with a similar spectral energy distribution.  Red spectra have more power at large scales, white spectra have equal power at all scales, and blue spectra have more power at small scales.
-
-
-
+Spectra are often classified as red, white, or blue, named metaphorically after the color of light with such a spectral energy distribution.  Red spectra have more power at large scales/low frequencies, white spectra have equal power at all scales/frequencies, and blue spectra have more power at small scales/high frequencies.
 
 \subsection{Correlation function from power spectrum}
 The correlation function and the power spectrum are equivalent descriptions of the correlations.  
-We can take the definition of the correlation function and expand the function into harmonic coefficients.  We will assume that the field has zero mean to simplify the computation.
+We can take the definition of the correlation function and expand the function into harmonic coefficients.  We will assume that the field has zero mean to simplify the computation, but the result is the same with a non-zero mean.
 \begin{eqnarray}
   \xi ( r = |x - x'| ) &=& {\rm Cov}(a(x),a(x')) \nonumber \\
   & = & \langle a(x) a(x') \rangle = \langle a(x) a(x')^* \rangle \nonumber \\
@@ -91,9 +88,9 @@ We can take the definition of the correlation function and expand the function i
 In the second line, we noted that the real function is the same as its complex conjugate.  Since the $k$-integration and the average are both integrals, we can swap their order.  Only the harmonic coefficients $a(k), a(k')$ are random variables, and the rest of the equation can be brought outside the average.
 \begin{eqnarray}
   \xi ( r = |x - x'| ) &=& \int \frac{dk}{2\pi} \frac{dk'}{2\pi} \exp(ikx-ik'x') \langle  a(k)a(k')^* \rangle \nonumber \\
-  &=& \int \frac{dk}{2\pi} \frac{dk'}{2\pi} \exp(ikx-ik'x') 2\pi P(k) \delta(k-k') \\
-  &=& \int \frac{dk}{2\pi}  \exp(ik(x-x')) P(k)  \\
-  &=& \int \frac{dk}{2\pi}  \exp(ikr) P(k)
+  &=& \int \frac{dk}{2\pi} \frac{dk'}{2\pi} \exp(ikx-ik'x') 2\pi P(k) \delta(k-k') \nonumber \\
+  &=& \int \frac{dk}{2\pi}  \exp(ik(x-x')) P(k) \nonumber \\
+  &=& \int \frac{dk}{2\pi}  \exp(ikr) P(k) \label{eq:xi_from_P}
 \end{eqnarray}
 So the correlation function is the transform of the power spectrum.  Similarly, it is easy to show that the power spectrum is the Fourier transform of the correlation function
 \begin{eqnarray}
@@ -102,15 +99,15 @@ So the correlation function is the transform of the power spectrum.  Similarly, 
 Note that this integral runs from $(-\infty,+\infty)$ and treats $\xi(r)$ as an even function of $r$.
 
 \subsection{Average power in a small interval}
-How do we deal with that infinity in correlation caused by the delta function?  It is the expression of independence of the statistics of the harmonics. In practice, it is never a problem because we will always be dealing with some interval in harmonic space that we can integrate the correlation over.  For example, if we have the transform, we can compute the average of the transform in a small interval $\Delta k$ in $k$-space
+The delta function expresses of independence of the statistics of the harmonics. To get some insight, let's examine some small interval in harmonic space that we can integrate the correlation over.  For example, if we have interval $\Delta k$ around $k$, the average of harmonics is, 
 \begin{equation}
-  \bar a(k) = \frac{1}{\Delta k} \int_{\Delta k} dk' a(k')
+  \bar a(k) = \frac{1}{\Delta k} \int_{\Delta k} dk' a(k').
 \end{equation}
-Then we can examine the correlation of those fourier-space average quantities, as below, and see that they relate to the average power spectrum for that interval. 
+Then we can examine the covariance of that fourier-space average quantity, as below, and see that they relate to the average power spectrum for that interval. 
 \begin{eqnarray}
-  \langle \bar a(k)  \bar a^*(k) \rangle &=& \frac{1}{(\Delta k)^2} \int_{\Delta_k} dk'_1 dk'_2 \langle a(k'_1) g^*(k'_2) \rangle \\
+  \langle \bar a(k)  \bar a^*(k) \rangle &=& \frac{1}{(\Delta k)^2} \int_{\Delta_k} dk'_1 dk'_2 \langle a(k'_1) a^*(k'_2) \rangle \\
   &=& \frac{1}{(\Delta k)^2} \int_{\Delta k} dk'_1 dk'_2 \ 2\pi P(k'_1) \delta(k'_1 - k'_2) \\
-  &=& \frac{2\pi}{(\Delta k)^2}  \int_{\Delta k} dk'_1 \  P(k'_1) \\
+  &=& \frac{2\pi}{(\Delta k)} \frac{1}{(\Delta k)}  \int_{\Delta k} dk'_1 \  P(k'_1) \\
   &=& \frac{2\pi}{\Delta k}  \bar P(k), \label{eqn:power_in_interval}
 \end{eqnarray}
 where we are using the last equality to define what we mean exactly by average power.  Here we made sure the intervals over which we are averaging the harmonics are the same.  In distinct intervals, the correlation would obviously be zero due to the delta function.  The limit taking the interval size to zero, $\Delta k \rightarrow 0$, reproduces the behavior of the delta function in the power spectrum definition.
@@ -126,20 +123,20 @@ has Fourier components
 \end{equation}
 These are called the \textit{pseudo-}harmonics.\index{pseudo-harmonics}
 
-If we want to compute the correlation, or pseudo-power spectrum, from these pseudo-harmonics, we can just start expanding according to the definition of the harmonics.  Looking at the covariance of two harmonics and taking the ensemble average:
+If we want to compute the correlation, or pseudo-power spectrum\index{pseudo-power spectrum}, from these pseudo-harmonics, we can just start expanding according to the definition of the harmonics.  Looking at the covariance of two harmonics and taking the ensemble average:
 \begin{eqnarray}
   \langle \tilde a(k) \tilde a^*(k') \rangle &= &\int dx dx' \ \exp(-i k x)\exp(i k' x') \langle a(x) a^*(x') \rangle w(x) w(x')  \nonumber \\
   & =& \int dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
   & & \quad \frac{dk_1}{2\pi} \frac{dk_2}{2\pi} \exp(i k_1 x)\exp(-i k_2 x')  \nonumber \\
   & & \quad \langle a(k_1) a^*(k_2) \rangle w(x) w(x')  
 \end{eqnarray}
-Note the expansion of the complex conjugate of $a(x')$, which is real valued and so equals the conjugate.
+Note the expansion of the complex conjugate of $a(x')$, which is real valued and so equals the conjugate.  Using the definition of the power spectrum, 
  \begin{eqnarray}
    \langle \tilde a(k) \tilde a^*(k') \rangle  &=& \int  dx dx' \ \exp(-i k x)\exp(i k' x')  \nonumber \\
   & & \quad \frac{dk_1}{2\pi} \frac{dk_2}{2\pi} \exp(i k_1 x)\exp(-i k_2 x')  \nonumber \\
-  & & \quad 2\pi \delta(k_1 - k_2) P(k_1) w(x) w(x') 
+  & & \quad 2\pi \delta(k_1 - k_2) P(k_1) w(x) w(x') ,
 \end{eqnarray}
-Now we integrate the delta function over $k_2$ and collect the exponential functions of $x$ and $x'$ each together.
+we now integrate the delta function over $k_2$ and collect the exponential functions of $x$ and $x'$ each together.  Thus we have,
  \begin{eqnarray}
    \langle \tilde a(k) \tilde a^*(k') \rangle  &= & \int\frac{dk_1}{2\pi} dx dx' \ \exp(-i (k - k_1) x)\exp(i (k'-k_1) x')  \nonumber \\
   & &  \nonumber \\
@@ -147,20 +144,23 @@ Now we integrate the delta function over $k_2$ and collect the exponential funct
    &=&  \int\frac{dk_1}{2\pi} \left[  w(k-k_1) w^*(k'-k_1) \right] P(k_1)    \label{eq:pseudoharmonic_correlation} %\nonumber \\ 
    %   &=&  \int\frac{dk_1}{2\pi}  |w(k_1-k)|^2 P(k_1)
 \end{eqnarray}
-using the definition of the fourier transform of the weight $w$ in the next to last last step.  This is saying that, on average, the correlation of the masked signal is biased from the original power spectrum.  It is the convolution of the power spectrum with some kernel based on the mask or weighting function.  Note that the pseudo harmonics are not independent random variables; unlike the true harmonics, there is no delta function in Equation (\ref{eq:pseudoharmonic_correlation}).  We say that those modes have been coupled by the mask.  We will see a similar result below for more realistic and discretely-sampled data and discuss how to undo this convolution to get at an unbiased estimate of the power spectrum, our ultimate goal in this chapter.
+ using the definition of the fourier transform of the weight $w$ in the last step.
+
+ This is saying that, on average, the correlation of the masked signal is biased from the original power spectrum.  It is the convolution of the power spectrum with some kernel based on the mask or weighting function.  Note that the pseudo harmonics are not independent random variables; unlike the true harmonics, there is no delta function in Equation (\ref{eq:pseudoharmonic_correlation}).  We say that those modes have been coupled\index{mode coupling} by the mask.
+ We will see a similar result below for more realistic and discretely-sampled data and discuss how to undo this convolution to get at an unbiased estimate of the power spectrum, our ultimate goal in this chapter.  This approach was pioneered for the CMB power spectrum by \citet{2002ApJ...567....2 H} and is known as the MASTER method.\footnote{Acronym for ``Monte Carlo Apodized Spherical Transform Estimator,'' although we won't actually be utilizing the Monte Carlo or Spherical Transform aspects of it just yet.}
 
 \section{Discrete data}
 
-In practice, we have pixels or some sampled data $a_j = a(x_j)$ where $x_j = j\Delta x$ is sampled at intervals $\Delta x = L/N$, where the total interval runs from $x=0$ to $x=L$ and is split into $N$ samples.   The Fourier transform integral becomes a Riemann sum.  We will assume that the function is periodic with that finite interval, so the spectrum of Fourier coefficients will be discrete, at intervals in harmonic space $k_q = q\Delta k$ where the interval size $\Delta k = 2\pi/N\Delta x$.  Every sample gets a position index $j$ and every harmonic gets a frequency index $q$.  With these changes, the transform equation becomes,
+In practice, we have pixels or some data $a_p = a(x_p)$, where $x_p = p\Delta x$, sampled at intervals $\Delta x = L/N$, where the total interval runs from $x=0$ to $x=L$ and is split into $N$ samples.     We will assume that the function is periodic with that finite interval, so the spectrum of Fourier coefficients will be discrete, at intervals in harmonic space $k_q = q\Delta k$ where the interval size $\Delta k = 2\pi/N\Delta x$.  Every sample gets an index $p$ (for position or pixel) and every harmonic gets a frequency index $q$ (since $q$ sounds like $k$).  With these changes, the Fourier transform integral becomes a Riemann sum,
 \begin{eqnarray}%%%
-  a_q = a(k_q) & = & \Delta x \sum_j a(x_j) \exp(- i k_q  x_j) \\
-  & = & \Delta x \sum_j a_j \exp(-2\pi i qj/N). \label{eqn:dft}
+  a_q = a(k_q) & = & \Delta x \sum_p a(x_p) \exp(- i k_q  x_p) \\
+  & = & \Delta x \sum_p a_p \exp(-2\pi i qp/N). \label{eqn:dft}
 \end{eqnarray}
- This sum is in the form of a discrete fourier transform.  This is advantageous because computer algorithms can compute it very fast: the Fast Fourier Transform (FFT) algorithm can use divide-and-conquer techniques to compute the $N$ results for $a_q$  in just ${\mathcal O}(N \log N)$ operations instead of ${\mathcal O}(N^2)$, which is what a naive implementation would take.  At large sizes, this is a significant computational savings.  For the divide and conquer algorithms to work efficiently, we want to ensure that our number of samples is factorable into small prime numbers: a power of two or, like $3072 = 2^9 \cdot 3^2$, a product of powers of twos and threes; finding a good choice is usually not burdensome.
+ This sum is in the form of a discrete fourier transform.  This is advantageous because computer algorithms can compute it very fast: the Fast Fourier Transform (FFT) algorithm can use divide-and-conquer techniques to compute the $N$ results for $a_q$  in just ${\mathcal O}(N \log N)$ operations instead of ${\mathcal O}(N^2)$, which is what a naive implementation would take.  At large sizes, this is a significant computational savings.  For the divide and conquer algorithms to work efficiently, we want to ensure that our number of samples is factorizable into small prime numbers: a power of two or, like $N = 3072 = 2^9 \cdot 3^2$, a product of powers of twos and threes; finding a good choice is usually not burdensome.  Standard computational libraries will compute these sums, just pay attention to the documentation about how they are normalized.
 
  Similarly, we can synthesize a discrete time series from Fourier coefficients as
  \begin{eqnarray}
-   a_j = a(x_j) = \frac{\Delta k}{2\pi}  \sum_q a_q \exp(2\pi i qj/N) \label{eqn:idft}
+   a_p = a(x_p) = \frac{\Delta k}{2\pi}  \sum_q a_q \exp(2\pi i qp/N) \label{eqn:idft}
  \end{eqnarray}
  As matrix operations, these discrete Fourier transforms are exact inverses of each other.
 
@@ -168,17 +168,17 @@ The definition of the power spectrum in the discrete case is
  \begin{equation}
    \langle a(k_q) a^*(k_{q'}) \rangle = 2\pi \bar P(k_p) \frac{\delta_{qq'}}{\Delta k}, \label{eqn:power_spectrum_definition_discrete}
   \end{equation}
- coming from Equation (\ref{eqn:power_in_interval}) for the average power in a small cell.  The Kronecker delta scaled by the cell size in Fourier space takes the place of the Dirac delta function in the original definition.  We'll drop the bar on $P$ for the upcoming discussion.
+ coming from Equation (\ref{eqn:power_in_interval}) for the average power in a small cell.  The Kronecker delta scaled by the cell size in Fourier space takes the place of the Dirac delta function in the original definition.  We'll drop the bar on $P$ for the upcoming discussion; we just mean the power in at that sample or cell.
 
 
 
- The highest frequency or shortest wavelength that a discretely-sampled signal can represent is a sequence proportional to $\{ \dots,+1,-1,+1,-1,+1,-1,\dots \}$, a sinusoid with frequency $k_\textrm{max} = \pi / \Delta x$.  (Two points per cycle means half the sampling frequency: $k_\textrm{max} =  (N/2)\, \Delta k$.)  This highest frequency is called the Nyquist frequency\index{Nyquist frequency} and is the \textit{band limit}\index{band limit} of this sampled representation of the line.  Any signal with a frequency higher than the sampling frequency is subject to the phenomena of aliasing, the interference between the sampling and signal frequencies that makes a high-frequency signal show up at lower frequencies.  In other contexts, this is the same phenomena as acoustic beats or Moir\'e patterns.  If a continuous signal function $a(x)$ is band-limited, that is, it contains only frequencies below the band limit, then it can be \textit{exactly} represented by the discrete Fourier coefficient, even at off-grid points, due to a specialized interpolation called the sampling theorem, 
+ The highest frequency or shortest wavelength that a discretely-sampled signal can represent is a sequence proportional to $\{ \dots,+1,-1,+1,-1,+1,-1,\dots \}$, a sinusoid with frequency $k_\textrm{max} = \pi / \Delta x$.  (Two points per cycle means half the sampling frequency: $k_\textrm{max} =  (N/2)\, \Delta k$.)  This highest frequency is called the Nyquist frequency\index{Nyquist frequency} and is the \textit{band limit}\index{band limit} of this sampled representation of the function along the line.  Any signal with a frequency higher than the sampling frequency is subject to the phenomena of aliasing, the interference between the sampling and signal frequencies that makes a high-frequency signal show up at lower frequencies.  In other contexts, this is the same phenomena as acoustic beats or Moir\'e patterns.  If a continuous signal function $a(x)$ is band-limited, that is, it contains only frequencies below the band limit, then it can be \textit{exactly} represented by the discrete Fourier coefficient, even at off-grid points, due to a specialized interpolation method called the sampling theorem, 
  \begin{equation}
    a(x) =  \Delta x \sum_q  a_q \frac{\sin[k_\textrm{max}(x-q\Delta x)] }{\pi (x-q\Delta x)},
  \end{equation}
- which is an interesting result that we won't use much.
+ which is an interesting result that we won't use much.  It suffices to say that the discrete harmonic coeffiecients contain the complete information content of the continuous function, if it's band limited.
 
- We often deal with pixelized data, where information that we have gathered is averaged or binned into pixels before we analyze it, rather than purely sampled from a single point.  This causes the signal to be modified by a \textit{pixel window function}\index{pixel window function}, which we will discuss in more detail later, but upshot is that fluctuations on smaller and smaller scales are more and more suppressed as they approach the pixel size.  Clearly, information within the pixel is destroyed by the averaging process.
+ We often deal with pixelized data, where information that we have gathered is averaged or binned into pixels before we analyze it, rather than purely sampled from a single point.  This causes the signal to be modified by a \textit{pixel window function}\index{pixel window function}, which we will discuss in more detail later, but upshot is that fluctuations on smaller and smaller scales are more and more suppressed as they approach the pixel size.  Clearly, information on fluctuations within the pixel is destroyed by the averaging process.
 
 
  \subsection{Implementation and synthetic signals}
@@ -191,7 +191,7 @@ The definition of the power spectrum in the discrete case is
  
 On a computer, the signal that we are trying to transform is often a real-valued array of numbers (and less often a complex array).  We have played a little fast and loose with the limits on the indices, which will correspond to the array in the computer, but we need to be careful to get things right.
 
-In the Riemann sums, if we include the left side of every interval, then the sum in Equation~\ref{eqn:dft}, for example, should include position indices $j = 0 \dots N-1$.  We can compute positive and negative frequencies up to the band limit, so we could let the frequency index be $q = -N/2 \dots N/2$.  However, it is also clear that Equation~\ref{eqn:dft} is periodic in $q$ with period $N$, so $a_q = a_{q+N}$.  In particular, the negative frequencies can be remapped to positive frequencies: $a_{-q} = a_{N-q}$.  Thus most implementations will also let the range on frequency index be $q = 0 \dots N-1$, similar to the position index.
+In the Riemann sums, if we include the left side of every interval, then the sum in Equation~(\ref{eqn:dft}), for example, should include position indices $p = 0 \dots N-1$.  We can compute positive and negative frequencies up to the band limit, so we could let the frequency index be $q = -N/2 \dots N/2$.  However, it is also clear that Equation~(\ref{eqn:dft}) is periodic in $q$ with period $N$, so $a_q = a_{q+N}$.  In particular, the negative frequencies can be remapped to positive frequencies: $a_{-q} = a_{N-q}$.  Thus most implementations will also let the range on frequency index be $q = 0 \dots N-1$, similar to the position index.
 
 In this convention, the zero frequency is stored at $q=0$.  Then the positive frequencies are stored in the first half of the array, at $q=1 \dots \lfloor N/2 \rfloor -1$.  The the negative frequencies start at $q =  \lfloor N/2 \rfloor$ and are placed in increasing order up to $q = N-1$, which holds frequency $-\Delta k$ in the very last array entry.  In higher-dimension FFTs, we follow this convention for all the frequency indices.
 
@@ -203,11 +203,11 @@ Now we have all the tools to make a synthetic, real-valued signal whose power sp
 \end{equation}
 where $Z_1$ is a random variable with zero mean and unit variance.  Note that the zero harmonic must be real valued.  Almost always, we want to create a Gaussian random field,\footnote{If, on the other hand, we needed the harmonics to have specific 3rd or 4th moments, we could choose another distribution.  Simulations to generate the mean fields and biases in CMB lensing estimators may employ the Bernoulli distribution (which have the minimal kurtosis) with a random complex phase to reduce the 4th moment variance on the 2-point estimator.} and so use a routine to generate $Z_1$ as a random deviate distributed from a normal distribution like $Z_1 \sim {\mathcal N}(\mu = 0, \sigma^2 = 1)$.
 
-Next, we loop through the positive and negative frequencies together, ensuring that the harmonics are set as complex conjugates and get the correct variance.  For each $q$, 
+Next, we loop through the positive and negative frequencies together, ensuring that the harmonics are set as complex conjugates and get the correct variance.  For each $q \neq 0$, 
 \begin{equation}
-  a_q =  a^*_{N-q} = \sqrt{\frac{2\pi}{\Delta k } P(k = q \Delta k)}\, \frac{Z_1 + i Z_2}{\sqrt{2}} \label{eq:harmonic_synthesis}
+  a({q\neq 0}) =  a^*_{N-q} = \sqrt{\frac{2\pi}{\Delta k } P(k = q \Delta k)}\, \frac{Z_1 + i Z_2}{\sqrt{2}} \label{eq:harmonic_synthesis}
 \end{equation}
-where $Z_1$ and $Z_2$ are both unit-variance deviates.  We populate the real and imaginary part of the harmonic on equal footing and normalize with the $\sqrt{2}$ because the variance of the deviates is $\langle |Z_1 + i Z_2 |^2 \rangle = \langle Z_1^2\rangle + \langle Z_2^2  \rangle = 2$.
+where $Z_1$ and $Z_2$ are both unit-variance deviates.  We populate the real and imaginary part of the harmonic on equal footing and normalize with the $\sqrt{2}$ because the variance of the summed deviates is $\langle |Z_1 + i Z_2 |^2 \rangle = \langle Z_1^2\rangle + \langle Z_2^2  \rangle = 2$.
 
 
 Figure \ref{fig:Pk_randoms} shows an example of synthetic gaussian random fields created following this recipe.  The choices we make are for the theory power spectrum, interval length, number of samples, and random seed.  If we want our theory spectrum to correspond to a particular correlation function, we can set that up using Equation \ref{eqn:P(k)_from_xi(r)}.
@@ -217,43 +217,35 @@ Figure \ref{fig:Pk_randoms} shows an example of synthetic gaussian random fields
 
 \subsection{Weighting and masking}
 
-\begin{figure}[!t]
-  \begin{center}
-  \includegraphics[width=\linewidth]{figs/correlations/mask_pseudoPk.pdf}
-  \end{center}
-  \caption{Example of the effects of masking the signal.  At top, the mask zeros out  the signal function (generated as in Figure \ref{fig:Pk_randoms}) outside specified regions, zero-padding the ends of the region and blocking contributions to the power spectrum.  However, at bottom, the effect on the pseudo spectrum is to bias it with respects to the input theory power spectrum.  We have averaged over tens of thousands of realizations to reduce the sample variance and make the bias visible.  Features in the dots are not random scatter, but the actual mask effect.  The dominant effect on scales smaller than the mask (high $k$) is reduction in power by the approximate effective weight provided by the mask, good to about 1\% in this case.  On scales comparable to the mask, the behavior is more complicated and needs the mode-coupling matrix $W$ to address.}\label{fig:mask_pseudoPk}
-\end{figure}
-
-
  Let us add a mask or weight function to the discretely sampled data, so the weighted data and harmonics are
  \begin{eqnarray}
-   \tilde a_j &=& a_j w_j \\
-   \tilde a_q &=& \Delta x \sum_j \exp(-2\pi i qj/N) a_j w_j
+   \tilde a_p &=& a_p w_p \\
+   \tilde a_q &=& \Delta x \sum_p \exp(-2\pi i qp/N) a_p w_p
  \end{eqnarray}
 
  As a start to computing the correlation, we can take the product of the masked harmonics, and then expand the true signal into the true harmonics:
  \begin{eqnarray}
-   |\tilde a_q |^2 = \tilde a_q \tilde a_q^* &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i qj/N) \exp(2\pi i qj'/N) a_j  a_{j'} w_j w_{j'}  \nonumber \\
-   &=&  (\Delta x)^2 \sum_{jj'} \exp(-2\pi i qj/N) \exp(+2\pi i qj'/N) \nonumber \\
-   & & \times   \left(\frac{\Delta k}{2\pi}\right)^2 \sum_{q_1 q_2}  \exp(2\pi i q_1 j/N) \exp(-2\pi i q_2 j'/N) \nonumber \\
-   & & \times a_{q_1} a^*_{q_2} w_j w_{j'}
+   |\tilde a_q |^2 = \tilde a_q \tilde a_q^* &=&  (\Delta x)^2 \sum_{pp'} \exp(-2\pi i qp/N) \exp(2\pi i qp'/N) a_p  a_{p'} w_p w_{p'}  \nonumber \\
+   &=&  (\Delta x)^2 \sum_{pp'} \exp(-2\pi i qp/N) \exp(+2\pi i qp'/N) \nonumber \\
+   & & \times   \left(\frac{\Delta k}{2\pi}\right)^2 \sum_{q_1 q_2}  \exp(2\pi i q_1 p/N) \exp(-2\pi i q_2 p'/N) \nonumber \\
+   & & \times a_{q_1} a^*_{q_2} w_p w_{p'}
  \end{eqnarray}
-Let's gather the $\Delta x$ with the $\Delta k$ and take the ensemble average, using the Equation~(\ref{eqn:power_spectrum_definition_discrete}) replace the product of harmonics.
+Let's gather the $\Delta x$ with the $\Delta k$ and take the ensemble average, using the Equation~(\ref{eqn:power_spectrum_definition_discrete}) replace the product of harmonics,
  \begin{eqnarray}
- \langle  |\tilde a_q |^2 \rangle &=& \left(\frac{\Delta x\Delta k}{2\pi}\right)^2  \sum_{jj'p_1p_2} \exp(-2\pi i qj/N)  \exp(+2\pi i qj'/N) \nonumber \\
- & & \exp(2\pi i q_1 j/N) \exp(-2\pi i q_2 j'/N){2\pi} P(k_{q_1}) \frac{\delta_{q_1 q_2}}{\Delta k} w_j w_{j'}
+ \langle  |\tilde a_q |^2 \rangle &=& \left(\frac{\Delta x\Delta k}{2\pi}\right)^2  \sum_{pp'q_1q_2} \exp(-2\pi i qp/N)  \exp(+2\pi i qp'/N) \nonumber \\
+ & & \exp(2\pi i q_1 p/N) \exp(-2\pi i q_2 p'/N){2\pi} P(k_{q_1}) \frac{\delta_{q_1 q_2}}{\Delta k} w_p w_{p'}.
  \end{eqnarray}
-Use the delta function to sum over $q_2$ and separately gather the exponentials with $j$ and $j'$.  
+Now we use the delta function to sum over $q_2$ and separately gather the exponentials with $p$ and $p'$.  
 \begin{eqnarray}
- \langle   |\tilde a_q |^2 \rangle &=&  \frac{\Delta k}{2\pi}\left(\Delta x \right)^2  \sum_{jj'p_1}\exp(-2\pi i (q-q_1)j/N)  w_j \nonumber \\
-  & & \qquad \qquad \exp(+2\pi i (q-q_1) j'/N)  w_{j'}   P(k_{q_1})
+ \langle   |\tilde a_q |^2 \rangle &=&  \frac{\Delta k}{2\pi}\left(\Delta x \right)^2  \sum_{pp'q_1}\exp(-2\pi i (q-q_1)p/N)  w_p \nonumber \\
+  & & \qquad \qquad \exp(+2\pi i (q-q_1) p'/N)  w_{p'}   P(k_{q_1})
 \end{eqnarray}
-That reveals Fourier tranforms of the weight functions
+That reveals Fourier transforms of the weight functions
 \begin{eqnarray}
-  \langle  |\tilde a_q |^2 \rangle &=& \frac{\Delta k}{2\pi}  \sum_{q_1} w_{q-q_1} w_{q-q_1}^*  P(k_{q_1}) \\
+  \langle  |\tilde a_q |^2 \rangle &=& \frac{\Delta k}{2\pi}  \sum_{q_1} w_{q-q_1} w_{q-q_1}^*  P(k_{q_1}) \\ \nonumber
   &=& \left(\frac{\Delta k}{2\pi}\right)  \sum_{p_1} |w_{q-q_1}|^2  P(k_{q_1})
 \end{eqnarray}
-Multiplying both sides by $2\pi/\Delta k$ we can define the observed pseudo-spectum as
+This is the analog for the continuous case's Equation (\ref{eq:pseudoharmonic_correlation}).  Multiplying both sides by $2\pi/\Delta k$ we can define the observed pseudo-spectrum\index{pseudo-power spectrum} as
 \begin{equation}
   \tilde P(k_q) = \frac{\Delta k}{2\pi} |\tilde a_q |^2
 \end{equation}
@@ -261,27 +253,40 @@ to obtain a statistic that is, on average, simply related to the true power spec
 \begin{equation}
   W_{qq_1} = \left( \frac{\Delta k}{2\pi} \right)^2 |w_{q-q_1}|^2, \label{eq:mode_coupling_matrix_1d}
 \end{equation}
-called the mode-coupling matrix, and express the whole relationship between the ensemble average of the observed pseudo power spectrum and the true spectrum as a matrix equation
+called the mode-coupling matrix\index{mode-coupling matrix}, and express the whole relationship between the ensemble average of the measured pseudo-power spectrum and the true theory spectrum as a matrix equation
 \begin{equation}
   \langle \tilde P(k_q) \rangle =  \sum_{q_1} W_{qq_1}  P(k_{q_1}).
 \end{equation}
-Written as a matrix equation it is
+Written as matrix notation it is
 \begin{equation}
   \langle \tilde P \rangle =  W  P. \label{eqn:ensemble_mode_coupling_matrix_times_power}
 \end{equation}
-Normally all the sums include positive and negative frequencies, and so we have to be careful how they are arranged within the vector.  If we are using a half-complex implementation, such that the frequency index only contains non-negative frequencies, then we need to rearrage the sum
+Normally all the sums include positive and negative frequencies, and so we have to be careful how they are arranged within the vector.  If we are using a half-complex implementation, such that the frequency index only contains non-negative frequencies, then we need to rearrange the sum
 \begin{equation}
 \sum_{q_1} |w_{q-q_1}|^2  P(k_{q_1}) = |w_{q-0}|^2 P(0) +  \sum_{0<{q_1}} (  |w_{q-{q_1}}|^2 +  |w_{q+{q_1}}|^2 ) P(k_{q_1}).
 \end{equation}
-In either case, if the frequency index overruns the range $|q_1| <  \lfloor N/2 \rfloor - 1$, it needs to select the correct frequency index in a periodic way.  These details needs to be taken into account when building the $W$ matrix.
+In either case, if the frequency index overruns the range $|q \pm q_1| <  \lfloor N/2 \rfloor - 1$, it needs to select the correct frequency index in a periodic way.  These details needs to be taken into account when building the $W$ matrix.
 
-In Figure \ref{fig:mask_pseudoPk}, we can see the effect of this bias on the pseudo power spectrum.  At small scales, there is a fractional loss of power that is approximately equal to the effective volume fraction of the mask
+
+\begin{figure}[!t]
+  \begin{center}
+  \includegraphics[width=\linewidth]{figs/correlations/mask_pseudoPk.pdf}
+  \end{center}
+  \caption{Example of the effects of masking the signal, described in more detail in the text.  Top, the mask is zero when data is not taken from the signal.  Middle, we show one column of the mode-coupling matrix.  Bottom, we show that an ensemble of pseudo power spectra is biased compared to the theory power, but is well-predicted a the mode-coupled theory.  The sample variance of a single realization may hide this bias on a mode-by-mode basis.}\label{fig:mask_pseudoPk}
+\end{figure}
+
+In Figure \ref{fig:mask_pseudoPk}, we can see the effect of this bias on the pseudo power spectrum.  In the top panel, the mask zeros out  the signal function (generated as in Figure \ref{fig:Pk_randoms}) outside specified regions.  It zero-pads the ends of the region (to not enforce a false periodicity) and blocks those regionds from contributing to the power spectrum estimate.
+
+In the bottom panel, the pseudo spectrum is biased with respect to the input theory power spectrum: the averaged ratio deviates from one.  Green dots show one single realization.  Purple dots average over $10^5$ realizations to reduce the sample variance and make the bias visible.  Features in the purple dots are not random scatter, but the actual mask effect.  It is predicted by the mode-coupled theory power spectrum via Equation (\ref{eqn:ensemble_mode_coupling_matrix_times_power}), the blue line.
+
+The dominant effect on scales smaller than features in the mask (high $k$) is reduction in power by the approximate effective weight provided by the mask, computed as
 \begin{equation}
-  f = \frac{1}{N} \sum_j w_j.
+  f = \frac{1}{N} \sum_p w_p.
 \end{equation}
-In the figure, that approximation is good to about 1 percent at high $k$.  On scales comparable to the mask we need the full matrix $W$ to capture the behavior.
+In the figure, that approximation is good to about 1 percent at high $k$.  
+  On scales comparable to the mask, the behavior is more complicated and needs the mode-coupling matrix $W$ to address.
 
-Our equation invites us to invert the $W$ matrix to get an unbiased estimate of the observed power spectrum as something like ``${P}^{\rm obs} = W^{-1} \tilde P$,'' and indeed this is our basic strategy, but there are some subtleties.  First, $W$ may be non-invertible.  The more of the data the mask removes, usually the harder it is to invert $W$.  Furthermore, the pseudo-spectrum $\tilde P$ only draws one sample of the power for the mode at $k_q$, so the sample variance is very large.  In the next section, we will find that binning together several modes with similar wavenumbers can help to alleviate both problems.
+Our equation invites us to invert the $W$ matrix to get an unbiased estimate of the observed power spectrum as something like ``${P}^{\rm obs} = W^{-1} \tilde P$,'' and indeed this is our basic strategy, but there are some subtleties.  First, $W$ is almost always non-invertible.  The more of the data the mask removes, usually the harder it is to invert $W$, in the sense that it has a worse condition number.  Furthermore, the random process that leads to statistic pseudo-spectrum $\tilde P$ only draws one sample of the power for the mode at $k_q$, so the sample variance is very large.  In the next section, we will find that binning together several modes with similar wavenumbers can help to alleviate both problems.
 
 \section{Band powers} \label{sec:band_powers}
 To improve statistics on the estimation of the spectrum, we want to average together the power from several harmonics.  We will do this with a matrix ``binning operator'' $B$ that makes a weighted average of the power over some band of wavenumbers
@@ -294,7 +299,7 @@ where the reduced-size, binned pseudo-spectrum is on the left and the band $b$ c
 \end{equation}
 We set up the binning operator with the total weight as the normalization to the weighted average
 \begin{equation}
-  B_{bq} = g_b(q)/G(b)
+  B_{bq} = g_b(q)/G(b).
 \end{equation}
 It is not a requirement, but bands are typically disjoint: each harmonic contributes only to a single band.
 
@@ -312,31 +317,31 @@ so long as the normalization is
 \end{equation}
 In an exercise, you can show that this definition satisfies Equation (\ref{eqn:binning_delta_function}).  The function $h_b(q)$ is the anticipated shape of the power spectrum within the band.
 
-We have freedom to choose whatever weights and power spectrum shape are most appropriate to our particular case, but in typical usage, we might choose uniform weights ($g_b(q) = 1$) and flat band powers ($h_b(q)=1$).  That choice sets $G(b)$ to be the count of harmonics contributing to the band and $H(b) = 1$.  In this typical usage, we end up assuming that the power spectrum is flat in the bands determined by the bins.
+We have freedom to choose whatever weights and power spectrum shape are most appropriate to our particular case, but in typical usage, we might choose uniform weights ($g_b(q) = 1$) and flat band powers ($h_b(q)=1$).  That choice sets $G(b)$ to be the count of harmonics contributing to the band and $H(b) = 1$.  In this typical usage, we make the assumption that the power spectrum is flat in the bands determined by the bins.
 
 The matrix product
 \begin{equation}
   \sum_b \bar B_{qb}B_{bq'} 
 \end{equation}
-is not the identity matrix, but, applied to a power spectrum, will average it into piecewise bands of the specified shape determined by $h(q)$.
-
+is not the identity matrix, but, applied to a power spectrum, will average it into piecewise bands of the specified shape determined by $h(q)$.   As an operator, this only leaves the power spectrum $P$ unaffected it has the same functional form as anticipated by $h(q)$ in the reciprocal binning operator. 
 
 \section{Estimator and band-power window functions} \label{sec:bandpower_wf}
-\begin{figure}
+
+\begin{figure}[!t]
   \includegraphics[width=\linewidth]{figs/correlations/binned_Pk.pdf}
-  \caption{Top, unbiased and binned estimator for the power spectrum in green.  The biased, binned pseudo spectrum is shown in green.  The power law is dropping quickly, which makes it hard to see the bias.  Also, bins and a theory line are an apples-to-oranges comparison.  In the lower panel, we compare to the proper thing, the band-power window function convolved theory power, and use it to take the ratio for the power spectrum estimators.  This shows how the mode-coupling-deconvolved estimator is unbiased.  This is the average over tens of thousands of realizations.} \label{fig:binned_Pk}
+  \caption{Various prospective binned estimators of the power spectrum, described in detail in the text.  In the top panel, because the spectrum has a large vertical range, it is challenging to tell which is the better estimator.  The middle panel, which takes ratios to binned version of the theory spectrum, demonstrates that the unbiased combination is the debiased estimate ${\mathcal P}^{\rm obs}$ compared to the bandpower window function processed theory spectrum ${\mathcal W} P$.  The bottom panel shows how the window function averages over the theory, including some tail of contribution outside the bin.  The higher $k$ bins have less weight per mode since, in those bins, more modes contribute to the average.} \label{fig:binned_Pk}
 \end{figure}
 
-
-Let's employ this binning, looking back at Equation~(\ref{eqn:ensemble_mode_coupling_matrix_times_power}), which says that the ensemble average of the pseudo-spectrum is the mode-coupling matrix times the true power spectrum.  Applying the binning operation to both sides using a matrix notation to make the math easier:
+ 
+Let's employ this binning, looking back at Equation~(\ref{eqn:ensemble_mode_coupling_matrix_times_power}), which says that the ensemble average of the pseudo-spectrum is the mode-coupling matrix times the true power spectrum.  Applying the binning operation to both sides (and using a matrix notation to make the math easier), we find:
 \begin{equation}
-  B \langle \tilde P \rangle =  B W  P
+  B \langle \tilde P \rangle =  B W  P.
 \end{equation}
 Then we approximate $\bar B B$ as the identity matrix (which it is not) and insert it between the mode-coupling matrix and the true spectrum.
 \begin{equation}
   B \langle \tilde P \rangle \approx  B W {\bar B} B P. \label{eqn:bandpower_approximation}
 \end{equation}
-This is only exact if the power spectrum $P$ has the same functional form as anticipated by $h(q)$ in the reciprocal binning operator.  Then we can invert the binned mode-coupling matrix and bring everything inside the ensemble average to obtain
+ We can multiply both sides by the inverse of the binned mode-coupling matrix and bring everything inside the ensemble average to obtain
 \begin{equation}
  \langle( B W {\bar B})^{-1} B \tilde P \rangle \approx B P
 \end{equation}
@@ -347,7 +352,7 @@ Thus we define our observed power spectrum as the quantity inside the average on
 \end{equation}
 to get something that is approximately equal (on average) to the binned true power spectrum.  We also define the binned  mode coupling kernel
 \begin{equation}
-  K_{bb'} \equiv  B_{bp} W_{pp'} \bar B_{p'b'}.
+  K_{bb'} \equiv \sum_{qq'}  B_{bq} W_{qq'} \bar B_{q'b'}.
 \end{equation}
 This binned mode coupling matrix may be invertible even when the unbinned matrix is not.
 Restoring indices, we have 
@@ -356,22 +361,53 @@ Restoring indices, we have
   {\mathcal P}^{\rm obs}_b = \sum_{b'} \left( K^{-1} \right)_{bb'} \tilde {\mathcal P}_{b'} .
 \end{equation}
 
-What if we want to correct for the approximation in Equation~(\ref{eqn:bandpower_approximation})?  
-Using a matrix notation again, we can relate the ensemble average of the observed power spectrum (${\mathcal P}^{\rm obs}$) to the average of the binned pseudo-spectrum ($\tilde {\mathcal P}$), and then to true power spectrum of the signal ($P$).
+What if we want to account for the approximation in Equation~(\ref{eqn:bandpower_approximation})?  
+Using a matrix notation again, we can relate the ensemble average of the observed power spectrum (the ${\mathcal P}^{\rm obs}$ that we just developed) to the average of the binned pseudo-spectrum ($\tilde {\mathcal P}$), and then to true power spectrum of the signal ($P$).
 \begin{eqnarray}
-  \langle {\mathcal P}^{\rm obs} \rangle &=& K^{-1} \langle \tilde {\mathcal P} \rangle \\
-  &=&  (B W \bar B)^{-1} B W P \\
+  \langle \mathcal{P}^{\rm obs} \rangle &=& K^{-1} \langle \tilde {\mathcal P} \rangle \\ \nonumber
+  &=&  (B W \bar B)^{-1} B W P 
 \end{eqnarray}
 We define the \textit{band power window function}\index{band power window function} matrix (${\mathcal W}_{bp}$), defined by the matrix equation
 \begin{equation}
-  {\mathcal W} = (B W \bar B)^{-1} B W,
+  {\mathcal W} = K^{-1} B W = (B W \bar B)^{-1} B W,
 \end{equation}
  so that
 \begin{equation}
   \langle {\mathcal P}^{\rm obs} \rangle = {\mathcal W} P.
 \end{equation}
-It relates the the contribution of a true power spectrum to the (binned and decoupled) bandpower estimate of the observed power spectrum.  This is important for comparing theory to data.  Any particular theory prediction for $P(k)$, operated on by the band power window function, is the prediction for the average value of the observed power spectrum ${\mathcal P}^{\rm obs}_b$.
+It relates the the contribution of a true theory power spectrum on the right to the (binned and decoupled) bandpower estimate of the observed power spectrum on the left.  This is important for comparing theory to data.  Any particular theory prediction for $P(k)$, operated on by the band power window function, is the prediction for the average value of the observed power spectrum ${\mathcal P}^{\rm obs}$.
 
+
+We can see this process in detail in Figure \ref{fig:binned_Pk}.  In the top panel, bins of our debiased estimator for the power spectrum ${\mathcal P^{\rm obs}}$ are shown for a single realization (green) and averaged over an ensemble (purple).  The averaged binned pseudo spectrum (gray) doesn't attempt to undo the mode coupling.  Even with the proper estimator, the sample variance of a single realization (green) is very large at low $k$ and the power estimate may not even be positive (such points are missing from the top plot).  All modes $k \lesssim 3\times 10^{-2}$ Mpc$^{-1}$ could, for example, be combined into one larger bin in the hope to decrease the variance enough to make the power positive.
+
+For the ensemble averages, the theory power has a red spectral tilt, and the large range of the verticle axis make the biases hard to see.  Furthermore, binned estimators and an unbinned theory line are an apples-to-oranges comparison, so we need to look more carefully.
+
+In the figure's middle panel, dividing the ratios by a binned version of the theory makes the biases much clearer.  The average over the statistical ensemble shows that the unbiased combination is the debiased estimator paired with the bandpower window function convolved theory.  This is much better than comparing the debiased estimater to the simply-binned theory (light purple) or foregoing the debiasing step of the binned pseudo spectrum (gray).
+
+    In the bottom panel, we see the band power window functions that combine the theory points into the bins.  The slight tails on the window functions show how the bins get a contribution to out-of-bin modes due to the mode coupling.  The bin edges are logarithmically spaced in $k$, so high-$k$ bins have many more modes than low-$k$ bins.  This explains the lower weight applied to each mode in the window function and also the reduced sample variance at large $k$.
+
+If, even after the binning, the mode coupling kernel matrix $K$ is still not invertible, you can obtain a spectral estimate using some other matrix $K^\star $ to stand in for the inverse, making the approximation $K^\star K \approx I$.  You have a lot of flexibility but it is important that $K^\star $ be invertible.  A suitable choice would be to use singular value decomposition to compute a (Moore-Penrose) pseudo inverse $K^\star = K^+$.  In that case, the observed spectrum is computed as
+\begin{equation}
+  {\mathcal P}^{\rm obs} = K^\star   \tilde {\mathcal P},
+\end{equation}
+and the band power window function as
+\begin{equation}
+  {\mathcal W} = K^\star  B W.
+\end{equation}
+If $K^\star $ is a close inverse of $K$, this will be a reasonable approximation for the power spectrum.  (Recall that we already made an approximation in Equation \ref{eqn:bandpower_approximation} to arrive at this form for the observed power.)
+
+Constructing a $\chi^2$ statistic (or using a gaussian likelihood approximation) requires the observed spectrum and it's mean.  For precision work, we must compute the mean with the band power window function and theory spectrum, which in turn depends on parameters.  Thus we have,
+\begin{equation}
+  \chi^2(\Theta) = \left({\mathcal P}^{\rm obs} - {\mathcal W} P(\Theta) \right)^\dag
+  M^{-1} \left({\mathcal P}^{\rm obs} - {\mathcal W} P(\Theta) \right)  \label{eq:chi2_for_Pobs}
+\end{equation}
+where $M$ is the covariance of the observed power spectrum
+\begin{equation}
+  M = \left\langle ({\mathcal P}^{\rm obs}- {\mathcal W} P) ({\mathcal P}^{{\rm obs}}- {\mathcal W} P)^\dag \right\rangle.
+\end{equation}
+Because $K^\star $ appears in the construction of all three ingredients---the observed spectrum, the window function, and the covariance---it actually cancels from the computation of $\chi^2$.  In that sense, for parameter work, you could choose any invertible matrix for $K^\star $, even the identity matrix, in which case you would be fitting parameters directly with the binned, mode-coupled theory, giving up having a nearly unbiased ${\mathcal P}^{\rm obs}$ to display.  Going further, you could additionally use the identity for the binning matrix and compute a $\chi^2$ directly from the pseudo spectrum $\tilde P$ and the mode-coupled theory themselves.  This would avoid losing shape information to binning, but as we will see in Chapter \ref{ch:cmb_likelihood}, binning the multipoles does tend to make the exact likelihood more Gaussian, when otherwise the gaussian approximation would lead to poor parameter estimates.
+
+You can compute the covariance matrix $M$ of ${\mathcal P}^{\rm obs}$ using Monte Carlo simulations of the observations (the M in the MASTER method), analytically under the assumption that the data is gaussian, or with various approximations.  We will examine these more closely for the problem of the CMB.
 
 \nocite{numerical_recipes,master,namaster}
 
@@ -382,18 +418,22 @@ It relates the the contribution of a true power spectrum to the (binned and deco
 
 \item Show that homogeneity implies that the harmonic modes are independent.
 
-\item Show that the power spectrum is the fourier transform of the correlation function (Equation~\ref{eqn:P(k)_from_xi(r)}).
-  
+\item Show that the correlation function is the Fourier transform of the power spectrum (Equation \ref{eq:xi_from_P}) \textit{without} the assumption that the field has zero mean.
+
+\item Show that the power spectrum is the Fourier transform of the correlation function (Equation~\ref{eqn:P(k)_from_xi(r)}) with the assumption that the field has zero mean. \label{ex:P_from_xi}
+
 \item Compute the pseudo power spectrum of a signal that has a white-noise power spectrum.
 
 \item Show that $B\bar B$ is the identity matrix.
 
 \item Show that $P = \bar B B P$ is only true when $P$ is (piecewise) proportional to $h(p)$.  (It is sufficient to show it for some generic bin $b$.)
+
+\item Show that the computation of $\chi^2$ is insensitive to the choice of of the invertible matrix $K^\star $, using Equation (\ref{eq:chi2_for_Pobs}).
   
 \end{enumerate}
 
 \begin{subappendices}
-\section{Supplemental: Dirac delta functions}
+\section{Supplemental: Dirac delta functions} \label{sec:dirac_delta}
 The important property of the Dirac delta function are
 \begin{equation}
   \int_{\Delta x} dx'\ \delta(x-x') = \left\{
@@ -409,10 +449,10 @@ The Dirac delta function is also the Fourier transform of the constant unit func
 \begin{equation}
    \delta(x-x') = \int \frac{dk}{2\pi} \exp(i k (x-x')) 
 \end{equation}
-On the right side, it is clear that if $x=x'$, the exponential equals one and the integral over the whole real line is infinity.  On the other hand, if $x \neq x'$, the integrand is oscillatory and will not diverge.  You can integrate over this Fourier definition of the delta function over some interval containing $x$ or not to show that it produces the expected values.  We can write a similar defition for the fourier transform of the $k$-space delta function by swapping names of the $x$ and $k$ variables.
+On the right side, it is clear that if $x=x'$, the exponential equals one and the integral over the whole real line goes to infinity.  On the other hand, if $x \neq x'$, the integrand is oscillatory and will not diverge.  You can integrate over this Fourier definition of the delta function over some interval containing $x$ or not to show that it produces the expected values.  We can write a similar definition for the fourier transform of the $k$-space delta function by swapping names of the $x$ and $k$ variables.
 \begin{eqnarray}
   \delta(k - k') &=& \frac{1}{2\pi}  \int {dx}\ \exp(i (k-k')x)    \\
   &=& \frac{1}{2\pi}  \int {dx}\ \exp(-i (k'-k)x) 
 \end{eqnarray}
-where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.  The dirac delta function is even ($\delta(k-k') = \delta(k' - k)$) and real valued (equal to its complex conjugate, replacing $i$ with $-i$), so there are lots of variations of minus signs that are equivalent.  Take some care with them.
+where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.  The Dirac delta function is even ($\delta(k-k') = \delta(k' - k)$) and real valued (equal to its complex conjugate, replacing $i$ with $-i$), so there are lots of variations of minus signs that are equivalent.  Take some care with them.
 \end{subappendices}
