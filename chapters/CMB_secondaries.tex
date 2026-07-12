@@ -12,21 +12,169 @@
 \subsection{SZ and galaxy clusters}
 
 
-\section{Lensing reconstruction}
+\chapter{CMB lensing reconstruction}
 
 
-quadratic estimator
 
-response/ weights
+\section{Quadratic Estimator}
+
+Deflection field
+\begin{equation}
+\alpha = \nabla \phi
+\end{equation} 
+
+
+\begin{equation}
+  T(\Omega) = T^u(\Omega - \alpha)
+\end{equation} 
+where by subtraction we really mean a rotation.  In the flat sky approximation, it is literally a subtraction of a two-vector.
+
+Expanded to first order
+\begin{equation}
+  T(\Omega) = T^u(\Omega) - \frac{\partial T^u}{\partial \Omega} \cdot {\alpha} + \dots
+\end{equation}
+
+
+\begin{equation}
+  T(\Omega) = T^u(\Omega) - \nabla T^u \cdot \nabla \phi
+\end{equation}
+
+\begin{equation}
+  \nabla \phi = \int \frac{d^2 l}{(2\pi)^2} il \phi(l) \exp(il\cdot\Omega)
+\end{equation}
+and similarly for $\nabla T^u$.
+
+\begin{equation}
+\delta T = T - T^u
+\end{equation}
+
+Fourier transform
+\begin{eqnarray}
+  \delta T(l) &=& - \int d\Omega \exp(-il \cdot \Omega)  (\nabla T^u \cdot \nabla \phi)(\Omega)\\ \nonumber
+   &=& - \int d\Omega \exp(-il \cdot \Omega)  \\ \nonumber
+   && \left( \int \frac{d^2 l_1}{(2\pi)^2} il_1 T^u(l_1) \exp(il_1\cdot\Omega)  \right) %\\ \nonumber
+  \cdot  \left( \int \frac{d^2 l_2}{(2\pi)^2} il_2 \phi(l_2) \exp(il_2\cdot\Omega)  \right) \\ \nonumber
+  &=&  \int \frac{d^2 l_1}{(2\pi)^2} \int \frac{d^2 l_2}{(2\pi)^2}  \left[ (l_1 T^u(l_1))\cdot(l_2 \phi(l_2))\right]  \int d\Omega\exp\left(i(l_1+l_2 - l)\cdot\Omega\right),
+\end{eqnarray}
+where rearranging we have combined a factor $i^2 = -1$ and all the complex exponentials.  The integral over $\Omega$ becomes a $(2\pi)^2 \delta(l_1 + l_2 - l)$, so we can evaluate the $l_2$ integral, setting $l_2 = l - l_1$ everywhere in the integrand.
+\begin{eqnarray}
+  \delta T(l) &=& \int \frac{d^2 l_1}{(2\pi)^2} \left(l_1 T^u(l_1) \right) \cdot \left((l - l_1) \phi(l - l_1) \right) \\ \nonumber
+  &=& \int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l-l_1) \ T^u(l_1) \phi(l - l_1). 
+\end{eqnarray}
+So we see in the first line that the multiplication of the gradients in real space converts to a convolution of their components in harmonic space, as we expect from the convolution theorem.
+
+If we look at the correlation of two harmonics we get to first order
+\begin{eqnarray}
+  \langle T(l) T(l') \rangle &=&  \left\langle (T^u + \delta T)(l) \ (T^u+\delta T)(l') \right\rangle \\ \nonumber
+  &=&  (2\pi)^2 C^u_l \delta(l +l')  + \left\langle T^u(l) \delta T(l')  +  \delta T^u(l) T^u(l') \right\rangle
+\end{eqnarray}
+where $C^u_l$ is the power spectrum of the CMB before any lensing effects.
+
+When there is no direct correlation of the unlensed fields (thus $l \neq -l'$) we see only the first-order terms
+\begin{eqnarray}
+  \langle T(l) T(l') \rangle_{l \neq -l'} &=&   \int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l'-l_1) \ \left\langle T^u(l) T^u(l_1)\right\rangle \phi(l'-l_1)  \\ \nonumber
+  && +   \int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l-l_1) \ \left\langle T^u(l_1) T^u(l')\right\rangle \phi(l-l_1)  
+\end{eqnarray}
+where the second term is similar to the first but the complex conjugate with the roles of $l$ and $l'$ reversed.  The $\langle T^u(l) T^u(l_1) \rangle = (2\pi)^2 C^u_l \delta(l + l_1)$ collapses the $l_1$ integral and we get
+\begin{eqnarray}
+  \langle T(l) T(l') \rangle_{l \neq -l'} &=& -l \cdot (l' + l) C^u_l \phi(l' + l) \\ \nonumber
+  && - l' \cdot (l + l') C^u_{l'} \phi(l+l') \\ \nonumber
+&=& -(l+l') \cdot (l C^u_l + l' C^u_l) \phi(l+l')
+\end{eqnarray}
+
+Now, if we are interested in a particular mode of the potential $L = l+l'$, or $l' = L-l$, then we see the average correlation
+\begin{equation}
+  \langle T(l) T(L-l) \rangle_{L \neq 0 } =  -L \cdot (l C^u_l + (L-l) C^u_{L-l}) \phi(L)
+\end{equation}
+So if we construct a quadratic estimator\index{quadratic estimator (lensing)} (so called because it has two factors of $T$) for the $L$ mode of $\phi$ from just one mode $l$ of temperature and its counterpart at $L-l$, we get
+\begin{equation}
+  \hat\phi_{1}(L) = \frac{T(l) T(L-l)}{-L \cdot (l C^u_l + (L-l) C^u_{L-l})} = \frac{T(l) T(L-l)}{f(l,L-l)},
+\end{equation}
+with
+\begin{equation}
+  f(l,l')  = -(l+l') \cdot (l C^u_l + l' C^u_{l'}).
+\end{equation}
+It will provide an unbiased reconstruction of that mode of the lensing potential $\langle \hat\phi(L)_{1} \rangle = \phi(L)$.  This function $f(l,l')$ is the response of the correlations to the $\phi$ modes.  It records the strength of the coupling from mode $L$ into the correlation of temperature modes $l,l'$.
+
+Basing the estimator on a single correlation is ineffective.  We should use all such correlations together with a weight function.  A generically weighted pairing of temperature harmonics, 
+\begin{eqnarray}
+  \hat\phi(L) &=& N_0(L) \int dl\  T(l) T(L-l) g(l,L-l)  \\ \nonumber
+  &=& N_0(L) \int dl\  \hat\phi_{1}(L) f(l,L-l)  g(l,L-l),
+\end{eqnarray}
+is simply a weighted average with a normalization $N_0(L)$ for that mode and a weight function $g(l,l')$.  Any weight function will yield an unbiased estimate if normalized so that
+\begin{equation}
+   N_0(L) = \left[  \int dl\  f(l,L-l) g(l,L-l)   \right]^{-1}.
+\end{equation}
+
+Next we want to find the paticular weights that minimize the variance of the $\hat \phi$.  This is exactly the analogous situation to exercise \ref{ch:data}.\ref{ex:minvar_response}.  The variance  $\mathrm{Var}(\hat\phi(L)) = \langle \hat\phi(L)^2 \rangle - \phi^2$ is dominated by the first term
+\begin{align}
+  \mathrm{Var}(\hat\phi(L)) &= N_0(L)^2 \int dl_1 dl_2\ \langle T(l_1) T(L-l_1) T(l_2) T(L-l_2) \rangle   g(l_1,L-l_1) g(l_2,L-l_2)
+\end{align}
+
+The particular weights that minimize the gaussian variance of $\hat\phi(L)$ are
+\begin{equation}
+  g(l,l') = \frac{f(l,l')}{2 C_l C_{l'}}
+\end{equation}
+where  $C_l$ is the power spectrum of the lensed temperature on the sky.
+
+
+\subsection{Noise}
+
 
 how are the normalizations handled when you have the cleaned sky?  (Namaster vs anafast on the cleaned sky)
 
+
+\subsection{Efficient estimators}
+
+
+\subsection{Curved sky quadratic estimators}
+
+
+\subsection{Anisotropic noise and the cut sky}
+
 doing all this on the cut sky
 
+
 mean field bias
+
+\subsection{Polarization}
+
+
+
+\section{Lensing power spectrum estimation}
+
+Sensitivity to neutrino mass and the growth of structure
+
+
+N0
+
+RDN0 somewhat analogous to a DR term in a Landy-Szalay galaxy clustering estimator
+
+Hanson et al. 2011, Namikawa et al. 2013, and the Planck 2015/2018 lensing papers 
+
+N1
+
+
+$N^{3/2}$, N2, higher-order biases
+
+
+
 what is the normalization of the  estimator for mean field bias?  (Input lensed or unlensed power spec?)
 
-polarization
+
+\section{Polarization}
 
 
-optimal reconstruction
+\section{Foreground biases}
+
+
+\section{Optimal reconstruction}
+
+
+
+\exercises
+
+\begin{enumerate}
+\item Minimize the variance to get $g(l,l')$
+  
+\end{enumerate}
