@@ -92,10 +92,14 @@ is simply a weighted average with a normalization $N_0(L)$ for that mode and a w
    N_0(L) = \left[  \int dl\  f(l,L-l) g(l,L-l)   \right]^{-1}.
 \end{equation}
 
-Next we want to find the paticular weights that minimize the variance of the $\hat \phi$.  This is exactly the analogous situation to exercise \ref{ch:data}.\ref{ex:minvar_response}.  The variance  $\mathrm{Var}(\hat\phi(L)) = \langle \hat\phi(L)^2 \rangle - \phi^2$ is dominated by the first term
+Next we want to find the paticular weights that minimize the variance of the $\hat \phi$.  This is exactly the analogous situation to exercise \ref{ch:data}.\ref{ex:minvar_response}.  The variance  $\mathrm{Var}(\hat\phi(L)) = \langle \hat\phi(L) \hat\phi(L)* \rangle - \phi^2$ is dominated by the first term
 \begin{align}
-  \mathrm{Var}(\hat\phi(L)) &= N_0(L)^2 \int dl_1 dl_2\ \langle T(l_1) T(L-l_1) T(l_2) T(L-l_2) \rangle   g(l_1,L-l_1) g(l_2,L-l_2)
+  \mathrm{Var}(\hat\phi(L)) 
+ &= N_0(L)^2 \int dl_1 dl_2\ \langle T(l_1) T(L-l_1) T(-l_2) T(-L+l_2) \rangle \\ \nonumber
+  & \qquad \qquad \qquad g(l_1,L-l_1) g(l_2,L-l_2)
 \end{align}
+
+
 
 The particular weights that minimize the gaussian variance of $\hat\phi(L)$ are
 \begin{equation}
