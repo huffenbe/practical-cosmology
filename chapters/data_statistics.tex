@@ -1,4 +1,4 @@
-\chapter{Data and elementary statistics}
+\chapter{Data and elementary statistics} \label{ch:data}
 Now that we are armed with some understanding of how the measureable properties (like brightness and angular size) of a distant object relate to its redshift and the comoving distance, and how these quantities relate back to the cosmological parameters, we can embark on obtaining some data from cosmological measurements.  The data we obtain will always be subject to the uncertainties inherent in our measurement.  In this chapter, we assemble the first of our tools to deal with that uncertainty.
 
 In a very generic fashion, we might write that data is a sum of some signal that we are looking for and some noise that muddies our view, something like:
@@ -99,9 +99,23 @@ If in a data set, some of the data points have larger uncertainty than others, i
 \begin{equation}
  {\rm Var}(\bar X) =  \langle (\bar X - \langle \bar X \rangle)^2 \rangle = \frac{\sigma^2}{N_{\rm data}}.
 \end{equation}
-Thus when we refer to the ``error bar'' or ``uncertainty'' of some averaged quantity, we are referring to the standard deviation, or the square root of this variance.  In a weighted average, we try to choose the weights to minimize the variance of the average.  We call such an estimate optimal.  
+Thus when we refer to the ``error bar'' or ``uncertainty'' of some averaged quantity, we are referring to the standard deviation, or the square root of this variance.
 
-We can also construct estimators for the variance.  For example, if we know the mean of a random variable's distribution, then we can construct an unbiased estimate as
+In a weighted average, we try to choose the weights to minimize the variance of the average.  We call such an estimate optimal.  We explore this important concept in exercises \ref{ch:data}.\ref{ex:minvar_est}--\ref{ch:data}.\ref{ex:minvar_response}.  We find that for a data with a multiplicative response and noise per data point like
+\begin{equation}
+  d_i = R_i s + n_i
+\end{equation}
+the optimized estimator for the signal is
+\begin{equation}
+  \hat s = \frac{\sum_i w_i d_i}{\sum_i w_i R_i}
+\end{equation}
+where the weights are proportional to the response and the inverse variance of the noise
+\begin{equation}
+  w_i = \frac{R_i}{\sigma_i^2}
+\end{equation}
+This result is kind of counterintuitive.  To optimize the estimate of $s$, in the weights we \textit{multiply} the data by the response, \textit{not divide!}  These weights most heavily value the data points that have the largest response and the smallest variance, while the normalization ensures that the result is unbiased.  These types of inverse variance weighting appear again and again in the field.
+
+We can also construct estimators for the variance.  For example, if we know the mean of a random variable's distribution, then we can construct an unbiased estimate from repeated realizations as
 \begin{equation}
   \bar \sigma^2 = \frac{1}{N_{\rm data}} \sum_i (X_i - \mu)^2.
 \end{equation}
@@ -217,7 +231,7 @@ We will discuss two elementary ways to do that here, and then discuss several mo
 
 \subsection{Inversion sampling}
 
-\section*{Exercises}
+\exercises
 
 \begin{enumerate}
 
@@ -225,25 +239,58 @@ We will discuss two elementary ways to do that here, and then discuss several mo
 
 \item From the definition of variance, derive the following relation.
   \begin{equation}
-    \sigma^2 = \left\langle x^2\right\rangle - \mu^2
+    \sigma^2 = \left\langle x^2\right\rangle - \mu^2  \label{eq:var_alt}
   \end{equation}
-  
-\item Show that for a data set $d_i = s + n_i$ with noise that has standard deviation $\sigma_i$, that the weighted-average estimate
-  $$
-\bar s = \frac{\sum_i w_i d_i}{\sum_i w_i}
-  $$
-with inverse-variance weights $w_i = 1/\sigma^2_i$ yields the smallest variance for any weights.  Hint: compute the variance of $\bar s$ for generic weights and then minimize that variance with respect to the weights.
+ 
+\item \label{ex:minvar_est} Show that for a data set $d_i = s + n_i$ with noise that has standard deviation $\sigma_i$, that the weighted-average estimate
+  \begin{equation*}
+    \bar s = \frac{\sum_i w_i d_i}{\sum_i w_i}
+  \end{equation*}
+with inverse-variance weights $w_i \propto 1/\sigma^2_i$ yields the smallest variance for any weights.
 
+Hint: compute the variance of $\bar s$ for generic weights.  Let the sum of those weights be a constant $A$ and then minimize that variance with respect to the weights subject to the constraint $A = \sum_i w_i$. If you like, you can set $A=1$, but that's not necessary. 
+
+\item  \label{ex:minvar_response} Similar to the previous problem, but now let the data be some not-trivial response to the signal
+  \begin{equation*}
+    d_i = R_i s + n_i
+  \end{equation*}
+  where again the noise error is $\sigma_i$.
+  We want to make an optimal weighted combination of the data to yield an estimate of the signal
+ \begin{equation*}
+    \hat s = A {\sum_i w_i d}
+ \end{equation*}
+ Show that:
+ \begin{enumerate}
+ \item To be unbiased, we must have the normalization constraint
+  \begin{equation*}
+  A = \left(\sum_i w_i R_i \right)^{-1}.
+ \end{equation*}
+ \item The weights that minimize the variance on $\hat s$ subject to that constraint are
+  \begin{equation*}
+    w_i = \frac{R_i}{\sigma_i^2}.
+  \end{equation*}
+ \item Surprisingly, the variance on $\hat s$ is in fact $A$.
+ \end{enumerate}
+
+
+\item Show that this is an unbiased estimator for the variance:
+  \begin{equation*}
+    \bar \sigma^2 = \frac{1}{N_{\rm data}-1} \sum_i (X_i - \bar X)^2.
+  \end{equation*}
+
+ 
 \item \label{ex:chi2_data} For values of
-  $$t = [-3,-2,-1,0,1,2,3],$$
+  \begin{equation*}
+      t = [-3,-2,-1,0,1,2,3],
+  \end{equation*}
   a data set has values
-  $$
-  d(t) = [25.1, 13.5,  0.9, -0.7, -0.5, 10.,  25.5]
-  $$
+  \begin{equation*}
+    d(t) = [25.1, 13.5,  0.9, -0.7, -0.5, 10.,  25.5]
+  \end{equation*}
   with uncertainties
-  $$
-  \sigma(t) = [4, 2, 4 ,1, 2, 2, 6]
-  $$
+  \begin{equation*}
+    \sigma(t) = [4, 2, 4 ,1, 2, 2, 6]
+  \end{equation*}
   The model for the signal in the data is $m = A t^2$.
   \begin{enumerate}
   \item Find what value of parameter $A$ minimizes $\chi^2$ for this data set.  You can use any method. 
