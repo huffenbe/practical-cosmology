@@ -1,5 +1,7 @@
 \chapter{Cosmology basics} \label{ch:basics}
 
+In this chapter, we orient ourselves by learning how to label cosmological spaces with coordinates, measure distances, velocities, and redshifts.
+
 \section{Flat and curved spaces}
 Cosmology is the study of the universe on the large scales, so we need to spend some time understanding how we are going to quantify and label positions in space and time.  Already in physics, we are used to labeling points in space with coordinates like $(x,y,z)$ or $(r,\theta,\phi)$.  We are also accustomed to computing the distances between points, especially in cartesian coordinates.
 
@@ -41,7 +43,7 @@ We can also consider a circular path (all in the surface) with a fixed radius ar
 \begin{equation}
   \ell_{\rm circumference} = \int_0^{2\pi} d\phi r = 2\pi r.  \label{eqn:2d_sphere_path_circumference}
 \end{equation}
-So that circle, considered along the curved surface only, has more radius than you would expect given the circumference.  This is a manifestation of the surfaces positive curvature.  Also note that that point with $r=0$ is not a special point of the sphere.  All points are the same because, mathematically, a sphere is homogeneous and isotropic, so we could have defined that origin point anywhere. From Eqns. (\ref{eqn:2d_sphere_path_radius}) and (\ref{eqn:2d_sphere_path_circumference}) we can work out that the metric for the surface of the sphere is,
+So that circle, considered along the curved surface only, has more radius than you would expect given the circumference.  This is a manifestation of the surfaces positive curvature.  Also note that that point with $r=0$ is not a special point of the sphere.  All points are the same because, mathematically, a sphere is homogeneous and isotropic, so we could have defined that origin point anywhere. From Equations (\ref{eqn:2d_sphere_path_radius}) and (\ref{eqn:2d_sphere_path_circumference}) we can work out that the metric for the surface of the sphere is,
 \begin{equation}
   d\ell^2 = \frac{1}{1-r^2/R^2} dr^2 + r^2 d\phi^2.
 \end{equation}
@@ -55,16 +57,16 @@ It is also a homogeneous and isotropic space, but has less radius than you would
 
 Both these spherical and hyperbolic surfaces are two-dimensional surfaces that we have embedded in three-dimensional Euclidean space.  We can go to one higher dimension, looking at 3-d surfaces that satisfy $x^2 + y^2 + z^2 \pm u^2 = R^2$.  These spaces work basically the same and we unsurprisingly find a spherical-polar metric with,
 \begin{equation}
-  d\ell^2 =  \frac{1}{1-kr^2/R^2} dr^2 + r^2 d\Omega^2,
+  d\ell^2 =  \frac{1}{1-kr^2/R^2} dr^2 + r^2 d\Omega^2,  \label{eqn:spatial_metric}
 \end{equation}
-where the solid angle $d\Omega^2 = d\theta^2 + \sin^2 \theta d\phi^2$, and the parameter $k$ is $+1$ for a spherical space and $-1$ for a hyperbolic space.  We can also include the value $k=0$ to recover normal 3-d spherical polar coordinates.  Notice that all of the metric weirdness is in the radial coordinate.  The angular part of the metric looks pretty normal, so the  radius of a circle is still $2\pi r$ and the surface area of a sphere is still $4\pi r^2$, but you have to be a little careful about what you mean by $r$, because, except in flat space, it is not the physical distance from the origin.
+where $r^2 = x^2 + y^2 + z^2$ and the differential solid angle is $d\Omega^2 = d\theta^2 + \sin^2 \theta d\phi^2$.  The parameter $k$ is $+1$ for a spherical space and $-1$ for a hyperbolic space.  We can also include the value $k=0$ to recover normal 3-d spherical polar coordinates for non-curved, ``flat'' space.  Notice that all of the metric weirdness is in the radial coordinate.  Like Figure \ref{fig:2d_spherical_surface},  $r$ is not the distance along or through the space, but the distance on the $u=0$ plane.  The angular part of the metric looks normal, so the  radius of a circle is still $2\pi r$ and the surface area of a sphere is still $4\pi r^2$, but you have to be a little careful about $r$, because, except in flat space, it is not the physical distance from the origin.
 
 \section{Cosmological FRW metric}
 For much of practical observational cosmology, we will not need much general relativity, but a few results are crucial.  As noted before, we observe that the universe is statistically homogeneous and isotropic, meaning that at different locations and in different directions, the universe is basically the same: composed of galaxies of the same various types, oriented in all different directions at random.  It is also true is that the universe is not static, but dynamic; it changes in time.  When we look at the most distant galaxies, where the light has taken many billions of years to reach us, the galaxies are different, forming stars alternatively less then more then less vigorously.  Older galaxies have more pristine gas with fewer heavy elements.  Moreover, the light from distant galaxies is \textit{redshifted}\index{redshift}, or shifted to longer wavelengths, which is strong evidence that the universe is expanding in time, as we will see.
 
 In general relativity, these conditions end up being very restrictive.  The metric that describes how to measure spacetime intervals in homogeneous, isotropic, dynamic spacetimes are limited to ones written as
 \begin{equation}
-  ds^2 = -dt^2 + a^2(t)\left[ \frac{dr^2}{1 - kr^2/R_0^2} + r^2 d\Omega^2  \right]
+  ds^2 = -dt^2 + a^2(t)\left[ \frac{dr^2}{1 - kr^2/R_0^2} + r^2 d\Omega^2  \right] \label{eqn:FRW}
 \end{equation}
 where $r$ is a radial coordinate (called a comoving coordinate) but again is slightly different to what we are used to, and $\theta$ and $\phi$ are angular coordinates that work normally.  This metric is extremely important.  The parameter $k$ denotes the three different kinds of spacetimes that are allowed by our restrictive conditions.  Values $k = \{ -1, 0, +1 \}$ mean that the space has negative curvature, is spatially flat, or has positive curvature.    All of this is familiar from our discussion of curved spaces above. We can call our position the origin of our coordinate system, $r=0$. 
 Cosmology is concerned with the very largest size scales in the universe and we are essentially stuck in one spot, in the Milky Way. 
@@ -82,27 +84,32 @@ The present-day expansion rate is called the \textit{Hubble constant}\index{Hubb
 \begin{equation}
   H_0 = H(t_{\rm now}) = \frac{\dot a(t_{\rm now})}{1} \approx \frac{70\,\mbox{km/s}}{\mbox{Mpc}} \approx 2.3\times 10^{-18}\,\mbox{s}^{-1}.
 \end{equation}
-All determinations of distance depend on the Hubble constant; it is an enormously important quantity and there is still some few percent disagreement about its value.  The inverse of the Hubble constant can be expressed as a time, about 14 Gyrs, or a distance, about 4.3 Gpc.  Sometimes the Hubble constant is compared to reference values to make a new parameters such as
+All determinations of distance depend on the Hubble constant; it is an enormously important quantity and there is still some few percent disagreement about its value.  The inverse of the Hubble constant can be expressed as a time $H_0^{-1}$, about 14 Gyrs, or a distance $c/H_0$, about 4.3 Gpc.  Sometimes the Hubble constant is compared to reference values to make a new parameters such as
 \begin{equation}
   h = h_{100} = H_0 /(\mbox{100 km/s/Mpc}) \quad\mbox{or}\quad h_{70} = H_0 /(\mbox{70 km/s/Mpc}).%,\mbox{ etc.} 
 \end{equation}
 You will often see these in the literature.
 
-In flat space ($k=0$), the physical distance (like you would measure with a ruler) from the origin to a point depends on the time and the comoving coordinate as
+In flat space ($k=0$) or so nearby that the curvature is immaterial ($r \ll R$), the physical distance (like you would measure with a ruler) from the origin to a point depends on the time and the comoving coordinate as
 \begin{equation}   
-  \ell_{\rm radial} = a(t) r  \qquad\mbox{(flat case)}
+  \ell_{\rm radial} = a(t) r  \qquad(k=0 \mbox{ or } r \ll R).
 \end{equation}
-while the physical velocity of an object is
-\begin{equation}
-  v_{\rm phys} = \frac{d(\ell_{\rm phys})}{dt} = \frac{da}{dt} r + a \frac{dr}{dt} = \frac{\dot a}{a} a r + a \frac{dr}{dt} = H \ell_{\rm phys} + v_{\rm pec}   \quad\mbox{(flat case)} \label{eqn:vpec_flat}
-\end{equation}
-The first term in the velocity is called the \textit{Hubble flow}\index{Hubble flow} and the second term is called the \textit{peculiar velocity}\index{peculiar velocity}.  The Hubble flow is the velocity that you measure from the expansion of the Universe.  Nearby, where the Hubble parameter is close to the present-day value, we find that galaxies tend to move away from us at around 70 km/s per Mpc of distance away.  The peculiar velocity is the independent velocity of a galaxy and is typically around 1000 km/s, so we need to look further than tens of Mpc away for the Hubble flow to dominate the overall velocity of an object.  In practice, we measure the \textit{cosmological redshift}\index{redshift}, $z$, of the spectral lines of an object compared to the wavelength of emission.
-\begin{equation} 
-  \lambda_{\rm obs}/\lambda_{\rm em} = a(t_{\rm now}) / a(t_{\rm em}) = 1+z.
-\end{equation}
-We have $z=0$ at the present day, $z \sim 10$ when the first stars and galaxies are forming, and $z =1100$ when the CMB is released.  The wavelength is expanded, but since the speed of light is constant, the frequency of light slows, as does the observed rate of any other process.  Thus energy and momentum of photons (and other objects) drops as the Universe expands.
+while the physical velocity of an radially-moving object is
+\begin{align}
+  v_{\rm radial} = \frac{d(\ell_{\rm radial})}{dt} &= \frac{da}{dt} r + a \frac{dr}{dt} \\ \nonumber
+  &= \frac{\dot a}{a} a r + a \frac{dr}{dt} \\ \nonumber
+  &= H \ell_{\rm radial} + v_{\rm pec}   \qquad(k=0 \mbox{ or } r \ll R)  \label{eqn:vpec_flat}
+\end{align}
+The first term in the velocity is called the \textit{Hubble flow}\index{Hubble flow} and the second term is its \textit{peculiar velocity}\index{peculiar velocity}.  The Hubble flow is the velocity that you measure from the expansion of the Universe.  Nearby, where the Hubble parameter is close to the present-day value, we find that galaxies tend to move away from us at around 70 km/s per Mpc of distance away.  The peculiar velocity is the independent velocity of a galaxy and is typically around 1000 km/s, so we need to look further than tens of Mpc away for the Hubble flow to dominate the overall velocity of an object.  At larger radial coordinates we need to revamp our notions of distance and this expression is not so useful.
 
-Does this violate conservation of energy?  Well, no, energy conservation is the result of the symmetry of time-invariance.  The spacetime of an expanding universe is not time invariant, so we cannot expect energy conservation.  As the momentum of objects redshifts away, they over time lose their peculiar velocities and come to join the Hubble flow.
+In practice, we can't directly measure radial velocities anyway.  Instead, we measure the \textit{cosmological redshift}\index{redshift}, $z$, of the spectral lines of an object compared to the wavelength of emission:
+\begin{equation} 
+  \lambda_{\rm obs}/\lambda_{\rm em} = a(t_{\rm now}) / a(t_{\rm em}) = 1+z,
+\end{equation}
+which depends only on the scale factor at emission and absorption (now).\footnote{Although not strictly necessary, it is possible to interpret cosmological redshift as a Doppler shift, and developing this interpretation is surprisingly subtle \citep{2009AmJPh..77..688B}.  A comoving emitter and comoving receiver are both ``at rest'' with respect to the Hubble flow.  In GR, the relative velocity of those two well-separated frames is not immediately meaningful.  Only by parallel transporting the basis vectors of the emitting frame along the photon path to the origin do the frames give an interpretable relative velocity, one that corresponds to the redshift via the relativistic Doppler effect.}
+We have $z=0$ at the present day, $z \sim 10$ when the first stars and galaxies are forming, and $z =1100$ when the CMB is released.  The wavelength is expanded, but since the speed of light is constant, the frequency of light slows, as does the observed rate of any other process.  Thus energy and momentum of photons drops as the Universe expands.  The momentum of particles and macroscopic objects alike also drop as their DeBroglie wavelengts expand ($p = h/\lambda_D$).
+
+Does this violate conservation of energy?  Well, no.  Energy conservation is the result of the symmetry of time-invariance.  The spacetime of an expanding universe is not time invariant, so we cannot expect energy conservation.  The momentum of objects similarly redshifts away, and they over time lose their peculiar velocities and come to join the Hubble flow.
 
 \section{Friedmann equations and model universes}
 Much of the development of the universe clearly depends on the \textit{expansion history}\index{expansion history}, the scale factor as a function of time: $a(t)$.  Treating the contents of the universe the as a uniform fluid, the Einstein equations of general relativity---which relate the spacetime expressed by the metric (and its derivatives) to the matter-energy content---yield two differential equations that relate the scale factor to the energy density $\rho$ and pressure $P$ of the fluid. These equations are the first Friedmann equation,
@@ -167,7 +174,7 @@ which has a positive energy density but a negative pressure.  The equation of st
 \end{equation}
 is constant.  The density of this component does not dilute with expansion of the universe.  This is very weird and  does not fit with our intuition of how substances work.  As we will see, this negative pressure causes it to have gravity that pushes rather than pulls.  Also very weird.  However, current modeling requires this component, dubbed ``dark energy,'' to account for about 70 percent of our present-day energy budget.
 
-This component is utterly mysterious to us.  It may ultimately be simply a property of spacetime as originally envisioned, just a \textit{cosmological constant} in the equations of GR.  It may be an energy density associated with the vacuum.  This might make the density dependence on expansion more understandable.  An expanding volume produces more vacuum and so produces more dark energy.  In quantum mechanics, the (observed) Casamir effect depends on a sea of vitual particles and a zero-point energy associated with the vacuum.  However, a simple theory computation, accounting for the particles we know about, predicts a vacuum energy value which is huge, a factor of $10^{60}$ greater than what we observe.  This is the unresolved \textit{cosmological constant problem}.
+This component is utterly mysterious to us.  It may ultimately be simply a property of spacetime as originally envisioned, just a \textit{cosmological constant} in the equations of GR.  Alternatively, it may be an energy density associated with the vacuum.  This might make the density dependence on expansion more understandable.  An expanding volume produces more vacuum and so produces more dark energy.  In quantum mechanics, the (observed) Casamir effect depends on a sea of vitual particles and a zero-point energy associated with the vacuum.  However, a simple theory computation, accounting for the particles we know about, predicts a vacuum energy value which is huge, a factor of $10^{60}$ greater than what we observe.  This is the unresolved \textit{cosmological constant problem}.
 
 There are other models where the dark energy is one or more particle physics field and could be dynamic and not a constant after all.  Consistent with that, there may be some preliminary evidence that dark energy equation of state is not a constant at $w = -1$, but it's not yet totally clear.   This is an active area of research.
 
@@ -386,7 +393,7 @@ The BAO community makes a related distance measure, the angle-averaged comoving 
 \end{equation}
 where the $z$ factor is inserted to ensure that it matches the other distance measures at low redshift.
   
-\paragraph{Luminosity distance.}  Finally we want to establish a notion of distance to relate the luminosity of objects to their measured brightness.  We consider an object with luminosity
+\paragraph{Luminosity distance.}  Finally, we want to establish a notion of distance to relate the luminosity of objects to their measured brightness.  We consider an object with luminosity
 \begin{equation}
   L = \frac{dE_{\rm em}}{dt_{\rm em}}
 \end{equation}
@@ -426,6 +433,14 @@ which defines $D_L$.  Although this is common, I'm once again not sure that it i
 
 \section{Velocities}
 
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=0.7\linewidth]{figs/basics/velocity_at_z.pdf}
+  \end{center}
+  \caption{A object moves with velocity $v_s$ with respect to a comoving observer at $z_\textrm{em}$ and an angle $\theta$ to the line of sight.  We seek to understand the effects of its motion for us, the $z=0$ observer.}\label{fig:velocity_at_z}
+\end{figure}
+
 The recession velocity of an object is
 \begin{equation}
   \dot d_p = H a \chi + a \dot \chi = H d_p + v_{\textrm{pec},\parallel}
@@ -438,6 +453,9 @@ In any case, the total magnitude squared of the peculiar velocity is
 \end{equation}
 where we see the angular portion of the velocity acts the same as in standard spherical polar coordinates, with $r = S_k(\chi) = D_M$.
 
+
+
+
 \textcolor{purple}{Note that $D_M = S$ is the distance for transverse proper motions.  Redshift and peculiar redshift.  ``Superluminal'' quasar jets?}
 
 
@@ -447,11 +465,23 @@ where we see the angular portion of the velocity acts the same as in standard sp
 
 \begin{enumerate}
 
-
 \item Derive the expression for radial length in a spherical space, Equation (\ref{eqn:2d_sphere_path_radius}).
 
 \item Find the analogous expression to Equation (\ref{eqn:2d_sphere_path_radius}) for  radial length in a hyperbolic space.
 
+\item Derive the spatial part of a curved metric in spherical-polar coordinates,
+  \begin{equation*}
+    d\ell^2 = \frac{dr^2}{1 \mp r^2/R^2} + r^2 d\Omega^2, 
+  \end{equation*}
+  that appears in the FRW metric (Equation \ref{eqn:spatial_metric})
+by embedding a 3-sphere/3-hyperboloid in a four dimensional space with cartesian coordinates $(x,y,z,w)$.  The equations for those surfaces are
+\begin{equation*}
+  x^2 + y^2 + z^2 \pm u^2 = R_0^2.
+\end{equation*}
+Take the differential, then eliminate $w$.  You will need the usual relationships between $x,y,z$ and $r,\theta,\phi$ and their derivatives.
+
+
+  
 \item Solve the continuity equation for an equation of state $P = w\rho$ to show that $\rho \propto a^{-3(1+w)}$. 
 
   
