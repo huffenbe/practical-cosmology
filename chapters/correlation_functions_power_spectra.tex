@@ -75,6 +75,12 @@ We only use a single symbol $a$ for the real-space function $a(x)$ and its trans
 \end{equation}
 This definition is extremely important and we will use it and similar relationships again and again.   When homogeneous and isotropic, the different modes $a(k)$ are independent random variables, signified by the delta function, making the covariance diagonal.  The role of the Dirac delta function (supplemental section \ref{sec:dirac_delta}) is a little hard to conceptualize, but any non-zero-sized region will have a finite covariance, which we explore shortly.
 
+Because a real function is its own complex conjugate, we have that $a(x)=a(x)^*$ implies $a(-k) = a(k)^*$: the negative-frequency harmonics are the complex conjugates of the positive frequency harmonics. This property shows us for real fields the correlation when neither field get a complex conjugate:
+\begin{equation}
+  \langle a(k) a(k') \rangle = \langle a(k) a^*(-k') \rangle = 2\pi P(k) \delta(k + k').
+\end{equation}
+
+
 Spectra are often classified as red, white, or blue, named metaphorically after the color of light with such a spectral energy distribution.  Red spectra have more power at large scales/low frequencies, white spectra have equal power at all scales/frequencies, and blue spectra have more power at small scales/high frequencies.
 
 \subsection{Correlation function from power spectrum}
@@ -195,7 +201,7 @@ In the Riemann sums, if we include the left side of every interval, then the sum
 
 In this convention, the zero frequency is stored at $q=0$.  Then the positive frequencies are stored in the first half of the array, at $q=1 \dots \lfloor N/2 \rfloor -1$.  The the negative frequencies start at $q =  \lfloor N/2 \rfloor$ and are placed in increasing order up to $q = N-1$, which holds frequency $-\Delta k$ in the very last array entry.  In higher-dimension FFTs, we follow this convention for all the frequency indices.
 
-Some computer libraries or packages will have a special FFT routine for real-valued signals.    Because a real function is its own complex conjugate, we have that $a(x)=a(x)^*$ implies $a(-k) = a(k)^*$: the negative-frequency harmonics are the complex conjugates of the positive frequency harmonics.  To save space, these real-to-complex transform routines will use a real array of size $N$ for the signal and a complex array of size $\lfloor N/2 \rfloor - 1$ for the harmonics, saving about half on memory usage.  In higher-dimension FFTs, only one of the indices is treated this way, typically the index that changes the fastest as you step through memory.
+Some computer libraries or packages will have a special FFT routine for real-valued signals, where we have the symmetry $a(-k) = a(k)^*$.    To save space, these real-to-complex transform routines will use a real array of size $N$ for the signal and a complex array of size $\lfloor N/2 \rfloor - 1$ for the harmonics, saving about half on memory usage.  In higher-dimension FFTs, only one of the indices is treated this way, typically the index that changes the fastest as you step through memory.
 
 Now we have all the tools to make a synthetic, real-valued signal whose power spectrum we specify.  After choosing what $P(k)$ we want for the power spectrum, and remembering that the power spectrum provides the variance for the harmonic coeffients, $ \langle a(k_q) a^*(k_{q'}) \rangle = 2\pi P(k_q) / \Delta k$, we can set the zero mode as
 \begin{equation}
@@ -455,4 +461,10 @@ On the right side, it is clear that if $x=x'$, the exponential equals one and th
   &=& \frac{1}{2\pi}  \int {dx}\ \exp(-i (k'-k)x) 
 \end{eqnarray}
 where we are careful with the minus sign in the last equation to match up with our definition of inverse Fourier transform.  The Dirac delta function is even ($\delta(k-k') = \delta(k' - k)$) and real valued (equal to its complex conjugate, replacing $i$ with $-i$), so there are lots of variations of minus signs that are equivalent.  Take some care with them.
+
+
+\subsection{propeties}
+
+
+
 \end{subappendices}
