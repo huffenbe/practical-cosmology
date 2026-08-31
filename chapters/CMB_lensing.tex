@@ -1,67 +1,72 @@
 \chapter{CMB lensing reconstruction} \label{ch:CMB_lensing}
 
+Lensing deflects the light of the CMB so the light we see from one direction actually came from somewhere else.  The deflections are small, about 3 arcminutes.  We can write the resulting (lensed) CMB sky as a function of a notional unlensed sky at a slightly different sky location.  Lensing is technical and tricky to understand, so we will start in the flat-sky approximation to get the basic ideas down before generalizing to the full sphere.
 
-
-\section{Quadratic Estimator}
-
-Deflection field
+In the flat-sky approximation we can write the origin of the radiation from $\Omega$  for deflection $\alpha$ as the vector sum\footnote{On the sphere, the deflection field denotes a rotation of magnitude $|\alpha|$ in the direction specified by unit vectors $\alpha_\theta \hat \theta$ and $\alpha_\phi \hat \phi$.} of the two-vectors $\Omega + \alpha$:
 \begin{equation}
-\alpha = \nabla \phi
+  T(\Omega) = \mathbb{L}(\alpha)[T^u]= T^u(\Omega + \alpha)
 \end{equation} 
+where $T^u$ is the unlensed sky and $\mathbb{L}(\alpha)[\dots]$ is the lensing operator.  Everywhere in the lensing literature, always verify the notation used for the lensed and unlensed sky\footnote{Conventions abound, such as $T$ and $\tilde T$ swapping meaning between papers}.  Here we continue to use $T$ to mean the sky image we have access to---the lensed sky---and $T^u$ to mean the unlensed sky.  Unambiguous enough.
 
-
+We define that vector deflection field as the gradient of a lensing potential $\phi$,
 \begin{equation}
-  T(\Omega) = T^u(\Omega - \alpha)
-\end{equation} 
-where by subtraction we really mean a rotation.  In the flat sky approximation, it is literally a subtraction of a two-vector.
-
-Expanded to first order
-\begin{equation}
-  T(\Omega) = T^u(\Omega) - \frac{\partial T^u}{\partial \Omega} \cdot {\alpha} + \dots
+\alpha = \nabla \phi.
 \end{equation}
-
-
+The amount and direction of deflection we can relate to the distribution of material along the line of sight.  We'll come back to define it precisely later.  We will also use the Fourier expansion for the gradient to obtain, for example,
 \begin{equation}
-  T(\Omega) = T^u(\Omega) - \nabla T^u \cdot \nabla \phi
+ \alpha = \nabla \phi = \int \frac{d^2 l}{(2\pi)^2} il \phi(l) \exp(il\cdot\Omega).
 \end{equation}
+For a fixed lensing potential, as a remapping of Gaussian random temperature field to new positions, the lensed field is still a Gaussian random field, but it has a new and non-diagonal covariance.  So lensing induces an isotropy violation.
 
+
+If we expand the lensing effect to first order, the observed, lensed sky is
 \begin{equation}
-  \nabla \phi = \int \frac{d^2 l}{(2\pi)^2} il \phi(l) \exp(il\cdot\Omega)
+  T(\Omega) = T^u(\Omega) + \nabla{ T^u} \cdot {\alpha} + \dots =  T^u(\Omega) + \nabla T^u \cdot \nabla \phi + \dots
 \end{equation}
-and similarly for $\nabla T^u$.
-
+so that the change in the temperature is
 \begin{equation}
-\delta T = T - T^u
+\delta T = T - T^u =  \nabla T^u \cdot \nabla \phi
 \end{equation}
-
-Fourier transform
+Let's examine the harmonics.  Since this difference in real space is the multiplication of gradients, we expect it (by the convolution theorem) to be the convolution of gradient harmonic coefficients in harmonic space.  We'll expand the difference into its harmonics, and then expand the gradients into their harmonics, and collect like terms.  We find,
 \begin{eqnarray}
-  \delta T(l) &=& - \int d\Omega \exp(-il \cdot \Omega)  (\nabla T^u \cdot \nabla \phi)(\Omega)\\ \nonumber
-   &=& - \int d\Omega \exp(-il \cdot \Omega)  \\ \nonumber
+  \delta T(l) &=& \int d\Omega \exp(-il \cdot \Omega)  (\nabla T^u \cdot \nabla \phi)(\Omega)\\ \nonumber
+   &=& \int d\Omega \exp(-il \cdot \Omega)  \\ \nonumber
    && \left( \int \frac{d^2 l_1}{(2\pi)^2} il_1 T^u(l_1) \exp(il_1\cdot\Omega)  \right) %\\ \nonumber
   \cdot  \left( \int \frac{d^2 l_2}{(2\pi)^2} il_2 \phi(l_2) \exp(il_2\cdot\Omega)  \right) \\ \nonumber
-  &=&  \int \frac{d^2 l_1}{(2\pi)^2} \int \frac{d^2 l_2}{(2\pi)^2}  \left[ (l_1 T^u(l_1))\cdot(l_2 \phi(l_2))\right]  \int d\Omega\exp\left(i(l_1+l_2 - l)\cdot\Omega\right),
+  &=& - \int \frac{d^2 l_1}{(2\pi)^2} \int \frac{d^2 l_2}{(2\pi)^2}  \left[ (l_1 T^u(l_1))\cdot(l_2 \phi(l_2))\right]  \int d\Omega\exp\left(i(l_1+l_2 - l)\cdot\Omega\right),
 \end{eqnarray}
-where rearranging we have combined a factor $i^2 = -1$ and all the complex exponentials.  The integral over $\Omega$ becomes a $(2\pi)^2 \delta(l_1 + l_2 - l)$, so we can evaluate the $l_2$ integral, setting $l_2 = l - l_1$ everywhere in the integrand.
+where rearranging we have combined a factor $i^2 = -1$ and gathered together all the complex exponentials.  The integral over $\Omega$ becomes a $(2\pi)^2 \delta(l_1 + l_2 - l)$, so we can evaluate the $l_2$ integral, setting $l_2 = l - l_1$ everywhere in the integrand.
 \begin{eqnarray}
-  \delta T(l) &=& \int \frac{d^2 l_1}{(2\pi)^2} \left(l_1 T^u(l_1) \right) \cdot \left((l - l_1) \phi(l - l_1) \right) \\ \nonumber
-  &=& \int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l-l_1) \ T^u(l_1) \phi(l - l_1). 
+  \delta T(l) &=& -\int \frac{d^2 l_1}{(2\pi)^2} \left(l_1 T^u(l_1) \right) \cdot \left((l - l_1) \phi(l - l_1) \right) \\ \nonumber
+  &=& -\int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l-l_1) \ T^u(l_1) \phi(l - l_1). 
 \end{eqnarray}
-So we see in the first line that the multiplication of the gradients in real space converts to a convolution of their components in harmonic space, as we expect from the convolution theorem.
+So we see in the first line that indeed the multiplication of gradients yields a convolution of their components in harmonic space.
 
-If we look at the correlation of two harmonics we get to first order
+
+\section{Quadratic Estimator}\index{quadratic estimator (lensing)}
+We are going to see that the contribution of the lensing potential to the temperature field can be estimated by correlating the observed CMB with itself.  This is called constructing a quadratic estimator and is the standard method for measuring lensing.  Defining this estimator depends on two key steps: (1) understanding the response of a 2-point correlation to lensing and (2) constructing a weighted average of lensing estimators to achieve a good measurement of the signal.
+
+\subsection{Correlation response to lensing} \index{lensing response (quadratic estimator)}
+
+\subsubsection{Leading order response}
+
+If we look at the correlation of two harmonics we get to first order,
 \begin{eqnarray}
   \langle T(l) T(l') \rangle &=&  \left\langle (T^u + \delta T)(l) \ (T^u+\delta T)(l') \right\rangle \\ \nonumber
-  &=&  (2\pi)^2 C^u_l \delta(l +l')  + \left\langle T^u(l) \delta T(l')  +  \delta T^u(l) T^u(l') \right\rangle
+  &=&  (2\pi)^2 C^u_l \delta(l +l')  + \left\langle T^u(l) \delta T(l')  +  \delta T^u(l) T^u(l') \right\rangle,
 \end{eqnarray}
-where $C^u_l$ is the power spectrum of the CMB before any lensing effects.
+where $C^u_l$ is the power spectrum of the CMB before any lensing effects, something a Boltzmann code can calculate.
 
-When there is no direct correlation of the unlensed fields (thus $l \neq -l'$) we see only the first-order terms
+When $l \neq -l'$, there is no direct correlation of the unlensed fields and we see only the first-order terms,
 \begin{eqnarray}
   \langle T(l) T(l') \rangle_{l \neq -l'} &=&   \int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l'-l_1) \ \left\langle T^u(l) T^u(l_1)\right\rangle \phi(l'-l_1)  \\ \nonumber
-  && +   \int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l-l_1) \ \left\langle T^u(l_1) T^u(l')\right\rangle \phi(l-l_1)  
+  && +   \int \frac{d^2 l_1}{(2\pi)^2} l_1\cdot(l-l_1) \ \left\langle T^u(l_1) T^u(l')\right\rangle \phi(l-l_1) , 
 \end{eqnarray}
-where the second term is similar to the first but the complex conjugate with the roles of $l$ and $l'$ reversed.  The $\langle T^u(l) T^u(l_1) \rangle = (2\pi)^2 C^u_l \delta(l + l_1)$ collapses the $l_1$ integral and we get
+where the second term is similar to the first but with the roles of $l$ and $l'$ reversed.  The correlation of the unlensed temperature field,
+\begin{equation}
+  \langle T^u(l) T^u(l_1) \rangle = (2\pi)^2 C^u_l \delta(l + l_1),
+\end{equation}
+yields a delta function that collapses the $l_1$ integrals and we get
 \begin{eqnarray}
   \langle T(l) T(l') \rangle_{l \neq -l'} &=& -l \cdot (l' + l) C^u_l \phi(l' + l) \\ \nonumber
   && - l' \cdot (l + l') C^u_{l'} \phi(l+l') \\ \nonumber
@@ -69,37 +74,94 @@ where the second term is similar to the first but the complex conjugate with the
 \end{eqnarray}
 
 Now, if we are interested in a particular mode of the potential $L = l+l'$, or $l' = L-l$, then we see the average correlation
+\begin{align}
+  \langle T(l) T(L-l) \rangle_{L \neq 0 } &=  -L \cdot (l C^u_l + (L-l) C^u_{L-l}) \phi(L) \\ \nonumber
+  &= f_1(l,L-l) \phi(L)
+\end{align}
+with 
 \begin{equation}
-  \langle T(l) T(L-l) \rangle_{L \neq 0 } =  -L \cdot (l C^u_l + (L-l) C^u_{L-l}) \phi(L)
+  f_1(l,l')  = -(l+l') \cdot (l C^u_l + l' C^u_{l'}).
 \end{equation}
-So if we construct a quadratic estimator\index{quadratic estimator (lensing)} (so called because it has two factors of $T$) for the $L$ mode of $\phi$ from just one mode $l$ of temperature and its counterpart at $L-l$, we get
-\begin{equation}
-  \hat\phi_{1}(L) = \frac{T(l) T(L-l)}{-L \cdot (l C^u_l + (L-l) C^u_{L-l})} = \frac{T(l) T(L-l)}{f(l,L-l)},
-\end{equation}
-with
-\begin{equation}
-  f(l,l')  = -(l+l') \cdot (l C^u_l + l' C^u_{l'}).
-\end{equation}
-It will provide an unbiased reconstruction of that mode of the lensing potential $\langle \hat\phi(L)_{1} \rangle = \phi(L)$.  This function $f(l,l')$ is the response of the correlations to the $\phi$ modes.  It records the strength of the coupling from mode $L$ into the correlation of temperature modes $l,l'$.
+Thus $f_1(l,L-l)$ is the leading-order \textit{lensing response} of the correlation to the potential mode with amplitude $\phi(L)$.
 
-Basing the estimator on a single correlation is ineffective.  We should use all such correlations together with a weight function.  A generically weighted pairing of temperature harmonics, 
+If we construct a quadratic estimator (so called because it has two factors of $T$) for the $L$ mode of $\phi$ from just one mode $l$ of temperature and its counterpart at $L-l$, we thus get
+\begin{equation}
+  \hat\phi_{1}(L) %= \frac{T(l) T(L-l)}{-L \cdot (l C^u_l + (L-l) C^u_{L-l})}
+  = \frac{T(l) T(L-l)}{f_1(l,L-l)}.
+\end{equation}
+Up to the accuracy of our approximation, this will provide an unbiased reconstruction of that mode of the lensing potential $\langle \hat\phi_{1}(L) \rangle = \phi(L)$.  This function $f_1(l,l')$ is the response of the correlations to the $\phi$ modes.  It records the strength of the coupling from potential mode $L$ into the correlation of temperature modes $l,l'$.  This has given us a good intuition for how these quadratic estimators work, but unfortunately the leading-order approximation is not very good.  We need to work a little more to get a better response function.
+
+\subsubsection{Non-perturbative response}
+
+We can ask ourselves what do we actually want to do with this this lensing estimator.  One option is to correlate it with another field to learn about astrophysics or the lensing potential spectrum $C_l^{\phi \phi}$, from which we can infer cosmological parameters.  We could make a cross-correlation with the CMB estimate and an external tracer of the potential (a set of galaxies or a measurement of gas or something) or an auto-correlation using two copies of the CMB lensing estimate.  Let's focus now on the external tracer since it is somewhat simpler and we return to the auto-power spectrum of the CMB lensing later in the chapter.
+
+This generic external tracer observable, call it $\hat \phi^\textrm{ext}$, when cross-correlated with the potential has a power spectrum
+\begin{equation}
+  \langle \hat \phi^\textrm{ext}(l) \phi(l') \rangle = (2\pi)^2 C_l^{\phi^\textrm{ext} \phi} \delta(l+l')
+\end{equation}
+Note that this is an ensemble average over $\phi$ rather than a fixed $\phi$ field.
+
+We are interested in the average correlation response with that external tracer a of 2-point CMB correlator (or quadratic estimator). In other words, we want to understand,
+\begin{equation}
+\langle \hat \phi^\textrm{ext}(L') T(l) T(L-l) \rangle.
+\end{equation}
+
+We can treat $\hat \phi^\textrm{ext}$ as a linear function of $\phi$ and the lensed pair 
+$T(l) T(L-l)$ as a nonlinear function of $\phi$.  We assume that the $\phi$ field is Gaussian, and we assume the tracer and lensing potentials are independent from the unlensed sky (mostly but not totally true because of the ISW and SZ effects).\footnote{Although we focus on the Gaussian assumption, the weak non-gaussian correlations of the potential can be calculated and sought.}  Then using the expectation of Gaussian integration by parts (\ref{eq:gaussian_integration_by_parts}), we find,
+\begin{equation}
+\langle \hat \phi^\textrm{ext}(L') T(l) T(L-l) \rangle =  \int \frac{d^2L''}{(2\pi)^2} \left\langle \hat \phi^\textrm{ext}(L') \phi(L'') \right\rangle \left\langle \frac{\delta}{\delta \phi(L'')} \left(  T(l) T(L-l)  \right)  \right\rangle
+\end{equation}
+Because the potential $\phi(L'')$ is a continuous function---not a single variable but an infinite number, one for each $L''$---we need to include the integrated contribution over the whole domain to capture the total contribution from the functional derivative.\footnote{For a discrete set of variables and functions $f(x_1,x_2,\dots)$, the total derivative is \begin{equation}df = \sum_i \frac{\partial f}{\partial x_i} dx_i.  \end{equation}  The analog for a functional of a continuous functional $f[x(t)]$ is the total functional derivative \begin{equation}\delta f = \int  \frac{\delta f}{\delta x(t)} \delta x(t) dt.\end{equation} Note that $\phi$ is already the small quantity we are considering in our derivative.}
+
+
+
+
+
+
+We can consider the correlation between harmonics
+\begin{equation}
+C_{l,l'}(\phi)  =  \frac{1}{(2\pi)^2} \langle T(l) T(l') \rangle
+\end{equation}
+and expand it to first order in the potential $C_{\phi = 0} + \delta C$.  At $\phi = 0$,  $C(l,l') = C^u_l \delta(l + l')$. Because the potential $\phi$ is a function, we need to include the integrated contribution from the whole domain to capture the contribution to $\delta C$ with a functional derivative.  Expressed in real space and Fourier space, this is
+\begin{equation}
+  \delta C = \int d^2x \frac{\delta C}{\delta \phi(x)} \delta \phi(x) = \int \frac{d^2L}{(2\pi)^2} \frac{\delta C}{\delta \phi(L)} \delta \phi(L) 
+\end{equation}
+Using the product rule,
+\begin{equation}
+{(2\pi)^2} \frac{\delta C(l,l')}{\delta \phi(L)} =  \left\langle \frac{\delta T(l)}{\delta \phi(L)} T(l')   + T(l) \frac{\delta T(l')}{\delta \phi(L)}  \right\rangle.
+\end{equation}
+So we look closely at
+\begin{equation}
+  \delta T(l)  = \int \frac{d^2L}{(2\pi)^2} \frac{\delta T}{\delta \phi(L)} \delta \phi(L) 
+\end{equation}
+
+
+\citep{2011JCAP...03..018L}
+
+\subsection{Optimal weighting}
+
+
+Basing the estimator on a single correlation is a poor estimator.  We should use all such correlations together with a weight function to optimize the combination.  A generically weighted pairing of temperature harmonics, 
 \begin{eqnarray}
   \hat\phi(L) &=& N_0(L) \int dl\  T(l) T(L-l) g(l,L-l)  \\ \nonumber
   &=& N_0(L) \int dl\  \hat\phi_{1}(L) f(l,L-l)  g(l,L-l),
 \end{eqnarray}
-is simply a weighted average with a normalization $N_0(L)$ for that mode and a weight function $g(l,l')$.  Any weight function will yield an unbiased estimate if normalized so that
+is simply a weighted average with a normalization $N_0(L)$ for that mode and a \textit{weight} function $g(l,l')$.  Note that \textit{any} weight function will yield an unbiased estimate of the lensing potential if normalized so that
 \begin{equation}
    N_0(L) = \left[  \int dl\  f(l,L-l) g(l,L-l)   \right]^{-1}.
 \end{equation}
+That's just a weighted average.
 
-Next we want to find the paticular weights that minimize the variance of the $\hat \phi$.  This is exactly the analogous situation to exercise \ref{ch:data}.\ref{ex:minvar_response}.  The variance  $\mathrm{Var}(\hat\phi(L)) = \langle \hat\phi(L) \hat\phi(L)* \rangle - \phi^2$ is dominated by the first term
-\begin{align}
+Next we want to find the particular weights that minimize the variance of the $\hat \phi$.  This is exactly the analogous situation to exercise \ref{ch:data}.\ref{ex:minvar_response}.  The variance
+\begin{equation}
+  \mathrm{Var}(\hat\phi(L)) = \langle \hat\phi(L) \hat\phi(L)^* \rangle - |\phi(L)|^2
+\end{equation}
+is dominated by the first term, which is
+\begin{align} \label{eq:lensingvariance}
   \mathrm{Var}(\hat\phi(L)) 
- &= N_0(L)^2 \int dl_1 dl_2\ \langle T(l_1) T(L-l_1) T(-l_2) T(-L+l_2) \rangle \\ \nonumber
+ &\approx N_0(L)^2 \int dl_1 dl_2\ \langle T(l_1) T(L-l_1) T(-l_2) T(-L+l_2) \rangle \\ \nonumber
   & \qquad \qquad \qquad g(l_1,L-l_1) g(l_2,L-l_2)
 \end{align}
-
-
 
 The particular weights that minimize the gaussian variance of $\hat\phi(L)$ are
 \begin{equation}
@@ -108,10 +170,26 @@ The particular weights that minimize the gaussian variance of $\hat\phi(L)$ are
 where  $C_l$ is the power spectrum of the lensed temperature on the sky.
 
 
-\subsection{Noise}
+\subsection{Beam and noise}
 
+Referrring back to Equation~\ref{eq:data_harmonics}, the observed harmonics of the CMB are also smoothed by an isotropic beam (and pixel windoc function) and containing instrumental noise.
+\begin{equation}
+  d(l) = b_l T(l) + n(l)
+\end{equation}
+Thus the best we can do to provide an estimate for the harmonic is
+\begin{equation}
+\hat T(l) = d(l)/b_l = T(l) + n(l)/b_l
+\end{equation}
 
-how are the normalizations handled when you have the cleaned sky?  (Namaster vs anafast on the cleaned sky)
+In the correlation pairing of $\langle \hat T(l) \hat T(L-l) \rangle$, there is no response of the noise to the lensing potential, the response function $f(l,l')$ is unchanged and continues to depend on the unlensed power spectrum $C^u_l$ in this case.
+
+On the other hand, the total variance of the quadratic estimator will depend on the four-point correlator of $\hat T$ as is Equation~\ref{eq:lensingvariance}.
+Thus the total power spectrum with beam-deconvolved noise,
+\begin{equation}
+C_l^\mathrm{tot} = C_l + N_l/b_l^2,
+\end{equation}
+replaces the power spectrum in the weights $g(l,l')$.  Not that the division by the beam, which causes the total power spectrum to rapidly rise at high multipoles $l$, causes the denominator of $g(l,l')$ to act like a low-pass filter.
+
 
 
 \subsection{Efficient estimators}
@@ -127,6 +205,9 @@ doing all this on the cut sky
 
 mean field bias
 
+how are the normalizations handled when you have the cleaned sky?  (Namaster vs anafast on the cleaned sky)
+
+
 \subsection{Polarization}
 
 
@@ -141,6 +222,8 @@ N0
 RDN0 somewhat analogous to a DR term in a Landy-Szalay galaxy clustering estimator
 
 Hanson et al. 2011, Namikawa et al. 2013, and the Planck 2015/2018 lensing papers 
+
+\citep{Madhavacheril_2021} 
 
 N1
 
@@ -160,7 +243,7 @@ what is the normalization of the  estimator for mean field bias?  (Input lensed 
 
 \section{Optimal reconstruction}
 
-
+\section{Delensing}
 
 \exercises
 
