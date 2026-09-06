@@ -127,7 +127,7 @@ You can also construct weighted-average versions of these if need be.
 
 In statistics, it is important to understand the distinction between parameters or properties of a distribution and statistics that are built from data to estimate those parameters.  This can be confusing because these ideas often have the same name, but please understand that the mean of a probability distribution is a separate concept to the mean (or average) of a data set drawn from that distribution.  This first is a parameter; the second is an estimator for that parameter.
 
-\section{Covariances}
+\section{Covariances and Gaussians}
 
 Many situations---whenever there is more than one random variable---call for a multivariate probability distribution.  For example, random variables $X$ and $Y$ may be drawn from a joint probability distribution $p(x,y)$. The marginalized distribution integrates out one or more variable from the joint distribution.
 \begin{equation}
@@ -154,11 +154,27 @@ For a set of variables, the covariance of pairs make a symmetric covariance matr
 \end{equation}
 The variance of each $X_i$ lies on the diagonal of the matrix.  If the parameters are independent, the covariance matrix is diagonal.
 
-The multivariate Gaussian distribution for $X$ (now considered as a vector with $k$ entries) is
+The multivariate Gaussian distribution for $X$ (now considered as a vector with $k$ entries) that possesses such a covariance matrix is
 \begin{equation}
   p(x) = \frac{1}{(2\pi|C|)^{k/2}} \exp\left(-\frac{1}{2} (x-\mu)^\dag C^{-1} (x-\mu) \right) \label{eqn:gaussian}
 \end{equation}
-where $x$ is the vector of values, $\mu$ is the vector of means, and $C$ is the covariance matrix and $|C|$ is its determinant.  This is the subject of a multidimensional integrals to measure the moments.
+where $x$ is the vector of values, $\mu$ is the vector of means, and $C$ is the covariance matrix and $|C|$ is its determinant.  %This is the subject of a multidimensional integrals to measure the moments.
+
+An important result called Isserlis's theorem\index{Isserlis's theorem (Wick's probability theorem)} or Wick's probability theorem\index{Wick's probability theorem (Isserlis's theorem)} says that higher-order moments of zero-mean, covariant Gaussian variables can be computed from the sum of the products of covariances for all possible distinct pairs.  This in particular means that the expectation of the product
+\begin{equation}
+  \langle X_1 X_2 ... X_n \rangle
+\end{equation}
+is zero for an odd number of variables because it is impossible to pair off every variable.  For an even number of variables, you break them down into all possible pairs, as in,
+\begin{equation}
+  \langle X_1 X_2 X_3 X_4 \rangle = \langle X_1 X_2  \rangle \langle X_3 X_4  \rangle+  \langle X_1 X_3  \rangle \langle X_2 X_4  \rangle+  \langle X_1 X_4  \rangle \langle X_2 X_3 \rangle,
+\end{equation}
+for the case of four variables.  For six or eight variables the approach is the same, there are just more pairs.  The formula also works if some variables are repeated and is a useful computational tool, especially when we need to compute the covariances of estimates of covariances.
+
+Because the expectation value is an integral over the distribution, we can apply integration by parts to  functions of the variables.  In particular for the Gaussian distribution,\index{Gaussian integration by parts} 
+\begin{equation}
+ \left \langle X_1 f(X_1,\dots,X_n) \right \rangle = \sum_i \langle X_1 X_i \rangle \left\langle \frac{\partial}{\partial X_i} f(X_1,\dots,X_n) \right \rangle. \label{eq:gaussian_integration_by_parts}
+\end{equation}
+This is equivalent to Isserlis's theorem for $f = X_2 \dots X_n$ and proceeding inductively.
 
 \section{Model fitting}
 We'll talk a lot more about methods to fit models to data, but it is helpful to introduce the basic picture.  We again have the simple approximation of data as the sum of signal and noise, $d_i = s_i+n_i$, where the noise is a random variable.  Now we introduce a family of models for our signal, $m_i(\Theta)$, which depends on some vector of parameters, $\Theta$.  A good model is one that can represent the signal for some true set of values for its parameters:
@@ -250,6 +266,13 @@ with inverse-variance weights $w_i \propto 1/\sigma^2_i$ yields the smallest var
 
 Hint: compute the variance of $\bar s$ for generic weights.  Let the sum of those weights be a constant $A$ and then minimize that variance with respect to the weights subject to the constraint $A = \sum_i w_i$. If you like, you can set $A=1$, but that's not necessary. 
 
+\item Use a computer to generate a large number of zero-mean, unit-variance Gaussian random variables, $Z_i$.  \begin{enumerate}
+\item  Show numerically that $\langle Z^4 \rangle \approx 3$.  
+\item Argue from Isserlis's/Wick's theorem that the  $\langle Z^2 \rangle = 3$ exactly.
+\end{enumerate}
+
+
+
 \item  \label{ex:minvar_response} Similar to the previous problem, but now let the data be some not-trivial response to the signal
   \begin{equation*}
     d_i = R_i s + n_i
@@ -299,7 +322,7 @@ Hint: compute the variance of $\bar s$ for generic weights.  Let the sum of thos
   \item Under the Gaussian assumption for noise and using the probability survival function $P(\chi^2 > \chi^2_{\rm min}| k)$, what is the probability that such a large $\chi^2$ is found by chance. (Pay attention to the number of degrees of freedom.)
   \end{enumerate}
 
-\item For the data set in Exercise \ref{ex:chi2_data}, what is the upper limit on $A$?  Use the probability survival function for $\chi^2$ to determine the value  that we are confident with 95 percent probability that $A$ is below, $P(\chi^2 > \chi^2(A)| k) = 0.05$ or equivalently, $$ \int_0^{\chi^2(A)} dx\,p(x = \chi^2|k) = 0.95.$$
+\item For the data set in Exercise \ref{ex:chi2_data}, what is the upper limit on $A$?  Use the probability survival function for $\chi^2$ to determine the value  that we are confident with 95 percent probability that $A$ is below, $P(\chi^2 > \chi^2(A)| k) = 0.05$ or equivalently, \begin{equation*} \int_0^{\chi^2(A)} dx\,p(x = \chi^2|k) = 0.95.\end{equation*}
 
 \item Write two routines to generate random variables values from a cosine-shaped distribution on the interval $[-\pi/2,\pi/2]$.
   \begin{enumerate}
@@ -307,5 +330,6 @@ Hint: compute the variance of $\bar s$ for generic weights.  Let the sum of thos
   \item Use inversion sampling.
   \end{enumerate}
 Verify each routine by making histograms of the random deviate values.  Which algorithm is faster for large numbers of deviates?
-  
+
+
 \end{enumerate}
