@@ -2,9 +2,9 @@
 
 The cosmic microwave background (CMB) is the left-over glow of thermal radiation from the Big Bang.  The universe is statistically homogeneous, but not literally homogeneous, so there are perturbations to the density, velocity, and pressure; these perturbations are small at early times at all scales and are small even today on large scales.  These perturbations show up in the CMB as correlation across wide angles in the sky: density fluctuations make gravitational potential perturbations that show up via gravitational redshifts as temperature anisotropies in the CMB (the Sachs-Wolfe effect).  Gravitational attraction, pressure gradients, and (theoretical but not yet observed) gravitational waves make velocity perturbations that are visible in the polarization anisotropies.  The CMB power spectrum is a pillar of modern cosmology because it is both precisely measureable and predictable from theory.
 
-\section{Continued thermal history}
+\section{Thermal history continued}
 
-At about 50 kyr, the energy density of radiation, dropping like $a^{-4}$, falls below the density of matter, which is dropping only as $a^{-3}$.  This change mark an important evolution in how perturbations grow in the universe, something we will analyze when we look at the 3d matter power spectrum in Chapter \ref{ch:galaxy_correlations}.
+At about 50 kyr, the energy density of radiation, dropping like $a^{-4}$, falls below the density of matter, which is dropping only as $a^{-3}$.  This change marks an important evolution in how perturbations grow in the universe, something we will analyze when we look at the 3d matter power spectrum in Chapter \ref{ch:galaxy_correlations}.
 
 At last, we come to the atomic-physics energy scale processes that make the CMB.
 At about 250 kyr after the Big Bang, the temperature has fallen to $T = 0.3$ eV, low enough that about half of the protons in the universe have managed to settle into hydrogen atoms, a process called ``\textit{re}combination'' despite this being the first time these particles have been able to join to together without being blasted back apart by energetic photons.  As the universe cools further, more hydrogen forms, but the highest energy photons in the tail of the ionize enough electrons to frequently scatter photons via Thomson scattering, keeping the material opaque and tightly coupled.  Only when the temperature falls to about $T = 0.25$ eV $= 2900$ K, at about 380 kyr,  do the photons gradually decouple and stream freely.  This is light that will redshift to be the cosmic microwave background, but at this point it peaks in the IR.  When we look at the CMB, we are looking at the thin shell recording the final scattering events of those photons: the last-scattering surface when the universe became neutral and transparent for the first time.
@@ -60,7 +60,10 @@ To get the harmonic coefficients from the sky map, we use the transformation
 \end{equation}
 which takes advantage of the orthogonality relationship of the spherical harmonics.  Note that the synthesis transform (Equation \ref{eq:sphharm_synthesis}) is a discrete sum, while the analysis transform (\ref{eq:sphharm_analysis}) is an integral.
 
-The monopole $T_0$ goes completely into $a_{00}$ and experiments designed to measure the anisotropies do it by examining small differences on the sky, and so they can't measure the monopole anyway.  Similarly, the dipole coefficients $a_{1m}$ get fitted out when removing the velocity component of our motion, so most analysis starts at $l=2$. 
+The monopole $T_0$ goes completely into $a_{00}$ and experiments designed to measure the anisotropies do it by examining small differences on the sky, and so they can't measure the monopole anyway.  Similarly, the dipole coefficients $a_{1m}$ get fitted out when removing the velocity component of our motion, so most analysis starts at $l=2$.
+
+The function is band limited if there are only zero harmonics above some $l_{\rm max}$.  The CMB is not band limited, but our observation of the CMB is in practice band limited by the finite resolution of the telescope we use to observe it.
+
 
 As in the Fourier case, we define the power spectrum (typically called $C_l$) as the variance of the harmonic coeffients.  The condition of isotropy causes the $a_{lm}$ coefficients, which are random variables, to be statistically independent, and so the covariance matrix of them is diagonal.  Unlike in quantum mechanics, where the $Y_{lm}(\mathbf{n})$ functions are the angular portion of the electronic wavefunctions of hydrogen, the $l$ and $m$ indices do not carry the same physical meaning, respectively, of the total and $z$-component of angular momentum.  However, the $m$ index is still dependent on the definition of the $z$ axis.  Isotropy implies that the direction of the $z$ axis cannot be statistically meaningful, thus all $a_{lm}$ coefficients with the same $l$ have the same variance, regardless of $m$.\footnote{Similar considerations imply that the spherical harmonics of rotated maps are linear combinations of the $a_{lm}$ at the same $l$: \begin{equation}a^\textrm{rot}_{lm} = D^l_{mm'}a'_{lm'}. \end{equation}}  Isotropy also implies that the different $l$ multipoles can't be correlated (see supplemental section).   With these considerations, we can express the variance as
 \begin{equation}
@@ -364,7 +367,7 @@ The noise contribution is far more complicated that the signal though, because t
 
 The total data for the CMB temperature harmonics is
 \begin{equation}
-  d_{lm} = w^{\rm pix}_l b_l a_{lm} + n_{lm},
+  d_{lm} = w^{\rm pix}_l b_l a_{lm} + n_{lm}, \label{eq:data_harmonics}
 \end{equation}
 which fits the linear model of data equals response to signal plus noise.
 
@@ -651,13 +654,12 @@ Another strategy is to construct a band-power covariance matrix out of carefully
 \begin{subappendices}
 \section{Supplemental: spherical harmonic functions}\label{sup:spherical_harmonics}
 
-The function is band limited if there are only zero harmonics above some $l_{\rm max}$.  The CMB is not band limited, but our observation of the CMB is in practice band limited by the finite resolution of the telescope we use to observe it.
-
-The spherical harmonics are complex functions
-\begin{equation}
-  Y_{lm}(\theta,\phi) = (-1)^m \sqrt{\frac{2 l + 1}{4\pi} \frac{l-m}{l+m}} P_l^m(\cos \theta) \exp(im\phi)
-\end{equation}
-that depend on the associated Legendre polynomials $P_l^m$.  In cosmology we use the same conventions that are common in quantum mechanics, in particular placing the factor of $(-1)^m$ (``Condon-Shortley'' phase) in the definition of the spherical harmonics and not in the definition of the associated Legendra polynomicals.
+The spherical harmonics are the eigenfunctions of the Lapacian operator on the surface of a sphere.  They are complex functions that have the form
+\begin{align}
+  Y_{lm}(\theta,\phi) &= \lambda_{lm}(\theta)  \exp(im\phi)  \\ \nonumber
+  &=(-1)^m \sqrt{\frac{2 l + 1}{4\pi} \frac{l-m}{l+m}} P_l^m(\cos \theta) \exp(im\phi)
+\end{align}
+and depend on the associated Legendre polynomials $P_l^m$.  In cosmology, we use the same conventions that are common in quantum mechanics, in particular placing the factor of $(-1)^m$ (``Condon-Shortley'' phase) in the definition of the spherical harmonics and not in the definition of the associated Legendra polynomicals.
 
 These functions have several important identities.  They are orthonormal functions integrated over the on the whole sphere
 \begin{equation}
@@ -699,12 +701,21 @@ The same strategy can compute the gradient along the surface, based on the gradi
 \begin{equation}
 \nabla_S Y_{\ell m} = \hat{\theta} \frac{\partial Y_{\ell m}}{\partial \theta} + \hat{\phi} \frac{1}{\sin \theta} \frac{\partial Y_{\ell m}}{\partial \phi}.
 \end{equation}
+Operations like this are built into the Healpix library.
 
-The angular part on the Laplacian $\nabla \cdot \nabla Y_{lm}$, since the spherical harmonics have no radial dependence, is simple:
+The angular part on the Laplacian $(\nabla \cdot \nabla) Y_{lm}$, since the spherical harmonics have no radial dependence, is simple:
 \begin{equation}
-r^2 \nabla^2 Y_{\ell m} = \left[ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right] Y_{\ell m} = -\ell(\ell+1) Y_{\ell m}
+r^2 \nabla^2 Y_{l m} = \left[ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right] Y_{l m} = -l(l+1) Y_{l m}
 \end{equation}
-
+Any function on the sphere follows the same pattern, because it is just a linear combination of spherical harmonics (for $r=1$),
+\begin{equation}
+  \nabla \cdot (\nabla \phi) = \nabla^2 \phi =   \nabla^2 \left( \sum_{lm} \phi_{lm} Y_{l m} \right) =  \sum_{lm} -l(l+1) \phi_{lm}  Y_{l m}
+\end{equation}
+Thus the harmonic coefficients of the Laplacian derivative of a function is 
+\begin{equation}
+  \left( \nabla^2 \phi \right)_{lm} = -l(l+1) \phi_{lm}.
+\end{equation}
+Derivatives of functions are easy with harmonic coefficients.
 
 The expansion of a plane wave into Legendre polynomials is:
 \begin{equation}
@@ -719,7 +730,20 @@ Then using the addition theorem, we can look at the Legendre polynomial in terms
 This relationship is vital when we come to projecting the harmonics of signal in the bulk of space into signals on the sphere of the sky.
 
 
-\section{Future Supplemental: the flat-sky approximation}
+\section{Future Supplemental: flat-sky approximation}
+
+Gradient
+\begin{equation}
+  (\nabla \phi)(l) = il \phi(l)
+\end{equation}
+
+Laplacian
+\begin{equation}
+  (\nabla \cdot \nabla \phi)(l) = -l^2 \phi(l)
+\end{equation}
+which approximates $(\nabla^2 \phi)_{lm} = -l(l+1) \phi_{lm}$.
+
+
 
 \section{Future Supplemental: Euler angles}
 
