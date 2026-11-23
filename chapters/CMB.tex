@@ -7,13 +7,13 @@ The cosmic microwave background (CMB) is the left-over glow of thermal radiation
 At about 50 kyr, the energy density of radiation, dropping like $a^{-4}$, falls below the density of matter, which is dropping only as $a^{-3}$.  This change marks an important evolution in how perturbations grow in the universe, something we will analyze when we look at the 3d matter power spectrum in Chapter \ref{ch:galaxy_correlations}.
 
 At last, we come to the atomic-physics energy scale processes that make the CMB.
-At about 250 kyr after the Big Bang, the temperature has fallen to $T = 0.3$ eV, low enough that about half of the protons in the universe have managed to settle into hydrogen atoms, a process called ``\textit{re}combination'' despite this being the first time these particles have been able to join to together without being blasted back apart by energetic photons.  As the universe cools further, more hydrogen forms, but the highest energy photons in the tail of the ionize enough electrons to frequently scatter photons via Thomson scattering, keeping the material opaque and tightly coupled.  Only when the temperature falls to about $T = 0.25$ eV $= 2900$ K, at about 380 kyr,  do the photons gradually decouple and stream freely.  This is light that will redshift to be the cosmic microwave background, but at this point it peaks in the IR.  When we look at the CMB, we are looking at the thin shell recording the final scattering events of those photons: the last-scattering surface when the universe became neutral and transparent for the first time.
+At about 250 kyr after the Big Bang, the temperature has fallen to $T = 0.3$ eV, low enough that about half of the protons in the universe have managed to settle into hydrogen atoms, a process called ``\textit{re}combination'' despite this being the first time these particles have been able to join to together without being blasted back apart by energetic photons.  As the universe cools further, more hydrogen forms, but the highest energy photons in the tail of the ionize enough electrons to frequently scatter photons via Thomson scattering, keeping the material opaque and tightly coupled.  Only when the temperature falls to about $T = 0.25$ eV $= 2900$ K, at about 380 kyr,  do the photons gradually decouple and stream freely.  This is light that will redshift to be the cosmic microwave background, but at this point it peaks in the IR.  When we look at the CMB, we are looking at the thin shell recording the final scattering events of those photons: the last-scattering surface\index{last-scattering surface}\index{surface of last scattering} when the universe became neutral and transparent for the first time.
 
 Later processes also affect the CMB.  As the radiation density continues to drop, its gravitational potential decays away.  As photons tranverse potential wells, the decay generates the early Integrated Sachs-Wolfe (ISW) effect, as photons climb out of potential wells that are shallower than the ones they fell into.  The same thing happens when dark energy begins to dominate over matter at late times ($z<1$); the potential decays, causing the late-time ISW effect and anisotropies on large scales that correlate with large-scale matter structures.
 
 The reionization\index{reionization} of the universe's atoms by starlight and AGN radiation (uncertain but roughly $6<z<20$) liberates the electrons from much of the hydrogen.  The density is much lower at the time, but the electrons still manage to scatter about 5--7 percent of CMB photons.  More on this below.  Other major processes affecting the CMB are gravitational lensing by the large-scale structure of density fluctuations after they have grown by gravity to much larger amplitudes at later times (most significant around $2<z<4$, but detectable across a broad range).  Scattering in rare reservoirs of hot electrons, chiefly in the cores of galaxy clusters, imparts a specific spectral distortion to the CMB called the Sunyaev-Zel'dovich effect (the effect is redshift independent but the structures develop late).  We will discuss these in Chapter \ref{ch:secondaries}.
 
-By the time the CMB reaches us, the temperature is $T_\textrm{CMB} (z=0) = 2.72$ K, and despite everthing it has been through, it remains one of the most perfect Planck thermal blackbody spectra ever measured.  The peak frequency is about 150 GHz, corresponding to a wavelength of about {2 mm}.
+By the time the CMB reaches us, the temperature is $T_0 = T_\textrm{CMB} (z=0) = 2.72$ K, and despite everything it has been through, it remains one of the most perfect Planck thermal blackbody spectra ever measured.  The peak frequency is about 150 GHz, corresponding to a wavelength of about {2 mm}.
 
 
 \section{Anisotropies}
@@ -28,11 +28,11 @@ The CMB signal on the sky is diffuse, and so its surface brightness has units li
 \begin{equation}
   B(\nu,T) = \frac{8\pi \nu^3}{c^3} \frac{1}{\exp(h\nu/k_BT) - 1}
 \end{equation}
-The temperature has fluctuations that we can separate from the background temperature,
+The temperature has fluctuations that arise from variations in the gravitational potential at the surface of last scattering.  We can separate the fluctuations from the mean temperature,
 \begin{equation}
   T(\hat \mathbf n) = T_0 + \Delta T(\hat \mathbf{n}),
 \end{equation}
-so we can also separate spectrum of the mean background from the fluctuation and expand it,
+so we can also separate the spectrum of the mean background from the fluctuation and expand it,
 \begin{equation}
 B_0 + \Delta B = B(\nu,T_0) + \left. \frac{\partial B}{\partial T} \right|_{T_0} \Delta T.
 \end{equation}
@@ -174,7 +174,7 @@ As noted, a full treatment of the computation of the CMB power spectrum is beyon
 \begin{equation}
   C^{TT,s}_l = (4\pi)^2 \int k^2\, dk P^s(k) \left| \int_0^{r_\textrm{max}} dr \, S^{T,s}(r,k)\, j_l(kr) \right|^2.
 \end{equation}
-The notation $T$ and $s$ indicates that this equation is specifically for the temperature power spectrum from scalar (density) fluctuations (as opposed to e.g.\ polarization from tensor fluctuations, which exist too).  There are three ingredients.  The 3-d power spectrum of initial fluctuation comes out of inflation as an initial condition.  Then we have an integral over distance (or conformal time\footnote{It is conventional to do this integral in conformal time, but note that in flat space, conformal time, comoving distance, and comoving coordinate have the simple relationship $\eta_\textrm{now} - \eta = \chi = r$.}) of the source function $S(r,k)$ between the present day and the beginning of time.  The source function contains all the physics: it is the solution of the coupled differential equations for the dark matter pertubations, baryon perturbations, baryon velocity, and photon scattering, all in full GR, accounting for the coordinate gauge and other complications.  It also accounts for the details of recombination and the thickness of the last scattering surface.  Finally, the spherical Bessel function $j_l$ does the projection from 3-d to 2-d.  The spherical Bessel appears in the expansion of a plane wave $\exp(i \mathbf{k} \cdot \mathbf{r})$ (see supplemental section \ref{sup:sphereical_harmonics}), while in non-flat space, we could use a different expansion of the hypergeometric harmonics.  We will see similar expressions when we compute angular cross correlations between cosmological signals in Chapter \ref{ch:cross_correlations}.
+The notation $T$ and $s$ indicates that this equation is specifically for the temperature power spectrum from scalar (density) fluctuations (as opposed to e.g.\ polarization from tensor fluctuations, which exist too).  There are three ingredients.  The 3-d power spectrum of initial fluctuation comes out of inflation as an initial condition.  Then we have an integral over distance (or conformal time\footnote{It is conventional to do this integral in conformal time, but note that in flat space, conformal time, comoving distance, and comoving coordinate have the simple relationship $\eta_\textrm{now} - \eta = \chi = r$.}) of the source function $S(r,k)$ between the present day and the beginning of time.  The source function contains all the physics: it is the solution of the coupled differential equations for the dark matter pertubations, baryon perturbations, baryon velocity, and photon scattering, all in full GR, accounting for the coordinate gauge and other complications.  It also accounts for the details of recombination and the thickness of the last scattering surface.  Finally, the spherical Bessel function $j_l$ does the projection from 3-d to 2-d.  The spherical Bessel appears in the expansion of a plane wave $\exp(i \mathbf{k} \cdot \mathbf{r})$ (see supplemental section \ref{sup:spherical_harmonics}, Equation (\ref{eq:plane_wave_sph_harm})), while in non-flat space, we could use a different expansion of the hypergeometric harmonics.  We will see similar expressions when we compute angular cross correlations between cosmological signals in Chapter \ref{ch:cross_correlations}.
 
 
 
@@ -247,6 +247,165 @@ Neutrinos (and hypothetical dark radiation) are not bound to the baryon-photon p
 We know there cannot be another neutrino like the ones we know about---we would see it here---but there might be other particles that froze out at higher energies waiting to be discovered.
 
 Changing the total mass of the neutrino has very small effect on the temperature power spectrum that we can't see well in plots like these.  The massive neutrinos are relativistic at this point and their contribution to $N_\textrm{eff}$ is their main effect.  However, in the late universe, they become non-relativistic, and the extra matter density that they carried out of the overdensity becomes important to the formation of large scale structure.  We will see this later in the effects of gravitational lensing on the CMB (Chapter \ref{ch:secondaries}).
+
+
+
+
+
+\exercises
+
+
+\begin{subappendices}
+\section{Supplemental: spherical harmonic functions}\label{sup:spherical_harmonics}
+
+The spherical harmonics are the eigenfunctions of the Lapacian operator on the surface of a sphere.  They are complex functions that have the form
+\begin{align}
+  Y_{lm}(\theta,\phi) &= \lambda_{lm}(\theta)  \exp(im\phi)  \\ \nonumber
+  &=(-1)^m \sqrt{\frac{2 l + 1}{4\pi} \frac{l-m}{l+m}} P_l^m(\cos \theta) \exp(im\phi)
+\end{align}
+and depend on the associated Legendre polynomials $P_l^m$.  In cosmology, we use the same conventions that are common in quantum mechanics, in particular placing the factor of $(-1)^m$ (``Condon-Shortley'' phase) in the definition of the spherical harmonics and not in the definition of the associated Legendra polynomicals.
+
+These functions have several important identities.  They are orthonormal functions integrated over the on the whole sphere
+\begin{equation}
+  \int d\Omega Y_{lm}(\theta,\phi) Y_{l'm'}(\theta,\phi) = \delta_{ll'} \delta_{mm'}
+\end{equation}
+This in particular means that for $l=0$, $m=0$, we must have
+\begin{equation}
+  Y_{00} = \frac{1}{(4\pi)^{1/2}}
+\end{equation}
+
+Another important identity for spherical harmonics is the addition theorem
+\begin{equation}
+  \sum_{m} Y_{lm}(\mathbf{n}) Y_{lm}(\mathbf{n}') = \frac{2l+1}{4\pi} P_l(\mathbf{n \cdot n}') \label{eq:addition_theorm}
+\end{equation}
+for $\mathbf{n}$ as a unit vector pointing to $(\theta,\phi)$ and similarly for $\mathbf{n}'$.
+
+If the signal is real, $T(\theta,\phi) = T(\theta,\phi)^*$.  Since the spherical harmonics have the symmetry
+\begin{equation}
+Y_{lm}{}^* (\theta, \phi) = (-1)^{-m} Y_{l(-m)} (\theta, \phi),
+\end{equation}
+that implies that $a_{l(-m)} = (-1)^m a_{lm}^*$.
+
+Because the spherical harmonic transformation is just a sum with constant coefficients, derivatives with respect to the angles pass directly through to the spherical harmonic functions, as in:
+\begin{equation}
+\frac{\partial T}{\partial \theta} = \sum_{lm} a_{lm} \frac{\partial Y_{lm}}{\partial \theta}.
+\end{equation}
+
+The partial derivative with respect to $\theta$ (the polar or co-latitude angle) is a little messy,
+\begin{equation}
+\frac{\partial Y_{\ell m}(\theta, \phi)}{\partial \theta} = m \cot \theta Y_{\ell m}(\theta, \phi) + \sqrt{(\ell-m)(\ell+m+1)} e^{-i\phi} Y_{\ell, m+1}(\theta, \phi),
+\end{equation}
+while the partial with respect to $\phi$ (the azimuthal angle or longitude angle) is simpler,
+\begin{equation}
+\frac{\partial Y_{\ell m}(\theta, \phi)}{\partial \phi} = im Y_{\ell m}(\theta, \phi).
+\end{equation}
+These expressions make it fairly easy to compute the derivative of functions by computing the transform, applying the appropriate factors of $l$ and $m$, transforming back, and applying the proper functions of $\theta$ and $\phi$.
+
+The same strategy can compute the gradient along the surface, based on the gradient of the spherical harmonic functions,
+\begin{equation}
+\nabla_S Y_{\ell m} = \hat{\theta} \frac{\partial Y_{\ell m}}{\partial \theta} + \hat{\phi} \frac{1}{\sin \theta} \frac{\partial Y_{\ell m}}{\partial \phi}.
+\end{equation}
+Operations like this are built into the Healpix library.
+
+The angular part on the Laplacian $(\nabla \cdot \nabla) Y_{lm}$, since the spherical harmonics have no radial dependence, is simple:
+\begin{equation}
+r^2 \nabla^2 Y_{l m} = \left[ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right] Y_{l m} = -l(l+1) Y_{l m}
+\end{equation}
+Any function on the sphere follows the same pattern, because it is just a linear combination of spherical harmonics (for $r=1$),
+\begin{equation}
+  \nabla \cdot (\nabla \phi) = \nabla^2 \phi =   \nabla^2 \left( \sum_{lm} \phi_{lm} Y_{l m} \right) =  \sum_{lm} -l(l+1) \phi_{lm}  Y_{l m}
+\end{equation}
+Thus the harmonic coefficients of the Laplacian derivative of a function is 
+\begin{equation}
+  \left( \nabla^2 \phi \right)_{lm} = -l(l+1) \phi_{lm}.
+\end{equation}
+Derivatives of functions are easy with harmonic coefficients.
+
+The expansion of a plane wave into Legendre polynomials is:
+\begin{equation}
+  \exp({i \mathbf k \cdot \mathbf r}) = \sum_{l} (2 l + 1) i^l j_l(k r) P_l(\hat{\mathbf k} \cdot \hat{\mathbf r}).
+\end{equation}
+where $j_l$ are the spherical bessel functions of the first kind.
+
+Then using the addition theorem, we can look at the Legendre polynomial in terms of spherical harmonics,
+\begin{equation}
+  \exp({i \mathbf{k} \cdot \mathbf{r}}) = 4 \pi \sum_{lm} i^l j_l(k r) Y_{lm}{}(\hat{\mathbf k}) Y_{lm}^{*}(\hat{\mathbf r}).\label{eq:plane_wave_sph_harm} 
+\end{equation} 
+This relationship is vital when we come to projecting the harmonics of signal in the bulk of space into signals on the sphere of the sky.
+
+
+\section{Future Supplemental: flat-sky approximation}
+
+Gradient
+\begin{equation}
+  (\nabla \phi)(l) = il \phi(l)
+\end{equation}
+
+Laplacian
+\begin{equation}
+  (\nabla \cdot \nabla \phi)(l) = -l^2 \phi(l)
+\end{equation}
+which approximates $(\nabla^2 \phi)_{lm} = -l(l+1) \phi_{lm}$.
+
+
+
+\section{Future Supplemental: Euler angles}
+
+
+\section{Supplemental: isotropy and covariance}
+
+A rotation $R = (\alpha,\beta,\gamma)$ by the three Euler angles (for yaw, pitch, and roll) transforms the $a_{lm}$ harmonics with the Wigner $D$-functions, another set of special functions:
+\begin{equation}
+  a_{lm} = \sum_{m_1} D^l_{mm_1}(R) a'_{lm_1}
+\end{equation}
+
+To explore the effect of isotropy, we can examine the covariance of the coefficients.
+\begin{eqnarray}
+  \left\langle a_{lm} a^*_{l'm'} \right\rangle &=& \left\langle \sum_{m_1 m_2} D^l_{mm_1}(R) a'_{lm_1}  D^{l'*}_{m' m_2}(R)a^{\prime*}_{l'm_2} \right\rangle \\ \nonumber
+  &=&  \sum_{m_1 m_2} D^l_{mm_1}(R) D^{l'*}_{m' m_2}(R) \left\langle  a'_{lm_1} a^{\prime*}_{l'm_2} \right\rangle
+\end{eqnarray}
+Isotropy means that both of these covariances in angle brackets must be the same matrix, so
+\begin{equation}
+C_{lml'm'} =  \sum_{m_1 m_2} D^l_{mm_1}(R)  D^{l'*}_{m' m_2}(R) C_{l m_1 l' m_2}
+\end{equation}
+The matrices don't depend on the rotation angle (isotropy), but we can anyway integrate both sides over all possible rotations, $\int dR = \int_0^{2\pi} d\alpha\,\int_0^{\pi} \sin\beta\, d\beta\, \int_0^{2\pi} d\gamma$, and pull the sum and $C$ matrices out of the integral.
+\begin{equation}
+C_{lml'm'} \int dR =  \sum_{m_1 m_2}  C_{l m_1 l' m_2} \int dR \, D^l_{mm_1}(R) \, D^{l'*}_{m' m_2}(R)
+\end{equation}
+  The empty integral (over yaw, pitch, roll) is
+\begin{equation}
+  \int dR = 4\pi \times 2\pi = 8\pi^2
+\end{equation}
+while the integral of the Wigner $D$ functions is their orthogonality relation
+\begin{equation}
+  \int dR \, D^l_{mm_1}(R)\,  D^{l'*}_{m' m_2}(R) = \frac{8\pi^2}{2l +1} \delta_{ll'}\delta_{mm'}\delta_{m_1 m_2}.
+\end{equation}
+Cancelling the $8\pi^2$ we get
+\begin{eqnarray}
+C_{lml'm'}  &=&  \delta_{ll'} \delta_{mm'} \frac{1}{2l +1} \sum_{m_1 m_2} C_{l m_1 l' m_2} \delta_{m_1 m_2} \\ \nonumber
+&=&  \delta_{ll'} \delta_{mm'}  \left( \frac{1}{2l +1} \sum_{m_1} C_{l m_1 l' m_1} \right),
+\end{eqnarray}
+which shows that covariance has the form
+\begin{equation}
+   \left\langle a_{lm} a^*_{l'm'} \right\rangle = C_{lml'm'} = C_l \delta_{ll'} \delta_{mm'}.
+\end{equation}
+Then of course the term in parentheses,
+\begin{equation}
+   \left( \frac{1}{2l +1} \sum_{m_1} C_{l m_1 l' m_1} \right) =  \frac{1}{2l +1}  \sum_{m_1} C_l \delta_{ll'} =  \frac{2l+1}{2l +1}  C_l \delta_{ll'} = C_l \delta_{ll'}
+\end{equation}
+is consistent with that.  Thus we have shown that isotropy produces a diagonal covariance matrix that depends only on $l$. 
+
+
+
+\section{Future Supplemental: Wick's theorem applied to harmonics}
+
+
+
+\end{subappendices}
+
+
+
+\chapter{Measuring the CMB power spectrum}
 
 
 \section{Beams}
@@ -404,7 +563,7 @@ The variance is not much harder
 \end{eqnarray}
 So the variance is inversely proportional to the area.  This makes sense.  For white noise, all non-overlapping patches of the sky are independent, so the errors add in quadrature.  When you average, the standard deviation of the mean is inversely proportional to the square root of number of patches averaged, which itself is proportional to the area $1/{\Delta\Omega_p}$.  Thus the variance inversely proportional to the pixel area shouldn't be unexpected.
  
-Also pay attention to units.  $n$ and $\bar n$ have the same units as the signal, which are the same as the units of $\sigma \Delta\Omega_p^{-1/2}$.  That means that $\sigma$ has the slightly odd unit of signal-radians.  This doesn't matter much when we're working with radians and steradians which are  dimensionless, but can be important if we're doing expressing a noise as, for example, $\sigma = 5$ $\mu$K arcmin.  That would mean that a one arcminute-square pixel gets noise with a standard deviation  10 $\mu$K.  But be careful to note that the units are \textit{not} temperature \textit{per} angle; they are temperature \textit{times} angle.  Bigger pixels average over more sky area, so they have lower noise variance.  You have to divide by that square root of that bigger area to cancel the angle unit.
+Also pay attention to units.  $n$ and $\bar n$ have the same units as the signal, which are the same as the units of $\sigma \Delta\Omega_p^{-1/2}$.  That means that $\sigma$ has the slightly odd unit of signal-radians.  This doesn't matter much when we're working with radians and steradians which are  dimensionless, but can be important if we're doing expressing a noise as, for example, $\sigma = 5$ $\mu$K arcmin.  That would mean that a one arcminute-square pixel gets noise with a standard deviation  5 $\mu$K.  But be careful to note that the units are \textit{not} temperature \textit{per} angle; they are temperature \textit{times} angle.  Bigger pixels average over more sky area, so they have lower noise variance.  You have to divide by that square root of that bigger area to cancel the angle unit.
 
 The expression for pixeled noise variance provides a simple recipe to create a map with white noise.  You assign each pixel $\sigma \Delta\Omega_p^{-1/2}$ times a unit-variance Gaussian deviate.
 
@@ -444,7 +603,8 @@ N_l = N_\textrm{red} \left( \frac{l}{l_\textrm{knee}} \right)^{\alpha_\textrm{kn
 where $l_\textrm{knee}$ is the multipole where the red noise portion equals the amplitude $N_\textrm{red}$ and ${\alpha_\textrm{knee}}$ is the index of the red spectrum.  It is common, but not universal, to give the red and white parts the same amplitude, so that the knee is the transition multipole from red to white.
 
 
-\section{Measuring the power spectrum}
+
+\section{Masking and pseudospectra}
 
 Making a two dimensional mask for the CMB is more of an art than a science.  We want to exclude point sources of radiation (like galaxies) and the gas and dust emission of the Milky Way, but not eliminate so much area to ruin the statistics of the measurement.  Some of these foreground effects will be left in our measurement of the background, and we will have to deal with them later.  We want our mask to be apodized, to have a gradual change from including to excluding the , which helps the representation of the mask to be more compact in harmonic space.
 
@@ -646,161 +806,4 @@ and while it does not account for mode coupling, it is an excellent way to get a
 %While the Knox formula gives a good enough estimate for many purposes, for precision work we often need something more precise.
 %We can improve on that estimate by
 Another strategy is to construct a band-power covariance matrix out of carefully selected noise-split power spectra.  This has much more complicated accounting but it fairly computationally efficient.  Finally, we can make a synthetic Monte Carlo realization of the signal and noise process, and repeatedly execute the band power estimation.  This captures the covariance between bands but can be somewhat costly to get a precision measurement.
-
-
-\exercises
-
-
-\begin{subappendices}
-\section{Supplemental: spherical harmonic functions}\label{sup:spherical_harmonics}
-
-The spherical harmonics are the eigenfunctions of the Lapacian operator on the surface of a sphere.  They are complex functions that have the form
-\begin{align}
-  Y_{lm}(\theta,\phi) &= \lambda_{lm}(\theta)  \exp(im\phi)  \\ \nonumber
-  &=(-1)^m \sqrt{\frac{2 l + 1}{4\pi} \frac{l-m}{l+m}} P_l^m(\cos \theta) \exp(im\phi)
-\end{align}
-and depend on the associated Legendre polynomials $P_l^m$.  In cosmology, we use the same conventions that are common in quantum mechanics, in particular placing the factor of $(-1)^m$ (``Condon-Shortley'' phase) in the definition of the spherical harmonics and not in the definition of the associated Legendra polynomicals.
-
-These functions have several important identities.  They are orthonormal functions integrated over the on the whole sphere
-\begin{equation}
-  \int d\Omega Y_{lm}(\theta,\phi) Y_{l'm'}(\theta,\phi) = \delta_{ll'} \delta_{mm'}
-\end{equation}
-This in particular means that for $l=0$, $m=0$, we must have
-\begin{equation}
-  Y_{00} = \frac{1}{(4\pi)^{1/2}}
-\end{equation}
-
-Another important identity for spherical harmonics is the addition theorem
-\begin{equation}
-  \sum_{m} Y_{lm}(\mathbf{n}) Y_{lm}(\mathbf{n}') = \frac{2l+1}{4\pi} P_l(\mathbf{n \cdot n}') \label{eq:addition_theorm}
-\end{equation}
-for $\mathbf{n}$ as a unit vector pointing to $(\theta,\phi)$ and similarly for $\mathbf{n}'$.
-
-If the signal is real, $T(\theta,\phi) = T(\theta,\phi)^*$.  Since the spherical harmonics have the symmetry
-\begin{equation}
-Y_{lm}{}^* (\theta, \phi) = (-1)^{-m} Y_{l(-m)} (\theta, \phi),
-\end{equation}
-that implies that $a_{l(-m)} = (-1)^m a_{lm}^*$.
-
-Because the spherical harmonic transformation is just a sum with constant coefficients, derivatives with respect to the angles pass directly through to the spherical harmonic functions, as in:
-\begin{equation}
-\frac{\partial T}{\partial \theta} = \sum_{lm} a_{lm} \frac{\partial Y_{lm}}{\partial \theta}.
-\end{equation}
-
-The partial derivative with respect to $\theta$ (the polar or co-latitude angle) is a little messy,
-\begin{equation}
-\frac{\partial Y_{\ell m}(\theta, \phi)}{\partial \theta} = m \cot \theta Y_{\ell m}(\theta, \phi) + \sqrt{(\ell-m)(\ell+m+1)} e^{-i\phi} Y_{\ell, m+1}(\theta, \phi),
-\end{equation}
-while the partial with respect to $\phi$ (the azimuthal angle or longitude angle) is simpler,
-\begin{equation}
-\frac{\partial Y_{\ell m}(\theta, \phi)}{\partial \phi} = im Y_{\ell m}(\theta, \phi).
-\end{equation}
-These expressions make it fairly easy to compute the derivative of functions by computing the transform, applying the appropriate factors of $l$ and $m$, transforming back, and applying the proper functions of $\theta$ and $\phi$.
-
-The same strategy can compute the gradient along the surface, based on the gradient of the spherical harmonic functions,
-\begin{equation}
-\nabla_S Y_{\ell m} = \hat{\theta} \frac{\partial Y_{\ell m}}{\partial \theta} + \hat{\phi} \frac{1}{\sin \theta} \frac{\partial Y_{\ell m}}{\partial \phi}.
-\end{equation}
-Operations like this are built into the Healpix library.
-
-The angular part on the Laplacian $(\nabla \cdot \nabla) Y_{lm}$, since the spherical harmonics have no radial dependence, is simple:
-\begin{equation}
-r^2 \nabla^2 Y_{l m} = \left[ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right] Y_{l m} = -l(l+1) Y_{l m}
-\end{equation}
-Any function on the sphere follows the same pattern, because it is just a linear combination of spherical harmonics (for $r=1$),
-\begin{equation}
-  \nabla \cdot (\nabla \phi) = \nabla^2 \phi =   \nabla^2 \left( \sum_{lm} \phi_{lm} Y_{l m} \right) =  \sum_{lm} -l(l+1) \phi_{lm}  Y_{l m}
-\end{equation}
-Thus the harmonic coefficients of the Laplacian derivative of a function is 
-\begin{equation}
-  \left( \nabla^2 \phi \right)_{lm} = -l(l+1) \phi_{lm}.
-\end{equation}
-Derivatives of functions are easy with harmonic coefficients.
-
-The expansion of a plane wave into Legendre polynomials is:
-\begin{equation}
-  \exp({i \mathbf k \cdot \mathbf r}) = \sum_{l} (2 l + 1) i^l j_l(k r) P_l(\hat{\mathbf k} \cdot \hat{\mathbf r}).
-\end{equation}
-where $j_l$ are the spherical bessel functions of the first kind.
-
-Then using the addition theorem, we can look at the Legendre polynomial in terms of spherical harmonics,
-\begin{equation}
-  \exp({i \mathbf{k} \cdot \mathbf{r}}) = 4 \pi \sum_{lm} i^l j_l(k r) Y_{lm}{}(\hat{\mathbf k}) Y_{lm}^{*}(\hat{\mathbf r}).
-\end{equation}
-This relationship is vital when we come to projecting the harmonics of signal in the bulk of space into signals on the sphere of the sky.
-
-
-\section{Future Supplemental: flat-sky approximation}
-
-Gradient
-\begin{equation}
-  (\nabla \phi)(l) = il \phi(l)
-\end{equation}
-
-Laplacian
-\begin{equation}
-  (\nabla \cdot \nabla \phi)(l) = -l^2 \phi(l)
-\end{equation}
-which approximates $(\nabla^2 \phi)_{lm} = -l(l+1) \phi_{lm}$.
-
-
-
-\section{Future Supplemental: Euler angles}
-
-
-\section{Supplemental: isotropy and covariance}
-
-A rotation $R = (\alpha,\beta,\gamma)$ by the three Euler angles (for yaw, pitch, and roll) transforms the $a_{lm}$ harmonics with the Wigner $D$-functions, another set of special functions:
-\begin{equation}
-  a_{lm} = \sum_{m_1} D^l_{mm_1}(R) a'_{lm_1}
-\end{equation}
-
-To explore the effect of isotropy, we can examine the covariance of the coefficients.
-\begin{eqnarray}
-  \left\langle a_{lm} a^*_{l'm'} \right\rangle &=& \left\langle \sum_{m_1 m_2} D^l_{mm_1}(R) a'_{lm_1}  D^{l'*}_{m' m_2}(R)a^{\prime*}_{l'm_2} \right\rangle \\ \nonumber
-  &=&  \sum_{m_1 m_2} D^l_{mm_1}(R) D^{l'*}_{m' m_2}(R) \left\langle  a'_{lm_1} a^{\prime*}_{l'm_2} \right\rangle
-\end{eqnarray}
-Isotropy means that both of these covariances in angle brackets must be the same matrix, so
-\begin{equation}
-C_{lml'm'} =  \sum_{m_1 m_2} D^l_{mm_1}(R)  D^{l'*}_{m' m_2}(R) C_{l m_1 l' m_2}
-\end{equation}
-The matrices don't depend on the rotation angle (isotropy), but we can anyway integrate both sides over all possible rotations, $\int dR = \int_0^{2\pi} d\alpha\,\int_0^{\pi} \sin\beta\, d\beta\, \int_0^{2\pi} d\gamma$, and pull the sum and $C$ matrices out of the integral.
-\begin{equation}
-C_{lml'm'} \int dR =  \sum_{m_1 m_2}  C_{l m_1 l' m_2} \int dR \, D^l_{mm_1}(R) \, D^{l'*}_{m' m_2}(R)
-\end{equation}
-  The empty integral (over yaw, pitch, roll) is
-\begin{equation}
-  \int dR = 4\pi \times 2\pi = 8\pi^2
-\end{equation}
-while the integral of the Wigner $D$ functions is their orthogonality relation
-\begin{equation}
-  \int dR \, D^l_{mm_1}(R)\,  D^{l'*}_{m' m_2}(R) = \frac{8\pi^2}{2l +1} \delta_{ll'}\delta_{mm'}\delta_{m_1 m_2}.
-\end{equation}
-Cancelling the $8\pi^2$ we get
-\begin{eqnarray}
-C_{lml'm'}  &=&  \delta_{ll'} \delta_{mm'} \frac{1}{2l +1} \sum_{m_1 m_2} C_{l m_1 l' m_2} \delta_{m_1 m_2} \\ \nonumber
-&=&  \delta_{ll'} \delta_{mm'}  \left( \frac{1}{2l +1} \sum_{m_1} C_{l m_1 l' m_1} \right),
-\end{eqnarray}
-which shows that covariance has the form
-\begin{equation}
-   \left\langle a_{lm} a^*_{l'm'} \right\rangle = C_{lml'm'} = C_l \delta_{ll'} \delta_{mm'}.
-\end{equation}
-Then of course the term in parentheses,
-\begin{equation}
-   \left( \frac{1}{2l +1} \sum_{m_1} C_{l m_1 l' m_1} \right) =  \frac{1}{2l +1}  \sum_{m_1} C_l \delta_{ll'} =  \frac{2l+1}{2l +1}  C_l \delta_{ll'} = C_l \delta_{ll'}
-\end{equation}
-is consistent with that.  Thus we have shown that isotropy produces a diagonal covariance matrix that depends only on $l$. 
-
-
-
-\section{Future Supplemental: Wick's theorem applied to harmonics}
-
-
-
-\end{subappendices}
-
-
-
-
-
 
