@@ -25,6 +25,44 @@ data analysis for 21 cm: \citep{2020PASP..132f2001L}
 
 FRBs
 
+
+\section{Theoretical computation of cross-correlation and the limber approximation}
+
+\begin{equation}
+  A(k) = \int d^3x \exp(-i k \cdot x) A(x)
+\end{equation}
+
+Projection of a 3d signal into a 2d signal
+\begin{equation}
+  A(\hat x) = \int dr F_A(r) A(r \hat x) = \int dz \frac{dr}{dz} F_A(r(z)) A(r(z) \hat x)
+\end{equation}
+Note the projection kernel can be expressed either as a function of the comoving distance (flat sky here) or of the redshift.
+
+spherical harmonic transform
+\begin{equation}
+  A_{lm} = \int d\hat x\, Y^*_{lm}(\hat x) A(\hat x)
+\end{equation}
+
+Now we have a second signal $B$ with 3d descriptions $B(x)$, $B(k)$ and 2-d descriptions  $B(\hat x)$, and $B_{lm}$.
+
+We have the three-dimensional power spectrum
+\begin{equation}
+  \langle A(k_1) B(k_2) \rangle = (2\pi)^3 \delta^3(k_1- k_2) P^{AB}(k)
+\end{equation}
+
+How do we compute $C^{AB}_l$?
+
+A common case is where the 3-d $A$ and $B$ are both the matter field, but the 2-d fields use different kernels, say lensing and source counts.
+
+\section{Common kernels}
+
+sources counts
+
+CMB lensing
+
+general lensing
+
+
 \section{Synthesizing cross-correlations}
 
 
@@ -48,10 +86,7 @@ mix the alms
   a_{i,lm} =\sum_j L_{ij,l} Z_{j,lm}
 \end{equation}
 
-
-\section{Limber approximation}
-
-
+Same approach works for 3d signals.
 
 \section{Computing cross correlations}
 
